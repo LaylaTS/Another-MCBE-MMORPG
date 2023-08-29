@@ -1,0 +1,1 @@
+titleraw @a actionbar {"rawtext":[{"text":"§aMoney: §2$"},{"score":{"name":"*","objective":"money"}}]}

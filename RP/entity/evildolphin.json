@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:evildolphin",
+			"materials": {
+				"default": "dolphin"
+			},
+			"textures": {
+				"default": "textures/entity/evildolphin"
+			},
+			"geometry": {
+				"default": "geometry.evildolphin"
+			},
+			"animations": {
+				"move": "animation.evildolphin.move"
+			},
+			"animation_controllers": [
+				{
+					"general": "controller.animation.evildolphin.general"
+				}
+			],
+			"render_controllers": [
+				"controller.render.evildolphin"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

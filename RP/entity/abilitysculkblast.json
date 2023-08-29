@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:abilitysculkblast",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/abilitysculkblast"
+			},
+			"geometry": {
+				"default": "geometry.abilitysculkblast"
+			},
+			"render_controllers": [
+				"controller.render.abilitysculkblast"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

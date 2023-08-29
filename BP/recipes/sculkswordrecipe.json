@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:sculkswordrecipe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"s": {
+				"item": "stick"
+			},
+			"a": {
+				"item": "sculk_catalyst"
+			},
+			"b": {
+				"item": "echo_shard"
+			}
+		},
+		"pattern": [
+			"  b",
+			" b ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:sculksword"
+		}
+	}
+}

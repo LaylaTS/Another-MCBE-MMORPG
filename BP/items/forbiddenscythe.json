@@ -1,0 +1,115 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "mmorpg:forbiddenscythe",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:creative_category": {
+        "parent": "itemGroup.name.sword"
+      },
+      "minecraft:damage": 12,
+      "minecraft:digger": {
+        "use_efficiency": true,
+        "destroy_speeds": [
+          {
+            "block": "minecraft:web",
+            "on_dig": {
+              "event": "on_tool_used",
+              "target": "self"
+            },
+            "speed": 15
+          },
+          {
+            "block": "minecraft:bamboo",
+            "on_dig": {
+              "event": "on_tool_used",
+              "target": "self"
+            },
+            "speed": 60
+          }
+        ]
+      },
+      "minecraft:render_offsets": {
+        "main_hand": {
+          "first_person": {
+            "position": [
+              0.405,
+              -0.145,
+              -0.8
+            ],
+            "scale": [
+              0.015,
+              0.015,
+              0.015
+            ]
+          },
+          "third_person": {
+            "position": [
+              0.25,
+              0.95,
+              -0.5
+            ],
+            "scale": [
+              0.04,
+              0.04,
+              0.04
+            ]
+          }
+        }
+      },
+      "minecraft:foil": true,
+      "minecraft:enchantable": {
+        "value": 14,
+        "slot": "sword"
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": {
+        "texture": "mmorpg_forbiddenscythe"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "minecraft:iron_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          },
+          {
+            "items": [
+              "mmorpg:forbiddenscythe"
+            ],
+            "repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
+          }
+        ]
+      },
+      "minecraft:weapon": {
+        "on_hurt_entity": {
+          "event": "damaged",
+          "target": "self"
+        }
+      },
+      "tag:minecraft:is_sword": {},
+      "tag:minecraft:is_tool": {}
+    },
+    "events": {
+      "damaged": {
+        "damage": {
+          "type": "durability",
+          "amount": 1,
+          "target": "self"
+        }
+      },
+      "on_tool_used": {
+        "damage": {
+          "type": "durability",
+          "amount": 2,
+          "target": "self"
+        }
+      }
+    }
+  }
+}

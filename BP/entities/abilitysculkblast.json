@@ -1,0 +1,72 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "mmorpg:abilitysculkblast",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {},
+    "components": {
+      "minecraft:navigation.generic": {},
+      "minecraft:behavior.sonic_boom": {
+        "priority": 3,
+        "duration": 3.0,
+        "speed_multiplier": 1.2,
+        "attack_damage": 16,
+        "attack_range_horizontal": 15,
+        "attack_range_vertical": 20,
+        "attack_cooldown": 20,
+        "knockback_vertical_strength": 2.5,
+        "knockback_horizontal_strength": 4.5,
+        "knockback_height_cap": 3,
+        "duration_until_attack_sound": 1.7,
+        "charge_sound": "sonic_charge",
+        "attack_sound": "sonic_boom"
+      },
+      "minecraft:timer": {
+        "looping": true,
+        "time": 5,
+        "time_down_event": {
+          "event": "mmorpg:abilitysculkblastend"
+        }
+      },
+      "minecraft:health": {
+        "max": 1,
+        "value": 1
+      },
+      "minecraft:scale": {
+        "value": 0.001
+      },
+      "minecraft:collision_box": {
+        "height": 0.1,
+        "width": 0.1
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 2,
+        "must_see": true,
+        "reselect_targets": true,
+        "within_radius": 25.0,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "monster"
+            },
+            "max_dist": 32
+          }
+        ]
+      }
+    },
+    "events": {
+      "mmorpg:abilitysculkblastend": {
+        "run_command": {
+          "command": "kill @s",
+          "target": "self"
+        }
+      }
+    }
+  }
+}

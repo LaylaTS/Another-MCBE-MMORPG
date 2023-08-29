@@ -1,0 +1,11 @@
+{
+	"values": [
+		"clearcmdblock",
+		"onjoin",
+		"autokickofbans",
+		"on_death",
+		"spawntpscoreboard",
+		"moneydisplay",
+		"axereplacer"
+	]
+}

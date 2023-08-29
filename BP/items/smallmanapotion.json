@@ -1,0 +1,38 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "mmorpg:smallmanapotion",
+      "category": "nature"
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Mana Potion | Regenerates 10 Mana\nDrinking when above 90 mana does nothing"
+      },
+      "minecraft:on_use": {
+        "on_use": {
+          "event": "mmorpg:restoremana"
+        }
+      },
+      "minecraft:icon": {
+        "texture": "mmorpg_smallmanapotion"
+      },
+      "minecraft:use_animation": "eat"
+    },
+    "events": {
+      "mmorpg:restoremana": {
+        "sequence": [
+          {
+            "run_command": {
+              "command": "/scoreboard players add @s[scores={mana=..90}] mana 10",
+              "target": "self"
+            }
+          },
+          {
+            "decrement_stack": {}
+          }
+        ]
+      }
+    }
+  }
+}

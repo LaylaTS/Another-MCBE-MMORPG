@@ -1,0 +1,42 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"wojtekbb"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.6.1"
+			],
+			"dash": [
+				"0.10.10"
+			]
+		}
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"min_engine_version": [
+			1,
+			20,
+			10
+		],
+		"uuid": "6d6c461a-3302-11ee-be56-0242ac120002",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "789b724a-3302-11ee-be56-0242ac120002",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

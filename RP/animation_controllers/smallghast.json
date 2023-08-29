@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.smallghast.move": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "move"
+          ]
+        }
+      }
+    },
+    "controller.animation.smallghast.scale": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            "scale"
+          ]
+        }
+      }
+    }
+  }
+}

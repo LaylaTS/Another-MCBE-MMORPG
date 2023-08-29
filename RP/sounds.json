@@ -1,0 +1,95 @@
+{
+	"entity_sounds": {
+		"entities": {
+			"mmorpg:bloodyravager": {
+				"events": {
+					"ambient": "mob.ravager.ambient",
+					"ambient.in.raid": {
+						"pitch": [
+							0.80,
+							1.20
+						],
+						"sound": "mob.ravager.ambient",
+						"volume": 3.0
+					},
+					"attack.strong": "mob.ravager.bite",
+					"celebrate": "mob.ravager.celebrate",
+					"death": "mob.ravager.death",
+					"hurt": "mob.ravager.hurt",
+					"roar": "mob.ravager.roar",
+					"step": "mob.ravager.step",
+					"stun": "mob.ravager.stun",
+					"fall.big": "music.bloodyravager.theme"
+				},
+				"volume": 1.0
+			},
+			"mmorpg:spiderboss": {
+				"events": {
+					"ambient": "mob.spiderboss.say",
+					"death": "mob.spiderboss.death",
+					"hurt": "mob.spiderboss.say",
+					"step": {
+						"pitch": [
+							0.9,
+							1.1
+						],
+						"sound": "mob.spiderboss.step",
+						"volume": 0.35
+					}
+				},
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"volume": 1
+			},
+			"mmorpg:smallghast": {
+				"events": {
+					"ambient": "mob.smallghast.moan",
+					"death": "mob.smallghast.death",
+					"hurt": "mob.smallghast.scream",
+					"scream": "mob.smallghast.affectionate_scream",
+					"shoot": {
+						"sound": "mob.smallghast.fireball",
+						"volume": 0.7
+					},
+					"warn": "mob.smallghast.charge"
+				},
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"volume": 600
+			},
+			"mmorpg:evildolphin": {
+				"volume": 1,
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"events": {
+					"ambient": "mob.evildolphin.idle",
+					"hurt": "mob.evildolphin.hurt",
+					"death": "mob.evildolphin.death",
+					"breathe": "mob.evildolphin.blowhole",
+					"attack": "mob.evildolphin.attack",
+					"splash": "mob.evildolphin.splash",
+					"swim": "mob.evildolphin.swim",
+					"ambient.in.water": "mob.evildolphin.idle_water",
+					"hurt.in.water": "mob.evildolphin.hurt",
+					"death.in.water": "mob.evildolphin.death",
+					"jump": {
+						"sound": "mob.evildolphin.jump",
+						"volume": 0.7,
+						"pitch": 1
+					},
+					"eat": {
+						"sound": "mob.evildolphin.eat",
+						"volume": 0.7,
+						"pitch": 1
+					}
+				}
+			}
+		}
+	}
+}

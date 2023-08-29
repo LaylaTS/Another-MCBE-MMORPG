@@ -1,0 +1,48 @@
+{
+	"resource_pack_name": "mmorpg",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"mmorpg_return": {
+			"textures": "textures/items/return"
+		},
+		"mmorpg_sculksword": {
+			"textures": "textures/items/sculksword"
+		},
+		"mmorpg_orepickaxe": {
+			"textures": "textures/items/orepickaxe"
+		},
+		"mmorpg_sculked_helmet": {
+			"textures": "textures/items/sculked_helmet"
+		},
+		"mmorpg_mainaxe": {
+			"textures": "textures/items/mainaxe"
+		},
+		"mmorpg_purpledagger": {
+			"textures": "textures/items/PurpleDagger"
+		},
+		"mmorpg_smallmanapotion": {
+			"textures": "textures/items/mana_potion"
+		},
+		"mmorpg_withermenace": {
+			"textures": "textures/items/guardianweapon_menace"
+		},
+		"mmorpg_throwableskull": {
+			"textures": "textures/items/throwableskull"
+		},
+		"mmorpg_compressedcobblestone": {
+			"textures": "textures/items/Cobblestone"
+		},
+		"mmorpg_verycompressedcobblestone": {
+			"textures": "textures/items/compressedcoobblestone"
+		},
+		"mmorpg_anothercompressedcobblestonestone": {
+			"textures": "textures/items/anothercompressedstone"
+		},
+		"mmorpg_witherscythe": {
+			"textures": "textures/items/witherscythe"
+		},
+		"mmorpg_forbiddenscythe": {
+			"textures": "textures/items/forbiddenscythe"
+		}
+	}
+}

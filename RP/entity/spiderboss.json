@@ -1,0 +1,35 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:spiderboss",
+			"materials": {
+				"default": "spider",
+				"invisible": "spider_invisible"
+			},
+			"textures": {
+				"default": "textures/entity/spiderboss"
+			},
+			"geometry": {
+				"default": "geometry.spiderboss"
+			},
+			"animations": {
+				"default_leg_pose": "animation.spiderboss.default_leg_pose",
+				"look_at_target": "animation.spiderboss.look_at_target",
+				"walk": "animation.spiderboss.walk"
+			},
+			"animation_controllers": [
+				{
+					"move": "controller.animation.spiderboss.move"
+				}
+			],
+			"render_controllers": [
+				"controller.render.spiderboss"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

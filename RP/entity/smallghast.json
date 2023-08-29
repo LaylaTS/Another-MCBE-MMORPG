@@ -1,0 +1,37 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:smallghast",
+			"materials": {
+				"default": "ghast"
+			},
+			"textures": {
+				"default": "textures/entity/smallghast/smallghast",
+				"shooting": "textures/entity/smallghast/smallghast_shooting"
+			},
+			"geometry": {
+				"default": "geometry.smallghast"
+			},
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"animations": {
+				"move": "animation.smallghast.move",
+				"scale": "animation.smallghast.scale"
+			},
+			"animation_controllers": [
+				{
+					"move": "controller.animation.smallghast.move"
+				},
+				{
+					"scale": "controller.animation.smallghast.scale"
+				}
+			],
+			"render_controllers": [
+				"controller.render.smallghast"
+			]
+		}
+	}
+}
