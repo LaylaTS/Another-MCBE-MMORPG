@@ -1,5 +1,5 @@
 import * as server from '@minecraft/server'
-import 'sculkedhelmet.js'
+import 'helmets.js'
 import 'spawn.js'
 import 'marketform.js'
 import 'banking.js'
@@ -9,6 +9,7 @@ import 'mobdeath.js'
 import 'island.js'
 import 'blockdrops.js'
 import 'worldedit.js'
+import 'populatemoss.js'
 
 
 server.system.runInterval(() => { // run every tick

@@ -144,15 +144,22 @@ world.afterEvents.itemUse.subscribe(eventData => {
             })
 
             break;
-        case "minecraft:ender_eye":
+        case "minecraft:ender_eye": //todo
             let startpos = player.location
             player.runCommand("particle mmorpg:uselessswordparticle ~ ~ ~")
+            player.applyKnockback()
+
             server.system.runTimeout(() => {
-                player.tryTeleport(startpos)
+                let dx = player.location.x - startpos.x
+                let dy = player.location.y - startpos.y
+                let dz = player.location.z - startpos.z
+                let sumofsquares = dx * dx + dy * dy + dz * dz
+                if (Math.sqrt(sumofsquares) < 100) {
+                    player.tryTeleport(startpos)
+                }
             }, 100)
 
 
             break;
-
     }
 })
