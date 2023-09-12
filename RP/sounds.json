@@ -6,11 +6,11 @@
 					"ambient": "mob.ravager.ambient",
 					"ambient.in.raid": {
 						"pitch": [
-							0.80,
-							1.20
+							0.8,
+							1.2
 						],
 						"sound": "mob.ravager.ambient",
-						"volume": 3.0
+						"volume": 3
 					},
 					"attack.strong": "mob.ravager.bite",
 					"celebrate": "mob.ravager.celebrate",
@@ -21,7 +21,7 @@
 					"stun": "mob.ravager.stun",
 					"fall.big": "music.bloodyravager.theme"
 				},
-				"volume": 1.0
+				"volume": 1
 			},
 			"mmorpg:spiderboss": {
 				"events": {
@@ -87,6 +87,26 @@
 						"sound": "mob.evildolphin.eat",
 						"volume": 0.7,
 						"pitch": 1
+					}
+				}
+			},
+			"mmorpg:evilirongolem": {
+				"volume": 0.1,
+				"pitch": [
+					0.76,
+					1.14
+				],
+				"events": {
+					"ambient": "mob.evilirongolem.idle",
+					"hurt": "mob.evilirongolem.hurt",
+					"death": "mob.evilirongolem.death",
+					"takeoff": {
+						"sound": "mob.evilirongolem.takeoff",
+						"volume": 0.05,
+						"pitch": [
+							0.8,
+							1.2
+						]
 					}
 				}
 			}

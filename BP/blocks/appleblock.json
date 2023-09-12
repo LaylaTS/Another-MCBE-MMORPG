@@ -1,0 +1,14 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:block": {
+    "description": {
+      "identifier": "mmorpg:appleblock"
+    },
+    "components": {
+      "minecraft:destroy_time": 3,
+      "minecraft:creative_category": {
+        "category": "nature"
+      }
+    }
+  }
+}

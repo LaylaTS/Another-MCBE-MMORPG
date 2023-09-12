@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:appleblockrecipe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"a": {
+				"item": "apple"
+			}
+		},
+		"pattern": [
+			"aaa",
+			"aaa",
+			"aaa"
+		],
+		"result": {
+			"item": "mmorpg:appleblock"
+		}
+	}
+}

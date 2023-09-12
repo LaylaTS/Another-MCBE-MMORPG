@@ -31,3 +31,6 @@ item.mmorpg:finalcobblestone=Final Cobblestone
 item.mmorpg:anothercompressedcobblestonestone= Idk like over 6000 cobblestone
 item.mmorpg:witherscythe=§5Wither Scythe§r | §370 Mana§r
 item.mmorpg:forbiddenscythe=§5Forbidden Scythe§r | §330 Mana§r
+tile.mmorpg:appleblock.name=Apple Block
+item.spawn_egg.entity.mmorpg:evilirongolem.name=Spawn Evil Iron Golem
+entity.mmorpg:evilirongolem.name=Evil Iron Golem

@@ -3,5 +3,9 @@
 		1,
 		1,
 		0
-	]
+	],
+	"mmorpg:appleblock": {
+		"sound": "stone",
+		"textures": "mmorpg_appleblock"
+	}
 }

@@ -6,7 +6,7 @@ var world = server.world
 const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast"];
 
 world.afterEvents.itemUse.subscribe(eventData => {
-    var player = eventData.source
+    var player = eventData.source as server.Player
     var item = eventData.itemStack
     switch (item.typeId) {
         case "mmorpg:return":
@@ -43,7 +43,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     if (!avoidableentities.includes(entity.entity.typeId)) {
                         entity.entity.applyDamage(10, {
                             damagingEntity: player,
-                            cause: 'entityAttack'
+                            cause: 'entityAttack' as server.EntityDamageCause
                         })
                         entity.entity.runCommandAsync('particle minecraft:critical_hit_emitter ~ ~1 ~')
                     }
@@ -55,21 +55,27 @@ world.afterEvents.itemUse.subscribe(eventData => {
             if (world.scoreboard.getObjective('mana').getScore(player) > 39) {
                 if (player.getEntitiesFromViewDirection().length > 0) {
                     player.runCommandAsync('scoreboard players remove @s mana 40')
-                }
-                player.getEntitiesFromViewDirection().forEach(entity => {
-                    if (!avoidableentities.includes(entity.entity.typeId)) {
-                        if (entity.distance < 8) {
-                            let vector3 = player.getViewDirection()
-                            entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
-                            entity.entity.addEffect('slowness', 100, { amplifier: 2 })
-                            entity.entity.applyDamage(entity.entity.applyDamage(20, {
-                                damagingEntity: player,
-                                cause: 'entityAttack',
-                            }))
+                    player.getEntitiesFromViewDirection().forEach(entity => {
+                        if (!avoidableentities.includes(entity.entity.typeId)) {
+                            if (entity.distance < 8) {
+                                let vector3 = player.getViewDirection()
+                                entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
+                                entity.entity.addEffect('slowness', 100, { amplifier: 2 })
+                                entity.entity.applyDamage(20, {
+                                    damagingEntity: player,
+                                    cause: 'entityAttack' as server.EntityDamageCause
+                                })
+                            }
                         }
-                    }
-                })
+                    })
+                }
             }
+
+
+
+
+
+
             break;
         case "mmorpg:witherscythe":
             if (world.scoreboard.getObjective('mana').getScore(player) > 69) {
@@ -94,25 +100,27 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:forbiddenscythe":
+            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
+                player.runCommand("scoreboard players remove @s mana 30")
+                if (player.getEntitiesFromViewDirection().length > 0) {
+                    let subject = player.getEntitiesFromViewDirection()[0]
+                    let entity = subject.entity
+                    let currentrotation = player.getViewDirection()
+                    if (!player.isSprinting) {
+                        player.tryTeleport(entity.location)
 
-            if (player.getEntitiesFromViewDirection().length > 0) {
-                let subject = player.getEntitiesFromViewDirection()[0]
-                let entity = subject.entity
-                let currentrotation = player.getViewDirection()
-                if (!player.isSprinting) {
-                    player.tryTeleport(entity.location)
+                        player.applyKnockback(currentrotation.x * -1, currentrotation.z * -1, 3, 0.7)
 
-                    player.applyKnockback(currentrotation.x * -1, currentrotation.z * -1, 3, 0.7)
+                    } else {
+                        player.applyKnockback(currentrotation.x, currentrotation.z, 3, 0.7)
 
-                } else {
-                    player.applyKnockback(currentrotation.x, currentrotation.z, 3, 0.7)
+                    }
 
+                    (entity.applyDamage(35, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    }))
                 }
-
-                entity.applyDamage(entity.applyDamage(35, {
-                    damagingEntity: player,
-                    cause: 'entityAttack',
-                }))
             }
             break;
         case "minecraft:glow_ink_sac":
@@ -124,7 +132,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     if (!avoidableentities.includes(entity.typeId)) {
                         entity.applyDamage(35, {
                             damagingEntity: player,
-                            cause: 'entityAttack',
+                            cause: 'entityAttack' as server.EntityDamageCause
                         })
                         entity.applyKnockback(0, 0, 0, 0.6)
 
@@ -136,7 +144,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 if (!avoidableentities.includes(entity.typeId)) {
                     entity.applyDamage(35, {
                         damagingEntity: player,
-                        cause: 'entityAttack',
+                        cause: 'entityAttack' as server.EntityDamageCause
                     })
                     entity.applyKnockback(0, 0, 0, 0.6)
 
@@ -147,7 +155,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "minecraft:ender_eye": //todo
             let startpos = player.location
             player.runCommand("particle mmorpg:uselessswordparticle ~ ~ ~")
-            player.applyKnockback()
+            player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 1.5, 0.5)
 
             server.system.runTimeout(() => {
                 let dx = player.location.x - startpos.x
