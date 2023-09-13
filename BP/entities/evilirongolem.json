@@ -184,7 +184,8 @@
       },
       "minecraft:behavior.melee_attack": {
         "priority": 1,
-        "track_target": true
+        "track_target": true,
+        "reach_multiplier": 0.9
       },
       "minecraft:behavior.move_towards_target": {
         "priority": 2,
@@ -199,9 +200,6 @@
       "minecraft:behavior.move_towards_dwelling_restriction": {
         "priority": 4,
         "speed_multiplier": 1
-      },
-      "minecraft:behavior.offer_flower": {
-        "priority": 5
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,

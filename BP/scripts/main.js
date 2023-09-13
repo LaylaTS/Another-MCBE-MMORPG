@@ -11,6 +11,11 @@ import 'blockdrops.js'
 import 'worldedit.js'
 import 'populatemoss.js'
 
+const world = server.world
+world.afterEvents.worldInitialize.subscribe(data => {
+    world.getDimension("minecraft:overworld").runCommand("volumearea remove_all")
+    world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:cherryforest -67 81 -155 -345 201 135 cherryforest")
+})
 
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()

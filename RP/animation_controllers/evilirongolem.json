@@ -26,25 +26,6 @@
               "attack": "variable.attack_animation_tick > 0.0"
             },
             {
-              "flower": "variable.offer_flower_tick"
-            },
-            {
-              "has_target": "query.has_target"
-            }
-          ]
-        },
-        "flower": {
-          "animations": [
-            "flower"
-          ],
-          "transitions": [
-            {
-              "attack": "variable.attack_animation_tick > 0.0"
-            },
-            {
-              "default": "variable.offer_flower_tick <= 0.0"
-            },
-            {
               "has_target": "query.has_target"
             }
           ]
@@ -59,9 +40,6 @@
             },
             {
               "default": "!query.has_target"
-            },
-            {
-              "flower": "variable.offer_flower_tick"
             }
           ]
         }

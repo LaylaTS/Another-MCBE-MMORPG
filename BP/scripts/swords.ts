@@ -5,9 +5,18 @@ var world = server.world
 
 const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast"];
 
+
 world.afterEvents.itemUse.subscribe(eventData => {
     var player = eventData.source as server.Player
     var item = eventData.itemStack
+    function addlore(lore) {
+        var loreitem = item.clone() as server.ItemStack
+        loreitem.setLore(lore)
+        let inventory = player.getComponent("inventory") as server.EntityInventoryComponent
+        if (inventory.container.getItem(player.selectedSlot).typeId == loreitem.typeId) {
+            inventory.container.setItem(player.selectedSlot, loreitem)
+        }
+    }
     switch (item.typeId) {
         case "mmorpg:return":
             var form = new ui.ActionFormData()
@@ -78,6 +87,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:witherscythe":
+            addlore(["§8Jump up then slam down dealing massive damage"])
             if (world.scoreboard.getObjective('mana').getScore(player) > 69) {
                 player.runCommandAsync('scoreboard players remove @s mana 70')
                 let vector3 = player.getViewDirection()
@@ -168,6 +178,26 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }, 100)
 
 
+            break;
+        case "mmorpg:applesword":
+
+
+            addlore(["§8Using this ability gives", "§8you and all nearby players", "§8regeneration for 5 seconds"])
+            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
+
+
+                player.runCommand("effect @a[r=5] regeneration 5 2 true")
+                player.runCommand("scoreboard players remove @s mana 30")
+            }
+            break;
+        case "mmorpg:wolfsword":
+            addlore(["§8Gives you speed for 20 seconds"])
+            if (world.scoreboard.getObjective("mana").getScore(player) > 39) {
+
+
+                player.runCommand("effect @a[r=5] speed 20 1 true")
+                player.runCommand("scoreboard players remove @s mana 40")
+            }
             break;
     }
 })

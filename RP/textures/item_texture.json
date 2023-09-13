@@ -43,6 +43,12 @@
 		},
 		"mmorpg_forbiddenscythe": {
 			"textures": "textures/items/forbiddenscythe"
+		},
+		"mmorpg_applesword": {
+			"textures": "textures/items/applesword"
+		},
+		"mmorpg_wolfsword": {
+			"textures": "textures/items/wolfsword"
 		}
 	}
 }

@@ -1,0 +1,16 @@
+{
+  "format_version": "1.17.10",
+  "minecraft:volume": {
+    "description": {
+      "identifier": "mmorpg:cherryforest"
+    },
+    "components": {
+      "minecraft:fog": {
+        "fog_identifier": "mmorpg:cherrybiome"
+      },
+      "minecraft:bounds": {
+        "dimension": "overworld"
+      }
+    }
+  }
+}

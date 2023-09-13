@@ -18,7 +18,6 @@
         "walk_to_target": "animation.evilirongolem.walk_to_target",
         "move_to_target": "animation.evilirongolem.move_to_target",
         "attack": "animation.evilirongolem.attack",
-        "flower": "animation.evilirongolem.flower",
         "look_at_target": "animation.common.look_at_target",
         "move_controller": "controller.animation.evilirongolem.move",
         "arm_controller": "controller.animation.evilirongolem.arm_movement"

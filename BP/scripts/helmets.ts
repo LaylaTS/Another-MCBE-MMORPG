@@ -17,6 +17,7 @@ server.system.runInterval(() => {
 
                     if (server.world.getAbsoluteTime() % 10 == 0) {
                         player.runCommand('scoreboard players add @s[scores={mana=..99}] mana 1')
+
                     }
                     break;
             }
