@@ -133,7 +133,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }
             }
             break;
-        case "minecraft:glow_ink_sac":
+        case "minecraft:glow_ink_sac": // drop from boss later
             let currentrotation = player.getViewDirection()
             let entites = world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 })
             player.applyKnockback(currentrotation.x, currentrotation.z, 20, -100)
@@ -199,5 +199,11 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 player.runCommand("scoreboard players remove @s mana 40")
             }
             break;
+        case "minecraft:nether_star":
+
+            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] }).length > 0) {
+
+            }
     }
 })
+

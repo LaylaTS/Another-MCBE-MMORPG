@@ -9,7 +9,7 @@ import 'mobdeath.js'
 import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
-//import 'worldedit.js'
+import 'worldedit.js'
 
 
 const world = server.world

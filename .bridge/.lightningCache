@@ -10,17 +10,17 @@ projects/MMORPG/BP/functions/tick.json|1692015165
 projects/MMORPG/BP/scripts/blockdrops.js|1692028344
 projects/MMORPG/BP/scripts/dungeontps.js|1691425414
 projects/MMORPG/BP/scripts/banking.js|1691164794
-projects/MMORPG/BP/scripts/floatingislandsplates.ts|1694718341
+projects/MMORPG/BP/scripts/floatingislandsplates.ts|1694811620
 projects/MMORPG/BP/scripts/helmets.ts|1694634651
 projects/MMORPG/BP/scripts/island.js|1692223563
 projects/MMORPG/BP/scripts/listitem.ts|1692968563
-projects/MMORPG/BP/scripts/main.js|1694635702
+projects/MMORPG/BP/scripts/main.js|1694811252020
 projects/MMORPG/BP/scripts/mobdeath.js|1691701256
 projects/MMORPG/BP/scripts/marketform.js|1692959867
 projects/MMORPG/BP/scripts/spawn.js|1692533855
 projects/MMORPG/BP/scripts/populatemoss.ts|1693481026
 projects/MMORPG/BP/scripts/worldedit.ts|1694462291
-projects/MMORPG/BP/scripts/swords.ts|1694613390
+projects/MMORPG/BP/scripts/swords.ts|1694811567853
 #lang
 projects/MMORPG/BP/texts/en_US.lang|1691007239
 #entity
@@ -67,7 +67,7 @@ projects/MMORPG/BP/functions/axereplacer.mcfunction|1691166636|{"entityTag":[],"
 projects/MMORPG/BP/functions/moneydisplay.mcfunction|1691086702|{"entityTag":[],"functionPath":[],"scoreboardObjective":[]}
 projects/MMORPG/BP/functions/spawntpscoreboard.mcfunction|1692015663|{"entityTag":[],"functionPath":[],"scoreboardObjective":[]}
 projects/MMORPG/BP/functions/on_death.mcfunction|1691773479|{"entityTag":[],"functionPath":[],"scoreboardObjective":[]}
-projects/MMORPG/BP/functions/onjoin.mcfunction|1692110797|{"entityTag":[],"functionPath":[],"scoreboardObjective":[]}
+projects/MMORPG/BP/functions/onjoin.mcfunction|1694799384|{"entityTag":[],"functionPath":[],"scoreboardObjective":[]}
 #mcstructure
 projects/MMORPG/BP/structures/bridge/buildtext_0.mcstructure|1691007244
 projects/MMORPG/BP/structures/bridge/buildtext_1.mcstructure|1691007244
@@ -147,7 +147,7 @@ projects/MMORPG/BP/items/sculksword.json|1691778987|{"identifier":["mmorpg:sculk
 projects/MMORPG/BP/items/orepickaxe.json|1692008660|{"identifier":["mmorpg:orepickaxe"],"itemTexture":["mmorpg_orepickaxe"],"tag":["minecraft:is_pickaxe"]}
 projects/MMORPG/BP/items/wolfsword.json|1694606862|{"identifier":["mmorpg:wolfsword"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_wolfsword"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
 projects/MMORPG/BP/items/verycompressedcobblestone.json|1692024024|{"identifier":["mmorpg:verycompressedcobblestone"],"itemTexture":["mmorpg_verycompressedcobblestone"],"tag":[]}
-projects/MMORPG/BP/items/aetherium.json|1694798321|{"identifier":["mmorpg:aetherium"],"itemTexture":["mmorpg_aetherium"],"tag":[]}
+projects/MMORPG/BP/items/aetherium.json|1694798761|{"identifier":["mmorpg:aetherium"],"itemTexture":["mmorpg_aetherium"],"tag":[]}
 #lootTable
 projects/MMORPG/BP/loot_tables/empty.json|1691007246
 projects/MMORPG/BP/loot_tables/echosharddrop.json|1692027680|{"lootTablePath":[]}
@@ -160,6 +160,7 @@ projects/MMORPG/BP/loot_tables/entities/evocation_illager.json|1691691931|{"loot
 projects/MMORPG/BP/loot_tables/entities/smallghast.json|1691330407|{"lootTablePath":[]}
 projects/MMORPG/BP/loot_tables/entities/spiderboss.json|1691703950|{"lootTablePath":[]}
 projects/MMORPG/BP/loot_tables/entities/wither_skeleton.json|1691778934|{"lootTablePath":[]}
+projects/MMORPG/BP/loot_tables/aetheriumoredrop.json|1694799897|{"lootTablePath":[]}
 #recipe
 projects/MMORPG/BP/recipes/ironsmelt.json.json|1691184882|{"identifier":["mmorpg:ironsmelt"],"recipeTag":["crafting_table"],"itemIdentifier":["iron_ingot","raw_iron","coal"]}
 projects/MMORPG/BP/recipes/compressedcobblestonerecipe.json|1692023327|{"identifier":["mmorpg:compressedcobblestonerecipe"],"recipeTag":["crafting_table"],"itemIdentifier":["mmorpg:compressedcobblestone","cobblestone"]}
@@ -180,7 +181,7 @@ projects/MMORPG/BP/recipes/axes/wooden_axe_from_crimson_planks.json|1691338185|{
 projects/MMORPG/BP/recipes/axes/wooden_axe_from_mangrove_planks.json|1691338335|{"identifier":["minecraft:wooden_axe_from_mangrove_planks"],"recipeTag":["crafting_table"],"itemIdentifier":["mangrove_planks","stick"]}
 projects/MMORPG/BP/recipes/axes/wooden_axe.json|1691338224|{"identifier":["minecraft:wooden_axe"],"recipeTag":["crafting_table"],"itemIdentifier":["planks","minecraft:stick"]}
 projects/MMORPG/BP/recipes/axes/wooden_axe_from_warped_planks.json|1691338212|{"identifier":["minecraft:wooden_axe_from_warped_planks"],"recipeTag":["crafting_table"],"itemIdentifier":["warped_planks","stick"]}
-projects/MMORPG/BP/recipes/appleswordcraft.json|1694797209522|{"identifier":["mmorpg:appleswordcraft"],"recipeTag":["crafting_table"],"itemIdentifier":["mmorpg:applesword","mmorpg:appleblock","stick"]}
+projects/MMORPG/BP/recipes/appleswordcraft.json|1694797208|{"identifier":["mmorpg:appleswordcraft"],"recipeTag":["crafting_table"],"itemIdentifier":["mmorpg:applesword","mmorpg:appleblock","stick"]}
 #spawnRule
 projects/MMORPG/BP/spawn_rules/evildolphin.json|1691337443|{"identifier":["mmorpg:evildolphin"]}
 projects/MMORPG/BP/spawn_rules/spiderboss.json|1691007244|{"identifier":["mmorpg:spiderboss"]}
@@ -259,7 +260,7 @@ projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_lazy.png|1691007236
 projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_worried.png|1691007236
 projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_sneezy.png|1691007236
 projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_playful.png|1691007236
-projects/MMORPG/RP/textures/blocks/aetheriumore.png|1694796858
+projects/MMORPG/RP/textures/blocks/aetheriumore.png|1694797062
 projects/MMORPG/RP/textures/items/aetherium.png|1694798321
 #renderController
 projects/MMORPG/RP/render_controllers/evilirongolem.json|1694548792|{"identifier":["controller.render.evilirongolem"]}
@@ -275,7 +276,7 @@ projects/MMORPG/RP/texts/en_US.lang|1694798321|{"actionText":[]}
 #flipbookTexture
 projects/MMORPG/RP/textures/flipbook_textures.json|1691007236
 #terrainTexture
-projects/MMORPG/RP/textures/terrain_texture.json|1694797081881|{"texture":["mmorpg_appleblock","mmorpg_aetheriumore"],"texturePath":["projects/MMORPG/RP/textures/blocks/appleblock.png","projects/MMORPG/RP/textures/blocks/aetheriumore.png"]}
+projects/MMORPG/RP/textures/terrain_texture.json|1694797080|{"texture":["mmorpg_appleblock","mmorpg_aetheriumore"],"texturePath":["projects/MMORPG/RP/textures/blocks/appleblock.png","projects/MMORPG/RP/textures/blocks/aetheriumore.png"]}
 #geometry
 projects/MMORPG/RP/models/entity/abilitysculkblast.json|1691166893|{"identifier":["geometry.abilitysculkblast"],"bone":["bone"]}
 projects/MMORPG/RP/models/entity/evilirongolem.json|1694548792|{"identifier":["geometry.evilirongolem"],"bone":["body","head","arm0","arm1","leg0","leg1"]}
@@ -309,7 +310,7 @@ projects/MMORPG/RP/textures/item_texture.json|1694798321|{"texture":["mmorpg_ret
 projects/MMORPG/RP/attachables/sculked_helmet.json|1691007238|{"identifier":["mmorpg:sculked_helmet"],"textureReference":["default","enchanted"],"materialReference":["default","enchanted"],"geometryReference":["default"],"materialIdentifier":["armor","armor_enchanted"],"geometryIdentifier":["geometry.humanoid.armor.helmet"],"renderControllerIdentifier":["controller.render.armor"],"texturePath":["projects/MMORPG/RP/textures/models/armor/sculked_1.png"]}
 #block
 projects/MMORPG/BP/blocks/appleblock.json|1694548586|{"identifier":["mmorpg:appleblock"],"tag":[]}
-projects/MMORPG/BP/blocks/aetheriumore.json|1694796858|{"identifier":["mmorpg:aetheriumore"],"tag":[]}
+projects/MMORPG/BP/blocks/aetheriumore.json|1694799943|{"identifier":["mmorpg:aetheriumore"],"tag":["stone"],"lootTablePath":["projects/MMORPG/BP/loot_tables/aetheriumoredrop.json"]}
 #volume
 projects/MMORPG/BP/volumes/cherryforest.json|1694615541|{"identifier":["mmorpg:cherryforest"],"fogIdentifier":["mmorpg:cherrybiome"]}
 #fog
