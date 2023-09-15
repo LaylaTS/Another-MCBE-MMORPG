@@ -49,6 +49,9 @@
 		},
 		"mmorpg_wolfsword": {
 			"textures": "textures/items/wolfsword"
+		},
+		"mmorpg_aetherium": {
+			"textures": "textures/items/aetherium"
 		}
 	}
 }

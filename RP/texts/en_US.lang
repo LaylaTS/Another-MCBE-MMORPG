@@ -36,3 +36,5 @@ item.spawn_egg.entity.mmorpg:evilirongolem.name=Spawn Evil Iron Golem
 entity.mmorpg:evilirongolem.name=Evil Iron Golem
 item.mmorpg:applesword=Apple Sword | §330 Mana
 item.mmorpg:wolfsword=Wolf Sword | §340 Mana
+tile.mmorpg:aetheriumore.name=Aetherium Ore
+item.mmorpg:aetherium=Aetherium

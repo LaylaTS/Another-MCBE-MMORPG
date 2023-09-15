@@ -6,6 +6,9 @@
 	"texture_data": {
 		"mmorpg_appleblock": {
 			"textures": "textures/blocks/appleblock"
+		},
+		"mmorpg_aetheriumore": {
+			"textures": "textures/blocks/aetheriumore"
 		}
 	}
 }

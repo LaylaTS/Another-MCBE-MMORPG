@@ -7,5 +7,9 @@
 	"mmorpg:appleblock": {
 		"sound": "stone",
 		"textures": "mmorpg_appleblock"
+	},
+	"mmorpg:aetheriumore": {
+		"sound": "stone",
+		"textures": "mmorpg_aetheriumore"
 	}
 }

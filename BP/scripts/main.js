@@ -8,8 +8,9 @@ import 'swords.js'
 import 'mobdeath.js'
 import 'island.js'
 import 'blockdrops.js'
-import 'worldedit.js'
-import 'populatemoss.js'
+import 'floatingislandsplates.js'
+//import 'worldedit.js'
+
 
 const world = server.world
 world.afterEvents.worldInitialize.subscribe(data => {

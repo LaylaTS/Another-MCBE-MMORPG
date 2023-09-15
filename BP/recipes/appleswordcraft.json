@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:appleswordcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"a": {
+				"item": "mmorpg:appleblock"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			"  a",
+			" a ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:applesword"
+		}
+	}
+}
