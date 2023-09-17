@@ -112,8 +112,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:forbiddenscythe":
             if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
-                player.runCommand("scoreboard players remove @s mana 30")
+
                 if (player.getEntitiesFromViewDirection().length > 0) {
+                    player.runCommand("scoreboard players remove @s mana 30")
                     let subject = player.getEntitiesFromViewDirection()[0]
                     let entity = subject.entity
                     let currentrotation = player.getViewDirection()

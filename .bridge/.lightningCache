@@ -20,8 +20,8 @@ projects/MMORPG/BP/scripts/marketform.js|1692959867
 projects/MMORPG/BP/scripts/spawn.js|1692533855
 projects/MMORPG/BP/scripts/populatemoss.ts|1693481026
 projects/MMORPG/BP/scripts/worldedit.ts|1694462291
-projects/MMORPG/BP/scripts/swords.ts|1694974932
-projects/MMORPG/BP/scripts/dailyrewards.ts|1694971064612
+projects/MMORPG/BP/scripts/swords.ts|1694978118
+projects/MMORPG/BP/scripts/dailyrewards.ts|1694971063
 #lang
 projects/MMORPG/BP/texts/en_US.lang|1691007239
 #entity
@@ -40,6 +40,7 @@ projects/MMORPG/BP/entities/player.json|1692015777|{"identifier":["minecraft:pla
 projects/MMORPG/BP/entities/evildolphin.json|1691488670|{"identifier":["mmorpg:evildolphin"],"event":["minecraft:entity_spawned","ageable_grow_up","become_angry","on_calm","stop_dryingout","start_dryingout","dried_out","recover_after_dried_out","navigation_on_land","navigation_off_land"],"eventReference":["ageable_grow_up","on_calm","become_angry","navigation_on_land","navigation_off_land","start_dryingout","dried_out","stop_dryingout","recover_after_dried_out"],"componentGroup":["dolphin_adult","dolphin_baby","dolphin_angry","dolphin_dried","dolphin_swimming_navigation","dolphin_on_land","dolphin_on_land_in_rain"],"family":["dolphin","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/dolphin.json"]}
 projects/MMORPG/BP/entities/npcs/banknpc.json|1691239159|{"identifier":["mmorpg:banknpc"],"event":[],"family":["banknpc"]}
 projects/MMORPG/BP/entities/npcs/marketsniffer.json|1691425807|{"identifier":["mmorpg:marketsniffer"],"event":[],"family":["sniffer","npc"]}
+projects/MMORPG/BP/entities/core_boss.json|1694977695|{"identifier":["gildie:core_boss"],"event":[],"componentGroup":[],"family":["boss"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/wither_boss.json"]}
 #langDef
 projects/MMORPG/BP/texts/languages.json|1691007239
 projects/MMORPG/RP/texts/languages.json|1691007237
@@ -149,7 +150,7 @@ projects/MMORPG/BP/items/orepickaxe.json|1692008660|{"identifier":["mmorpg:orepi
 projects/MMORPG/BP/items/wolfsword.json|1694606862|{"identifier":["mmorpg:wolfsword"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_wolfsword"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
 projects/MMORPG/BP/items/verycompressedcobblestone.json|1692024024|{"identifier":["mmorpg:verycompressedcobblestone"],"itemTexture":["mmorpg_verycompressedcobblestone"],"tag":[]}
 projects/MMORPG/BP/items/aetherium.json|1694798761|{"identifier":["mmorpg:aetherium"],"itemTexture":["mmorpg_aetherium"],"tag":[]}
-projects/MMORPG/BP/items/scarletfury.json|1694974450462|{"identifier":["mmorpg:scarletfury"],"event":["damaged","on_tool_used"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_scarletfury"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
+projects/MMORPG/BP/items/scarletfury.json|1694974449|{"identifier":["mmorpg:scarletfury"],"event":["damaged","on_tool_used"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_scarletfury"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
 #lootTable
 projects/MMORPG/BP/loot_tables/empty.json|1691007246
 projects/MMORPG/BP/loot_tables/echosharddrop.json|1692027680|{"lootTablePath":[]}
@@ -208,6 +209,7 @@ projects/MMORPG/RP/animations/evildolphin.json|1691337443|{"identifier":["animat
 projects/MMORPG/RP/animations/smallghast.json|1691330407|{"identifier":["animation.smallghast.move","animation.smallghast.scale"]}
 projects/MMORPG/RP/animations/pandaboss.json|1691007238|{"identifier":["animation.pandaboss.baby_transform","animation.pandaboss.lying","animation.pandaboss.rolling","animation.pandaboss.sitting","animation.pandaboss.sneezing","animation.pandaboss.unhappy"]}
 projects/MMORPG/RP/animations/evilirongolem.json|1694617757|{"identifier":["animation.evilirongolem.move","animation.evilirongolem.move_to_target","animation.evilirongolem.walk","animation.evilirongolem.walk_to_target"]}
+projects/MMORPG/RP/animations/core_boss.animation.json|1694977695|{"identifier":["animation.core_boss.idle"]}
 #clientAnimationController
 projects/MMORPG/RP/animation_controllers/smallghast.json|1691330407|{"identifier":["controller.animation.smallghast.move","controller.animation.smallghast.scale"],"state":["default"],"animationReference":["move","scale"]}
 projects/MMORPG/RP/animation_controllers/evildolphin.json|1691337443|{"identifier":["controller.animation.evildolphin.general"],"state":["default"],"animationReference":["move"]}
@@ -265,6 +267,7 @@ projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_playful.png|1691007236
 projects/MMORPG/RP/textures/blocks/aetheriumore.png|1694797062
 projects/MMORPG/RP/textures/items/aetherium.png|1694798321
 projects/MMORPG/RP/textures/items/scarletfury.png|1694974419
+projects/MMORPG/RP/textures/entity/core_boss.png|1694977695
 #renderController
 projects/MMORPG/RP/render_controllers/evilirongolem.json|1694548792|{"identifier":["controller.render.evilirongolem"]}
 projects/MMORPG/RP/render_controllers/evildolphin.json|1691337443|{"identifier":["controller.render.evildolphin"]}
@@ -288,6 +291,7 @@ projects/MMORPG/RP/models/entity/smallghast.json|1691330407|{"identifier":["geom
 projects/MMORPG/RP/models/entity/pandaboss.json|1691007238|{"identifier":["geometry.pandaboss"],"locator":["lead"],"bone":["head","body","leg0","leg1","leg2","leg3"]}
 projects/MMORPG/RP/models/entity/evildolphin.json|1691768048|{"identifier":["geometry.evildolphin"],"locator":["lead"],"bone":["head","body","tail","tail_fin","back_fin","left_fin","right_fin","nose"]}
 projects/MMORPG/RP/models/entity/bloodyravager.geo.json|1691768666|{"identifier":["geometry.bloodyravager"],"locator":["stun"],"bone":["body","neck","head","mouth","horns","leg0","leg1","leg2","leg3"]}
+projects/MMORPG/RP/models/entity/core_boss.json|1694977940|{"identifier":["geometry.core_boss"],"bone":["Boss","core","shield","legs","legs2"]}
 #clientEntity
 projects/MMORPG/RP/entity/spiderboss.json|1691007238|{"identifier":["mmorpg:spiderboss"],"animationReference":["default_leg_pose","look_at_target","walk"],"textureReference":["default"],"materialReference":["default","invisible"],"geometryReference":["default"],"animationIdentifier":["animation.spiderboss.default_leg_pose","animation.spiderboss.look_at_target","animation.spiderboss.walk","controller.animation.spiderboss.move"],"materialIdentifier":["spider","spider_invisible"],"geometryIdentifier":["geometry.spiderboss"],"renderControllerIdentifier":["controller.render.spiderboss"],"texturePath":["projects/MMORPG/RP/textures/entity/spiderboss.tga"]}
 projects/MMORPG/RP/entity/banknpc.json|1691237858|{"identifier":["mmorpg:banknpc"],"animationReference":["humanoid_big_head","look_at_target_default","look_at_target_gliding","look_at_target_swimming","move","riding.arms","riding.legs","holding","brandish_spear","charging","attack.rotations","sneaking","bob","damage_nearby_mobs","bow_and_arrow","swimming","use_item_progress","zombie_attack_bare_hand","zombie_swimming"],"textureReference":["default"],"materialReference":["default"],"geometryReference":["default"],"animationIdentifier":["animation.humanoid.big_head","animation.humanoid.look_at_target.default","animation.humanoid.look_at_target.gliding","animation.humanoid.look_at_target.swimming","animation.humanoid.move","animation.humanoid.riding.arms","animation.humanoid.riding.legs","animation.humanoid.holding","animation.humanoid.brandish_spear","animation.humanoid.charging","animation.humanoid.attack.rotations","animation.humanoid.sneaking","animation.humanoid.bob","animation.humanoid.damage_nearby_mobs","animation.humanoid.bow_and_arrow","animation.humanoid.swimming","animation.humanoid.use_item_progress","animation.zombie.attack_bare_hand","animation.zombie.swimming","controller.animation.humanoid.baby_big_head","controller.animation.humanoid.look_at_target","controller.animation.humanoid.move","controller.animation.humanoid.riding","controller.animation.humanoid.holding","controller.animation.humanoid.brandish_spear","controller.animation.humanoid.charging","controller.animation.humanoid.attack","controller.animation.humanoid.sneaking","controller.animation.humanoid.bob","controller.animation.humanoid.damage_nearby_mobs","controller.animation.humanoid.bow_and_arrow","controller.animation.humanoid.swimming","controller.animation.humanoid.use_item_progress","controller.animation.zombie.attack_bare_hand","controller.animation.zombie.swimming"],"materialIdentifier":["zombie"],"geometryIdentifier":["geometry.zombie.v1.8"],"renderControllerIdentifier":["controller.render.zombie"],"texturePath":["projects/MMORPG/RP/textures/entity/banknpc.png"]}
@@ -301,6 +305,7 @@ projects/MMORPG/RP/entity/witherskeletonboss.entity.json|1691183591|{"identifier
 projects/MMORPG/RP/entity/evildolphin.json|1691337443|{"identifier":["mmorpg:evildolphin"],"animationReference":["move"],"textureReference":["default"],"materialReference":["default"],"geometryReference":["default"],"animationIdentifier":["animation.evildolphin.move","controller.animation.evildolphin.general"],"materialIdentifier":["dolphin"],"geometryIdentifier":["geometry.evildolphin"],"renderControllerIdentifier":["controller.render.evildolphin"],"texturePath":["projects/MMORPG/RP/textures/entity/evildolphin.png"]}
 projects/MMORPG/RP/entity/abilitysculkblast.json|1691166892|{"identifier":["mmorpg:abilitysculkblast"],"textureReference":["default"],"materialReference":["default"],"geometryReference":["default"],"materialIdentifier":["entity_alphatest"],"geometryIdentifier":["geometry.abilitysculkblast"],"renderControllerIdentifier":["controller.render.abilitysculkblast"],"texturePath":["projects/MMORPG/RP/textures/entity/abilitysculkblast.png"]}
 projects/MMORPG/RP/entity/evilirongolem.json|1694616712|{"identifier":["mmorpg:evilirongolem"],"animationReference":["walk","move","walk_to_target","move_to_target","attack","look_at_target","move_controller","arm_controller"],"textureReference":["default"],"materialReference":["default"],"geometryReference":["default"],"animationIdentifier":["animation.evilirongolem.walk","animation.evilirongolem.move","animation.evilirongolem.walk_to_target","animation.evilirongolem.move_to_target","animation.evilirongolem.attack","animation.common.look_at_target","controller.animation.evilirongolem.move","controller.animation.evilirongolem.arm_movement"],"materialIdentifier":["iron_golem"],"geometryIdentifier":["geometry.evilirongolem"],"renderControllerIdentifier":["controller.render.evilirongolem"],"texturePath":["projects/MMORPG/RP/textures/entity/evilirongolem.png"]}
+projects/MMORPG/RP/entity/core_boss.json|1694977695|{"identifier":["gildie:core_boss"],"animationReference":["idle"],"textureReference":["default"],"materialReference":["default"],"geometryReference":["default"],"animationIdentifier":["animation.core_boss.idle"],"materialIdentifier":["entity_emissive_alpha"],"geometryIdentifier":["geometry.core_boss"],"renderControllerIdentifier":["controller.render.core_boss"],"texturePath":["projects/MMORPG/RP/textures/entity/core_boss.png"]}
 #particle
 projects/MMORPG/RP/particles/jumpparticle.json|1694637601|{"identifier":["mmorpg:jumpparticle"],"texturePath":["projects/MMORPG/RP/textures/particles/snowparticle.png"]}
 projects/MMORPG/RP/particles/snow.json|1676656955|{"identifier":["rpg:snow"],"texturePath":["projects/MMORPG/RP/textures/particles/snowparticle.png"]}
