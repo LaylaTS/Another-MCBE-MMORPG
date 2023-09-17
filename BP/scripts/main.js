@@ -9,7 +9,8 @@ import 'mobdeath.js'
 import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
-import 'worldedit.js'
+import 'dailyrewards.js'
+//import 'worldedit.js'
 
 
 const world = server.world
@@ -28,5 +29,7 @@ server.system.runInterval(() => { // run every tick
         tonextlvl = tonextlvl / 100
         player.addExperience(tonextlvl * mana - 1)
 
+
     })
 })
+

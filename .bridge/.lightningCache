@@ -10,17 +10,18 @@ projects/MMORPG/BP/functions/tick.json|1692015165
 projects/MMORPG/BP/scripts/blockdrops.js|1692028344
 projects/MMORPG/BP/scripts/dungeontps.js|1691425414
 projects/MMORPG/BP/scripts/banking.js|1691164794
-projects/MMORPG/BP/scripts/floatingislandsplates.ts|1694811620
+projects/MMORPG/BP/scripts/floatingislandsplates.ts|1694890282
 projects/MMORPG/BP/scripts/helmets.ts|1694634651
 projects/MMORPG/BP/scripts/island.js|1692223563
 projects/MMORPG/BP/scripts/listitem.ts|1692968563
-projects/MMORPG/BP/scripts/main.js|1694811252020
+projects/MMORPG/BP/scripts/main.js|1694890906
 projects/MMORPG/BP/scripts/mobdeath.js|1691701256
 projects/MMORPG/BP/scripts/marketform.js|1692959867
 projects/MMORPG/BP/scripts/spawn.js|1692533855
 projects/MMORPG/BP/scripts/populatemoss.ts|1693481026
 projects/MMORPG/BP/scripts/worldedit.ts|1694462291
-projects/MMORPG/BP/scripts/swords.ts|1694811567853
+projects/MMORPG/BP/scripts/swords.ts|1694974932
+projects/MMORPG/BP/scripts/dailyrewards.ts|1694971064612
 #lang
 projects/MMORPG/BP/texts/en_US.lang|1691007239
 #entity
@@ -29,7 +30,7 @@ projects/MMORPG/BP/entities/banknpc.json|1691239183|{"identifier":["mmorpg:bankn
 projects/MMORPG/BP/entities/skullthrowentity.json|1691781081|{"identifier":["mmorpg:skullthrowentity"],"componentGroup":["minecraft:exploding"]}
 projects/MMORPG/BP/entities/buffedzombie.json|1691342111|{"identifier":["mmorpg:buffedzombie"],"event":["minecraft:entity_spawned","mmorpg:as_adult","mmorpg:as_baby"],"componentGroup":["mmorpg:buffedzombie_baby","mmorpg:buffedzombie_adult","mmorpg:buffedzombie_jockey"],"family":["buffedzombie","monster"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/buffedzombie.json"]}
 projects/MMORPG/BP/entities/smallghast.json|1691330441|{"identifier":["mmorpg:smallghast"],"family":["ghast","monster","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/smallghast.json"]}
-projects/MMORPG/BP/entities/evilwolf.json|1694617312|{"identifier":["mmorpg:evilwolf"],"family":["wolf","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/evilwolf.json"]}
+projects/MMORPG/BP/entities/evilwolf.json|1694966206|{"identifier":["mmorpg:evilwolf"],"family":["wolf","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/evilwolf.json"]}
 projects/MMORPG/BP/entities/witherskeletonboss.json|1691185049|{"identifier":["mmorpg:witherskeletonboss"],"event":["minecraft:entity_spawned","mmorpg:end_roar","mmorpg:start_roar"],"eventReference":["mmorpg:end_roar","mmorpg:start_roar"],"componentGroup":["mmorpg:knockbackroar"],"family":["wither","monster","undead","skeleton","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/wither_skeleton.json"]}
 projects/MMORPG/BP/entities/evocation_illager.json|1691691757|{"identifier":["minecraft:evocation_illager"],"event":["minecraft:spawn_for_raid","minecraft:start_celebrating","minecraft:stop_celebrating","minecraft:raid_expired"],"eventReference":["minecraft:stop_celebrating"],"componentGroup":["minecraft:celebrate","minecraft:raid_configuration","minecraft:raid_persistence","minecraft:raid_despawn"],"family":["evocation_illager","monster","illager","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/evocation_illager.json"]}
 projects/MMORPG/BP/entities/bloodyravager.json|1691776644|{"identifier":["mmorpg:bloodyravager"],"event":["minecraft:entity_spawned","minecraft:spawn_for_raid","minecraft:spawn_for_raid_with_evoker_rider","minecraft:spawn_for_raid_with_pillager_rider","minecraft:spawn_with_pillager_rider","minecraft:spawn_with_pillager_captain_rider","minecraft:spawn_with_vindicator_rider","minecraft:spawn_with_vindicator_captain_rider","minecraft:become_stunned","minecraft:start_roar","minecraft:end_roar","minecraft:start_celebrating","minecraft:stop_celebrating","minecraft:raid_expired"],"eventReference":["minecraft:stop_celebrating","minecraft:end_roar","minecraft:become_stunned","minecraft:start_roar"],"componentGroup":["minecraft:celebrate","minecraft:pillager_rider","minecraft:pillager_rider_for_raid","minecraft:evoker_rider_for_raid","minecraft:pillager_captain_rider","minecraft:vindicator_rider","minecraft:vindicator_captain_rider","minecraft:raid_configuration","minecraft:raid_persistence","minecraft:hostile","stunned","roaring"],"family":["monster","ravager","mob"],"lootTablePath":["projects/MMORPG/BP/loot_tables/entities/ravager.json"]}
@@ -148,6 +149,7 @@ projects/MMORPG/BP/items/orepickaxe.json|1692008660|{"identifier":["mmorpg:orepi
 projects/MMORPG/BP/items/wolfsword.json|1694606862|{"identifier":["mmorpg:wolfsword"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_wolfsword"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
 projects/MMORPG/BP/items/verycompressedcobblestone.json|1692024024|{"identifier":["mmorpg:verycompressedcobblestone"],"itemTexture":["mmorpg_verycompressedcobblestone"],"tag":[]}
 projects/MMORPG/BP/items/aetherium.json|1694798761|{"identifier":["mmorpg:aetherium"],"itemTexture":["mmorpg_aetherium"],"tag":[]}
+projects/MMORPG/BP/items/scarletfury.json|1694974450462|{"identifier":["mmorpg:scarletfury"],"event":["damaged","on_tool_used"],"eventReference":["damaged","on_tool_used"],"itemTexture":["mmorpg_scarletfury"],"tag":["minecraft:is_sword","minecraft:is_tool"]}
 #lootTable
 projects/MMORPG/BP/loot_tables/empty.json|1691007246
 projects/MMORPG/BP/loot_tables/echosharddrop.json|1692027680|{"lootTablePath":[]}
@@ -262,6 +264,7 @@ projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_sneezy.png|1691007236
 projects/MMORPG/RP/textures/entity/pandaboss/pandaboss_playful.png|1691007236
 projects/MMORPG/RP/textures/blocks/aetheriumore.png|1694797062
 projects/MMORPG/RP/textures/items/aetherium.png|1694798321
+projects/MMORPG/RP/textures/items/scarletfury.png|1694974419
 #renderController
 projects/MMORPG/RP/render_controllers/evilirongolem.json|1694548792|{"identifier":["controller.render.evilirongolem"]}
 projects/MMORPG/RP/render_controllers/evildolphin.json|1691337443|{"identifier":["controller.render.evildolphin"]}
@@ -272,7 +275,7 @@ projects/MMORPG/RP/render_controllers/abilitysculkblast.json|1691166893|{"identi
 #soundDefinition
 projects/MMORPG/RP/sounds/sound_definitions.json|1694548793|{"identifier":["mob.pandaboss.bite","mob.pandaboss.cant_breed","mob.pandaboss.death","mob.pandaboss.eat","mob.pandaboss.hurt","mob.pandaboss.idle","mob.pandaboss.idle.aggressive","mob.pandaboss.idle.worried","mob.pandaboss.presneeze","mob.pandaboss.sneeze","mob.pandaboss.step","mob.pandaboss_baby.idle","mob.spiderboss.death","mob.spiderboss.say","mob.spiderboss.step","mob.smallghast.affectionate_scream","mob.smallghast.charge","mob.smallghast.death","mob.smallghast.fireball","mob.smallghast.moan","mob.smallghast.scream","mob.evildolphin.idle_water","mob.evildolphin.attack","mob.evildolphin.blowhole","mob.evildolphin.death","mob.evildolphin.eat","mob.evildolphin.hurt","mob.evildolphin.idle","mob.evildolphin.jump","mob.evildolphin.play","mob.evildolphin.splash","mob.evildolphin.swim","music.bloodyravager.theme","mob.evilirongolem.death","mob.evilirongolem.hit","mob.evilirongolem.throw","mob.evilirongolem.walk"]}
 #clientLang
-projects/MMORPG/RP/texts/en_US.lang|1694798321|{"actionText":[]}
+projects/MMORPG/RP/texts/en_US.lang|1694974419|{"actionText":[]}
 #flipbookTexture
 projects/MMORPG/RP/textures/flipbook_textures.json|1691007236
 #terrainTexture
@@ -305,7 +308,7 @@ projects/MMORPG/RP/particles/portalparticle.json|1694466361|{"identifier":["mmor
 projects/MMORPG/RP/particles/aurora.json|1694552269|{"identifier":["mmorpg:aurora"],"texturePath":["projects/MMORPG/RP/textures/particles/aurorastarvariation.png"]}
 projects/MMORPG/RP/particles/uselesssword.json|1693305713|{"identifier":["mmorpg:uselessswordparticle"],"texturePath":["projects/MMORPG/RP/textures/particles/uselessswordparticle.png"]}
 #itemTexture
-projects/MMORPG/RP/textures/item_texture.json|1694798321|{"texture":["mmorpg_return","mmorpg_sculksword","mmorpg_orepickaxe","mmorpg_sculked_helmet","mmorpg_mainaxe","mmorpg_purpledagger","mmorpg_smallmanapotion","mmorpg_withermenace","mmorpg_throwableskull","mmorpg_compressedcobblestone","mmorpg_verycompressedcobblestone","mmorpg_anothercompressedcobblestonestone","mmorpg_witherscythe","mmorpg_forbiddenscythe","mmorpg_applesword","mmorpg_wolfsword","mmorpg_aetherium"],"texturePath":["projects/MMORPG/RP/textures/items/return.png","projects/MMORPG/RP/textures/items/sculksword.png","projects/MMORPG/RP/textures/items/sculked_helmet.png","projects/MMORPG/RP/textures/items/PurpleDagger.png","projects/MMORPG/RP/textures/items/orepickaxe.png","projects/MMORPG/RP/textures/items/mainaxe.png","projects/MMORPG/RP/textures/items/mana_potion.png","projects/MMORPG/RP/textures/items/guardianweapon_menace.png","projects/MMORPG/RP/textures/items/throwableskull.png","projects/MMORPG/RP/textures/items/witherscythe.png","projects/MMORPG/RP/textures/items/applesword.png","projects/MMORPG/RP/textures/items/forbiddenscythe.png","projects/MMORPG/RP/textures/items/wolfsword.png","projects/MMORPG/RP/textures/items/Cobblestone.png","projects/MMORPG/RP/textures/items/aetherium.png","projects/MMORPG/RP/textures/items/compressedcoobblestone.png","projects/MMORPG/RP/textures/items/anothercompressedstone.png"]}
+projects/MMORPG/RP/textures/item_texture.json|1694974419|{"texture":["mmorpg_return","mmorpg_sculksword","mmorpg_orepickaxe","mmorpg_sculked_helmet","mmorpg_mainaxe","mmorpg_purpledagger","mmorpg_smallmanapotion","mmorpg_withermenace","mmorpg_throwableskull","mmorpg_compressedcobblestone","mmorpg_verycompressedcobblestone","mmorpg_anothercompressedcobblestonestone","mmorpg_witherscythe","mmorpg_forbiddenscythe","mmorpg_applesword","mmorpg_wolfsword","mmorpg_aetherium","mmorpg_scarletfury"],"texturePath":["projects/MMORPG/RP/textures/items/return.png","projects/MMORPG/RP/textures/items/sculksword.png","projects/MMORPG/RP/textures/items/sculked_helmet.png","projects/MMORPG/RP/textures/items/PurpleDagger.png","projects/MMORPG/RP/textures/items/guardianweapon_menace.png","projects/MMORPG/RP/textures/items/mainaxe.png","projects/MMORPG/RP/textures/items/orepickaxe.png","projects/MMORPG/RP/textures/items/throwableskull.png","projects/MMORPG/RP/textures/items/mana_potion.png","projects/MMORPG/RP/textures/items/Cobblestone.png","projects/MMORPG/RP/textures/items/scarletfury.png","projects/MMORPG/RP/textures/items/applesword.png","projects/MMORPG/RP/textures/items/wolfsword.png","projects/MMORPG/RP/textures/items/forbiddenscythe.png","projects/MMORPG/RP/textures/items/witherscythe.png","projects/MMORPG/RP/textures/items/compressedcoobblestone.png","projects/MMORPG/RP/textures/items/aetherium.png","projects/MMORPG/RP/textures/items/anothercompressedstone.png"]}
 #attachable
 projects/MMORPG/RP/attachables/sculked_helmet.json|1691007238|{"identifier":["mmorpg:sculked_helmet"],"textureReference":["default","enchanted"],"materialReference":["default","enchanted"],"geometryReference":["default"],"materialIdentifier":["armor","armor_enchanted"],"geometryIdentifier":["geometry.humanoid.armor.helmet"],"renderControllerIdentifier":["controller.render.armor"],"texturePath":["projects/MMORPG/RP/textures/models/armor/sculked_1.png"]}
 #block

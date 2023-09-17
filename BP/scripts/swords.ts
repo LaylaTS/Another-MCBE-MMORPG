@@ -9,10 +9,11 @@ const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arro
 world.afterEvents.itemUse.subscribe(eventData => {
     var player = eventData.source as server.Player
     var item = eventData.itemStack
+    var inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     function addlore(lore) {
         var loreitem = item.clone() as server.ItemStack
         loreitem.setLore(lore)
-        let inventory = player.getComponent("inventory") as server.EntityInventoryComponent
+
         if (inventory.container.getItem(player.selectedSlot).typeId == loreitem.typeId) {
             inventory.container.setItem(player.selectedSlot, loreitem)
         }
@@ -133,12 +134,26 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }
             }
             break;
-        case "minecraft:glow_ink_sac": // drop from boss later
-            let currentrotation = player.getViewDirection()
-            let entites = world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 })
-            player.applyKnockback(currentrotation.x, currentrotation.z, 20, -100)
-            server.system.runTimeout(() => {
-                world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 }).forEach(entity => {
+        case "mmorpg:scarletfury":
+            if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
+                player.runCommandAsync("scoreboard players remove @s mana 50")
+                let currentrotation = player.getViewDirection()
+                let entites = world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 })
+                player.applyKnockback(currentrotation.x, currentrotation.z, 20, -100)
+                server.system.runTimeout(() => {
+                    world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 }).forEach(entity => {
+                        if (!avoidableentities.includes(entity.typeId)) {
+                            entity.applyDamage(35, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            })
+                            entity.applyKnockback(0, 0, 0, 0.6)
+
+                        }
+                    })
+
+                }, 4)
+                entites.forEach(entity => {
                     if (!avoidableentities.includes(entity.typeId)) {
                         entity.applyDamage(35, {
                             damagingEntity: player,
@@ -148,19 +163,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
                     }
                 })
-
-            }, 4)
-            entites.forEach(entity => {
-                if (!avoidableentities.includes(entity.typeId)) {
-                    entity.applyDamage(35, {
-                        damagingEntity: player,
-                        cause: 'entityAttack' as server.EntityDamageCause
-                    })
-                    entity.applyKnockback(0, 0, 0, 0.6)
-
-                }
-            })
-
+            }
             break;
         case "minecraft:ender_eye": //todo
             let startpos = player.location
