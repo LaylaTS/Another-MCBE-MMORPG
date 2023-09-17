@@ -2,7 +2,7 @@
 	"format_version": "1.10.0",
 	"minecraft:client_entity": {
 		"description": {
-			"identifier": "gildie:core_boss",
+			"identifier": "mmorpg:core_boss",
 			"materials": {
 				"default": "entity_emissive_alpha"
 			},
