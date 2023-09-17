@@ -1,0 +1,70 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "gildie:core_boss",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {},
+    "components": {
+      "minecraft:boss": {
+        "hud_range": 55,
+        "name": "Ancient Guardian"
+      },
+      "minecraft:health": {
+        "value": 400,
+        "max": 400
+      },
+      "minecraft:physics": {
+        "has_gravity": true,
+        "has_collision": true
+      },
+      "minecraft:knockback_resistance": {
+        "value": 50,
+        "max": 50
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/wither_boss.json"
+      },
+      "minecraft:area_attack": {
+        "damage_range": 1.5,
+        "damage_per_tick": 2
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:type_family": {
+        "family": [
+          "boss"
+        ]
+      },
+      "minecraft:navigation.walk": {
+        "avoid_water": true,
+        "can_jump": false
+      },
+      "minecraft:attack": {},
+      "minecraft:movement": {
+        "max": 0.2,
+        "value": 0.2
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "within_radius": 32,
+        "must_see_forget_duration": 20,
+        "priority": 0,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 32,
+            "must_see": true
+          }
+        ]
+      },
+      "minecraft:behavior.melee_attack": {}
+    },
+    "events": {}
+  }
+}

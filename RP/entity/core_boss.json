@@ -1,0 +1,32 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "gildie:core_boss",
+			"materials": {
+				"default": "entity_emissive_alpha"
+			},
+			"animations": {
+				"idle": "animation.core_boss.idle"
+			},
+			"textures": {
+				"default": "textures/entity/core_boss"
+			},
+			"geometry": {
+				"default": "geometry.core_boss"
+			},
+			"scripts": {
+				"animate": [
+					"idle"
+				]
+			},
+			"render_controllers": [
+				"controller.render.core_boss"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}
