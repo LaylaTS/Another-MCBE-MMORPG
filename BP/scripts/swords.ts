@@ -206,7 +206,24 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "minecraft:nether_star":
 
             if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] }).length > 0) {
+                var otherEntity = world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] })[0] as server.Entity
+                let tpbool = player.tryTeleport({ x: otherEntity.location.x, y: otherEntity.location.y, z: otherEntity.location.z }, { checkForBlocks: true, })
+                if (tpbool) {
+                    player.addEffect("slow_falling", 10, { showParticles: false })
+                    player.applyKnockback(0, 0, 0, -1)
+                    world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc"] }).forEach(
+                        entity => {
+                            if (!avoidableentities.includes(entity.typeId)) {
+                                entity.applyDamage(35, {
+                                    damagingEntity: player,
+                                    cause: 'entityAttack' as server.EntityDamageCause
+                                })
+                                entity.applyKnockback(0, 0, 0, 1)
 
+                            }
+                        }
+                    )
+                }
             }
     }
 })

@@ -72,8 +72,8 @@
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
       "minecraft:health": {
-        "value": 70,
-        "max": 70
+        "value": 50,
+        "max": 50
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -99,7 +99,7 @@
         "breathes_water": true
       },
       "minecraft:attack": {
-        "damage": 5,
+        "damage": 3,
         "effect_duration": 5,
         "effect_name": "fatal_poison"
       },
