@@ -55,6 +55,12 @@
 		},
 		"mmorpg_scarletfury": {
 			"textures": "textures/items/scarletfury"
+		},
+		"mmorpg_aetheriumingot": {
+			"textures": "textures/items/aetheriumingot"
+		},
+		"mmorpg_heavyaetheriumsword": {
+			"textures": "textures/items/heavyaetheriumsword"
 		}
 	}
 }

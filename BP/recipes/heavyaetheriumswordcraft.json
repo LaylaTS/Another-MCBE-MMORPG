@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:heavyaetheriumswordcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"s": {
+				"item": "stick"
+			},
+			"a": {
+				"item": "mmorpg:aetheriumingot"
+			},
+			"i": {
+				"item": "iron_ingot"
+			}
+		},
+		"pattern": [
+			"  a",
+			" i ",
+			"s "
+		],
+		"result": {
+			"item": "mmorpg:heavyaetheriumsword"
+		}
+	}
+}
