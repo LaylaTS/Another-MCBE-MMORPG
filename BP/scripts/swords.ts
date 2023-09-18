@@ -217,7 +217,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc"] }).forEach(
                             entity => {
                                 if (!avoidableentities.includes(entity.typeId)) {
-                                    entity.applyDamage(35, {
+                                    entity.applyDamage(50, {
                                         damagingEntity: player,
                                         cause: 'entityAttack' as server.EntityDamageCause
                                     })

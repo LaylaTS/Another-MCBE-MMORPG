@@ -28,13 +28,13 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
         var lastlogin = new Date(player.getDynamicProperty("lastloginyyyy") as number, player.getDynamicProperty("lastloginmm") as number - 1, player.getDynamicProperty("lastlogindd") as number)
         let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
         let streak = player.getDynamicProperty("streak") as number
-        console.warn(lastlogin.toDateString())
-        console.warn(yesterday.toDateString())
-        console.warn(streak)
-        if (lastlogin.toDateString() < yesterday.toDateString()) {
-            player.runCommand('/tellraw @s {"rawtext":[{"text":"§cYou broke your login streak!§r"}]}')
-            player.setDynamicProperty("streak", 0)
+
+
+        if (lastlogin.setHours(0, 0, 0, 0) < yesterday.setHours(0, 0, 0, 0)) {
+            player.runCommand('tellraw @s {"rawtext":[{"text":"§cYou broke your login streak!§r"}]}');
+            player.setDynamicProperty("streak", 0);
         }
+
         player.setDynamicProperty("lastlogindd", parseInt(String(tempdate.getDate()).padStart(2, '0')))
         player.setDynamicProperty("lastloginmm", parseInt(String(tempdate.getMonth() + 1).padStart(2, '0')))
         player.setDynamicProperty("lastloginyyyy", tempdate.getFullYear())
