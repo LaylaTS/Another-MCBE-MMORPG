@@ -121,10 +121,6 @@
         "search_count": 4,
         "interval": 20
       },
-      "minecraft:behavior.move_towards_restriction": {
-        "priority": 5,
-        "speed_multiplier": 1
-      },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
         "speed_multiplier": 1

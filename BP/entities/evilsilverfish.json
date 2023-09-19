@@ -51,7 +51,7 @@
             },
             "minecraft:nameable": {},
             "minecraft:loot": {
-                "table": "loot_tables/entities/silverfish.json"
+                "table": "loot_tables/entities/evilsilverfishdrop.json"
             },
             "minecraft:health": {
                 "value": 250,
@@ -76,7 +76,7 @@
                 ]
             },
             "minecraft:movement": {
-                "value": 0.35
+                "value": 0.25
             },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true
@@ -88,7 +88,7 @@
                 "damage": 8
             },
             "minecraft:knockback_resistance": {
-                "value": 0.5
+                "value": 5000
             },
             "minecraft:collision_box": {
                 "width": 0.4,

@@ -7,8 +7,8 @@ const world = server.world;
 server.system.runInterval(() => {
     world.getAllPlayers().forEach(player => {
 
-        const equipment = player.getComponent("equipment_inventory") as server.EntityEquipmentInventoryComponent;
-        const helmet = equipment.getEquipment("head" as server.EquipmentSlot)
+        var helmet = player.getComponent("equippable").getEquipment(server.EquipmentSlot.Head) as server.ItemStack
+
         if (helmet != undefined) {
             switch (helmet.typeId) {
                 case "mmorpg:sculked_helmet":

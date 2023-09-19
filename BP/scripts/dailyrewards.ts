@@ -9,10 +9,10 @@ world.afterEvents.worldInitialize.subscribe(eventData => {
     var lastloginyyyy = new server.DynamicPropertiesDefinition().defineNumber("lastloginyyyy")
     var streak = new server.DynamicPropertiesDefinition().defineNumber("streak", 0)
 
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastlogindd, server.MinecraftEntityTypes.player)
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginmm, server.MinecraftEntityTypes.player)
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginyyyy, server.MinecraftEntityTypes.player)
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(streak, server.MinecraftEntityTypes.player)
+    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastlogindd, "minecraft:player")
+    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginmm, "minecraft:player")
+    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginyyyy, "minecraft:player")
+    eventData.propertyRegistry.registerEntityTypeDynamicProperties(streak, "minecraft:player")
 
 })
 

@@ -1,8 +1,8 @@
 import * as server from '@minecraft/server'
 
-var world = server.world
+const world = server.world
 
-world.afterEvents.blockBreak.subscribe(eventData => {
+world.afterEvents.playerBreakBlock.subscribe(eventData => {
     if (eventData.dimension.id == 'minecraft:overworld') {
         let player = eventData.player
         if (eventData.brokenBlockPermutation.type.id == "minecraft:cobblestone") {

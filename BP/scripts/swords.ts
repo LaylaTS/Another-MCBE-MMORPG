@@ -3,7 +3,7 @@ import * as ui from '@minecraft/server-ui'
 
 var world = server.world
 
-const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast"];
+const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast", "minecraft:wither_skull", "minecraft:wither_skull_dangerous", "minecraft:wither"];
 
 
 world.afterEvents.itemUse.subscribe(eventData => {
@@ -69,12 +69,14 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         if (!avoidableentities.includes(entity.entity.typeId)) {
                             if (entity.distance < 8) {
                                 let vector3 = player.getViewDirection()
-                                entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
-                                entity.entity.addEffect('slowness', 100, { amplifier: 2 })
-                                entity.entity.applyDamage(20, {
-                                    damagingEntity: player,
-                                    cause: 'entityAttack' as server.EntityDamageCause
-                                })
+                                if (!avoidableentities.includes(entity.entity.typeId)) {
+                                    entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
+                                    entity.entity.addEffect('slowness', 100, { amplifier: 2 })
+                                    entity.entity.applyDamage(20, {
+                                        damagingEntity: player,
+                                        cause: 'entityAttack' as server.EntityDamageCause
+                                    })
+                                }
                             }
                         }
                     })
@@ -213,17 +215,17 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     let tpbool = player.tryTeleport({ x: otherEntity.location.x, y: otherEntity.location.y, z: otherEntity.location.z }, { checkForBlocks: true, })
                     if (tpbool) {
                         player.addEffect("slow_falling", 10, { showParticles: false })
-                        player.applyKnockback(0, 0, 0, -1)
-                        world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc"] }).forEach(
-                            entity => {
-                                if (!avoidableentities.includes(entity.typeId)) {
-                                    entity.applyDamage(50, {
-                                        damagingEntity: player,
-                                        cause: 'entityAttack' as server.EntityDamageCause
-                                    })
-                                    entity.applyKnockback(0, 0, 0, 1)
 
-                                }
+                        world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc", "item", "projectile"] }).forEach(
+                            entity => {
+
+                                entity.applyDamage(50, {
+                                    damagingEntity: player,
+                                    cause: 'entityAttack' as server.EntityDamageCause
+                                })
+
+                                entity.applyKnockback(0, 0, 0, 1)
+
                             }
                         )
                     }

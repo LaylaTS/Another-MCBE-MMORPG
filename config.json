@@ -5,7 +5,7 @@
 	"authors": [
 		"wojtekbb"
 	],
-	"targetVersion": "1.20.10",
+	"targetVersion": "1.20.30",
 	"description": "XD idk what to put there",
 	"experimentalGameplay": {
 		"holidayCreatorFeatures": true,

@@ -6,10 +6,21 @@
     },
     "components": {
       "minecraft:fog": {
-        "fog_identifier": "mmorpg:cherrybiome"
+        "fog_identifier": "mmorpg:cherrybiome",
+        "priority": 0
       },
       "minecraft:bounds": {
-        "dimension": "overworld"
+        "dimension": "overworld",
+        "max": [
+          -345,
+          201,
+          135
+        ],
+        "min": [
+          -67,
+          81,
+          -155
+        ]
       }
     }
   }

@@ -1,5 +1,4 @@
 import * as server from '@minecraft/server'
-import 'helmets.js'
 import 'spawn.js'
 import 'marketform.js'
 import 'banking.js'
@@ -10,7 +9,8 @@ import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
-import 'worldedit.js'
+import 'helmets.js'
+
 
 
 const world = server.world
