@@ -1,0 +1,31 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "mmorpg:floatingtext",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {},
+    "components": {
+      "minecraft:scale": {
+        "value": 0.000001
+      },
+      "minecraft:health": {
+        "value": 4211412
+      },
+      "minecraft:nameable": {
+        "allow_name_tag_renaming": false,
+        "always_show": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": false
+        }
+      },
+      "events": {}
+    }
+  }
+}
