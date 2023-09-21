@@ -44,3 +44,7 @@ item.mmorpg:aetheriumingot=Aetherium Ingot
 item.mmorpg:heavyaetheriumsword=§5Heavy Aetherium Sword§r | §360 Mana§r
 item.mmorpg:twilightblossom=§l§dTwilight Blossom§r | §3100 Mana§r
 entientity.mmorpg:evilsilverfish.name=§4§lDeath Blossom Silverfish§r
+item.mmorpg:light_aetherium_helmet=Light Aetherium Helmet
+item.mmorpg:light_aetherium_chestplate=Light Aetherium Chestplate
+item.mmorpg:light_aetherium_leggings=Light Aetherium Leggings
+item.mmorpg:light_aetherium_boots=Light Aetherium Boots
