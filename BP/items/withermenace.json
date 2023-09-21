@@ -11,7 +11,7 @@
         "parent": "itemGroup.name.sword"
       },
       "minecraft:foil": true,
-      "minecraft:damage": 10,
+      "minecraft:damage": 11,
       "minecraft:enchantable": {
         "value": 14,
         "slot": "sword"

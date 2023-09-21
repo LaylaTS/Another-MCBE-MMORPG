@@ -9,8 +9,7 @@ import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
-import 'helmets.js'
-import 'maxmana.js'
+import 'equipmentstats.js'
 
 
 

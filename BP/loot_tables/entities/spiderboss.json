@@ -1,13 +1,6 @@
 {
   "pools": [
     {
-      "conditions": [
-        {
-          "condition": "random_chance_with_looting",
-          "chance": 0.2,
-          "looting_multiplier": 0.02
-        }
-      ],
       "rolls": 1,
       "entries": [
         {
@@ -20,7 +13,7 @@
               "lore": [
                 "§dDash§r on your place block button.",
                 "§rIf you are sneaking dash backwards instead.",
-                "§rDashing deals 10 damage to the mob you are looking at."
+                "§rDashing deals 10+2xMP damage to the mob you are looking at."
               ]
             }
           ]

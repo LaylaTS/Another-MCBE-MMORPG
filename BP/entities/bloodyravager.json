@@ -292,7 +292,7 @@
             },
             "minecraft:jump.static": {},
             "minecraft:loot": {
-                "table": "loot_tables/entities/ravager.json"
+                "table": "loot_tables/scarletfury.json"
             },
             "minecraft:knockback_resistance": {
                 "value": 0.75

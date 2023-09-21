@@ -8,6 +8,7 @@ const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arro
 
 world.afterEvents.itemUse.subscribe(eventData => {
     var player = eventData.source as server.Player
+    var magicalpower = player.getDynamicProperty("magicalpower") as number
     var item = eventData.itemStack
     var inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     function addlore(lore) {
@@ -51,7 +52,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 let entity = player.getEntitiesFromViewDirection()
                 entity.forEach(entity => {
                     if (!avoidableentities.includes(entity.entity.typeId)) {
-                        entity.entity.applyDamage(10, {
+                        entity.entity.applyDamage(10 + magicalpower * 2, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         })

@@ -76,6 +76,9 @@
 		},
 		"mmorpg_light_aetherium_boots": {
 			"textures": "textures/items/light_aetherium_boots"
+		},
+		"mmorpg_biggraysword": {
+			"textures": "textures/items/biggraysword"
 		}
 	}
 }
