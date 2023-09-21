@@ -79,6 +79,18 @@
 		},
 		"mmorpg_biggraysword": {
 			"textures": "textures/items/biggraysword"
+		},
+		"mmorpg_aetherium_helmet": {
+			"textures": "textures/items/aetherium_helmet"
+		},
+		"mmorpg_aetherium_chestplate": {
+			"textures": "textures/items/aetherium_chestplate"
+		},
+		"mmorpg_aetherium_leggings": {
+			"textures": "textures/items/aetherium_leggings"
+		},
+		"mmorpg_aetherium_boots": {
+			"textures": "textures/items/aetherium_boots"
 		}
 	}
 }
