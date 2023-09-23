@@ -91,6 +91,9 @@
 		},
 		"mmorpg_aetherium_boots": {
 			"textures": "textures/items/aetherium_boots"
+		},
+		"mmorpg_aetheriumstar": {
+			"textures": "textures/items/aetheriumstar"
 		}
 	}
 }

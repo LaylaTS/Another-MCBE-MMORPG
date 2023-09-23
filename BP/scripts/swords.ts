@@ -6,10 +6,39 @@ var world = server.world
 const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast", "minecraft:wither_skull", "minecraft:wither_skull_dangerous", "minecraft:wither"];
 
 
+
+
+world.afterEvents.entityHitEntity.subscribe(eventData => {
+    if (eventData.damagingEntity.typeId == "minecraft:player") {
+
+        var player = eventData.damagingEntity
+        var entity = eventData.hitEntity
+        var magicalpower = player.getDynamicProperty("magicalpower") as number
+        var equippable = player.getComponent("equippable") as server.EntityEquippableComponent
+
+        switch (equippable.getEquipmentSlot(server.EquipmentSlot.Mainhand).typeId) {
+            case "mmorpg:biggraysword":
+                if (world.scoreboard.getObjective("mana").getScore(player) > 9) {
+
+                    player.runCommand("scoreboard players remove @s mana 10")
+                    entity.applyDamage(1 + Math.trunc(magicalpower * 1.5), {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                    console.warn(magicalpower)
+                }
+                break;
+        }
+    }
+
+})
+
 world.afterEvents.itemUse.subscribe(eventData => {
+
+
+    var item = eventData.itemStack
     var player = eventData.source as server.Player
     var magicalpower = player.getDynamicProperty("magicalpower") as number
-    var item = eventData.itemStack
     var inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     function addlore(lore) {
         var loreitem = item.clone() as server.ItemStack
@@ -25,6 +54,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 .title('Choose Teleport Location')
                 .button('Spawn')
                 .button('Plot')
+                .button('Dungeons')
 
             if (world.scoreboard.getObjective('spawntimer').getScore(player) > 200) {
                 form.show(player).then(result => {
@@ -32,6 +62,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         player.runCommand('tp @s 0 66 0')
                     } else if (result.selection == 1) {
                         player.runCommand('tp @s 39990 -57 ' + world.scoreboard.getObjective('plotcords').getScore(player))
+                    } else if (result.selection == 2) {
+                        player.runCommand('tp @s 500 50 500')
                     }
                 })
             }
@@ -43,12 +75,13 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 let vector3 = player.getViewDirection()
                 if (player.isSneaking) {
                     player.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
-                    player.runCommandAsync('scoreboard players remove @s mana 20')
+
 
                 } else {
                     player.applyKnockback(vector3.x, vector3.z, 3, 0.3)
-                    player.runCommandAsync('scoreboard players remove @s mana 20')
+
                 }
+                player.runCommandAsync("scoreboard players remove @s mana 20")
                 let entity = player.getEntitiesFromViewDirection()
                 entity.forEach(entity => {
                     if (!avoidableentities.includes(entity.entity.typeId)) {
@@ -73,7 +106,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                                 if (!avoidableentities.includes(entity.entity.typeId)) {
                                     entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
                                     entity.entity.addEffect('slowness', 100, { amplifier: 2 })
-                                    entity.entity.applyDamage(20, {
+                                    entity.entity.applyDamage(20 + magicalpower, {
                                         damagingEntity: player,
                                         cause: 'entityAttack' as server.EntityDamageCause
                                     })
@@ -107,8 +140,12 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }, 7)
                 server.system.runTimeout(() => {
 
-                    // world.getDimension('minecraft:overworld').createExplosion(player.location, 6, { breaksBlocks: false, causesFire: false, source: player })
-                    player.runCommand('damage @e[r=8,type=!player,type=!item,type=!arrow,type=!xp_orb,type =!mmorpg:abilitysculkblast] 50 entity_attack entity @s ')
+                    world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 8 }).forEach(entity => {
+                        entity.applyDamage(30 + magicalpower * 2, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        })
+                    })
 
                 }, 13)
             }
@@ -131,7 +168,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
                     }
 
-                    (entity.applyDamage(35, {
+                    (entity.applyDamage(35 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     }))
@@ -147,7 +184,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 server.system.runTimeout(() => {
                     world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 }).forEach(entity => {
                         if (!avoidableentities.includes(entity.typeId)) {
-                            entity.applyDamage(35, {
+                            entity.applyDamage(35 + Math.trunc(magicalpower * 1.5), {
                                 damagingEntity: player,
                                 cause: 'entityAttack' as server.EntityDamageCause
                             })
@@ -220,7 +257,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc", "item", "projectile"] }).forEach(
                             entity => {
 
-                                entity.applyDamage(50, {
+                                entity.applyDamage(25 + magicalpower, {
                                     damagingEntity: player,
                                     cause: 'entityAttack' as server.EntityDamageCause
                                 })
@@ -232,6 +269,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     }
                 }
             }
+            break;
     }
 })
 

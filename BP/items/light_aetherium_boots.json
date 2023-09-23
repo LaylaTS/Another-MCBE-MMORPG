@@ -21,6 +21,9 @@
 			"minecraft:wearable": {
 				"slot": "slot.armor.feet"
 			},
+			"minecraft:display_name": {
+				"value": "§9Light Aetherium Boots§r\n§o§7+20 Max Mana§r\n§7§o+2 Magic Power§r\n§7§o+1 Mana Regen§r\n§lSet Bonus:§r §7§ocrouch to get§r\n§720 magical power§r\n§7and regenerate§r\n§750 mana§r\n§7dealing 6§r\n§7damage to§r\n§7yourself§r"
+			},
 			"minecraft:creative_category": {
 				"parent": "itemGroup.name.boots"
 			},

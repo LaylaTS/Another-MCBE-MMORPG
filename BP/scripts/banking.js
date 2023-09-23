@@ -11,51 +11,53 @@ const form = new ui.ActionFormData()
 
 
 world.afterEvents.entityHitEntity.subscribe(eventData => {
-    if (eventData.hitEntity.hasTag('bankingentity')) {
-        var player = eventData.damagingEntity
-        form.show(player).then(result => {
-            let selection = result.selection
-            if (selection == 0) {
-                var deposit = new ui.ModalFormData()
-                    .title('Deposit')
-                    .slider('Money', 0, world.scoreboard.getObjective('money').getScore(player), 1, 0)
+    if (eventData.hitEntity.typeId == "mmorpg:marketsniffer") {
+        if (eventData.hitEntity?.hasTag('bankingentity')) {
+            var player = eventData.damagingEntity
+            form.show(player).then(result => {
+                let selection = result.selection
+                if (selection == 0) {
+                    var deposit = new ui.ModalFormData()
+                        .title('Deposit')
+                        .slider('Money', 0, world.scoreboard.getObjective('money').getScore(player), 1, 0)
 
 
-                deposit.show(player).then(onFullfilled => {
+                    deposit.show(player).then(onFullfilled => {
 
 
-                    let depositing = onFullfilled.formValues[0]
-                    depositing = Math.trunc(depositing)
-                    player.runCommandAsync('scoreboard players add @s bank ' + depositing)
-                    player.runCommandAsync('scoreboard players remove @s money ' + depositing)
+                        let depositing = onFullfilled.formValues[0]
+                        depositing = Math.trunc(depositing)
+                        player.runCommandAsync('scoreboard players add @s bank ' + depositing)
+                        player.runCommandAsync('scoreboard players remove @s money ' + depositing)
 
 
 
-                })
+                    })
 
-            } else if (selection == 1) {
-                var withdraw = new ui.ModalFormData()
-                    .title('Withdraw')
-                    .slider('Money', 0, world.scoreboard.getObjective('bank').getScore(player), 1, 0)
+                } else if (selection == 1) {
+                    var withdraw = new ui.ModalFormData()
+                        .title('Withdraw')
+                        .slider('Money', 0, world.scoreboard.getObjective('bank').getScore(player), 1, 0)
 
-                withdraw.show(player).then(withdrawn => {
+                    withdraw.show(player).then(withdrawn => {
 
-                    let withdrawing = withdrawn.formValues[0]
-                    withdrawing = Math.trunc(withdrawing)
-                    player.runCommandAsync('scoreboard players add @s money ' + withdrawing)
-                    player.runCommandAsync('scoreboard players remove @s bank ' + withdrawing)
+                        let withdrawing = withdrawn.formValues[0]
+                        withdrawing = Math.trunc(withdrawing)
+                        player.runCommandAsync('scoreboard players add @s money ' + withdrawing)
+                        player.runCommandAsync('scoreboard players remove @s bank ' + withdrawing)
 
 
-                })
-            } else if (selection == 2) {
-                player.runCommand('tellraw @s {"rawtext":[{"text":"§gCurrent balance:§r §2"},{"score":{"name":"@s","objective":"bank"}}]}')
-            }
+                    })
+                } else if (selection == 2) {
+                    player.runCommand('tellraw @s {"rawtext":[{"text":"§gCurrent balance:§r §2"},{"score":{"name":"@s","objective":"bank"}}]}')
+                }
 
-        })
+            })
 
+
+        }
 
     }
-
 }
 
 )

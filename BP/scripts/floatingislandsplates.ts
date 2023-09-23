@@ -29,6 +29,9 @@ server.world.afterEvents.pressurePlatePush.subscribe(eventData => {
             } else if (block.location.x == 3004 && block.location.z == -2911) {
                 entity.applyKnockback(1, -1, 15, -0.4)
                 entity.addEffect("slow_falling", 50)
+            } else if (block.location.x == 3026 && block.location.z == -2921) {
+                entity.applyKnockback(-1, 0.5, 11, 2.5)
+                entity.addEffect("slow_falling", 50)
             }
         }
     }

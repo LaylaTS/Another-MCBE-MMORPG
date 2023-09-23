@@ -8,11 +8,11 @@
 				"enchanted": "armor_enchanted"
 			},
 			"textures": {
-				"default": "textures/models/armor/light_aetherium_1",
+				"default": "textures/models/armor/light_aetherium_armor",
 				"enchanted": "textures/misc/enchanted_item_glint"
 			},
 			"geometry": {
-				"default": "geometry.humanoid.armor.chestplate"
+				"default": "geometry.player.aetherium.chestplate"
 			},
 			"scripts": {
 				"parent_setup": "variable.chest_layer_visible = 0.0;"
