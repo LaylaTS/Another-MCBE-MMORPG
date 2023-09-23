@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:giantspidereyecraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"s": {
+				"item": "spider_eye"
+			}
+		},
+		"pattern": [
+			"sss",
+			"sss",
+			"sss"
+		],
+		"result": {
+			"item": "mmorpg:giantspidereye"
+		}
+	}
+}

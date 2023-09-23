@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:aetheriumstarcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"n": {
+				"item": "nether_star"
+			},
+			"a": {
+				"item": "mmorpg:aetheriumingot"
+			}
+		},
+		"pattern": [
+			" n ",
+			"nan",
+			" n "
+		],
+		"result": {
+			"item": "mmorpg:aetheriumstar"
+		}
+	}
+}

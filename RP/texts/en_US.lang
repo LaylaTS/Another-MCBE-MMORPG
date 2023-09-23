@@ -52,3 +52,5 @@ item.mmorpg:biggraysword=§dBig Gray Sword§r | §3Deals damge based on your mag
 item.spawn_egg.entity.mmorpg:floatingtext.name=Spawn floating text
 entity.mmorpg:floatingtext.name=floating text
 entity.mmorpg:evilsilverfish.name=§4§lDeath Blossom Silverfish§r
+item.mmorpg:giantspidereye=§2Giant Spider Eye§r | §3Restore 5 mana when hit§r
+item.mmorpg:aetheriumstar=§2Aetherium Star§r | §3Get 10 magical power§r

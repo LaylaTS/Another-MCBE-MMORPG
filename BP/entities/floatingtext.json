@@ -7,7 +7,6 @@
       "is_summonable": true,
       "is_experimental": false
     },
-    "component_groups": {},
     "components": {
       "minecraft:scale": {
         "value": 0.000001
@@ -24,8 +23,7 @@
           "cause": "all",
           "deals_damage": false
         }
-      },
-      "events": {}
+      }
     }
   }
 }

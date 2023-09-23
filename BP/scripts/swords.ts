@@ -270,6 +270,22 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }
             }
             break;
+        case "mmorpg:twilightblossom":
+            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, excludeFamilies: ["player"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
+                player.runCommandAsync("scoreboard players remove @s mana 100")
+                player.playSound("sword.twilightblossom")
+                world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, excludeFamilies: ["player"] }).forEach(entity => {
+                    world.getDimension("minecraft:overworld").spawnParticle("mmorpg:twilightblossomparticle", entity.location)
+                    entity.applyDamage(30 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                })
+            }
+
+
+            break;
+
     }
 })
 

@@ -419,6 +419,13 @@
 				"sounds/mob/irongolem/walk3",
 				"sounds/mob/irongolem/walk4"
 			]
+		},
+		"sword.twilightblossom": {
+			"category": "ui",
+			"sounds": [
+				"sounds/swords/slash"
+			],
+			"__use_legacy_max_distance": true
 		}
 	}
 }

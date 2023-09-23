@@ -8,7 +8,7 @@ import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
-import 'equipmentstats.js'
+import 'equipment.js'
 
 
 

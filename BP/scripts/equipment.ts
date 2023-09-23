@@ -13,6 +13,20 @@ world.afterEvents.worldInitialize.subscribe(data => {
     data.propertyRegistry.registerEntityTypeDynamicProperties(setbonustimings, server.EntityTypes.get("minecraft:player"))
 })
 
+world.afterEvents.entityHurt.subscribe(eventData => {
+    if (eventData.hurtEntity.typeId == "minecraft:player") {
+        const player = eventData.hurtEntity as server.Player
+        const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
+        if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {
+            if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:giantspidereye") {
+                player.runCommand('scoreboard players add @s mana 5')
+            }
+        }
+
+    }
+})
+
+
 server.system.runInterval(() => {
     world.getAllPlayers().forEach(player => {
         var maxmana: number = 50
@@ -53,6 +67,11 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "minecraft:golden_boots") {
+                if (player.isSneaking && player.isOnGround && setbonustimings == 0) {
+                    player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 5, 0.3)
+                    setbonustimings = 100
+                }
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {

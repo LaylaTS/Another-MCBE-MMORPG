@@ -94,6 +94,9 @@
 		},
 		"mmorpg_aetheriumstar": {
 			"textures": "textures/items/aetheriumstar"
+		},
+		"mmorpg_giantspidereye": {
+			"textures": "textures/items/giantspidereye"
 		}
 	}
 }
