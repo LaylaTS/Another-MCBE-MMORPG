@@ -49,8 +49,8 @@
                 "breathes_water": true
             },
             "minecraft:health": {
-                "value": 200,
-                "max": 200
+                "value": 300,
+                "max": 300
             },
             "minecraft:equip_item": {},
             "minecraft:collision_box": {
@@ -189,7 +189,8 @@
                     "monster",
                     "undead",
                     "skeleton",
-                    "mob"
+                    "mob",
+                    "boss"
                 ]
             },
             "minecraft:physics": {},

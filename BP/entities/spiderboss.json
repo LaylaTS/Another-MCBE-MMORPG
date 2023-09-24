@@ -182,7 +182,8 @@
           "spider",
           "monster",
           "mob",
-          "arthropod"
+          "arthropod",
+          "boss"
         ]
       },
       "minecraft:boss": {

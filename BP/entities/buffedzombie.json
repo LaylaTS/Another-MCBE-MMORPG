@@ -24,7 +24,8 @@
         "minecraft:rideable": {
           "seat_count": 1,
           "family_types": [
-            "buffedzombie"
+            "buffedzombie",
+            "mob"
           ],
           "seats": {
             "position": [

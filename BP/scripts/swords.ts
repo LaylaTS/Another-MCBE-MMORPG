@@ -206,21 +206,23 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 })
             }
             break;
-        case "minecraft:ender_eye": //todo
-            let startpos = player.location
-            player.runCommand("particle mmorpg:uselessswordparticle ~ ~ ~")
-            player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 1.5, 0.5)
+        case "mmorpg:sculksword":
+            if (world.scoreboard.getObjective("mana").getScore(player) > 69) {
+                player.runCommandAsync("scoreboard players remove @s mana 70")
+                let startpos = player.location
+                player.runCommand("particle mmorpg:uselessswordparticle ~ ~ ~")
+                player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 1.5, 0.5)
 
-            server.system.runTimeout(() => {
-                let dx = player.location.x - startpos.x
-                let dy = player.location.y - startpos.y
-                let dz = player.location.z - startpos.z
-                let sumofsquares = dx * dx + dy * dy + dz * dz
-                if (Math.sqrt(sumofsquares) < 100) {
-                    player.tryTeleport(startpos)
-                }
-            }, 100)
-
+                server.system.runTimeout(() => {
+                    let dx = player.location.x - startpos.x
+                    let dy = player.location.y - startpos.y
+                    let dz = player.location.z - startpos.z
+                    let sumofsquares = dx * dx + dy * dy + dz * dz
+                    if (Math.sqrt(sumofsquares) < 100) {
+                        player.tryTeleport(startpos)
+                    }
+                }, 100)
+            }
 
             break;
         case "mmorpg:applesword":
@@ -271,10 +273,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:twilightblossom":
-            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, excludeFamilies: ["player"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
+            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
                 player.runCommandAsync("scoreboard players remove @s mana 100")
                 player.playSound("sword.twilightblossom")
-                world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, excludeFamilies: ["player"] }).forEach(entity => {
+                world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).forEach(entity => {
                     world.getDimension("minecraft:overworld").spawnParticle("mmorpg:twilightblossomparticle", entity.location)
                     entity.applyDamage(30 + magicalpower, {
                         damagingEntity: player,
@@ -282,6 +284,47 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     })
                 })
             }
+
+
+            break;
+        case "minecraft:glow_ink_sac":
+            const x = player.location.x
+            const z = player.location.z
+            var a = 0
+            while (a < 20) {
+                world.getDimension("minecraft:overworld").getEntities({ location: { x: x + a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
+                    entity.applyDamage(25 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                })
+                world.getDimension("minecraft:overworld").getEntities({ location: { x: x - a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
+                    entity.applyDamage(25 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                })
+                a++
+            }
+            a = 0
+            while (a < 20) {
+                world.getDimension("minecraft:overworld").getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
+                    entity.applyDamage(25 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                })
+                world.getDimension("minecraft:overworld").getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
+                    entity.applyDamage(25 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                })
+                a++
+            }
+
+
+
 
 
             break;
