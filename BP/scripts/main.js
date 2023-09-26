@@ -9,6 +9,7 @@ import 'blockdrops.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
 import 'equipment.js'
+import 'coreboss.js'
 
 
 

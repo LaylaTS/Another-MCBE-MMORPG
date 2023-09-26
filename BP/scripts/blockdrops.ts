@@ -30,6 +30,10 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
                 player.runCommand('give @s diamond')
                 player.playSound('place.large_amethyst_bud')
             }
+            if (Math.floor((Math.random() * 1000) + 1) == 1) {
+                player.runCommand('give @s mmorpg:aetherium')
+                player.playSound('place.large_amethyst_bud')
+            }
             if (Math.floor((Math.random() * 1) + 10000) == 1) {
                 player.runCommand('give @s netherite_ingot')
                 player.playSound('respawn_anchor.set_spawn')

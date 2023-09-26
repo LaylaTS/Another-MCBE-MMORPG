@@ -2,6 +2,7 @@ import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
 
 var world = server.world
+var dimension = world.getDimension("minecraft:overworld")
 
 const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast", "minecraft:wither_skull", "minecraft:wither_skull_dangerous", "minecraft:wither"];
 
@@ -71,6 +72,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:purpledagger":
+            addlore(["§8Dash and deal damage, you can dash backwards by crouching"])
             if (world.scoreboard.getObjective('mana').getScore(player) > 19) {
                 let vector3 = player.getViewDirection()
                 if (player.isSneaking) {
@@ -96,6 +98,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:withermenace":
+            addlore(["§8Slow down and decrease distance between you and an enemy"])
             if (world.scoreboard.getObjective('mana').getScore(player) > 39) {
                 if (player.getEntitiesFromViewDirection().length > 0) {
                     player.runCommandAsync('scoreboard players remove @s mana 40')
@@ -140,7 +143,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }, 7)
                 server.system.runTimeout(() => {
 
-                    world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 8 }).forEach(entity => {
+                    dimension.getEntities({ location: player.location, maxDistance: 8 }).forEach(entity => {
                         entity.applyDamage(30 + magicalpower * 2, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
@@ -151,6 +154,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:forbiddenscythe":
+            addlore(["§8Teleport to an enemy dealing damage", "§8or jump dealing damage", "§8depending if you are sprinting or not"])
             if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
 
                 if (player.getEntitiesFromViewDirection().length > 0) {
@@ -176,13 +180,14 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:scarletfury":
+            addlore(["§8Dash in a direction and deal damage"])
             if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
                 player.runCommandAsync("scoreboard players remove @s mana 50")
                 let currentrotation = player.getViewDirection()
-                let entites = world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 })
+                let entites = dimension.getEntities({ location: player.location, maxDistance: 10 })
                 player.applyKnockback(currentrotation.x, currentrotation.z, 20, -100)
                 server.system.runTimeout(() => {
-                    world.getDimension('minecraft:overworld').getEntities({ location: player.location, maxDistance: 10 }).forEach(entity => {
+                    dimension.getEntities({ location: player.location, maxDistance: 10 }).forEach(entity => {
                         if (!avoidableentities.includes(entity.typeId)) {
                             entity.applyDamage(35 + Math.trunc(magicalpower * 1.5), {
                                 damagingEntity: player,
@@ -207,6 +212,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:sculksword":
+            addlore(["§8Dash then return to the point where you used this ability after 5 seconds"])
             if (world.scoreboard.getObjective("mana").getScore(player) > 69) {
                 player.runCommandAsync("scoreboard players remove @s mana 70")
                 let startpos = player.location
@@ -246,17 +252,17 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:heavyaetheriumsword":
-
-            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] }).length > 0) {
+            addlore(["§8Teleport to the nearest enemy and deal area damage knocking up enemies"])
+            if (dimension.getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] }).length > 0) {
                 if (world.scoreboard.getObjective("mana").getScore(player) > 59) {
                     player.runCommandAsync("scoreboard players remove @s mana 60")
 
-                    var otherEntity = world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] })[0] as server.Entity
+                    var otherEntity = dimension.getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] })[0] as server.Entity
                     let tpbool = player.tryTeleport({ x: otherEntity.location.x, y: otherEntity.location.y, z: otherEntity.location.z }, { checkForBlocks: true, })
                     if (tpbool) {
                         player.addEffect("slow_falling", 10, { showParticles: false })
 
-                        world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc", "item", "projectile"] }).forEach(
+                        dimension.getEntities({ location: player.location, maxDistance: 5, excludeFamilies: ["player", "npc", "item", "projectile"] }).forEach(
                             entity => {
 
                                 entity.applyDamage(25 + magicalpower, {
@@ -273,11 +279,12 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:twilightblossom":
-            if (world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
+            addlore(["§8Deal massive damage to", "§8all enemies in a 7 block radius"])
+            if (dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
                 player.runCommandAsync("scoreboard players remove @s mana 100")
                 player.playSound("sword.twilightblossom")
-                world.getDimension("minecraft:overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).forEach(entity => {
-                    world.getDimension("minecraft:overworld").spawnParticle("mmorpg:twilightblossomparticle", entity.location)
+                dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"] }).forEach(entity => {
+                    dimension.spawnParticle("mmorpg:twilightblossomparticle", entity.location)
                     entity.applyDamage(30 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
@@ -292,13 +299,13 @@ world.afterEvents.itemUse.subscribe(eventData => {
             const z = player.location.z
             var a = 0
             while (a < 20) {
-                world.getDimension("minecraft:overworld").getEntities({ location: { x: x + a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
+                dimension.getEntities({ location: { x: x + a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
                     entity.applyDamage(25 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     })
                 })
-                world.getDimension("minecraft:overworld").getEntities({ location: { x: x - a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
+                dimension.getEntities({ location: { x: x - a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
                     entity.applyDamage(25 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
@@ -308,13 +315,13 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             a = 0
             while (a < 20) {
-                world.getDimension("minecraft:overworld").getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
+                dimension.getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
                     entity.applyDamage(25 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     })
                 })
-                world.getDimension("minecraft:overworld").getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
+                dimension.getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
                     entity.applyDamage(25 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
@@ -322,10 +329,20 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 })
                 a++
             }
+            break;
+        case "mmorpg:aetheriumblade":
+            if (dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 49) {
+                dimension.spawnParticle("mmorpg:aetheriumbladeparticle", player.location)
+                player.runCommandAsync("scoreboard players remove @s mana 50")
 
-
-
-
+                dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"] }).forEach(entity => {
+                    entity.applyDamage(15 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    })
+                    entity.applyKnockback(0, 0, 0, 0.7)
+                })
+            }
 
             break;
 
