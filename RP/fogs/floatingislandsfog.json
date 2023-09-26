@@ -1,0 +1,16 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:fog_settings": {
+        "description": {
+            "identifier": "mmorpg:floatingislandsfog"
+        },
+        "distance": {
+            "air": {
+                "fog_color": "#468bb9",
+                "fog_start": 10,
+                "fog_end": 200,
+                "render_distance_type": "fixed"
+            }
+        }
+    }
+}
