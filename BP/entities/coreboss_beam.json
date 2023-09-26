@@ -1,0 +1,76 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "mmorpg:coreboss_beam",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "deal_damage": {
+        "minecraft:area_attack": {
+          "cause": "magic",
+          "damage_range": 1,
+          "damage_per_tick": 3
+        }
+      },
+      "despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:type_family": {
+        "family": [
+          "attack",
+          "core",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "height": 0.1,
+        "width": 0.1
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time": 2,
+        "time_down_event": {
+          "event": "deal_damage"
+        }
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": false
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      }
+    },
+    "events": {
+      "deal_damage": {
+        "add": {
+          "component_groups": [
+            "deal_damage"
+          ]
+        }
+      },
+      "despawn": {
+        "add": {
+          "component_groups": [
+            "despawn"
+          ]
+        }
+      }
+    }
+  }
+}

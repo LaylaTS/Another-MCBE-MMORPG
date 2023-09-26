@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.coreboss_beam": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default",
+          "*beam": "Material.transparent"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}

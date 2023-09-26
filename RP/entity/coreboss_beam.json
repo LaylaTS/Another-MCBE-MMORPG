@@ -1,0 +1,40 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:coreboss_beam",
+			"materials": {
+				"default": "entity_emissive",
+				"transparent": "entity_alphablend"
+			},
+			"animations": {
+				"attack": "animation.coreboss_beam"
+			},
+			"textures": {
+				"default": "textures/entity/coreboss_beam"
+			},
+			"geometry": {
+				"default": "geometry.coreboss_beam"
+			},
+			"render_controllers": [
+				"controller.render.coreboss_beam"
+			],
+			"scripts": {
+				"animate": [
+					"attack"
+				]
+			},
+			"sound_effects": {
+				"coreboss_beam": "coreboss_beam"
+			},
+			"particle_effects": {
+				"corebeam_explode": "mmorpg:corebeam_explode",
+				"corebeam_load": "mmorpg:corebeam_load"
+			},
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

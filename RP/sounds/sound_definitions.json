@@ -426,6 +426,12 @@
 				"sounds/swords/slash"
 			],
 			"__use_legacy_max_distance": true
+		},
+		"coreboss_beam": {
+			"category": "neutral",
+			"sounds": [
+				"sounds/random/coreboss_beam"
+			]
 		}
 	}
 }
