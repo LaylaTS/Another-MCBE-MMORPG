@@ -1,16 +1,15 @@
 import * as server from '@minecraft/server'
 import 'spawn.js'
-import 'marketform.js'
-import 'banking.js'
 import 'swords.js'
 import 'mobdeath.js'
 import 'island.js'
 import 'blockdrops.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
-import 'equipment.js'
 import 'coreboss.js'
-
+import 'npcs.js'
+import { corebossbehavior } from 'coreboss.js'
+import { playerequipment } from 'equipment.js'
 
 
 const world = server.world
@@ -40,5 +39,7 @@ server.system.runInterval(() => { // run every tick
 
 
     })
+    corebossbehavior()
+    playerequipment()
 })
 

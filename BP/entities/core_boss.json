@@ -131,6 +131,7 @@
         "family": [
           "coreboss",
           "boss",
+          "mob",
           "magic"
         ]
       },

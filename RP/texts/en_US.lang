@@ -55,3 +55,5 @@ entity.mmorpg:evilsilverfish.name=§4§lDeath Blossom Silverfish§r
 item.mmorpg:giantspidereye=§2Giant Spider Eye§r | §3Restore 5 mana when hit§r
 item.mmorpg:aetheriumstar=§2Aetherium Star§r | §3Get 10 magical power§r
 item.mmorpg:aetheriumblade=§5Aetherium Blade §r| §350 Mana
+item.spawn_egg.entity.mmorpg:corebossprojectile.name=Spawn Core Boss Projectile
+entity.mmorpg:corebossprojectile.name=Core Boss Projectile
