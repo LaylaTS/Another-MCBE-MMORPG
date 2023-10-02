@@ -72,7 +72,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:purpledagger":
-            addlore(["§8Dash and deal damage, you can dash backwards by crouching"])
+
             if (world.scoreboard.getObjective('mana').getScore(player) > 19) {
                 let vector3 = player.getViewDirection()
                 if (player.isSneaking) {
@@ -212,7 +212,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:sculksword":
-            addlore(["§8Dash then return to the point where you used this ability after 5 seconds"])
+            addlore(["§8Dash then return to the point", "§8where you used this ability after 5 seconds"])
             if (world.scoreboard.getObjective("mana").getScore(player) > 69) {
                 player.runCommandAsync("scoreboard players remove @s mana 70")
                 let startpos = player.location
@@ -295,40 +295,29 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "minecraft:glow_ink_sac":
-            const x = player.location.x
-            const z = player.location.z
-            var a = 0
-            while (a < 20) {
-                dimension.getEntities({ location: { x: x + a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
-                    entity.applyDamage(25 + magicalpower, {
-                        damagingEntity: player,
-                        cause: 'entityAttack' as server.EntityDamageCause
-                    })
-                })
-                dimension.getEntities({ location: { x: x - a, y: player.location.y, z: player.location.z }, maxDistance: 0.6 }).forEach(entity => {
-                    entity.applyDamage(25 + magicalpower, {
-                        damagingEntity: player,
-                        cause: 'entityAttack' as server.EntityDamageCause
-                    })
-                })
-                a++
-            }
-            a = 0
-            while (a < 20) {
-                dimension.getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
-                    entity.applyDamage(25 + magicalpower, {
-                        damagingEntity: player,
-                        cause: 'entityAttack' as server.EntityDamageCause
-                    })
-                })
-                dimension.getEntities({ location: { x: player.location.x, y: player.location.y, z: z + a }, maxDistance: 0.6 }).forEach(entity => {
-                    entity.applyDamage(25 + magicalpower, {
-                        damagingEntity: player,
-                        cause: 'entityAttack' as server.EntityDamageCause
-                    })
-                })
-                a++
-            }
+            var block = player.getBlockFromViewDirection().block
+            dimension.spawnParticle("mmorpg:core_boss_projectile", block)
+            dimension.fillBlocks({ x: block.location.x + 1, y: block.location.y, z: block.location.z } as server.Vector3, { x: block.location.x - 1, y: block.location.y, z: block.location.z }, "minecraft:stone")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y - 1, z: block.location.z } as server.Vector3, { x: block.location.x, y: block.location.y + 1, z: block.location.z }, "minecraft:stone")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y, z: block.location.z + 1 } as server.Vector3, { x: block.location.x, y: block.location.y, z: block.location.z - 1 }, "minecraft:stone")
+
+
+            break;
+        case "minecraft:black_dye":
+            var block = player.getBlockFromViewDirection().block
+            dimension.spawnParticle("mmorpg:core_boss_projectile", block)
+            dimension.fillBlocks({ x: block.location.x + 1, y: block.location.y, z: block.location.z } as server.Vector3, { x: block.location.x - 1, y: block.location.y, z: block.location.z }, "minecraft:air")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y - 1, z: block.location.z } as server.Vector3, { x: block.location.x, y: block.location.y + 1, z: block.location.z }, "minecraft:air")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y, z: block.location.z + 1 } as server.Vector3, { x: block.location.x, y: block.location.y, z: block.location.z - 1 }, "minecraft:air")
+
+
+            break;
+        case "minecraft:pink_dye":
+            var block = player.getBlockFromViewDirection().block
+            dimension.spawnParticle("mmorpg:core_boss_projectile", block)
+            dimension.fillBlocks({ x: block.location.x + 2, y: block.location.y + 2, z: block.location.z + 2 } as server.Vector3, { x: block.location.x - 2, y: block.location.y - 2, z: block.location.z - 2 }, "minecraft:stone")
+
+
             break;
         case "mmorpg:aetheriumblade":
             if (dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 49) {

@@ -27,7 +27,7 @@ world.afterEvents.entityHurt.subscribe(eventData => {
 })
 
 
-export function playerequipment() {
+server.system.runInterval(() => {
     world.getAllPlayers().forEach(player => {
         var maxmana: number = 50
         var manaregen: number = 20
@@ -110,4 +110,4 @@ export function playerequipment() {
         player.setDynamicProperty("manaregen", Math.trunc(manaregen))
         player.setDynamicProperty("maxmana", maxmana)
     })
-}
+})

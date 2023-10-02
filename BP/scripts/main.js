@@ -9,7 +9,7 @@ import 'dailyrewards.js'
 import 'coreboss.js'
 import 'npcs.js'
 import { corebossbehavior } from 'coreboss.js'
-import { playerequipment } from 'equipment.js'
+import 'equipment.js'
 
 
 const world = server.world
@@ -40,6 +40,6 @@ server.system.runInterval(() => { // run every tick
 
     })
     corebossbehavior()
-    playerequipment()
+
 })
 

@@ -55,7 +55,8 @@
       "minecraft:type_family": {
         "family": [
           "buffedzombie",
-          "monster"
+          "monster",
+          "mob"
         ]
       },
       "minecraft:collision_box": {

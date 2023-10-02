@@ -9,7 +9,7 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
 
 
         let finalcords = world.scoreboard.getObjective('plotcords').getScore('finalcords')
-
+        player.setDynamicProperty("maxmana", 0)
 
 
 

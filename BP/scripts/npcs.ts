@@ -28,6 +28,7 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
                             .button("Oak Log - 50$")//1
                             .button("Diamond - 2000$")
                             .button("Netherite - 100000$")
+                            .button("Lava Bucket - 2500$")
 
                         resources.show(player).then(result => {
 
@@ -67,6 +68,15 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
                                 netheritebuy.show(player).then(result => {
                                     player.runCommand('give @s netherite_ingot ' + Math.trunc(result.formValues[0]))
                                     player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0]) * 100000)
+                                })
+                            } else if (result.selection == 4) {
+                                var lavabuy = new ui.ModalFormData()
+                                    .title("Buy Lava Bucket")
+                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 2500, 1, 0)
+
+                                lavabuy.show(player).then(result => {
+                                    player.runCommand('give @s lava_bucket ' + Math.trunc(result.formValues[0]))
+                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0]) * 2500)
                                 })
                             }
                         })
