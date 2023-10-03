@@ -252,7 +252,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:heavyaetheriumsword":
-            addlore(["§8Teleport to the nearest enemy and deal area damage knocking up enemies"])
+            addlore(["§8Teleport to the nearest enemy", "and deal area damage knocking up enemies"])
             if (dimension.getEntities({ location: player.location, maxDistance: 10, excludeFamilies: ["player"] }).length > 0) {
                 if (world.scoreboard.getObjective("mana").getScore(player) > 59) {
                     player.runCommandAsync("scoreboard players remove @s mana 60")
@@ -334,7 +334,29 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
             break;
-
+        case "mmorpg:prismarineblade":
+            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
+                player.runCommandAsync("scoreboard players remove @s mana 30")
+                var rotation = player.getRotation().y
+                rotation = rotation + 90
+                const radians = rotation * Math.PI / 180;
+                const cosval = Math.cos(radians);
+                const sinval = Math.sin(radians);
+                for (let i = 0; i < 6; i++) {
+                    const xlocation = player.location.x + i * cosval
+                    const zlocation = player.location.z + i * sinval
+                    dimension.spawnParticle("mmorpg:prismarinebladeparticle", { x: xlocation, y: player.location.y + 0.1, z: zlocation });
+                    dimension.getEntities({ location: { x: xlocation, y: player.location.y + 0.1, z: zlocation }, maxDistance: 1.5, excludeFamilies: ["enemyprojectile", "player"] }).forEach(entity => {
+                        entity.applyDamage(10 + magicalpower, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        });
+                        entity.applyKnockback(0, 0, 0, 0.3);
+                        entity.addEffect("slowness", 20, { showParticles: false })
+                    });
+                }
+            }
+            break;
     }
 })
 
