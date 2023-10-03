@@ -46,7 +46,7 @@ export function corebossbehavior() {
         if (boss.typeId == "mmorpg:core_boss") {
             if (corebosstimer == 100) {
                 world.setDynamicProperty("corebossattacktype", 1)
-                boss.triggerEvent("laserbeam_attack")
+
             }
 
 
@@ -63,8 +63,8 @@ export function corebossbehavior() {
                         const xlocation = location.x + i * cosval * multiplier;
                         const zlocation = location.z + i * sinval * multiplier;
 
-                        dimension.getEntities({ location: { x: xlocation, y: location.y + 0.1, z: zlocation }, maxDistance: 1, excludeFamilies: ["enemyprojectile"] }).forEach(entity => {
-                            entity.applyDamage(15, { cause: server.EntityDamageCause.void });
+                        dimension.getEntities({ location: { x: xlocation, y: location.y + 0.1, z: zlocation }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
                             entity.applyKnockback(0, 0, 0, 1);
                         });
 
@@ -82,8 +82,8 @@ export function corebossbehavior() {
                 }
                 if (angle > 360) {
                     angle = 0;
-                    world.setDynamicProperty("corebossattacktype", 3)
-                    world.setDynamicProperty("corebosscage", 20)
+                    world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
+                    world.setDynamicProperty("corebosscage", 0)
                 }
                 world.setDynamicProperty("corebossangle", angle);
 
@@ -127,7 +127,7 @@ export function corebossbehavior() {
                     }
                 }
                 if (corebosscage == 4) {
-                    world.setDynamicProperty("corebossattacktype", 4)
+                    world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
                     world.setDynamicProperty("corebosscage", 0)
                 }
 
@@ -142,17 +142,33 @@ export function corebossbehavior() {
 
 
             } else if (corebossattacktype == 4) {
-                var corebosscage = world.getDynamicProperty("corebosscage") as number
+                let corebosscage = world.getDynamicProperty("corebosscage") as number
                 let cnt = 0
                 while (cnt < 20) {
                     if (corebosscage < 41) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 })
+                        dimension.getEntities({ location: { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        })
                     } else if (corebosscage > 40 && corebosscage < 81) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3000 + cnt, z: 2940 + corebosscage, y: 101 })
+                        dimension.getEntities({ location: { x: 3000 + cnt, z: 2940 + corebosscage, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        })
                     } else if (corebosscage > 80 && corebosscage < 121) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3100 - corebosscage, z: 3000 + cnt, y: 101 })
+                        dimension.getEntities({ location: { x: 3100 - corebosscage, z: 3000 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        })
                     } else if (corebosscage > 120 && corebosscage < 161) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + cnt, z: 3140 - corebosscage, y: 101 })
+                        dimension.getEntities({ location: { x: 2980 + cnt, z: 3140 - corebosscage, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        })
                     }
 
 
@@ -163,6 +179,8 @@ export function corebossbehavior() {
 
                 if (corebosscage > 160) {
                     corebosscage = 0
+                    world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
+
                 } else {
                     corebosscage++
                 }
@@ -173,7 +191,73 @@ export function corebossbehavior() {
 
 
 
+            } else if (corebossattacktype == 5) {
+                let cnt = 0
+                let corebosscage = world.getDynamicProperty("corebosscage") as number
+
+
+                if (corebosscage < 32) {
+                    while (cnt < 41) {
+
+
+
+
+                        dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3020 - corebosscage, z: 2980 + cnt, y: 101 })
+
+                        dimension.getEntities({ location: { x: 3020 - corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(7, { cause: server.EntityDamageCause.void });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        })
+
+
+                        cnt++
+                    }
+                }
+
+
+                if (corebosscage > 33) {
+                    corebosscage = 0
+                    world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
+                    world.setDynamicProperty("corebosscage", 0)
+                }
+                if (world.getAbsoluteTime() % 2) {
+                    corebosscage++
+                    world.setDynamicProperty("corebosscage", corebosscage)
+                }
+
+            } else if (corebossattacktype == 2) {
+                let cnt = 0
+
+                let corebosscage = world.getDynamicProperty("corebosscage") as number
+
+                if (corebosscage < 32) {
+                    while (cnt < 41) {
+
+                        dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 })
+                        dimension.getEntities({ location: { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
+                            entity.applyDamage(7, { cause: server.EntityDamageCause.void });
+                            entity.applyKnockback(0, 0, 0, 1);
+                        });
+                        cnt++
+                    }
+                }
+
+
+
+                if (corebosscage > 33) {
+                    world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
+                    world.setDynamicProperty("corebosscage", 0)
+                }
+                if (world.getAbsoluteTime() % 2) {
+                    corebosscage++
+                    world.setDynamicProperty("corebosscage", corebosscage)
+                }
+
             }
+
+
+
+
             var xlocation = 3000
             var zlocation = 3000
             var corebossprojectile = world.getDynamicProperty("corebossprojectile") as number
@@ -215,28 +299,28 @@ function corebossprojectiles(corebossprojectile, xlocation, zlocation, dimension
         let locationParticle = { x: location.x + (corebossprojectile as number * -1) + 20, y: location.y, z: location.z + world.getDynamicProperty("corebossrandomprojectilezpos") }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
+            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { x: location.x + (corebossprojectile as number) - 20, y: location.y, z: location.z + (world.getDynamicProperty("corebossrandomprojectilezpos") as number * -1) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
+            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { z: location.z + (corebossprojectile as number) - 20, y: location.y, x: location.x + (world.getDynamicProperty("corebossrandomprojectilexpos") as number * -1) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
+            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { z: location.z + (corebossprojectile as number * -1) + 20, y: location.y, x: location.x + (world.getDynamicProperty("corebossrandomprojectilexpos") as number) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
+            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
