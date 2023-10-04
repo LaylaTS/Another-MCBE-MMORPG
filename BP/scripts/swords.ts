@@ -343,6 +343,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 const cosval = Math.cos(radians);
                 const sinval = Math.sin(radians);
                 for (let i = 0; i < 6; i++) {
+
                     const xlocation = player.location.x + i * cosval
                     const zlocation = player.location.z + i * sinval
                     dimension.spawnParticle("mmorpg:prismarinebladeparticle", { x: xlocation, y: player.location.y + 0.1, z: zlocation });
@@ -354,6 +355,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         entity.applyKnockback(0, 0, 0, 0.3);
                         entity.addEffect("slowness", 20, { showParticles: false })
                     });
+
+
                 }
             }
             break;

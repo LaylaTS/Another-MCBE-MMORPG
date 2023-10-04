@@ -92,7 +92,7 @@ export function corebossbehavior() {
             } else if (corebossattacktype == 3) {
                 world.setDynamicProperty("corebossangle", 0);
                 var corebosscage = world.getDynamicProperty("corebosscage") as number
-                if (corebosscage < 4) {
+                if (corebosscage < 6) {
                     world.setDynamicProperty("corebosscage", 20)
                     corebosscage = 20
                 }
@@ -102,7 +102,7 @@ export function corebossbehavior() {
                 var zlocation = 3000
 
 
-                if (corebosscage > 3) {
+                if (corebosscage > 5) {
                     const players = dimension.getPlayers({ location: { x: 3000, y: 102, z: 3000 }, maxDistance: 30 })
                     const multiplierArr = [1, -1]
                     const sideArr = [1, -1]
@@ -126,7 +126,7 @@ export function corebossbehavior() {
 
                     }
                 }
-                if (corebosscage == 4) {
+                if (corebosscage == 6) {
                     world.setDynamicProperty("corebossattacktype", Math.floor(Math.random() * 5) + 1)
                     world.setDynamicProperty("corebosscage", 0)
                 }

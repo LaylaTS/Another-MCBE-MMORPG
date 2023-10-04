@@ -10,7 +10,7 @@
         },
         "components": {
             "minecraft:emitter_rate_instant": {
-                "num_particles": 10
+                "num_particles": 20
             },
             "minecraft:emitter_lifetime_once": {
                 "active_time": 2
@@ -26,7 +26,7 @@
             "minecraft:particle_motion_dynamic": {
                 "linear_acceleration": [
                     0,
-                    3,
+                    4,
                     0
                 ],
                 "linear_drag_coefficient": 1
