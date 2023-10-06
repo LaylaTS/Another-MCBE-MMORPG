@@ -103,6 +103,12 @@
 		},
 		"mmorpg_prismarineblade": {
 			"textures": "textures/items/prismarineblade"
+		},
+		"mmorpg_guardiansnecklace": {
+			"textures": "textures/items/guardiansnecklace"
+		},
+		"mmorpg_voidreaver": {
+			"textures": "textures/items/voidfirereaver"
 		}
 	}
 }
