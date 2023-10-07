@@ -74,7 +74,7 @@
                 "effect_duration": 10
             },
             "minecraft:loot": {
-                "table": "loot_tables/entities/wither_skeleton.json"
+                "table": "loot_tables/entities/witherskeletonbossdrop.json"
             },
             "minecraft:movement": {
                 "value": 0.6

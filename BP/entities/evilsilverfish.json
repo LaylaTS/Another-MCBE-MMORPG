@@ -54,8 +54,8 @@
                 "table": "loot_tables/entities/evilsilverfishdrop.json"
             },
             "minecraft:health": {
-                "value": 450,
-                "max": 450
+                "value": 350,
+                "max": 350
             },
             "minecraft:boss": {
                 "hud_range": 15,
@@ -76,7 +76,7 @@
                 ]
             },
             "minecraft:movement": {
-                "value": 0.3
+                "value": 0.28
             },
             "minecraft:navigation.walk": {
                 "can_path_over_water": true

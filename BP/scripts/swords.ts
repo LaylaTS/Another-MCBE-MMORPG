@@ -45,6 +45,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
         var loreitem = item.clone() as server.ItemStack
         loreitem.setLore(lore)
 
+
         if (inventory.container.getItem(player.selectedSlot).typeId == loreitem.typeId) {
             inventory.container.setItem(player.selectedSlot, loreitem)
         }
@@ -69,6 +70,27 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 })
             }
 
+
+            break;
+        case "mmorpg:rankadder":
+            if (player.hasTag('perms')) {
+                var form = new ui.ActionFormData()
+                    .title('Choose Player')
+                world.getAllPlayers().forEach(player => {
+                    form.button(player.name)
+                })
+                form.show(player).then(result => {
+                    var rank = new ui.ModalFormData()
+                        .title('Type in rank')
+                        .textField('Type in rank', 'rank')
+
+                    rank.show(player).then(rankoutput => {
+
+                        world.getAllPlayers()[result.selection].setDynamicProperty("playerrank", rankoutput.formValues[0])
+                    })
+
+                })
+            }
 
             break;
         case "mmorpg:purpledagger":
@@ -98,7 +120,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:withermenace":
-            addlore(["§8Slow down and decrease distance between you and an enemy"])
+            addlore(["§8Slow down an enemy", "§8and push them closer to you"])
             if (world.scoreboard.getObjective('mana').getScore(player) > 39) {
                 if (player.getEntitiesFromViewDirection().length > 0) {
                     player.runCommandAsync('scoreboard players remove @s mana 40')
@@ -354,12 +376,15 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     range = 6
                     bonusdamage = 0
                 }
+                let startx = player.location.x
+                let startz = player.location.z
+                let starty = player.location.y
                 for (let i = 0; i < range; i++) {
                     server.system.runTimeout(() => {
-                        const xlocation = player.location.x + i * cosval
-                        const zlocation = player.location.z + i * sinval
-                        dimension.spawnParticle("mmorpg:prismarinebladeparticle", { x: xlocation, y: player.location.y + 0.1, z: zlocation });
-                        dimension.getEntities({ location: { x: xlocation, y: player.location.y + 0.1, z: zlocation }, maxDistance: 1.5, families: ["mob"] }).forEach(entity => {
+                        const xlocation = startx + i * cosval
+                        const zlocation = startz + i * sinval
+                        dimension.spawnParticle("mmorpg:prismarinebladeparticle", { x: xlocation, y: starty + 0.1, z: zlocation });
+                        dimension.getEntities({ location: { x: xlocation, y: starty + 0.1, z: zlocation }, maxDistance: 1.5, families: ["mob"] }).forEach(entity => {
                             entity.applyDamage(10 + magicalpower + bonusdamage, {
                                 damagingEntity: player,
                                 cause: 'entityAttack' as server.EntityDamageCause
@@ -388,9 +413,24 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         let xlocation = originallocationx + distance * cosval
                         let zlocation = originallocationz + distance * sinval
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: xlocation, y: originallocationy + 1, z: zlocation })
+                        dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 2, families: ["mob"] }).forEach(entity => {
+                            entity.applyDamage(10, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            });
+                            dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 6, families: ["mob"] }).forEach(entity => {
+                                entity.applyDamage(20 + magicalpower, {
+                                    damagingEntity: player,
+                                    cause: 'entityAttack' as server.EntityDamageCause
+                                });
+                                dimension.spawnParticle("mmorpg:core_boss_laser_center", entity.location)
+                            })
+                        })
+
                         xlocation = originallocationx + (distance - 0.5) * cosval
                         zlocation = originallocationz + (distance - 0.5) * sinval
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: xlocation, y: originallocationy + 1, z: zlocation })
+
 
                     }, distance)
                     distance++

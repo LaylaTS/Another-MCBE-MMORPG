@@ -1,0 +1,27 @@
+{
+    "format_version": "1.17.0",
+    "minecraft:volume": {
+        "description": {
+            "identifier": "mmorpg:floatingislands"
+        },
+        "components": {
+            "minecraft:fog": {
+                "fog_identifier": "mmorpg:floatingislandsfog",
+                "priority": 0
+            },
+            "minecraft:bounds": {
+                "dimension": "overworld",
+                "max": [
+                    3200,
+                    0,
+                    -3200
+                ],
+                "min": [
+                    2800,
+                    320,
+                    -2800
+                ]
+            }
+        }
+    }
+}

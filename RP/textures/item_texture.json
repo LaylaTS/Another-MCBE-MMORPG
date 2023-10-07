@@ -109,6 +109,9 @@
 		},
 		"mmorpg_voidreaver": {
 			"textures": "textures/items/voidfirereaver"
+		},
+		"mmorpg_rankadder": {
+			"textures": "textures/items/tIeg3YS"
 		}
 	}
 }

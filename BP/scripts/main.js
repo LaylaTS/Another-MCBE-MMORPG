@@ -1,5 +1,5 @@
 import * as server from '@minecraft/server'
-import 'spawn.js'
+import 'chat.js'
 import 'swords.js'
 import 'mobdeath.js'
 import 'island.js'
@@ -17,6 +17,7 @@ const world = server.world
 world.afterEvents.worldInitialize.subscribe(data => {
     world.getDimension("minecraft:overworld").runCommand("volumearea remove_all")
     world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:cherryforest -67 81 -155 -345 201 135 cherryforest")
+    world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:floatingislands 3200 0 -3200 2800 320 -2800 floatingislands")
 })
 
 server.system.runInterval(() => { // run every tick
