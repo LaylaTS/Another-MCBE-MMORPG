@@ -115,6 +115,18 @@
 		},
 		"mmorpg_guildmanager": {
 			"textures": "textures/items/guildmanager"
+		},
+		"mmorpg_sculked_helmet": {
+			"textures": "textures/items/sculked_helmet_item"
+		},
+		"mmorpg_sculked_chestplate": {
+			"textures": "textures/items/sculked_chestplate_item"
+		},
+		"mmorpg_sculked_leggings": {
+			"textures": "textures/items/sculked_leggings_item"
+		},
+		"mmorpg_sculked_boots": {
+			"textures": "textures/items/sculked_boots_item"
 		}
 	}
 }
