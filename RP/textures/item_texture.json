@@ -112,6 +112,9 @@
 		},
 		"mmorpg_rankadder": {
 			"textures": "textures/items/tIeg3YS"
+		},
+		"mmorpg_guildmanager": {
+			"textures": "textures/items/guildmanager"
 		}
 	}
 }

@@ -30,7 +30,6 @@ world.afterEvents.worldInitialize.subscribe(eventData => {
 
 
 
-
 export function corebossbehavior() {
     const dimension = world.getDimension("minecraft:overworld");
     var corebosstimer = world.getDynamicProperty("corebosstimer") as number

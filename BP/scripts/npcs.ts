@@ -111,6 +111,7 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
                         break;
                     case 5: player.runCommand("tell @s Soon")
                         break;
+                    default: break;
                 }
             })
         } else if (eventData.hitEntity?.hasTag('bankingentity')) {

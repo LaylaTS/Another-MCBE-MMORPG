@@ -11,6 +11,7 @@ import 'npcs.js'
 import { corebossbehavior } from 'coreboss.js'
 import 'equipment.js'
 import 'skybornespecter.js'
+import 'guilds.js'
 
 
 const world = server.world

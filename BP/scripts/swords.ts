@@ -1,5 +1,6 @@
 import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
+import { guildform } from './guilds.js'
 
 var world = server.world
 var dimension = world.getDimension("minecraft:overworld")
@@ -72,25 +73,26 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
 
             break;
+        case "mmorpg:guildmanager":
+            guildform(player)
+            break;
         case "mmorpg:rankadder":
             if (player.hasTag('perms')) {
-                var form = new ui.ActionFormData()
-                    .title('Choose Player')
-                world.getAllPlayers().forEach(player => {
-                    form.button(player.name)
-                })
-                form.show(player).then(result => {
-                    var rank = new ui.ModalFormData()
-                        .title('Type in rank')
-                        .textField('Type in rank', 'rank')
 
-                    rank.show(player).then(rankoutput => {
 
-                        world.getAllPlayers()[result.selection].setDynamicProperty("playerrank", rankoutput.formValues[0])
-                    })
+
+                var rank = new ui.ModalFormData()
+                    .title('Type in rank')
+                    .textField('Type in rank', 'rank')
+                    .textField('Type in nickname', 'nick')
+
+                rank.show(player).then(rankoutput => {
+                    world.getPlayers({ name: rankoutput.formValues[1] as string })[0].setDynamicProperty("playerrank", rankoutput.formValues[0])
 
                 })
+
             }
+
 
             break;
         case "mmorpg:purpledagger":

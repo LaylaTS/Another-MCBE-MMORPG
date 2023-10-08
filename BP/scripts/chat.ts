@@ -1,6 +1,5 @@
 import * as server from "@minecraft/server";
-//import * as ui from '@minecraft/server-ui'
-
+import { getguildname } from "./guilds.js"
 const world = server.world
 
 world.afterEvents.worldInitialize.subscribe(eventData => {
@@ -17,24 +16,33 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
             switch (eventData.message) {
                 case '!spawn':
-                    eventData.cancel = true;
+
                     player.runCommandAsync('tp @s 0 66 0');
                     break;
                 case '!warp':
-                    eventData.cancel = true;
+
                     player.runCommandAsync('tp @s 39990 -57 ' + world.scoreboard.getObjective('plotcords').getScore(player));
                     break;
-                default: break;
+                default: player.sendMessage("§4§oCommand does not exist!")
+                    break;
 
-            }
+            }eventData.cancel = true;
         } else {
 
             if (player.getDynamicProperty("playerrank") == undefined) {
-                player.setDynamicProperty("playerrank", "§8Player")
+                player.setDynamicProperty("playerrank", "§8PLAYER")
 
             }
             let message = eventData.message
-            world.sendMessage(`[${player.getDynamicProperty("playerrank")}§r] ${player.name}: ${message}`)
+
+            var guild = getguildname(player)
+            if (guild == "$$$$") {
+                var guildtag = " "
+            } else {
+                var guildtag = ` <${guild[0].toUpperCase()}${guild[1].toUpperCase()}${guild[2].toUpperCase()}§r> `
+            }
+
+            world.sendMessage(`[${player.getDynamicProperty("playerrank")}§r]${guildtag}${player.name}: ${message}`)
 
             eventData.cancel = true
 
