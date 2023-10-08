@@ -1,0 +1,24 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "mmorpg:lightaetheriumbootscraft"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "key": {
+            "a": {
+                "item": "mmorpg:aetheriumingot"
+            }
+        },
+        "pattern": [
+            "  ",
+            "a a",
+            "a a"
+        ],
+        "result": {
+            "item": "mmorpg:light_aetherium_boots"
+        }
+    }
+}

@@ -11,7 +11,10 @@
 				"texture": "mmorpg_sculked_boots"
 			},
 			"minecraft:armor": {
-				"protection": 2
+				"protection": 3
+			},
+			"minecraft:display_name": {
+				"value": "§9Sculked Boots§r\n§o§7+20 Max Mana§r\n§lSet Bonus:§r §7When crouching regenerate mana and take less damage§r\n§7but become blind and very slow§r"
 			},
 			"minecraft:foil": true,
 			"minecraft:wearable": {

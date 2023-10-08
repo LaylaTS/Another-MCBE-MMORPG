@@ -7,11 +7,14 @@
 		},
 		"components": {
 			"minecraft:max_stack_size": 1,
+			"minecraft:display_name": {
+				"value": "§9Sculked Helmet§r\n§o§7+3 Mana Regen§r\n§lSet Bonus:§r §7When crouching regenerate mana and take less damage§r\n§7but become blind and very slow§r"
+			},
 			"minecraft:icon": {
 				"texture": "mmorpg_sculked_helmet"
 			},
 			"minecraft:armor": {
-				"protection": 2
+				"protection": 3
 			},
 			"minecraft:foil": true,
 			"minecraft:wearable": {

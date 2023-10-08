@@ -1,0 +1,27 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "mmorpg:sculkedlegscraft"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "key": {
+            "s": {
+                "item": "echo_shard"
+            },
+            "d": {
+                "item": "diamond"
+            }
+        },
+        "pattern": [
+            "sds",
+            "d d",
+            "d d"
+        ],
+        "result": {
+            "item": "mmorpg:sculked_leggings"
+        }
+    }
+}

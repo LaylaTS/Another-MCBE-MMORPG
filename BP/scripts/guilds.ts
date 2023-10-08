@@ -64,6 +64,44 @@ export function guildform(player: server.Player) {
                                 } else { player.sendMessage("§4Too many players in the guild!") }
 
                                 break;
+                            case 1:
+                                if (player.location.x < 50 && player.location.x > -50 && player.location.z < 50 && player.location.z > -50) {
+                                    let guildbank = world.scoreboard.getObjective("guildbank")
+                                    const guildbankform = new ui.ActionFormData()
+                                        .title("Guild Balance: " + guildbank.getScore(String(player.getDynamicProperty("guildid"))))
+                                        .button("Deposit")
+                                        .button("Withdraw")
+
+                                    guildbankform.show(player).then(data => {
+                                        if (data.selection == 0) {
+                                            const deposit = new ui.ModalFormData()
+                                                .title("Deposit")
+                                                .slider("Choose Deposit Amount", 0, world.scoreboard.getObjective("money").getScore(player), 1)
+
+                                            deposit.show(player).then(data => {
+                                                let depositamount = Math.trunc(data.formValues[0] as number)
+                                                world.scoreboard.getObjective("money").addScore(player, -depositamount)
+                                                guildbank.addScore(String(player.getDynamicProperty("guildid")), depositamount)
+                                            })
+                                        } else {
+                                            const withdraw = new ui.ModalFormData()
+                                                .title("Withdraw")
+                                                .slider("Choose Withdraw Amount", 0, guildbank.getScore(String(player.getDynamicProperty("guildid"))), 1)
+
+                                            withdraw.show(player).then(data => {
+                                                let depositamount = Math.trunc(data.formValues[0] as number)
+                                                world.scoreboard.getObjective("money").addScore(player, depositamount)
+                                                guildbank.addScore(String(player.getDynamicProperty("guildid")), -depositamount)
+                                            })
+                                        }
+                                    })
+                                } else {
+                                    player.sendMessage("§4§lYou need to be in the spawn region to use this!")
+                                    world.scoreboard.getObjective("guildbank").addScore(String(player.getDynamicProperty("guildid")), 0)
+                                }
+
+
+                                break;
                             case 2:
                                 world.scoreboard.getObjective("guildmemberscount").addScore(String(player.getDynamicProperty("guildid")), -1)
                                 player.setDynamicProperty("guildid", 0)

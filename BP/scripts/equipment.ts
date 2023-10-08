@@ -19,7 +19,7 @@ world.afterEvents.entityHurt.subscribe(eventData => {
         const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {
             if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:giantspidereye") {
-                player.runCommand('scoreboard players add @s mana 5')
+                player.runCommand('scoreboard players add @s mana 15')
             }
         }
 
@@ -45,7 +45,7 @@ server.system.runInterval(() => {
                 manaregen--
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:sculked_helmet") {
-                magicalpower = magicalpower + 10
+                manaregen = manaregen - 3
             }
         }
         if (equipment.getEquipment(server.EquipmentSlot.Chest) != undefined) {
@@ -53,6 +53,8 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:sculked_chestplate") {
+                manaregen = manaregen + 5
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs) != undefined) {
@@ -60,6 +62,8 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:sculked_leggings") {
+                maxmana = maxmana + 20
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet) != undefined) {
@@ -72,6 +76,8 @@ server.system.runInterval(() => {
                     player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 5, 0.3)
                     setbonustimings = 100
                 }
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:sculked_boots") {
+                maxmana = maxmana + 20
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {
@@ -97,6 +103,24 @@ server.system.runInterval(() => {
                         }
 
 
+                    }
+                }
+            }
+        }
+        if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:sculked_boots") {
+            if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:sculked_chestplate") {
+                if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:sculked_leggings") {
+                    if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:sculked_helmet") {
+                        if (player.isSneaking) {
+                            player.addEffect("blindness", 25, { showParticles: false, amplifier: 255 })
+                            player.addEffect("resistance", 5, { showParticles: false })
+                            player.addEffect("slowness", 5, { showParticles: false, amplifier: 25 })
+                            if (world.getAbsoluteTime() % 2 == 0) {
+
+
+                                world.scoreboard.getObjective("mana").addScore(player, 1)
+                            }
+                        }
                     }
                 }
             }

@@ -11,7 +11,10 @@
 				"texture": "mmorpg_sculked_chestplate"
 			},
 			"minecraft:armor": {
-				"protection": 2
+				"protection": 5
+			},
+			"minecraft:display_name": {
+				"value": "§9Sculked Chestplate§r\n§o§7+5 Magical Power§r\n§lSet Bonus:§r §7When crouching regenerate mana and take less damage§r\n§7but become blind and very slow§r"
 			},
 			"minecraft:foil": true,
 			"minecraft:wearable": {

@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "mmorpg:sculkhelmet"
+            "identifier": "mmorpg:sculkedbootscraft"
         },
         "tags": [
             "crafting_table"
@@ -10,15 +10,18 @@
         "key": {
             "s": {
                 "item": "echo_shard"
+            },
+            "d": {
+                "item": "diamond"
             }
         },
         "pattern": [
-            "sss",
-            "s s",
-            "  "
+            "  ",
+            "d d",
+            "s s"
         ],
         "result": {
-            "item": "mmorpg:sculked_helmet"
+            "item": "mmorpg:sculked_boots"
         }
     }
 }
