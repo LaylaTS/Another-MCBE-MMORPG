@@ -5,6 +5,9 @@ const world = server.world
 world.afterEvents.playerBreakBlock.subscribe(eventData => {
     if (eventData.dimension.id == 'minecraft:overworld') {
         let player = eventData.player
+        if (Math.floor((Math.random() * 10) + 1) == 1) {
+            world.scoreboard.getObjective("guildpoints").addScore(String(player.getDynamicProperty("guildid")), 1)
+        }
         if (eventData.brokenBlockPermutation.type.id == "minecraft:cobblestone") {
             if (Math.floor((Math.random() * 8) + 1) == 1) {
                 player.runCommand('scoreboard players add @s money 3')

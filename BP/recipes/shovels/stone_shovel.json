@@ -2,7 +2,7 @@
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "mmorpg:stone_shovel"
+            "identifier": "minecraft:stone_shovel"
         },
         "tags": [
             "crafting_table"

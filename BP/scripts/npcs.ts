@@ -175,6 +175,8 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
 
             })
         }
+    } else if (eventData.hitEntity.typeId == "mmorpg:withernpc") {
+
     }
 }
 

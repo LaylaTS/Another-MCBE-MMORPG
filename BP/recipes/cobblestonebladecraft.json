@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:cobblestonebladecraft.json"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"s": {
+				"item": "stick"
+			},
+			"f": {
+				"item": "mmorpg:finalcobblestone"
+			}
+		},
+		"pattern": [
+			"  f",
+			" f ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:cobblestoneblade"
+		}
+	}
+}

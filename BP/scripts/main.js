@@ -12,6 +12,7 @@ import { corebossbehavior } from 'coreboss.js'
 import 'equipment.js'
 import 'skybornespecter.js'
 import 'guilds.js'
+import 'seasons.js'
 
 
 const world = server.world
