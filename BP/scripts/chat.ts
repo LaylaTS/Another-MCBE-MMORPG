@@ -28,22 +28,31 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
             }eventData.cancel = true;
         } else {
+            if (!player.hasTag("muted")) {
 
-            if (player.getDynamicProperty("playerrank") == undefined) {
-                player.setDynamicProperty("playerrank", "§8PLAYER")
 
-            }
-            let message = eventData.message
 
-            var guild = getguildname(player)
-            if (guild == "$$$$") {
-                var guildtag = " "
+                if (player.getDynamicProperty("playerrank") == undefined) {
+                    player.setDynamicProperty("playerrank", "§8PLAYER")
+
+                }
+                let message = eventData.message
+
+                var guild = getguildname(player)
+                if (guild == "$$$$") {
+                    var guildtag = " "
+                } else {
+                    var guildtag = ` [${guild[0].toUpperCase()}${guild[1].toUpperCase()}${guild[2].toUpperCase()}§r] `
+                }
+                let rank = player.getDynamicProperty("playerrank")
+                if (rank == "§8PLAYER") {
+                    rank = "§8PLAYER§r§7"
+                } else { rank = rank + "§r" }
+
+                world.sendMessage(`${guildtag}§r§l${rank} ${player.name}: ${message}`)
             } else {
-                var guildtag = ` <${guild[0].toUpperCase()}${guild[1].toUpperCase()}${guild[2].toUpperCase()}§r> `
+                player.sendMessage("§4You are §lMUTED!")
             }
-
-            world.sendMessage(`[${player.getDynamicProperty("playerrank")}§r]${guildtag}${player.name}: ${message}`)
-
             eventData.cancel = true
 
         }

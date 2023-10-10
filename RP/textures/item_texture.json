@@ -12,7 +12,7 @@
 			"textures": "textures/items/orepickaxe"
 		},
 		"mmorpg_sculked_helmet": {
-			"textures": "textures/items/sculked_helmet"
+			"textures": "textures/items/sculked_helmet_item"
 		},
 		"mmorpg_mainaxe": {
 			"textures": "textures/items/mainaxe"
@@ -116,9 +116,6 @@
 		"mmorpg_guildmanager": {
 			"textures": "textures/items/guildmanager"
 		},
-		"mmorpg_sculked_helmet": {
-			"textures": "textures/items/sculked_helmet_item"
-		},
 		"mmorpg_sculked_chestplate": {
 			"textures": "textures/items/sculked_chestplate_item"
 		},
@@ -127,6 +124,9 @@
 		},
 		"mmorpg_sculked_boots": {
 			"textures": "textures/items/sculked_boots_item"
+		},
+		"mmorpg_cobblestoneblade": {
+			"textures": "textures/items/cobblestoneblade"
 		}
 	}
 }

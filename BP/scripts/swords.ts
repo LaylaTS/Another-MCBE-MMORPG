@@ -443,6 +443,19 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
             break;
+        case "mmorpg:cobblestoneblade":
+            let cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+
+
+            if (player.getItemCooldown("cobblestoneblade") == 0) {
+                cooldown.startCooldown(player)
+                world.scoreboard.getObjective("mana").addScore(player, 100)
+            }
+
+
+
+
+            break;
     }
 })
 

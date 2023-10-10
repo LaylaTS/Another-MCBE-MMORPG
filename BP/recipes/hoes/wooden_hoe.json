@@ -1,0 +1,29 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "minecraft:wooden_hoe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "XX",
+            " #",
+            " #"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:stick"
+            },
+            "X": {
+                "tag": "minecraft:planks"
+            }
+        },
+        "result": {
+            "item": "farmland",
+            "count": 64
+        },
+        "priority": -1
+    }
+}
