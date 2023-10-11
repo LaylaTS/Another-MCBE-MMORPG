@@ -82,7 +82,7 @@ export function guildform(player: server.Player) {
                                                 let depositamount = Math.trunc(data.formValues[0] as number)
                                                 world.scoreboard.getObjective("money").addScore(player, -depositamount)
                                                 guildbank.addScore(String(player.getDynamicProperty("guildid")), depositamount)
-                                            })
+                                            }).catch(() => { })
                                         } else {
                                             const withdraw = new ui.ModalFormData()
                                                 .title("Withdraw")
@@ -92,7 +92,7 @@ export function guildform(player: server.Player) {
                                                 let depositamount = Math.trunc(data.formValues[0] as number)
                                                 world.scoreboard.getObjective("money").addScore(player, depositamount)
                                                 guildbank.addScore(String(player.getDynamicProperty("guildid")), -depositamount)
-                                            })
+                                            }).catch(() => { })
                                         }
                                     })
                                 } else {
@@ -142,7 +142,7 @@ export function guildform(player: server.Player) {
                         } else {
                             player.sendMessage("§4You have declined an invitation to a guild!")
                         }
-                    })
+                    }).catch(() => { })
 
                 } else {
                     player.sendMessage("§4You have no invites!")
@@ -161,11 +161,12 @@ export function guildform(player: server.Player) {
                         player.setDynamicProperty("guildid", maxid + 1)
                         world.scoreboard.getObjective("guildmemberscount").addScore(String(maxid + 1), 1)
                         world.scoreboard.getObjective("money").addScore(player, -25000)
+                        world.scoreboard.getObjective("guildbank").addScore(String(maxid + 1), 1)
                     } else {
                         player.sendMessage("§4§lSOMETHING WENT WRONG")
                     }
 
-                })
+                }).catch(() => { })
                 break;
             default: break;
         }

@@ -127,6 +127,9 @@
 		},
 		"mmorpg_cobblestoneblade": {
 			"textures": "textures/items/cobblestoneblade"
+		},
+		"mmorpg_rodofdiscord": {
+			"textures": "textures/items/rodofdiscord"
 		}
 	}
 }

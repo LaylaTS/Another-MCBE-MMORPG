@@ -1,0 +1,21 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:rodofdiscord",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "mmorpg_rodofdiscord"
+			},
+			"minecraft:foil": true,
+			"minecraft:hand_equipped": true,
+			"minecraft:cooldown": {
+				"category": "tp",
+				"duration": 15
+			},
+			"minecraft:max_stack_size": 1
+		}
+	}
+}

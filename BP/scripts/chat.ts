@@ -40,9 +40,9 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
                 var guild = getguildname(player)
                 if (guild == "$$$$") {
-                    var guildtag = " "
+                    var guildtag = ""
                 } else {
-                    var guildtag = ` [${guild[0].toUpperCase()}${guild[1].toUpperCase()}${guild[2].toUpperCase()}§r] `
+                    var guildtag = `[${guild[0].toUpperCase()}${guild[1].toUpperCase()}${guild[2].toUpperCase()}§r] `
                 }
                 let rank = player.getDynamicProperty("playerrank")
                 if (rank == "§8PLAYER") {

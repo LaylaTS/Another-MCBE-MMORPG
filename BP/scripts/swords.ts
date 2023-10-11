@@ -444,7 +444,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:cobblestoneblade":
-            let cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
 
 
             if (player.getItemCooldown("cobblestoneblade") == 0) {
@@ -455,6 +455,48 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
 
 
+            break;
+        case "mmorpg:rodofdiscord":
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+            if (player.getItemCooldown("tp") == 0) {
+                //cooldown.startCooldown(player)
+                var rotation = player.getRotation().y
+
+                let modifier = [-30, 0, 30]
+                let check = 0
+                for (let x in modifier) {
+
+
+                    rotation = rotation + 90 + modifier[x]
+                    const radians = rotation * Math.PI / 180;
+                    const cosval = Math.cos(radians);
+                    const sinval = Math.sin(radians);
+                    for (let distance = 1; distance < 6; distance++) {
+                        let xlocation = player.location.x + distance * cosval
+                        let zlocation = player.location.z + distance * sinval
+                        if (dimension.getBlock({ x: xlocation, y: player.location.y + 0.2, z: zlocation }).isSolid) {
+                            check++
+                        }
+
+
+                    }
+                }
+
+                if (check == 0) {
+
+                    rotation = player.getRotation().y + 90
+                    const radians = rotation * Math.PI / 180;
+                    const cosval = Math.cos(radians);
+                    const sinval = Math.sin(radians);
+                    let xlocation = player.location.x + 5 * cosval
+                    let zlocation = player.location.z + 5 * sinval
+                    player.tryTeleport({ x: xlocation, y: player.location.y + 0.2, z: zlocation })
+                    cooldown.startCooldown(player)
+                }
+
+
+
+            }
             break;
     }
 })
