@@ -386,6 +386,38 @@
 			"max_distance": 200,
 			"min_distance": 100
 		},
+		"music.skybornspecter.theme": {
+			"sounds": [
+				"sounds/music/Skyborn_Specter_Theme"
+			],
+			"category": "music",
+			"max_distance": 200,
+			"min_distance": 100
+		},
+		"music.corebossdeathmode.theme": {
+			"sounds": [
+				"sounds/music/Core_Boss_Death_Mode_Theme"
+			],
+			"category": "music",
+			"max_distance": 200,
+			"min_distance": 100
+		},
+		"music.coreboss.theme": {
+			"sounds": [
+				"sounds/music/The_Core_Boss_Music_Theme"
+			],
+			"category": "music",
+			"max_distance": 200,
+			"min_distance": 100
+		},
+		"music.wither.theme": {
+			"sounds": [
+				"sounds/music/withertheme"
+			],
+			"category": "music",
+			"max_distance": 200,
+			"min_distance": 100
+		},
 		"mob.evilirongolem.death": {
 			"__use_legacy_max_distance": "true",
 			"category": "hostile",
