@@ -5,8 +5,14 @@ const world = server.world
 world.afterEvents.worldInitialize.subscribe(eventData => {
     const guild = new server.DynamicPropertiesDefinition().defineNumber("lastseasonwinner", -1)
     eventData.propertyRegistry.registerWorldDynamicProperties(guild)
-
-
+    const seasondaysleft = new server.DynamicPropertiesDefinition().defineNumber("seasondaysleft")
+    eventData.propertyRegistry.registerWorldDynamicProperties(seasondaysleft)
+    const seasonhoursleft = new server.DynamicPropertiesDefinition().defineNumber("seasonhoursleft")
+    eventData.propertyRegistry.registerWorldDynamicProperties(seasonhoursleft)
+    const seasonminutesleft = new server.DynamicPropertiesDefinition().defineNumber("seasonminutesleft")
+    eventData.propertyRegistry.registerWorldDynamicProperties(seasonminutesleft)
+    const seasonsecondsleft = new server.DynamicPropertiesDefinition().defineNumber("seasonsecondsleft")
+    eventData.propertyRegistry.registerWorldDynamicProperties(seasonsecondsleft)
 })
 
 server.system.runInterval(() => {
@@ -28,14 +34,18 @@ server.system.runInterval(() => {
         return nextMonday;
     }
     var countDownDate = getNextMonday()
-    //var countDownDate = new Date('2023-10-11T19:51:00').getTime()
     var now = new Date().getTime();
     var distance = countDownDate - now;
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    //console.warn(days, hours, minutes, seconds)
+    // console.warn(days, hours, minutes, seconds)
+    world.setDynamicProperty("seasondaysleft", days)
+    world.setDynamicProperty("seasonhoursleft", hours)
+    world.setDynamicProperty("seasonminutesleft", minutes)
+    world.setDynamicProperty("seasonsecondsleft", seconds)
+
 
     const scoreboard = world.scoreboard
     const guilds = []
@@ -62,7 +72,7 @@ server.system.runInterval(() => {
 
     if (days == 0 && hours == 0 && minutes == 0 && seconds == 0 && guildnames[0] != undefined) {
         world.sendMessage(`§g§lSeason Winner:§r ${guildnames[0]}`)
-        console.warn(String(guilds[0][0]), Math.trunc(world.scoreboard.getObjective("guildbank").getScore(String(guilds[0][0])) * 1.5))
+
         world.scoreboard.getObjective("guildbank").addScore(String(guilds[0][0]), 100000)
         world.setDynamicProperty("lastseasonwinner", parseInt(guilds[0][0]))
         if (guildnames[1] != undefined) {
@@ -81,14 +91,14 @@ server.system.runInterval(() => {
 
         //scoreboard players reset * guildpoints
     }
-    world.getDimension("overworld").getEntities({ location: { x: 6, y: 67, z: 113 }, maxDistance: 30, families: ['floatingtext'] }).forEach(entity => {
+    world.getDimension("overworld").getEntities({ location: { x: 6, y: 67, z: 113 }, maxDistance: 30, families: ["floatingtext"] }).forEach(entity => {
 
         let combinedstring = ""
         for (let i = 0; i < guilds.length; i++) {
             combinedstring = combinedstring + `§l${i + 1}.§r ${guildnames[i]}§r - ${guilds[i][1]}\n`
         }
         if (entity.hasTag("Time Display")) {
-            entity.nameTag = `Time Left:\n${days}D ${hours}H ${minutes}mg ${seconds}s`
+            entity.nameTag = `§4§lTime Left:\n${days}D ${hours}H ${minutes}m ${seconds}s`
         } else {
             entity.nameTag = '§g§lGuild Points Ranking:\n \n \n' + combinedstring
         }

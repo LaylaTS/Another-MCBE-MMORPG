@@ -63,7 +63,7 @@ export function corebossbehavior() {
                         const zlocation = location.z + i * sinval * multiplier;
 
                         dimension.getEntities({ location: { x: xlocation, y: location.y + 0.1, z: zlocation }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(10, { cause: server.EntityDamageCause.void });
+                            entity.applyDamage(8, { cause: server.EntityDamageCause.void });
                             entity.applyKnockback(0, 0, 0, 1);
                         });
 
@@ -109,7 +109,7 @@ export function corebossbehavior() {
                         players.forEach(player => {
                             if (((player.location.x > xlocation + corebosscage) || (player.location.x < xlocation - corebosscage) || (player.location.z > zlocation + corebosscage) || (player.location.z < zlocation - corebosscage)) && player.location.y < 105) {
 
-                                player.applyDamage(8, { cause: server.EntityDamageCause.void });
+                                player.applyDamage(5, { cause: server.EntityDamageCause.void });
                                 player.applyKnockback(0, 0, 0, 1);
                             }
                         })
@@ -131,7 +131,7 @@ export function corebossbehavior() {
                 }
 
 
-                if (world.getAbsoluteTime() % 3 == 0) {
+                if (world.getAbsoluteTime() % 4 == 0) {
                     world.setDynamicProperty("corebosscage", corebosscage - 1)
                 }
 
@@ -147,25 +147,25 @@ export function corebossbehavior() {
                     if (corebosscage < 41) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 })
                         dimension.getEntities({ location: { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyDamage(6, { cause: server.EntityDamageCause.contact });
                             entity.applyKnockback(0, 0, 0, 1);
                         })
                     } else if (corebosscage > 40 && corebosscage < 81) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3000 + cnt, z: 2940 + corebosscage, y: 101 })
                         dimension.getEntities({ location: { x: 3000 + cnt, z: 2940 + corebosscage, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyDamage(6, { cause: server.EntityDamageCause.contact });
                             entity.applyKnockback(0, 0, 0, 1);
                         })
                     } else if (corebosscage > 80 && corebosscage < 121) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3100 - corebosscage, z: 3000 + cnt, y: 101 })
                         dimension.getEntities({ location: { x: 3100 - corebosscage, z: 3000 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyDamage(6, { cause: server.EntityDamageCause.contact });
                             entity.applyKnockback(0, 0, 0, 1);
                         })
                     } else if (corebosscage > 120 && corebosscage < 161) {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + cnt, z: 3140 - corebosscage, y: 101 })
                         dimension.getEntities({ location: { x: 2980 + cnt, z: 3140 - corebosscage, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(10, { cause: server.EntityDamageCause.contact });
+                            entity.applyDamage(6, { cause: server.EntityDamageCause.contact });
                             entity.applyKnockback(0, 0, 0, 1);
                         })
                     }
@@ -204,7 +204,7 @@ export function corebossbehavior() {
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 3020 - corebosscage, z: 2980 + cnt, y: 101 })
 
                         dimension.getEntities({ location: { x: 3020 - corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(7, { cause: server.EntityDamageCause.void });
+                            entity.applyDamage(5, { cause: server.EntityDamageCause.void });
                             entity.applyKnockback(0, 0, 0, 1);
                         })
 
@@ -234,7 +234,7 @@ export function corebossbehavior() {
 
                         dimension.spawnParticle("mmorpg:core_boss_laser", { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 })
                         dimension.getEntities({ location: { x: 2980 + corebosscage, z: 2980 + cnt, y: 101 }, maxDistance: 1, excludeFamilies: ["enemyprojectile", "mob"] }).forEach(entity => {
-                            entity.applyDamage(7, { cause: server.EntityDamageCause.void });
+                            entity.applyDamage(5, { cause: server.EntityDamageCause.void });
                             entity.applyKnockback(0, 0, 0, 1);
                         });
                         cnt++
@@ -298,28 +298,28 @@ function corebossprojectiles(corebossprojectile, xlocation, zlocation, dimension
         let locationParticle = { x: location.x + (corebossprojectile as number * -1) + 20, y: location.y, z: location.z + world.getDynamicProperty("corebossrandomprojectilezpos") }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
+            entity.applyDamage(5, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { x: location.x + (corebossprojectile as number) - 20, y: location.y, z: location.z + (world.getDynamicProperty("corebossrandomprojectilezpos") as number * -1) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
+            entity.applyDamage(5, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { z: location.z + (corebossprojectile as number) - 20, y: location.y, x: location.x + (world.getDynamicProperty("corebossrandomprojectilexpos") as number * -1) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
+            entity.applyDamage(5, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })
         locationParticle = { z: location.z + (corebossprojectile as number * -1) + 20, y: location.y, x: location.x + (world.getDynamicProperty("corebossrandomprojectilexpos") as number) }
         dimension.spawnParticle("mmorpg:core_boss_projectile", locationParticle)
         dimension.getPlayers({ location: locationParticle, maxDistance: 0.8 }).forEach(entity => {
-            entity.applyDamage(7, { cause: server.EntityDamageCause.contact });
+            entity.applyDamage(5, { cause: server.EntityDamageCause.contact });
             entity.applyKnockback(0, 0, 0, 1);
 
         })

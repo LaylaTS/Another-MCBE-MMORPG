@@ -36,9 +36,6 @@
             "minecraft:scale": {
                 "value": 1.5
             },
-            "minecraft:boss": {
-                "hud_range": 20
-            },
             "minecraft:knockback_resistance": {
                 "value": 5000
             },

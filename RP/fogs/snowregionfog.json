@@ -1,0 +1,16 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:fog_settings": {
+        "description": {
+            "identifier": "mmorpg:snowregionfog"
+        },
+        "distance": {
+            "air": {
+                "fog_color": "#D7E1F7",
+                "fog_start": 10,
+                "fog_end": 50,
+                "render_distance_type": "fixed"
+            }
+        }
+    }
+}

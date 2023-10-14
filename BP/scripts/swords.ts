@@ -459,10 +459,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:rodofdiscord":
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
             if (player.getItemCooldown("tp") == 0) {
-                //cooldown.startCooldown(player)
+
                 var rotation = player.getRotation().y
 
-                let modifier = [-30, 0, 30]
+                let modifier = [-3, 0, 3]
                 let check = 0
                 for (let x in modifier) {
 
