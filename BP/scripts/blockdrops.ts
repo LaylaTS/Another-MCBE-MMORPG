@@ -14,7 +14,7 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
             }
         }
         if (eventData.brokenBlockPermutation.type.id == "minecraft:cobblestone") {
-            const luck: number = 1 // for future rng mechanics
+            const luck: number = 0 // for future rng mechanics
             const now = new Date()
             var eventmultiplier: number
             if (now.getDay() === 1 && now.getHours() == 18) {

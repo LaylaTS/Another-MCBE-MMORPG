@@ -8,6 +8,7 @@ world.afterEvents.entityDie.subscribe(eventData => {
         let deadhealth = eventData.deadEntity.getComponent('health').defaultValue
         if (eventData.damageSource.damagingEntity.typeId == 'minecraft:player') {
             var eventmultiplier
+            const now = new Date()
             if (now.getDay() === 2 && now.getHours() == 18) {
                 eventmultiplier = 2
             } else {

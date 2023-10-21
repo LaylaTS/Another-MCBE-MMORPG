@@ -65,7 +65,7 @@ export function guildform(player: server.Player) {
 
                                 break;
                             case 1:
-                                if (player.location.x < 50 && player.location.x > -50 && player.location.z < 50 && player.location.z > -50) {
+                                if (player.location.x < 50 && player.location.x > -50 && player.location.z < 150 && player.location.z > -50) {
                                     let guildbank = world.scoreboard.getObjective("guildbank")
                                     const guildbankform = new ui.ActionFormData()
                                         .title("Guild Balance: " + guildbank.getScore(String(player.getDynamicProperty("guildid"))))

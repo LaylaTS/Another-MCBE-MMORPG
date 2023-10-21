@@ -130,6 +130,9 @@
 		},
 		"mmorpg_rodofdiscord": {
 			"textures": "textures/items/rodofdiscord"
+		},
+		"mmorpg_transcendentblade": {
+			"textures": "textures/items/transcendentblade"
 		}
 	}
 }

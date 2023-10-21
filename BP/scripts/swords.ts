@@ -9,7 +9,6 @@ const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arro
 
 
 
-
 world.afterEvents.entityHitEntity.subscribe(eventData => {
     if (eventData.damagingEntity.typeId == "minecraft:player") {
 
@@ -360,7 +359,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:prismarineblade":
-
+            addlore(["§8Shoot bubbles in a direction", "§8dealing damage and slowing enemies", "§8Guardian's Necklace boosts damage."])
             if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
                 player.runCommandAsync("scoreboard players remove @s mana 30")
                 var rotation = player.getRotation().y
@@ -400,8 +399,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:voidreaver":
-
+            addlore(["§8Shoot a projectile which deals damage", "§8and explodes when it hits an enemy"])
             if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
+                world.scoreboard.getObjective("mana").addScore(player, -50)
                 var rotation = player.getRotation().y
                 rotation = rotation + 90
                 const radians = rotation * Math.PI / 180;
@@ -445,7 +445,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:cobblestoneblade":
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
-
+            addlore(["§8Regenerate 100 Mana"])
 
             if (player.getItemCooldown("cobblestoneblade") == 0) {
                 cooldown.startCooldown(player)
@@ -457,6 +457,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:rodofdiscord":
+            addlore(["§8Teleport 5 blocks forward"])
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
             if (player.getItemCooldown("tp") == 0) {
 
@@ -497,6 +498,29 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
 
             }
+            break;
+        case "mmorpg:transcendentblade":
+            var rotation = player.getRotation().y
+            rotation = rotation + 90
+            for (let angle = 0; angle < 1800; angle = angle + 5) {
+                server.system.runTimeout(() => {
+
+                    for (const j of [0, 180]) {
+                        const radians = ((rotation + angle + j) * Math.PI / 180)
+                        const cosval = Math.cos(radians);
+                        const sinval = Math.sin(radians);
+                        let xlocation = player.location.x + 5 * cosval
+                        let zlocation = player.location.z + 5 * sinval
+                        dimension.spawnParticle("mmorpg:transcendentbladeparticle", { x: xlocation, y: player.location.y, z: zlocation })
+
+                    }
+
+
+                }, angle / 20)
+            }
+
+
+
             break;
     }
 })
