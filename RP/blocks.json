@@ -11,5 +11,13 @@
 	"mmorpg:aetheriumore": {
 		"sound": "stone",
 		"textures": "mmorpg_aetheriumore"
+	},
+	"mmorpg:deepslate_ruby_ore": {
+		"sound": "stone",
+		"textures": "mmorpg_deepslate_ruby_ore"
+	},
+	"mmorpg:deepslate_aetherium_ore": {
+		"sound": "stone",
+		"textures": "mmorpg_deepslate_aetherium_ore"
 	}
 }

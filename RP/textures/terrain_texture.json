@@ -9,6 +9,12 @@
 		},
 		"mmorpg_aetheriumore": {
 			"textures": "textures/blocks/aetheriumore"
+		},
+		"mmorpg_deepslate_ruby_ore": {
+			"textures": "textures/blocks/deepslate_ruby_ore"
+		},
+		"mmorpg_deepslate_aetherium_ore": {
+			"textures": "textures/blocks/deepslate_aetherium_ore"
 		}
 	}
 }

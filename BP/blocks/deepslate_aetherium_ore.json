@@ -1,0 +1,20 @@
+{
+	"format_version": "1.19.50",
+	"minecraft:block": {
+		"description": {
+			"identifier": "mmorpg:deepslate_aetherium_ore"
+		},
+		"components": {
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 10
+			},
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 1
+			},
+			"minecraft:loot": "loot_tables/aetheriumoredrop.json",
+			"minecraft:map_color": "#ffffff",
+			"tag:diamond_pick_diggable": {},
+			"tag:iron_pick_diggable": {}
+		}
+	}
+}

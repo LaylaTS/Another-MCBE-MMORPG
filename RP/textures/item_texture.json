@@ -133,6 +133,24 @@
 		},
 		"mmorpg_transcendentblade": {
 			"textures": "textures/items/transcendentblade"
+		},
+		"mmorpg_aetherium_pickaxe": {
+			"textures": "textures/items/aetherium_pickaxe"
+		},
+		"mmorpg_sculked_pickaxe": {
+			"textures": "textures/items/sculked_pickaxe"
+		},
+		"mmorpg_ruby": {
+			"textures": "textures/items/ruby"
+		},
+		"mmorpg_bone_pickaxe": {
+			"textures": "textures/items/bone_pickaxe"
+		},
+		"mmorpg_ruby_pickaxe": {
+			"textures": "textures/items/ruby_pickaxe"
+		},
+		"mmorpg_prismarine_pickaxe": {
+			"textures": "textures/items/prismarine_pickaxe"
 		}
 	}
 }
