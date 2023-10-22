@@ -2,7 +2,10 @@
 	"format_version": "1.19.50",
 	"minecraft:block": {
 		"description": {
-			"identifier": "mmorpg:deepslate_ruby_ore"
+			"identifier": "mmorpg:deepslate_ruby_ore",
+			"menu_category": {
+				"category": "nature"
+			}
 		},
 		"components": {
 			"minecraft:destructible_by_mining": {

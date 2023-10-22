@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "atlas_tile": "mmorpg_enchanted_iron_block",
+        "flipbook_texture": "textures/blocks/enchanted_iron_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_emerald_block",
+        "flipbook_texture": "textures/blocks/enchanted_emerald_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_diamond_block",
+        "flipbook_texture": "textures/blocks/enchanted_diamond_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_ruby_block",
+        "flipbook_texture": "textures/blocks/enchanted_ruby_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_gold_block",
+        "flipbook_texture": "textures/blocks/enchanted_gold_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    }
+]

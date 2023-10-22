@@ -19,5 +19,29 @@
 	"mmorpg:deepslate_aetherium_ore": {
 		"sound": "stone",
 		"textures": "mmorpg_deepslate_aetherium_ore"
+	},
+	"mmorpg:enchanted_iron_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_iron_block"
+	},
+	"mmorpg:enchanted_gold_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_gold_block"
+	},
+	"mmorpg:enchanted_emerald_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_emerald_block"
+	},
+	"mmorpg:enchanted_diamond_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_diamond_block"
+	},
+	"mmorpg:enchanted_ruby_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_ruby_block"
+	},
+	"mmorpg:ruby_block": {
+		"sound": "stone",
+		"textures": "mmorpg_ruby_block"
 	}
 }

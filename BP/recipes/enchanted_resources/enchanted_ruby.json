@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:enchanted_ruby"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"B": {
+				"item": "mmorpg:ruby_block"
+			}
+		},
+		"pattern": [
+			"BBB",
+			"BBB",
+			"BBB"
+		],
+		"result": {
+			"item": "mmorpg:enchanted_ruby"
+		}
+	}
+}
