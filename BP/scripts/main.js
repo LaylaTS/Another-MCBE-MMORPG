@@ -3,7 +3,7 @@ import 'chat.js'
 import 'swords.js'
 import 'mobdeath.js'
 import 'island.js'
-import 'blockdrops.js'
+import 'mining.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
 import 'coreboss.js'
@@ -13,6 +13,7 @@ import 'equipment.js'
 import 'skybornespecter.js'
 import 'guilds.js'
 import 'seasons.js'
+import 'fillmines.js'
 
 
 const world = server.world

@@ -1,6 +1,6 @@
 pack.name=mmorpg RP
 pack.description=XD idk what to put there
-item.mmorpg:return=§5Return to Spawn
+item.mmorpg:return=§5MMORPG Menu
 item.mmorpg:sculksword=§dSculk Sword§r |§3 70 Mana§r
 item.mmorpg:orepickaxe=§9Mine it all pickaxe!
 item.spawn_egg.entity.mmorpg:spiderboss.name=Spawn Giant F. Spider

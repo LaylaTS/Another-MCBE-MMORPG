@@ -1,5 +1,6 @@
 import * as server from "@minecraft/server";
 import { getguildname } from "./guilds.js"
+import { fillmines } from "./fillmines.js"
 const world = server.world
 
 world.afterEvents.worldInitialize.subscribe(eventData => {
@@ -22,6 +23,9 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
                 case '!warp':
 
                     player.runCommandAsync('tp @s 39990 -57 ' + world.scoreboard.getObjective('plotcords').getScore(player));
+                    break;
+                case '!fillmines':
+                    fillmines()
                     break;
                 default: player.sendMessage("§4§oCommand does not exist!")
                     break;
