@@ -36,7 +36,9 @@ server.system.runInterval(() => {
         var manaregen: number = 20
         var magicalpower: number = 0
         var haste: number = -1
+        var healthboost: number = -1
         var luck: number = 1
+
         var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
         const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
         const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -92,6 +94,9 @@ server.system.runInterval(() => {
             if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:aetheriumstar") {
                 magicalpower = magicalpower + 10
             }
+            if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:ruby_heart") {
+                healthboost = healthboost + 2
+            }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:light_aetherium_boots") {
             if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:light_aetherium_chestplate") {
@@ -138,6 +143,9 @@ server.system.runInterval(() => {
         }
         if (haste > -1) {
             player.addEffect("haste", 25, { amplifier: haste, showParticles: false })
+        }
+        if (healthboost > -1) {
+            player.addEffect("health_boost", 25, { amplifier: healthboost, showParticles: false })
         }
 
         player.setDynamicProperty("setbonustimings", setbonustimings)

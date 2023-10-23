@@ -151,6 +151,9 @@
 		},
 		"mmorpg_prismarine_pickaxe": {
 			"textures": "textures/items/prismarine_pickaxe"
+		},
+		"mmorpg_ruby_heart": {
+			"textures": "textures/items/rubyheart"
 		}
 	}
 }
