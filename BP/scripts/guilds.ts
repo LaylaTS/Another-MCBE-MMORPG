@@ -54,44 +54,45 @@ export function guildform(player: server.Player) {
                                         invited.setDynamicProperty("guildinvite", player.getDynamicProperty("guildid"))
                                         invited.sendMessage("§3You got a guild invite!")
 
-                                    })
+                                    }).catch(() => { })
                                 } else { player.sendMessage("§4Too many players in the guild!") }
 
                                 break;
                             case 1:
                                 if (player.location.x < 50 && player.location.x > -50 && player.location.z < 150 && player.location.z > -50) {
-                                    let guildbank = world.scoreboard.getObjective("guildbank")
+                                    const guildbankamount: number = world.getDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`) as number
+                                    const money: number = player.getDynamicProperty("money") as number
                                     const guildbankform = new ui.ActionFormData()
-                                        .title("Guild Balance: " + guildbank.getScore(String(player.getDynamicProperty("guildid"))))
+                                        .title("Guild Balance: " + guildbankamount)
                                         .button("Deposit")
                                         .button("Withdraw")
 
                                     guildbankform.show(player).then(data => {
                                         if (data.selection == 0) {
+
                                             const deposit = new ui.ModalFormData()
                                                 .title("Deposit")
-                                                .slider("Choose Deposit Amount", 0, world.scoreboard.getObjective("money").getScore(player), 1)
+                                                .slider("Choose Deposit Amount", 0, money, 1)
 
                                             deposit.show(player).then(data => {
                                                 let depositamount = Math.trunc(data.formValues[0] as number)
-                                                world.scoreboard.getObjective("money").addScore(player, -depositamount)
-                                                guildbank.addScore(String(player.getDynamicProperty("guildid")), depositamount)
+                                                player.setDynamicProperty("money", money - depositamount)
+                                                world.setDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`, guildbankamount + depositamount)
                                             }).catch(() => { })
                                         } else {
                                             const withdraw = new ui.ModalFormData()
                                                 .title("Withdraw")
-                                                .slider("Choose Withdraw Amount", 0, guildbank.getScore(String(player.getDynamicProperty("guildid"))), 1)
+                                                .slider("Choose Withdraw Amount", 0, guildbankamount, 1)
 
                                             withdraw.show(player).then(data => {
-                                                let depositamount = Math.trunc(data.formValues[0] as number)
-                                                world.scoreboard.getObjective("money").addScore(player, depositamount)
-                                                guildbank.addScore(String(player.getDynamicProperty("guildid")), -depositamount)
+                                                let withdrawamount = Math.trunc(data.formValues[0] as number)
+                                                player.setDynamicProperty("money", money + withdrawamount)
+                                                world.setDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`, guildbankamount - withdrawamount)
                                             }).catch(() => { })
                                         }
-                                    })
+                                    }).catch(() => { })
                                 } else {
                                     player.sendMessage("§4§lYou need to be in the spawn region to use this!")
-                                    world.scoreboard.getObjective("guildbank").addScore(String(player.getDynamicProperty("guildid")), 0)
                                 }
 
 
@@ -102,7 +103,7 @@ export function guildform(player: server.Player) {
                                 player.sendMessage("§4§lYou have left a guild!")
                                 break;
                         }
-                    })
+                    }).catch(() => { })
 
                 } else {
                     player.sendMessage("§4§lJoin a guild first!")
@@ -155,7 +156,8 @@ export function guildform(player: server.Player) {
                         player.setDynamicProperty("guildid", maxid + 1)
                         world.scoreboard.getObjective("guildmemberscount").addScore(String(maxid + 1), 1)
                         player.setDynamicProperty("money", player.getDynamicProperty("money") as number - 25000)
-                        world.scoreboard.getObjective("guildbank").addScore(String(maxid + 1), 1)
+                        world.setDynamicProperty(`guildbank${String(maxid + 1)}`, 1)
+
                     } else {
                         player.sendMessage("§4§lSOMETHING WENT WRONG")
                     }
@@ -164,5 +166,5 @@ export function guildform(player: server.Player) {
                 break;
             default: break;
         }
-    })
+    }).catch(() => { })
 }

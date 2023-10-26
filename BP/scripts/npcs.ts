@@ -193,7 +193,6 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
         }
     } else if (entity.typeId == "mmorpg:withernpc") {
         let player = eventData.player as server.Player
-        console.warn(world.getDynamicProperty("lastseasonwinner"))
         const guildnpcform = new ui.ActionFormData()
             .title("Guilds")
             .button("Guild Menu")
