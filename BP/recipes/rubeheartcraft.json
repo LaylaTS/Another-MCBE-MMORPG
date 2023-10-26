@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:rubeheartcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"r": {
+				"item": "mmorpg:ruby"
+			}
+		},
+		"pattern": [
+			"r r",
+			"rrr",
+			" r "
+		],
+		"result": {
+			"item": "mmorpg:ruby_heart"
+		}
+	}
+}

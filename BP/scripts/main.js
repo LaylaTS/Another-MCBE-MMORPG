@@ -42,10 +42,42 @@ server.system.runInterval(() => { // run every tick
         let tonextlvl = player.totalXpNeededForNextLevel
         tonextlvl = tonextlvl / maxmana
         player.addExperience(tonextlvl * mana - 1)
+        if (server.system.currentTick % 20 == 0) {
+            world.scoreboard.getObjective("playtime").addScore(player, 1)
+
+        }
 
 
     })
     corebossbehavior()
 
+
+    if (server.system.currentTick % 200 == 0) {
+        if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "deathdisplay") {
+            world.scoreboard.removeObjective("moneydisplay")
+            world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:")
+            world.getAllPlayers().forEach(player => {
+                player.runCommand("scoreboard players operation @s moneydisplay = @s money")
+            })
+            world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('moneydisplay') })
+        } else if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "moneydisplay") {
+
+            world.scoreboard.removeObjective("playtimedisplay")
+            world.scoreboard.addObjective("playtimedisplay", "§bPlaytime Ranking:")
+            world.getAllPlayers().forEach(player => {
+                world.scoreboard.getObjective("playtimedisplay").setScore(player, Math.trunc(world.scoreboard.getObjective("playtime").getScore(player) / 3600))
+            })
+            world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('playtimedisplay') })
+
+        } else {
+            world.scoreboard.removeObjective("deathdisplay")
+            world.scoreboard.addObjective("deathdisplay", "§4Death Ranking:")
+            world.getAllPlayers().forEach(player => {
+                world.scoreboard.getObjective("deathdisplay").setScore(player, Math.trunc(world.scoreboard.getObjective("deathcounter").getScore(player)))
+            })
+            world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('deathdisplay') })
+
+        }
+    }
 })
 

@@ -3,18 +3,18 @@ import * as server from '@minecraft/server'
 
 const world = server.world
 
-world.afterEvents.worldInitialize.subscribe(eventData => {
-    var lastlogindd = new server.DynamicPropertiesDefinition().defineNumber("lastlogindd")
-    var lastloginmm = new server.DynamicPropertiesDefinition().defineNumber("lastloginmm")
-    var lastloginyyyy = new server.DynamicPropertiesDefinition().defineNumber("lastloginyyyy")
-    var streak = new server.DynamicPropertiesDefinition().defineNumber("streak", 0)
+// world.afterEvents.worldInitialize.subscribe(eventData => {
+//     var lastlogindd = new server.DynamicPropertiesDefinition().defineNumber("lastlogindd")
+//     var lastloginmm = new server.DynamicPropertiesDefinition().defineNumber("lastloginmm")
+//     var lastloginyyyy = new server.DynamicPropertiesDefinition().defineNumber("lastloginyyyy")
+//     var streak = new server.DynamicPropertiesDefinition().defineNumber("streak", 0)
 
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastlogindd, "minecraft:player")
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginmm, "minecraft:player")
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginyyyy, "minecraft:player")
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(streak, "minecraft:player")
+//     eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastlogindd, "minecraft:player")
+//     eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginmm, "minecraft:player")
+//     eventData.propertyRegistry.registerEntityTypeDynamicProperties(lastloginyyyy, "minecraft:player")
+//     eventData.propertyRegistry.registerEntityTypeDynamicProperties(streak, "minecraft:player")
 
-})
+// })
 
 world.afterEvents.playerSpawn.subscribe(eventData => {
     var player = eventData.player as server.Player

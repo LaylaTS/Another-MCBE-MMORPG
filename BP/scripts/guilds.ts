@@ -4,12 +4,6 @@ import * as ui from '@minecraft/server-ui'
 const world = server.world
 
 
-world.afterEvents.worldInitialize.subscribe(eventData => {
-    const guild = new server.DynamicPropertiesDefinition().defineNumber("guildid", 0)
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(guild, "minecraft:player")
-    const guildinvite = new server.DynamicPropertiesDefinition().defineNumber("guildinvite", 0)
-    eventData.propertyRegistry.registerEntityTypeDynamicProperties(guildinvite, "minecraft:player")
-})
 
 export function getguildname(player: server.Player) {
     var guildname: string

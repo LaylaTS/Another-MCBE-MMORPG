@@ -2,18 +2,18 @@ import * as server from '@minecraft/server'
 
 const world = server.world
 
-world.afterEvents.worldInitialize.subscribe(eventData => {
-    const guild = new server.DynamicPropertiesDefinition().defineNumber("lastseasonwinner", -1)
-    eventData.propertyRegistry.registerWorldDynamicProperties(guild)
-    const seasondaysleft = new server.DynamicPropertiesDefinition().defineNumber("seasondaysleft")
-    eventData.propertyRegistry.registerWorldDynamicProperties(seasondaysleft)
-    const seasonhoursleft = new server.DynamicPropertiesDefinition().defineNumber("seasonhoursleft")
-    eventData.propertyRegistry.registerWorldDynamicProperties(seasonhoursleft)
-    const seasonminutesleft = new server.DynamicPropertiesDefinition().defineNumber("seasonminutesleft")
-    eventData.propertyRegistry.registerWorldDynamicProperties(seasonminutesleft)
-    const seasonsecondsleft = new server.DynamicPropertiesDefinition().defineNumber("seasonsecondsleft")
-    eventData.propertyRegistry.registerWorldDynamicProperties(seasonsecondsleft)
-})
+// world.afterEvents.worldInitialize.subscribe(eventData => {
+//     const guild = new server.DynamicPropertiesDefinition().defineNumber("lastseasonwinner", -1)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(guild)
+//     const seasondaysleft = new server.DynamicPropertiesDefinition().defineNumber("seasondaysleft")
+//     eventData.propertyRegistry.registerWorldDynamicProperties(seasondaysleft)
+//     const seasonhoursleft = new server.DynamicPropertiesDefinition().defineNumber("seasonhoursleft")
+//     eventData.propertyRegistry.registerWorldDynamicProperties(seasonhoursleft)
+//     const seasonminutesleft = new server.DynamicPropertiesDefinition().defineNumber("seasonminutesleft")
+//     eventData.propertyRegistry.registerWorldDynamicProperties(seasonminutesleft)
+//     const seasonsecondsleft = new server.DynamicPropertiesDefinition().defineNumber("seasonsecondsleft")
+//     eventData.propertyRegistry.registerWorldDynamicProperties(seasonsecondsleft)
+// })
 
 server.system.runInterval(() => {
 

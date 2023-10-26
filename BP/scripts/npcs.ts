@@ -7,19 +7,20 @@ const world = server.world
 
 
 
-world.afterEvents.entityHitEntity.subscribe(eventData => {
-    if (eventData.hitEntity.typeId == "mmorpg:marketsniffer") {
-        let player = eventData.damagingEntity as server.Player
-        if (eventData.hitEntity?.hasTag('marketsniffer')) {
+world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
+    let entity = eventData.target
+    if (entity.typeId == "mmorpg:marketsniffer") {
+        let player = eventData.player as server.Player
+        if (entity.hasTag('marketsniffer')) {
             let form = new ui.ActionFormData()
                 .title("Market")
                 .body("Choose category:")
-                .button("Resources") // 0 przy selection
-                .button("Armor")
-                .button("Weapons")
-                .button("Tools")//, "textures/ui_icons/tools.png")
-                .button("Potions")
-                .button("Utility Items")
+                .button("Resources", "textures/items/iron_ingot.png") // 0 przy selection
+                .button("Armor", "textures/items/iron_chestplate.png")
+                .button("Weapons", "textures/items/iron_sword.png")
+                .button("Tools", "textures/ui_icons/tools.png")
+                .button("Potions", "textures/items/potion_bottle_heal.png")
+                .button("Utility Items", "textures/items/compass_item.png")
             form.show(player).then(result => {
                 switch (result.selection) {
                     case 0:
@@ -125,7 +126,7 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
                     default: break;
                 }
             })
-        } else if (eventData.hitEntity?.hasTag('bankingentity')) {
+        } else if (entity.hasTag('bankingentity')) {
             let form = new ui.ActionFormData()
                 .title("Bank")
                 .button("Deposit", "textures/ui_icons/arrow-down-line.png")
@@ -178,8 +179,8 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
 
             })
         }
-    } else if (eventData.hitEntity.typeId == "mmorpg:withernpc") {
-        let player = eventData.damagingEntity as server.Player
+    } else if (entity.typeId == "mmorpg:withernpc") {
+        let player = eventData.player as server.Player
         console.warn(world.getDynamicProperty("lastseasonwinner"))
         const guildnpcform = new ui.ActionFormData()
             .title("Guilds")

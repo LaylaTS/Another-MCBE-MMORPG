@@ -2,19 +2,19 @@ import * as server from '@minecraft/server'
 
 const world = server.world
 
-world.afterEvents.worldInitialize.subscribe(data => {
-    var maxmana = new server.DynamicPropertiesDefinition().defineNumber("maxmana")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(maxmana, server.EntityTypes.get("minecraft:player"))
-    var manaregen = new server.DynamicPropertiesDefinition().defineNumber("manaregen")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(manaregen, server.EntityTypes.get("minecraft:player"))
-    var magicalpower = new server.DynamicPropertiesDefinition().defineNumber("magicalpower")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(magicalpower, server.EntityTypes.get("minecraft:player"))
-    var setbonustimings = new server.DynamicPropertiesDefinition().defineNumber("setbonustimings", 0)
-    data.propertyRegistry.registerEntityTypeDynamicProperties(setbonustimings, server.EntityTypes.get("minecraft:player"))
-    var luck = new server.DynamicPropertiesDefinition().defineNumber("luck", 0)
-    data.propertyRegistry.registerEntityTypeDynamicProperties(luck, server.EntityTypes.get("minecraft:player"))
+// world.afterEvents.worldInitialize.subscribe(data => {
+//     var maxmana = new server.DynamicPropertiesDefinition().defineNumber("maxmana")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(maxmana, server.EntityTypes.get("minecraft:player"))
+//     var manaregen = new server.DynamicPropertiesDefinition().defineNumber("manaregen")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(manaregen, server.EntityTypes.get("minecraft:player"))
+//     var magicalpower = new server.DynamicPropertiesDefinition().defineNumber("magicalpower")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(magicalpower, server.EntityTypes.get("minecraft:player"))
+//     var setbonustimings = new server.DynamicPropertiesDefinition().defineNumber("setbonustimings", 0)
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(setbonustimings, server.EntityTypes.get("minecraft:player"))
+//     var luck = new server.DynamicPropertiesDefinition().defineNumber("luck", 0)
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(luck, server.EntityTypes.get("minecraft:player"))
 
-})
+// })
 
 world.afterEvents.entityHurt.subscribe(eventData => {
     if (eventData.hurtEntity.typeId == "minecraft:player") {
