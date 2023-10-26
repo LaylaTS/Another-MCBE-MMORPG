@@ -5,6 +5,9 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
     let player = eventData.player
     player.addEffect("regeneration", 20, { showParticles: false, amplifier: 255 })
     world.scoreboard.getObjective("spawntimer").setScore(player, 200)
+    if (player.getDynamicProperty("money") == undefined) {
+        player.setDynamicProperty("money", 0)
+    }
     if (eventData.initialSpawn) {
         if (eventData.player.hasTag('joined') == false) {
 

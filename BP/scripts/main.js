@@ -16,8 +16,23 @@ import 'seasons.js'
 import 'fillmines.js'
 
 
+export const displayEnum = [
+    "k",
+    "m",
+    "b",
+];
+
+export function metricNumbers(number) {
+    if (number <= 999) return number;
+    for (let i = 0; i < displayEnum.length; i++) {
+        if (number >= 1000 ** (i + 1) && number < 1000 ** (i + 2)) {
+            return `${(number / 1000 ** (i + 1)).toFixed(2)}${displayEnum[i]}`;
+        };
+    };
+};
+
 const world = server.world
-world.afterEvents.worldInitialize.subscribe(data => {
+world.afterEvents.worldInitialize.subscribe(() => {
     world.getDimension("minecraft:overworld").runCommand("volumearea remove_all")
     world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:cherryforest -67 81 -155 -345 201 135 cherryforest")
     world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:floatingislands 3200 0 -3200 2800 320 -2800 floatingislands")
@@ -26,6 +41,7 @@ world.afterEvents.worldInitialize.subscribe(data => {
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
     players.forEach(function (player) { // run for every player
+        let money = player.getDynamicProperty("money")
         var maxmana = player.getDynamicProperty("maxmana")
         player.runCommandAsync('scoreboard players set @s maxmana ' + maxmana)
         let mana = server.world.scoreboard.getObjective('mana').getScore(player)
@@ -42,22 +58,25 @@ server.system.runInterval(() => { // run every tick
         let tonextlvl = player.totalXpNeededForNextLevel
         tonextlvl = tonextlvl / maxmana
         player.addExperience(tonextlvl * mana - 1)
+
         if (server.system.currentTick % 20 == 0) {
             world.scoreboard.getObjective("playtime").addScore(player, 1)
+            player.setDynamicProperty("money", money + world.scoreboard.getObjective("money").getScore(player))
+
+            world.scoreboard.getObjective("money").setScore(player, 0)
 
         }
-
-
+        player.onScreenDisplay.setActionBar(`§2Money: §a\$${metricNumbers(money)}`)
     })
     corebossbehavior()
 
 
-    if (server.system.currentTick % 200 == 0) {
+    if (server.system.currentTick % 20 == 0) {
         if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "deathdisplay") {
             world.scoreboard.removeObjective("moneydisplay")
-            world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:")
+            world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:§r§o§7 (k)")
             world.getAllPlayers().forEach(player => {
-                player.runCommand("scoreboard players operation @s moneydisplay = @s money")
+                player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc(player.getDynamicProperty("money") / 1000)}`)
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('moneydisplay') })
         } else if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "moneydisplay") {

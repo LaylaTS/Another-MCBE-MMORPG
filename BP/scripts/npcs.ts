@@ -9,9 +9,16 @@ const world = server.world
 
 world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
     let entity = eventData.target
+
     if (entity.typeId == "mmorpg:marketsniffer") {
         let player = eventData.player as server.Player
+        const money: number = player.getDynamicProperty("money") as number
+        function removemoney(amount) {
+            player.setDynamicProperty("money", money - amount)
+        }
         if (entity.hasTag('marketsniffer')) {
+
+
             let form = new ui.ActionFormData()
                 .title("Market")
                 .body("Choose category:")
@@ -38,57 +45,57 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             if (result.selection == 0) {
                                 var ironbuy = new ui.ModalFormData()
                                     .title("Buy Iron")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 250, 1, 0)
+                                    .slider("Amount", 0, money / 250, 1, 0)
 
                                 ironbuy.show(player).then(result => {
                                     player.runCommand('give @s iron_ingot ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 250)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 250)
 
                                 }).catch(() => { })
                             } else if (result.selection == 1) {
                                 var oakbuy = new ui.ModalFormData()
                                     .title("Buy Oak")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 50, 1, 0)
+                                    .slider("Amount", 0, money / 50, 1, 0)
 
                                 oakbuy.show(player).then(result => {
                                     player.runCommand('give @s log ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 50)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 50)
                                 }).catch(() => { })
                             } else if (result.selection == 2) {
                                 var diamondbuy = new ui.ModalFormData()
                                     .title("Buy Diamond")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 2000, 1, 0)
+                                    .slider("Amount", 0, money / 2000, 1, 0)
 
                                 diamondbuy.show(player).then(result => {
                                     player.runCommand('give @s diamond ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 2000)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 2000)
                                 }).catch(() => { })
                             } else if (result.selection == 3) {
                                 var netheritebuy = new ui.ModalFormData()
                                     .title("Buy Netherite")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 100000, 1, 0)
+                                    .slider("Amount", 0, money / 100000, 1, 0)
 
                                 netheritebuy.show(player).then(result => {
                                     player.runCommand('give @s netherite_ingot ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 100000)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 10000)
                                 }).catch(() => { })
                             } else if (result.selection == 4) {
                                 var lavabuy = new ui.ModalFormData()
                                     .title("Buy Lava Bucket")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 2500, 1, 0)
+                                    .slider("Amount", 0, money / 2500, 1, 0)
 
                                 lavabuy.show(player).then(result => {
                                     player.runCommand('give @s lava_bucket ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 2500)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 2500)
                                 }).catch(() => { })
                             } else if (result.selection == 5) {
                                 var buy = new ui.ModalFormData()
                                     .title("Buy Aetherium")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 2500, 1, 0)
+                                    .slider("Amount", 0, money / 2500, 1, 0)
 
                                 buy.show(player).then(result => {
                                     player.runCommand('give @s mmorpg:aetherium ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 2500)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 2500)
                                 }).catch(() => { })
                             }
                         })
@@ -111,11 +118,11 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             if (result.selection == 0) {
                                 var buysmallmanapotion = new ui.ModalFormData()
                                     .title("Small")
-                                    .slider("Amount", 0, world.scoreboard.getObjective('money').getScore(player) / 200, 1, 0)
+                                    .slider("Amount", 0, money / 200, 1, 0)
 
                                 buysmallmanapotion.show(player).then(result => {
                                     player.runCommand('give @s mmorpg:smallmanapotion ' + Math.trunc(result.formValues[0] as number))
-                                    player.runCommand('scoreboard players remove @s money ' + Math.trunc(result.formValues[0] as number) * 200)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 200)
                                 }).catch(() => { })
 
                             }
@@ -137,11 +144,15 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
 
 
             form.show(player).then(result => {
+                const bank = player.getDynamicProperty("bankbalance") as number
+                if (bank == undefined) {
+                    player.setDynamicProperty("bankbalance", 0)
+                }
                 let selection = result.selection
                 if (selection == 0) {
                     var deposit = new ui.ModalFormData()
                         .title('Deposit')
-                        .slider('Money', 0, world.scoreboard.getObjective('money').getScore(player), 1, 0)
+                        .slider('Money', 0, money, 1, 0)
 
 
                     deposit.show(player).then(onFullfilled => {
@@ -149,8 +160,9 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
 
                         let depositing = onFullfilled.formValues[0]
                         depositing = Math.trunc(depositing as number)
-                        player.runCommandAsync('scoreboard players add @s bank ' + depositing)
-                        player.runCommandAsync('scoreboard players remove @s money ' + depositing)
+
+                        removemoney(depositing)
+                        player.setDynamicProperty("bankbalance", bank + depositing)
 
 
 
@@ -159,19 +171,19 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                 } else if (selection == 1) {
                     var withdraw = new ui.ModalFormData()
                         .title('Withdraw')
-                        .slider('Money', 0, world.scoreboard.getObjective('bank').getScore(player), 1, 0)
+                        .slider('Money', 0, bank, 1, 0)
 
                     withdraw.show(player).then(withdrawn => {
 
                         let withdrawing = withdrawn.formValues[0]
                         withdrawing = Math.trunc(withdrawing as number)
-                        player.runCommandAsync('scoreboard players add @s money ' + withdrawing)
-                        player.runCommandAsync('scoreboard players remove @s bank ' + withdrawing)
+                        player.setDynamicProperty("bankbalance", bank - withdrawing)
+                        player.setDynamicProperty("money", money + withdrawing)
 
 
                     }).catch(() => { })
                 } else if (selection == 2) {
-                    player.runCommand('tellraw @s {"rawtext":[{"text":"§gCurrent balance:§r §2"},{"score":{"name":"@s","objective":"bank"}}]}')
+                    player.runCommand(`tellraw @s {"rawtext":[{"text":"§gCurrent balance:§r§2 ${bank}"}]}`)
                 } else {
 
                 }

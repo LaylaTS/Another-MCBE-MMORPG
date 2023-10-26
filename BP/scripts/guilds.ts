@@ -150,11 +150,11 @@ export function guildform(player: server.Player) {
 
                 createguildform.show(player).then(data => {
 
-                    if (world.scoreboard.getObjective("money").getScore(player) > 24999 && player.getDynamicProperty("guildid") == 0 && String(data.formValues[0]).length > 3) {
+                    if (player.getDynamicProperty("money") > 24999 && player.getDynamicProperty("guildid") == 0 && String(data.formValues[0]).length > 3) {
                         world.scoreboard.getObjective("guildids").addScore(data.formValues[0] as string, maxid + 1)
                         player.setDynamicProperty("guildid", maxid + 1)
                         world.scoreboard.getObjective("guildmemberscount").addScore(String(maxid + 1), 1)
-                        world.scoreboard.getObjective("money").addScore(player, -25000)
+                        player.setDynamicProperty("money", player.getDynamicProperty("money") as number - 25000)
                         world.scoreboard.getObjective("guildbank").addScore(String(maxid + 1), 1)
                     } else {
                         player.sendMessage("§4§lSOMETHING WENT WRONG")
