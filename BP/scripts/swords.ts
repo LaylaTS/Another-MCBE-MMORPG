@@ -53,7 +53,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
     }
     switch (item.typeId) {
         case "mmorpg:return":
-    mmorpgmenu(player)
+            mmorpgmenu(player)
             break;
         case "mmorpg:guildmanager":
             guildform(player)
@@ -231,7 +231,11 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     let dz = player.location.z - startpos.z
                     let sumofsquares = dx * dx + dy * dy + dz * dz
                     if (Math.sqrt(sumofsquares) < 100) {
-                        player.tryTeleport(startpos)
+                        if (!dimension.getBlock(startpos).isSolid) {
+
+
+                            player.tryTeleport(startpos, { checkForBlocks: true })
+                        }
                     }
                 }, 100)
             }
@@ -455,10 +459,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     const radians = rotation * Math.PI / 180;
                     const cosval = Math.cos(radians);
                     const sinval = Math.sin(radians);
-                    for (let distance = 1; distance < 6; distance++) {
-                        let xlocation = player.location.x + distance * cosval
-                        let zlocation = player.location.z + distance * sinval
-                        if (dimension.getBlock({ x: xlocation, y: player.location.y + 0.2, z: zlocation }).isSolid) {
+                    for (let distance = 1; distance < 30; distance++) {
+                        let xlocation = player.location.x + (distance / 5) * cosval
+                        let zlocation = player.location.z + (distance / 5) * sinval
+                        if (!dimension.getBlock({ x: xlocation, y: player.location.y + 0.2, z: zlocation }).isAir) {
                             check++
                         }
 
@@ -466,7 +470,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     }
                 }
 
-                if (check == 0) {
+                if (check == 0 && player.location.z < 40000 && player.location.x < 40000) {
 
                     rotation = player.getRotation().y + 90
                     const radians = rotation * Math.PI / 180;

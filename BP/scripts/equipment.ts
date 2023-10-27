@@ -32,7 +32,7 @@ world.afterEvents.entityHurt.subscribe(eventData => {
 
 server.system.runInterval(() => {
     world.getAllPlayers().forEach(player => {
-        var maxmana: number = 50
+        var maxmana: number = 75
         var manaregen: number = 20
         var magicalpower: number = 0
         var haste: number = -1

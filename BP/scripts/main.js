@@ -71,12 +71,16 @@ server.system.runInterval(() => { // run every tick
     corebossbehavior()
 
 
-    if (server.system.currentTick % 20 == 0) {
+    if (server.system.currentTick % 200 == 0) {
         if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "deathdisplay") {
             world.scoreboard.removeObjective("moneydisplay")
             world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:§r§o§7 (k)")
             world.getAllPlayers().forEach(player => {
-                player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc(player.getDynamicProperty("money") / 1000)}`)
+                let bank = 0
+                if (player.getDynamicProperty("bankbalance") != undefined) bank = player.getDynamicProperty("bankbalance")
+
+
+                player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc((player.getDynamicProperty("money") + bank) / 1000)}`)
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('moneydisplay') })
         } else if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "moneydisplay") {
@@ -100,3 +104,10 @@ server.system.runInterval(() => { // run every tick
     }
 })
 
+world.beforeEvents.pistonActivate.subscribe(data => {
+    data.cancel = true
+    server.system.run(() => {
+        world.getDimension("overworld").createExplosion(data.block.location, 1, { breaksBlocks: true })
+    })
+
+})

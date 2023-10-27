@@ -1,6 +1,7 @@
 import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
 import { guildform } from './guilds.js'
+import { minioninteract } from './minionbehavior.js'
 
 const world = server.world
 
@@ -161,8 +162,8 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                         let depositing = onFullfilled.formValues[0]
                         depositing = Math.trunc(depositing as number)
 
-                        removemoney(depositing)
-                        player.setDynamicProperty("bankbalance", bank + depositing)
+                        player.setDynamicProperty("money", money - Math.trunc(depositing))
+                        player.setDynamicProperty("bankbalance", bank + Math.trunc(depositing))
 
 
 
@@ -177,8 +178,8 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
 
                         let withdrawing = withdrawn.formValues[0]
                         withdrawing = Math.trunc(withdrawing as number)
-                        player.setDynamicProperty("bankbalance", bank - withdrawing)
-                        player.setDynamicProperty("money", money + withdrawing)
+                        player.setDynamicProperty("bankbalance", bank - Math.trunc(withdrawing))
+                        player.setDynamicProperty("money", money + Math.trunc(withdrawing))
 
 
                     }).catch(() => { })
@@ -227,6 +228,8 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
             }
         })
 
+    } else if (entity.typeId == "mmorpg:minion") {
+        minioninteract(eventData.player, entity)
     }
 }
 

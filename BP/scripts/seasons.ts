@@ -81,7 +81,7 @@ server.system.runInterval(() => {
             scoreboard.getObjective("guildbank").addScore(String(guilds[1][0]), 50000)
             if (guildnames[2] != undefined) {
                 world.sendMessage(`§6§lThird Place:§r ${guildnames[2]}`)
-                scoreboard.getObjective("guildbank").setScore(String(guilds[2][0]), 25000)
+                scoreboard.getObjective("guildbank").addScore(String(guilds[2][0]), 25000)
             }
         }
         scoreboard.removeObjective("guildpoints")

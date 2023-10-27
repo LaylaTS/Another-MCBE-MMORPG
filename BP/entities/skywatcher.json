@@ -22,8 +22,8 @@
       },
       "minecraft:nameable": {},
       "minecraft:health": {
-        "value": 40,
-        "max": 40
+        "value": 70,
+        "max": 70
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -48,7 +48,7 @@
       },
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:attack": {
-        "damage": 7
+        "damage": 5
       },
       "minecraft:breathable": {
         "total_supply": 15,

@@ -1,0 +1,28 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:membranetoaetherium"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"A": {
+				"item": "mmorpg:aetherium"
+			},
+			"M": {
+				"item": "phantom_membrane"
+			}
+		},
+		"pattern": [
+			" M ",
+			"MAM",
+			" M "
+		],
+		"result": {
+			"count": 2,
+			"item": "mmorpg:aetherium"
+		}
+	}
+}

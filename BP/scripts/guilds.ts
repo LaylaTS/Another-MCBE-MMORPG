@@ -8,7 +8,7 @@ const world = server.world
 export function getguildname(player: server.Player) {
     var guildname: string
 
-    if (player.getDynamicProperty("guildid") == 0) {
+    if (player.getDynamicProperty("guildid") == undefined || player.getDynamicProperty("guildid") == 0) {
         return "$$$$"
     }
     world.scoreboard.getObjective("guildids").getParticipants().forEach(participant => {
@@ -61,6 +61,7 @@ export function guildform(player: server.Player) {
                             case 1:
                                 if (player.location.x < 50 && player.location.x > -50 && player.location.z < 150 && player.location.z > -50) {
                                     const guildbankamount: number = world.getDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`) as number
+
                                     const money: number = player.getDynamicProperty("money") as number
                                     const guildbankform = new ui.ActionFormData()
                                         .title("Guild Balance: " + guildbankamount)
@@ -79,7 +80,7 @@ export function guildform(player: server.Player) {
                                                 player.setDynamicProperty("money", money - depositamount)
                                                 world.setDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`, guildbankamount + depositamount)
                                             }).catch(() => { })
-                                        } else {
+                                        } else if (data.selection == 1) {
                                             const withdraw = new ui.ModalFormData()
                                                 .title("Withdraw")
                                                 .slider("Choose Withdraw Amount", 0, guildbankamount, 1)
@@ -88,9 +89,9 @@ export function guildform(player: server.Player) {
                                                 let withdrawamount = Math.trunc(data.formValues[0] as number)
                                                 player.setDynamicProperty("money", money + withdrawamount)
                                                 world.setDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`, guildbankamount - withdrawamount)
-                                            }).catch(() => { })
+                                            })
                                         }
-                                    }).catch(() => { })
+                                    })
                                 } else {
                                     player.sendMessage("§4§lYou need to be in the spawn region to use this!")
                                 }

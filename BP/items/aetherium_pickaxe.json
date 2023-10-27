@@ -17,7 +17,7 @@
 			"minecraft:icon": {
 				"texture": "mmorpg_aetherium_pickaxe"
 			},
-			"minecraft:mining_speed": 1,
+			"minecraft:mining_speed": 12,
 			"minecraft:damage": 3,
 			"minecraft:enchantable": {
 				"value": 14,
