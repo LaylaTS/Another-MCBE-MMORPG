@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:bone_pickaxe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"b": {
+				"item": "minecraft:bone"
+			},
+			"s": {
+				"item": "minecraft:stick"
+			}
+		},
+		"pattern": [
+			"bbb",
+			" s ",
+			" s "
+		],
+		"result": {
+			"item": "mmorpg:bone_pickaxe"
+		}
+	}
+}

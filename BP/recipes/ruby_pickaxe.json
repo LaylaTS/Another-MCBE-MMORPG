@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:ruby_pickaxe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"r": {
+				"item": "mmorpg:ruby"
+			},
+			"s": {
+				"item": "minecraft:stick"
+			}
+		},
+		"pattern": [
+			"rrr",
+			" s ",
+			" s "
+		],
+		"result": {
+			"item": "mmorpg:ruby_pickaxe"
+		}
+	}
+}

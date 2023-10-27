@@ -17,7 +17,7 @@
 			"minecraft:icon": {
 				"texture": "mmorpg_aetherium_pickaxe"
 			},
-			"minecraft:mining_speed": 12,
+			"minecraft:mining_speed": 20,
 			"minecraft:damage": 3,
 			"minecraft:enchantable": {
 				"value": 14,
@@ -31,7 +31,7 @@
 						"block": {
 							"tags": "query.any_tag('stone', 'metal', 'diamond_pick_diggable')"
 						},
-						"speed": 5
+						"speed": 20
 					},
 					{
 						"block": "minecraft:ice",
@@ -43,7 +43,11 @@
 					},
 					{
 						"block": "minecraft:deepslate",
-						"speed": 5
+						"speed": 20
+					},
+					{
+						"block": "minecraft:copper_ore",
+						"speed": 20
 					}
 				]
 			},

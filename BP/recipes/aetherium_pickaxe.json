@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:aetherium_pickaxe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"a": {
+				"item": "mmorpg:aetheriumingot"
+			},
+			"s": {
+				"item": "minecraft:stick"
+			}
+		},
+		"pattern": [
+			"aaa",
+			" s ",
+			" s "
+		],
+		"result": {
+			"item": "mmorpg:aetherium_pickaxe"
+		}
+	}
+}

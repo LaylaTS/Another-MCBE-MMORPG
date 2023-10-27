@@ -17,7 +17,7 @@
 			"minecraft:icon": {
 				"texture": "mmorpg_bone_pickaxe"
 			},
-			"minecraft:mining_speed": 5,
+			"minecraft:mining_speed": 7,
 			"minecraft:damage": 3,
 			"minecraft:enchantable": {
 				"value": 14,
@@ -29,9 +29,9 @@
 				"destroy_speeds": [
 					{
 						"block": {
-							"tags": "query.any_tag('stone', 'metal', 'iron_pick_diggable')"
+							"tags": "query.any_tag('stone', 'metal', 'diamond_pick_diggable')"
 						},
-						"speed": 5
+						"speed": 7
 					},
 					{
 						"block": "minecraft:ice",
@@ -43,7 +43,11 @@
 					},
 					{
 						"block": "minecraft:deepslate",
-						"speed": 5
+						"speed": 7
+					},
+					{
+						"block": "minecraft:copper_ore",
+						"speed": 7
 					}
 				]
 			},
