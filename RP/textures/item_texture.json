@@ -166,6 +166,9 @@
 		},
 		"mmorpg_miner_boots": {
 			"textures": "textures/items/miner_boots_item"
+		},
+		"mmorpg_ruby_heart": {
+			"textures": "textures/items/rubyheart"
 		}
 	}
 }

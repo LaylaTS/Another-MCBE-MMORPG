@@ -3,7 +3,8 @@
 	"name": "mmorpg",
 	"namespace": "mmorpg",
 	"authors": [
-		"wojtekbb"
+		"wojtekbb",
+		"skorp"
 	],
 	"targetVersion": "1.20.30",
 	"description": "XD idk what to put there",

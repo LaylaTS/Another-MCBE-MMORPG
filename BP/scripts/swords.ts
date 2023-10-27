@@ -1,6 +1,7 @@
 import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
 import { guildform } from './guilds.js'
+import { mmorpgmenu } from './mmorpgmenu.js'
 
 var world = server.world
 var dimension = world.getDimension("minecraft:overworld")
@@ -52,25 +53,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
     }
     switch (item.typeId) {
         case "mmorpg:return":
-            var form = new ui.ActionFormData()
-                .title('Choose Teleport Location')
-                .button('Spawn')
-                .button('Plot')
-                .button('Dungeons')
-
-            if (world.scoreboard.getObjective('spawntimer').getScore(player) > 200) {
-                form.show(player).then(result => {
-                    if (result.selection == 0) {
-                        player.runCommand('tp @s 0 66 0')
-                    } else if (result.selection == 1) {
-                        player.runCommand('tp @s 39990 -57 ' + world.scoreboard.getObjective('plotcords').getScore(player))
-                    } else if (result.selection == 2) {
-                        player.runCommand('tp @s 500 50 500')
-                    }
-                })
-            }
-
-
+    mmorpgmenu(player)
             break;
         case "mmorpg:guildmanager":
             guildform(player)

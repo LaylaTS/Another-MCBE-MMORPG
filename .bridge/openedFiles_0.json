@@ -1,1 +1,1 @@
-["projects/MMORPG/BP/scripts/coreboss.ts","projects/MMORPG/BP/scripts/guilds.ts","projects/MMORPG/BP/scripts/swords.ts","projects/MMORPG/BP/scripts/equipmentstats.ts"]
+["projects/MMORPG/BP/scripts/equipment.ts","projects/MMORPG/BP/scripts/mmorpgmenu.ts","projects/MMORPG/RP/texts/en_US.lang","projects/MMORPG/BP/scripts/swords.ts","projects/MMORPG/BP/scripts/chat.ts","projects/MMORPG/BP/scripts/fillmines.ts","projects/MMORPG/BP/scripts/mining.ts","projects/MMORPG/BP/scripts/main.js","projects/MMORPG/BP/scripts/equipmentstats.ts"]

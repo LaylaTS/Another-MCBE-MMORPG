@@ -2,16 +2,19 @@ import * as server from '@minecraft/server'
 
 const world = server.world
 
-world.afterEvents.worldInitialize.subscribe(data => {
-    var maxmana = new server.DynamicPropertiesDefinition().defineNumber("maxmana")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(maxmana, server.EntityTypes.get("minecraft:player"))
-    var manaregen = new server.DynamicPropertiesDefinition().defineNumber("manaregen")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(manaregen, server.EntityTypes.get("minecraft:player"))
-    var magicalpower = new server.DynamicPropertiesDefinition().defineNumber("magicalpower")
-    data.propertyRegistry.registerEntityTypeDynamicProperties(magicalpower, server.EntityTypes.get("minecraft:player"))
-    var setbonustimings = new server.DynamicPropertiesDefinition().defineNumber("setbonustimings", 0)
-    data.propertyRegistry.registerEntityTypeDynamicProperties(setbonustimings, server.EntityTypes.get("minecraft:player"))
-})
+// world.afterEvents.worldInitialize.subscribe(data => {
+//     var maxmana = new server.DynamicPropertiesDefinition().defineNumber("maxmana")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(maxmana, server.EntityTypes.get("minecraft:player"))
+//     var manaregen = new server.DynamicPropertiesDefinition().defineNumber("manaregen")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(manaregen, server.EntityTypes.get("minecraft:player"))
+//     var magicalpower = new server.DynamicPropertiesDefinition().defineNumber("magicalpower")
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(magicalpower, server.EntityTypes.get("minecraft:player"))
+//     var setbonustimings = new server.DynamicPropertiesDefinition().defineNumber("setbonustimings", 0)
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(setbonustimings, server.EntityTypes.get("minecraft:player"))
+//     var luck = new server.DynamicPropertiesDefinition().defineNumber("luck", 0)
+//     data.propertyRegistry.registerEntityTypeDynamicProperties(luck, server.EntityTypes.get("minecraft:player"))
+
+// })
 
 world.afterEvents.entityHurt.subscribe(eventData => {
     if (eventData.hurtEntity.typeId == "minecraft:player") {
@@ -32,6 +35,10 @@ server.system.runInterval(() => {
         var maxmana: number = 50
         var manaregen: number = 20
         var magicalpower: number = 0
+        var haste: number = -1
+        var healthboost: number = -1
+        var luck: number = 1
+
         var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
         const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
         const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -46,6 +53,8 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:sculked_helmet") {
                 manaregen = manaregen - 3
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "minecraft:golden_helmet") {
+                player.addEffect("night_vision", 205, { showParticles: false })
             }
         }
         if (equipment.getEquipment(server.EquipmentSlot.Chest) != undefined) {
@@ -54,7 +63,9 @@ server.system.runInterval(() => {
                 manaregen--
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:sculked_chestplate") {
-                manaregen = manaregen + 5
+                magicalpower = magicalpower + 5
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "minecraft:golden_chestplate") {
+                luck = luck + 0.2
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs) != undefined) {
@@ -64,6 +75,8 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:sculked_leggings") {
                 maxmana = maxmana + 20
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "minecraft:golden_leggings") {
+                haste++
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet) != undefined) {
@@ -71,18 +84,18 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
-            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "minecraft:golden_boots") {
-                if (player.isSneaking && player.isOnGround && setbonustimings == 0) {
-                    player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 5, 0.3)
-                    setbonustimings = 100
-                }
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:sculked_boots") {
                 maxmana = maxmana + 20
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "minecraft:golden_boots") {
+                haste++
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {
             if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:aetheriumstar") {
                 magicalpower = magicalpower + 10
+            }
+            if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:ruby_heart") {
+                healthboost = healthboost + 2
             }
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:light_aetherium_boots") {
@@ -128,10 +141,18 @@ server.system.runInterval(() => {
         if (setbonustimings > 0) {
             setbonustimings = setbonustimings - 1
         }
+        if (haste > -1) {
+            player.addEffect("haste", 25, { amplifier: haste, showParticles: false })
+        }
+        if (healthboost > -1) {
+            player.addEffect("health_boost", 25, { amplifier: healthboost, showParticles: false })
+        }
 
         player.setDynamicProperty("setbonustimings", setbonustimings)
         player.setDynamicProperty("magicalpower", magicalpower)
         player.setDynamicProperty("manaregen", Math.trunc(manaregen))
         player.setDynamicProperty("maxmana", maxmana)
+        player.setDynamicProperty("luck", luck)
+
     })
 })

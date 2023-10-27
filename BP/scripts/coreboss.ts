@@ -2,30 +2,30 @@ import * as server from '@minecraft/server';
 
 const world = server.world;
 
-world.afterEvents.worldInitialize.subscribe(eventData => {
-    const angle = new server.DynamicPropertiesDefinition().defineNumber("corebossangle", 0);
-    eventData.propertyRegistry.registerWorldDynamicProperties(angle);
-    const attacktype = new server.DynamicPropertiesDefinition().defineNumber("corebossattacktype", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(attacktype)
-    // 0 - idle // 1 - laser // 2 - projectiles // 3 - cage
-    const corebosstimer = new server.DynamicPropertiesDefinition().defineNumber("corebosstimer", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(corebosstimer)
-    const corebosscage = new server.DynamicPropertiesDefinition().defineNumber("corebosscage", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(corebosscage)
-    const corebossprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossprojectile", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(corebossprojectile)
+// world.afterEvents.worldInitialize.subscribe(eventData => {
+//     const angle = new server.DynamicPropertiesDefinition().defineNumber("corebossangle", 0);
+//     eventData.propertyRegistry.registerWorldDynamicProperties(angle);
+//     const attacktype = new server.DynamicPropertiesDefinition().defineNumber("corebossattacktype", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(attacktype)
+//     // 0 - idle // 1 - laser // 2 - projectiles // 3 - cage
+//     const corebosstimer = new server.DynamicPropertiesDefinition().defineNumber("corebosstimer", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(corebosstimer)
+//     const corebosscage = new server.DynamicPropertiesDefinition().defineNumber("corebosscage", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(corebosscage)
+//     const corebossprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossprojectile", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(corebossprojectile)
 
 
 
 
-    let randomprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossrandomprojectilexpos", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(randomprojectile)
+//     let randomprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossrandomprojectilexpos", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(randomprojectile)
 
 
-    randomprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossrandomprojectilezpos", 0)
-    eventData.propertyRegistry.registerWorldDynamicProperties(randomprojectile)
+//     randomprojectile = new server.DynamicPropertiesDefinition().defineNumber("corebossrandomprojectilezpos", 0)
+//     eventData.propertyRegistry.registerWorldDynamicProperties(randomprojectile)
 
-});
+// });
 
 
 
