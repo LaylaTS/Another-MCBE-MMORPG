@@ -151,6 +151,21 @@
 		},
 		"mmorpg_prismarine_pickaxe": {
 			"textures": "textures/items/prismarine_pickaxe"
+		},
+		"mmorpg_ruby_sword": {
+			"textures": "textures/items/ruby_sword"
+		},
+		"mmorpg_miner_helmet": {
+			"textures": "textures/items/miner_helmet_item"
+		},
+		"mmorpg_miner_chestplate": {
+			"textures": "textures/items/miner_chestplate_item"
+		},
+		"mmorpg_miner_leggings": {
+			"textures": "textures/items/miner_leggings_item"
+		},
+		"mmorpg_miner_boots": {
+			"textures": "textures/items/miner_boots_item"
 		}
 	}
 }

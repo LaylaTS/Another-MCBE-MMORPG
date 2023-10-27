@@ -1,0 +1,28 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:miner_boots",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:icon": {
+				"texture": "mmorpg_miner_boots"
+			},
+			"minecraft:armor": {
+				"protection": 3
+			},
+			"minecraft:display_name": {
+				"value": "§7Miner Boots"
+			},
+			"minecraft:foil": true,
+			"minecraft:wearable": {
+				"slot": "slot.armor.feet"
+			},
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.boots"
+			}
+		}
+	}
+}

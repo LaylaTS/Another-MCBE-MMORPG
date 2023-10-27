@@ -1,0 +1,28 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:miner_helmet",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:display_name": {
+				"value": "§7Miner Helmet"
+			},
+			"minecraft:icon": {
+				"texture": "mmorpg_miner_helmet"
+			},
+			"minecraft:armor": {
+				"protection": 3
+			},
+			"minecraft:foil": true,
+			"minecraft:wearable": {
+				"slot": "slot.armor.head"
+			},
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.helmet"
+			}
+		}
+	}
+}

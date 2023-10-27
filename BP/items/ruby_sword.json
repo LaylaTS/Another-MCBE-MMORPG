@@ -1,0 +1,46 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:ruby_sword",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.sword"
+			},
+			"minecraft:durability": {
+				"max_durability": 251
+			},
+			"minecraft:foil": true,
+			"minecraft:damage": 6,
+			"minecraft:digger": {
+				"use_efficiency": true,
+				"destroy_speeds": [
+					{
+						"block": "minecraft:web",
+						"speed": 15
+					},
+					{
+						"block": "minecraft:bamboo",
+						"speed": 60
+					}
+				]
+			},
+			"minecraft:enchantable": {
+				"value": 14,
+				"slot": "sword"
+			},
+			"minecraft:hand_equipped": true,
+			"minecraft:icon": {
+				"texture": "mmorpg_ruby_sword"
+			},
+			"minecraft:max_stack_size": 1,
+			"minecraft:weapon": {},
+			"tag:minecraft:is_sword": {},
+			"tag:minecraft:is_tool": {}
+		},
+		"events": {}
+	}
+}

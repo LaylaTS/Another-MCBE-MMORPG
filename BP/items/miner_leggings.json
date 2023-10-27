@@ -1,0 +1,28 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:miner_leggings",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:max_stack_size": 1,
+			"minecraft:display_name": {
+				"value": "§7Miner Leggings"
+			},
+			"minecraft:icon": {
+				"texture": "mmorpg_miner_leggings"
+			},
+			"minecraft:armor": {
+				"protection": 4
+			},
+			"minecraft:foil": true,
+			"minecraft:wearable": {
+				"slot": "slot.armor.legs"
+			},
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.leggings"
+			}
+		}
+	}
+}
