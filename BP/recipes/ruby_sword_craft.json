@@ -2,29 +2,26 @@
 	"format_version": "1.12",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "mmorpg:ruby_pickaxe"
+			"identifier": "mmorpg:ruby_sword_craft"
 		},
 		"tags": [
 			"crafting_table"
 		],
 		"key": {
 			"r": {
-				"item": "mmorpg:ruby"
+				"item": "mmorpg:enchanted_ruby_block"
 			},
 			"s": {
-				"item": "minecraft:stick"
-			},
-			"n": {
-				"item": "netherite_ingot"
+				"item": "stick"
 			}
 		},
 		"pattern": [
-			"rnr",
-			" s ",
-			" s "
+			"  r",
+			" r ",
+			"s  "
 		],
 		"result": {
-			"item": "mmorpg:ruby_pickaxe"
+			"item": "mmorpg:ruby_sword"
 		}
 	}
 }

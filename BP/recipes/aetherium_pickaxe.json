@@ -13,10 +13,13 @@
 			},
 			"s": {
 				"item": "minecraft:stick"
+			},
+			"n": {
+				"item": "netherite_ingot"
 			}
 		},
 		"pattern": [
-			"aaa",
+			"ana",
 			" s ",
 			" s "
 		],

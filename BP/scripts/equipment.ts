@@ -45,6 +45,11 @@ server.system.runInterval(() => {
         const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
         if (helditemid == "mmorpg:witherscythe") {
             maxmana = maxmana + 20
+        } else if (helditemid == "mmorpg:aetherium_pickaxe") {
+            haste++
+
+        } else if (helditemid == "mmorpg:ruby_pickaxe") {
+            luck = luck + 0.1
         }
         if (equipment.getEquipmentSlot(server.EquipmentSlot.Head) != undefined) {
             if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:light_aetherium_helmet") {
@@ -53,7 +58,7 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:sculked_helmet") {
                 manaregen = manaregen - 3
-            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "minecraft:golden_helmet") {
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:miner_helmet") {
                 player.addEffect("night_vision", 205, { showParticles: false })
             }
         }
@@ -64,7 +69,7 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:sculked_chestplate") {
                 magicalpower = magicalpower + 5
-            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "minecraft:golden_chestplate") {
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:miner_chestplate") {
                 luck = luck + 0.2
             }
         }
@@ -75,7 +80,7 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:sculked_leggings") {
                 maxmana = maxmana + 20
-            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "minecraft:golden_leggings") {
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:miner_leggings") {
                 haste++
             }
         }
@@ -86,7 +91,7 @@ server.system.runInterval(() => {
                 magicalpower = magicalpower + 2
             } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:sculked_boots") {
                 maxmana = maxmana + 20
-            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "minecraft:golden_boots") {
+            } else if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:miner_boots") {
                 haste++
             }
         }

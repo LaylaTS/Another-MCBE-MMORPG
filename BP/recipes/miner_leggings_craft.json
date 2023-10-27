@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:miner_leggings_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"I": {
+				"item": "mmorpg:enchanted_iron_ingot"
+			},
+			"W": {
+				"item": "wool"
+			}
+		},
+		"pattern": [
+			"IWI",
+			"W W",
+			"W W"
+		],
+		"result": {
+			"item": "mmorpg:miner_leggings"
+		}
+	}
+}

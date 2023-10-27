@@ -115,8 +115,8 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
       },
-      "minecraft:loot": {
-        "table": "loot_tables/entities/wither_boss.json"
+      "minecraft:tick_world": {
+        "radius": 100
       },
       "minecraft:area_attack": {
         "damage_range": 1.3,

@@ -10,11 +10,8 @@
 			"minecraft:creative_category": {
 				"parent": "itemGroup.name.sword"
 			},
-			"minecraft:durability": {
-				"max_durability": 251
-			},
 			"minecraft:foil": true,
-			"minecraft:damage": 6,
+			"minecraft:damage": 25,
 			"minecraft:digger": {
 				"use_efficiency": true,
 				"destroy_speeds": [

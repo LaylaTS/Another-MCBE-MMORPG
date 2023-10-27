@@ -62,7 +62,6 @@ item.mmorpg:guardiansnecklace=§2Guardian's Necklace§r | §3Empower Guardian's 
 item.mmorpg:voidreaver=§g§lVoid Reaver§r | §350 Mana
 item.mmorpg:rankadder=Rank Adder
 item.mmorpg:guildmanager=§5Guild Manager§r
-
 item.mmorpg:cobblestoneblade=§5Cobblestone Blade§r | §3Regenerate 100 Mana
 item.mmorpg:rodofdiscord=§d§lRod of Discord
 item.mmorpg:transcendentblade=§5Transcendent Blade §r| §350 Mana
@@ -85,9 +84,5 @@ item.mmorpg:enchanted_diamond=§dEnchanted Diamond
 item.mmorpg:enchanted_ruby=§dEnchanted Ruby
 item.mmorpg:enchanted_iron_ingot=§dEnchanted Iron Ingot
 item.mmorpg:enchanted_gold_ingot=§dEnchanted Gold Ingot
-item.mmorpg:ruby_sword=Ruby Sword
-<<<<<<< Updated upstream
+item.mmorpg:ruby_sword=§5Ruby Sword §r| §350 Mana
 item.mmorpg:ruby_heart=§2Ruby Heart§r | §3Gain 4 hearts (+2 life boost)§r
-=======
-item.mmorpg:ruby_heart=§2Ruby Heart§r | §3Gain 4 hearts (+2 life boost)§r
->>>>>>> Stashed changes

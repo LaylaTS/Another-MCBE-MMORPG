@@ -1,0 +1,29 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:mining_helmet_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"L": {
+				"item": "lantern"
+			},
+			"W": {
+				"item": "wool"
+			},
+			"I": {
+				"item": "mmorpg:enchanted_iron_ingot"
+			}
+		},
+		"pattern": [
+			"WLW",
+			"I I"
+		],
+		"result": {
+			"item": "mmorpg:miner_helmet"
+		}
+	}
+}

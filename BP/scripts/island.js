@@ -9,6 +9,7 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
         player.setDynamicProperty("money", 0)
     } else {
         player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
+        player.runCommand("stopsound @s")
     }
 
     if (eventData.player.hasTag('joined') == false) {

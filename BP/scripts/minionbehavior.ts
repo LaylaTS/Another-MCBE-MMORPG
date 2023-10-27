@@ -69,14 +69,17 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     player.runCommand("give @s mmorpg:minion_spawn_egg")
                 } else if (data.selection == 0) {
                     let generationspeed = 1;
+                    let drop = "minecraft:air"
                     switch (entity.getDynamicProperty("resource")) {
-                        case "Cobblestone": generationspeed = 100; break;
-                        case "Ruby": generationspeed = 450; break;
+                        case "Cobblestone": generationspeed = 10; drop = "minecraft:cobblestone"; break;
+                        case "Ruby": generationspeed = 450; drop = "mmorpg:ruby"; break;
                     }
                     const lastuse = new Date(entity.getDynamicProperty("lastvisitdate") as string);
                     const currentdate = new Date()
                     console.warn(currentdate.toString(), lastuse.toString())
-                    console.warn((currentdate - lastuse) / 1000)
+
+                    player.runCommand(`give @s ${drop} ${Math.trunc((((currentdate - lastuse) / 1000) / generationspeed) * entity.getDynamicProperty("level"))}`)
+                    entity.setDynamicProperty("lastvisitdate", new Date().toString())
 
                 }
             }).catch(() => { })
