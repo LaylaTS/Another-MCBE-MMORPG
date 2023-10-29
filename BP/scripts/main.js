@@ -73,7 +73,7 @@ server.system.runInterval(() => { // run every tick
 
     if (server.system.currentTick % 12000 == 0) {
         fillmines()
-        world.sendMessage("\n\n§5§lFilled Mines!§r\n\n\n")
+        world.sendMessage("\n§5§l> Filled Mines! <§r\n\n")
     }
     if (server.system.currentTick % 200 == 0) {
 

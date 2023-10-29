@@ -514,7 +514,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
         case "mmorpg:ruby_sword":
             if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
-                player.addEffect("regeneration", 50, { amplifier: 3, showParticles: false })
+                player.addEffect("regeneration", 50, { amplifier: 15, showParticles: false })
                 world.scoreboard.getObjective("mana").addScore(player, -50)
 
             }
