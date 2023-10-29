@@ -7,23 +7,47 @@
 			"is_summonable": false,
 			"is_experimental": false
 		},
-		"component_groups": {},
+		"component_groups": {
+			"mmorpg:pvpoff": {
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"value": "player",
+								"subject": "damager"
+							}
+						},
+						"deals_damage": false
+					}
+				},
+				"minecraft:type_family": {
+					"family": [
+						"player"
+					]
+				}
+			},
+			"mmorpg:pvpon": {
+				"minecraft:damage_sensor": {
+					"triggers": {
+						"cause": "all",
+						"on_damage": {
+							"event": "mmorpg:stoprespawntimer"
+						},
+						"damage_multiplier": 0.2
+					}
+				},
+				"minecraft:type_family": {
+					"family": [
+						"player",
+						"mob"
+					]
+				}
+			}
+		},
 		"components": {
 			"minecraft:experience_reward": {
 				"on_death": "Math.Min(query.player_level * 7, 100)"
-			},
-			"minecraft:type_family": {
-				"family": [
-					"player"
-				]
-			},
-			"minecraft:damage_sensor": {
-				"triggers": {
-					"cause": "all",
-					"on_damage": {
-						"event": "mmorpg:stoprespawntimer"
-					}
-				}
 			},
 			"minecraft:is_hidden_when_invisible": {},
 			"minecraft:loot": {
@@ -123,6 +147,30 @@
 			"mmorpg:stoprespawntimer": {
 				"run_command": {
 					"command": "/scoreboard players set @s spawntimer 1"
+				}
+			},
+			"mmorpg:pvpon": {
+				"add": {
+					"component_groups": [
+						"mmorpg:pvpon"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"mmorpg:pvpoff"
+					]
+				}
+			},
+			"mmorpg:pvpoff": {
+				"add": {
+					"component_groups": [
+						"mmorpg:pvpoff"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"mmorpg:pvpon"
+					]
 				}
 			}
 		}

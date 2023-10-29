@@ -21,8 +21,8 @@ server.world.afterEvents.pressurePlatePush.subscribe(eventData => {
                 entity.applyKnockback(0, -1, 10, 0.3)
                 entity.addEffect("slow_falling", 50)
             } else if (block.location.x == 2958 && block.location.z == -2973) {
-                entity.applyKnockback(0, 1, 10, 2.4)
-                entity.addEffect("slow_falling", 50)
+                entity.applyKnockback(0, 1, 10, 2)
+                entity.addEffect("slow_falling", 80)
             } else if (block.location.x == 2953 && block.location.z == -2949) {
                 entity.applyKnockback(0, -1, 10, 0.4)
                 entity.addEffect("slow_falling", 50)
@@ -31,6 +31,9 @@ server.world.afterEvents.pressurePlatePush.subscribe(eventData => {
                 entity.addEffect("slow_falling", 50)
             } else if (block.location.x == 3026 && block.location.z == -2921) {
                 entity.applyKnockback(-1, 0.5, 11, 2.5)
+                entity.addEffect("slow_falling", 50)
+            } else if (block.location.x == 3007 && block.location.z == -2902) {
+                entity.applyKnockback(0, 1, 20, 2.8)
                 entity.addEffect("slow_falling", 50)
             }
         }

@@ -11,6 +11,7 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
         player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
         player.runCommand("stopsound @s")
     }
+    player.triggerEvent("mmorpg:pvpoff")
 
     if (eventData.player.hasTag('joined') == false) {
 

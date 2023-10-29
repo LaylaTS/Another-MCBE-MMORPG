@@ -21,7 +21,10 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
                     player.runCommandAsync('tp @s 39990 -57 ' + world.scoreboard.getObjective('plotcords').getScore(player));
                     break;
                 case '!fillmines':
-                    fillmines()
+                    if (player.name == "WojtekBB") {
+                        fillmines()
+                    }
+
                     break;
                 default: player.sendMessage("§4§oCommand does not exist!")
                     break;

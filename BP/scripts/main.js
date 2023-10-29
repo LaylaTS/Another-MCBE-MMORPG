@@ -14,6 +14,7 @@ import 'skybornespecter.js'
 import 'guilds.js'
 import 'seasons.js'
 import 'fillmines.js'
+import { fillmines } from "./fillmines.js"
 
 
 export const displayEnum = [
@@ -70,8 +71,14 @@ server.system.runInterval(() => { // run every tick
     })
     corebossbehavior()
 
-
+    if (server.system.currentTick % 12000 == 0) {
+        fillmines()
+        world.sendMessage("\n\n§5§lFilled Mines!§r\n\n\n")
+    }
     if (server.system.currentTick % 200 == 0) {
+
+
+
         if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "deathdisplay") {
             world.scoreboard.removeObjective("moneydisplay")
             world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:§r§o§7 (k)")
