@@ -169,6 +169,9 @@
 		},
 		"mmorpg_ruby_heart": {
 			"textures": "textures/items/rubyheart"
+		},
+		"mmorpg_golden_coin": {
+			"textures": "textures/items/coin"
 		}
 	}
 }

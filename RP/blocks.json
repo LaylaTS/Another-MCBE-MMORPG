@@ -36,6 +36,18 @@
 		"sound": "stone",
 		"textures": "mmorpg_enchanted_diamond_block"
 	},
+	"mmorpg:enchanted_coal_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_coal_block"
+	},
+	"mmorpg:enchanted_redstone_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_redstone_block"
+	},
+	"mmorpg:enchanted_copper_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_copper_block"
+	},
 	"mmorpg:enchanted_ruby_block": {
 		"sound": "stone",
 		"textures": "mmorpg_enchanted_ruby_block"
@@ -43,5 +55,13 @@
 	"mmorpg:ruby_block": {
 		"sound": "stone",
 		"textures": "mmorpg_ruby_block"
+	},
+	"mmorpg:aetherium_block": {
+		"sound": "stone",
+		"textures": "mmorpg_aetherium_block"
+	},
+	"mmorpg:enchanted_aetherium_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_aetherium_block"
 	}
 }

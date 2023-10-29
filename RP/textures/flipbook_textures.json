@@ -28,5 +28,29 @@
         "flipbook_texture": "textures/blocks/enchanted_gold_block",
         "ticks_per_frame": 10,
         "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_coal_block",
+        "flipbook_texture": "textures/blocks/enchanted_coal_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_copper_block",
+        "flipbook_texture": "textures/blocks/enchanted_copper_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_redstone_block",
+        "flipbook_texture": "textures/blocks/enchanted_redstone_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_aetherium_block",
+        "flipbook_texture": "textures/blocks/enchanted_aetherium_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
     }
 ]

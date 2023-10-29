@@ -31,8 +31,23 @@
 		"mmorpg_enchanted_emerald_block": {
 			"textures": "textures/blocks/enchanted_emerald_block"
 		},
+		"mmorpg_enchanted_coal_block": {
+			"textures": "textures/blocks/enchanted_coal_block"
+		},
+		"mmorpg_enchanted_redstone_block": {
+			"textures": "textures/blocks/enchanted_redstone_block"
+		},
+		"mmorpg_enchanted_copper_block": {
+			"textures": "textures/blocks/enchanted_copper_block"
+		},
 		"mmorpg_ruby_block": {
 			"textures": "textures/blocks/ruby_block"
+		},
+		"mmorpg_aetherium_block": {
+			"textures": "textures/blocks/aetherium_block"
+		},
+		"mmorpg_enchanted_aetherium_block": {
+			"textures": "textures/blocks/enchanted_aetherium_block"
 		}
 	}
 }
