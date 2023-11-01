@@ -8,7 +8,7 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
     if (player.getDynamicProperty("money") == undefined) {
         player.setDynamicProperty("money", 0)
     } else {
-        player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
+        //player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
         player.runCommand("stopsound @s")
     }
     player.triggerEvent("mmorpg:pvpoff")

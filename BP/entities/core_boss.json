@@ -120,7 +120,8 @@
       },
       "minecraft:area_attack": {
         "damage_range": 1.3,
-        "damage_per_tick": 3
+        "damage_per_tick": 3,
+        "cause": "entity_attack"
       },
       "minecraft:type_family": {
         "family": [
