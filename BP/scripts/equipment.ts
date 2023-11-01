@@ -32,9 +32,10 @@ server.system.runInterval(() => {
         const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
         const helmetid = equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId
         const chestplateid = equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId
-        const leggingsid = equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId
+        const leggingsid = equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId
         const bootsid = equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId
-        const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand).typeId
+        const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand)?.typeId
+        const armorids = [0, 0, 0]
 
 
         switch (helditemid) {
@@ -57,15 +58,15 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+                armorids[0]++
                 break;
             case "mmorpg:sculked_helmet":
                 manaregen = manaregen - 3
-
+                armorids[1]++
                 break;
 
             case "mmorpg:miner_helmet":
                 player.addEffect("night_vision", 205, { showParticles: false })
-
                 break;
             default: break;
         }
@@ -77,9 +78,11 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+                armorids[0]++
                 break;
             case "mmorpg:sculked_chestplate":
                 magicalpower = magicalpower + 5
+                armorids[1]++
                 break;
             case "mmorpg:miner_chestplate":
                 luck = luck + 0.2
@@ -94,9 +97,11 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+                armorids[0]++
                 break;
             case "mmorpg:sculked_leggings":
                 maxmana = maxmana + 20
+                armorids[1]++
                 break;
             case "mmorpg:miner_leggings":
                 haste++
@@ -111,15 +116,18 @@ server.system.runInterval(() => {
                 maxmana = maxmana + 20
                 manaregen--
                 magicalpower = magicalpower + 2
+                armorids[0]++
                 break;
             case "mmorpg:sculked_boots":
                 maxmana = maxmana + 20
+                armorids[1]++
                 break;
             case "mmorpg:miner_boots":
                 haste++
                 break;
             default: break;
         }
+
 
 
         switch (offhandid) {
@@ -131,47 +139,38 @@ server.system.runInterval(() => {
                 break;
             default: break;
         }
-
-        if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:light_aetherium_boots") {
-            if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:light_aetherium_chestplate") {
-                if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:light_aetherium_leggings") {
-                    if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:light_aetherium_helmet") {
-
-                        if (player.isSneaking) {
-                            if (setbonustimings < 80 && player.getComponent('health').currentValue > 6) {
-                                player.applyDamage(6, { cause: server.EntityDamageCause.void } as server.EntityApplyDamageOptions)
-                                setbonustimings = 110
-                                player.runCommand("scoreboard players add @s mana 50")
-
-                            }
-                        }
-                        if (setbonustimings > 0) {
-                            magicalpower = magicalpower + 20
-                        }
-
+        switch (armorids.indexOf(4)) {
+            case 0:
+                if (player.isSneaking) {
+                    if (setbonustimings < 80 && player.getComponent('health').currentValue > 6) {
+                        player.applyDamage(6, { cause: server.EntityDamageCause.void } as server.EntityApplyDamageOptions)
+                        setbonustimings = 110
+                        player.runCommand("scoreboard players add @s mana 50")
 
                     }
                 }
-            }
-        }
-        if (equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId == "mmorpg:sculked_boots") {
-            if (equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId == "mmorpg:sculked_chestplate") {
-                if (equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId == "mmorpg:sculked_leggings") {
-                    if (equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId == "mmorpg:sculked_helmet") {
-                        if (player.isSneaking) {
-                            player.addEffect("blindness", 25, { showParticles: false, amplifier: 255 })
-                            player.addEffect("resistance", 5, { showParticles: false })
-                            player.addEffect("slowness", 5, { showParticles: false, amplifier: 25 })
-                            if (world.getAbsoluteTime() % 2 == 0) {
+                if (setbonustimings > 0) {
+                    magicalpower = magicalpower + 20
+                }
+                break;
+
+            case 1:
+                if (player.isSneaking) {
+                    player.addEffect("blindness", 25, { showParticles: false, amplifier: 255 })
+                    player.addEffect("resistance", 5, { showParticles: false })
+                    player.addEffect("slowness", 5, { showParticles: false, amplifier: 25 })
+                    if (world.getAbsoluteTime() % 2 == 0) {
 
 
-                                world.scoreboard.getObjective("mana").addScore(player, 1)
-                            }
-                        }
+                        world.scoreboard.getObjective("mana").addScore(player, 1)
                     }
                 }
-            }
+
+                break;
+
+            default: break;
         }
+
         if (setbonustimings > 0) {
             setbonustimings = setbonustimings - 1
         }

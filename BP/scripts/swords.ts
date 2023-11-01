@@ -7,7 +7,7 @@ var world = server.world
 var dimension = world.getDimension("minecraft:overworld")
 
 const avoidableentities = ["minecraft:player", "minecraft:item", "minecraft:arrow", "minecraft:xp_orb", "mmorpg:sculkblast", "minecraft:wither_skull", "minecraft:wither_skull_dangerous", "minecraft:wither"];
-
+const mana = world.scoreboard.getObjective("mana")
 
 
 world.afterEvents.entityHitEntity.subscribe(eventData => {
@@ -20,7 +20,7 @@ world.afterEvents.entityHitEntity.subscribe(eventData => {
 
         switch (equippable.getEquipmentSlot(server.EquipmentSlot.Mainhand).typeId) {
             case "mmorpg:biggraysword":
-                if (world.scoreboard.getObjective("mana").getScore(player) > 9) {
+                if (mana.getScore(player) > 9) {
 
                     player.runCommand("scoreboard players remove @s mana 10")
                     entity.applyDamage(1 + Math.trunc(magicalpower * 1.5), {
@@ -42,6 +42,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
     var player = eventData.source as server.Player
     var magicalpower = player.getDynamicProperty("magicalpower") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
+    const manaamount = mana.getScore("mana")
     function addlore(lore) {
         var loreitem = item.clone() as server.ItemStack
         loreitem.setLore(lore)
@@ -79,7 +80,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:purpledagger":
 
-            if (world.scoreboard.getObjective('mana').getScore(player) > 19) {
+            if (manaamount > 19) {
                 let vector3 = player.getViewDirection()
                 if (player.isSneaking) {
                     player.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
@@ -89,7 +90,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     player.applyKnockback(vector3.x, vector3.z, 3, 0.3)
 
                 }
-                player.runCommandAsync("scoreboard players remove @s mana 20")
+                mana.addScore(player, -20)
                 let entity = player.getEntitiesFromViewDirection()
                 entity.forEach(entity => {
                     if (!avoidableentities.includes(entity.entity.typeId)) {
@@ -105,9 +106,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:withermenace":
             addlore(["§8Slow down an enemy", "§8and push them closer to you"])
-            if (world.scoreboard.getObjective('mana').getScore(player) > 39) {
+            if (manaamount > 39) {
                 if (player.getEntitiesFromViewDirection().length > 0) {
-                    player.runCommandAsync('scoreboard players remove @s mana 40')
+                    mana.addScore(player, -40)
                     player.getEntitiesFromViewDirection().forEach(entity => {
                         if (!avoidableentities.includes(entity.entity.typeId)) {
                             if (entity.distance < 8) {
@@ -134,8 +135,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:witherscythe":
             addlore(["§8Jump up then slam down dealing massive damage"])
-            if (world.scoreboard.getObjective('mana').getScore(player) > 69) {
-                player.runCommandAsync('scoreboard players remove @s mana 70')
+            if (manaamount > 69) {
+                mana.addScore(player, -70)
                 let vector3 = player.getViewDirection()
 
                 player.applyKnockback(0, 0, 0, 1)
@@ -161,10 +162,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:forbiddenscythe":
             addlore(["§8Teleport to an enemy dealing damage", "§8or jump dealing damage", "§8depending if you are sprinting or not"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
+            if (manaamount > 29) {
 
                 if (player.getEntitiesFromViewDirection().length > 0) {
-                    player.runCommand("scoreboard players remove @s mana 30")
+                    mana.addScore(player, -30)
                     let subject = player.getEntitiesFromViewDirection()[0]
                     let entity = subject.entity
                     let currentrotation = player.getViewDirection()
@@ -187,8 +188,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:scarletfury":
             addlore(["§8Dash in a direction and deal damage"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
-                player.runCommandAsync("scoreboard players remove @s mana 50")
+            if (manaamount > 49) {
+                mana.addScore(player, -50)
                 let currentrotation = player.getViewDirection()
                 let entites = dimension.getEntities({ location: player.location, maxDistance: 10 })
                 player.applyKnockback(currentrotation.x, currentrotation.z, 20, -100)
@@ -221,8 +222,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:sculksword":
             addlore(["§8Dash then return to the point", "§8where you used this ability after 5 seconds"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 69) {
-                player.runCommandAsync("scoreboard players remove @s mana 70")
+            if (manaamount > 69) {
+                mana.addScore(player, -70)
                 let startpos = player.location
                 player.runCommand("particle mmorpg:uselessswordparticle ~ ~ ~")
                 player.applyKnockback(player.getViewDirection().x, player.getViewDirection().z, 1.5, 0.5)
@@ -247,27 +248,28 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
 
             addlore(["§8Using this ability gives", "§8you and all nearby players", "§8regeneration for 5 seconds"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
+            if (manaamount > 29) {
 
 
                 player.runCommand("effect @s regeneration 5 2 true")
-                player.runCommand("scoreboard players remove @s mana 30")
+                player.addEffect("regeneration", 100, { showParticles: false, amplifier: 2 })
+                mana.addScore(player, -30)
             }
             break;
         case "mmorpg:wolfsword":
             addlore(["§8Gives you speed for 20 seconds"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 39) {
+            if (manaamount > 39) {
 
 
-                player.runCommand("effect @a[r=5] speed 20 1 true")
-                player.runCommand("scoreboard players remove @s mana 40")
+                player.addEffect("speed", 400, { amplifier: 0, showParticles: false })
+                mana.addScore(player, -40)
             }
             break;
         case "mmorpg:aetheriumblade":
             addlore(["§8Teleport to the nearest enemy", "§8and deal area damage knocking up enemies"])
             if (dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] }).length > 0) {
-                if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
-                    player.runCommandAsync("scoreboard players remove @s mana 50")
+                if (manaamount > 49) {
+                    mana.addScore(player, -50)
 
                     var otherEntity = dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] })[0] as server.Entity
                     let tpbool = player.tryTeleport({ x: otherEntity.location.x, y: otherEntity.location.y, z: otherEntity.location.z }, { checkForBlocks: true, })
@@ -292,10 +294,11 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:twilightblossom":
             addlore(["§8Deal massive damage to", "§8all enemies in a 7 block radius"])
-            if (dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeNames: [player.name] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 99) {
-                player.runCommandAsync("scoreboard players remove @s mana 100")
+            let twilightblossomentities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeNames: [player.name] })
+            if (twilightblossomentities.length > 0 && manaamount > 99) {
+                mana.addScore(player, -100)
                 player.playSound("sword.twilightblossom")
-                dimension.getEntities({ location: player.location, maxDistance: 9, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                twilightblossomentities.forEach(entity => {
                     dimension.spawnParticle("mmorpg:twilightblossomparticle", entity.location)
                     entity.applyDamage(30 + magicalpower * 3, {
                         damagingEntity: player,
@@ -333,12 +336,13 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:heavyaetheriumsword":
             addlore(["§8Make a small blast", "§8and deal a lot of damage to nearby enemies", "§8knocking them up"])
-            if (dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] }).length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 59) {
+            let heavyaetheriumswordentities = dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] })
+            if (heavyaetheriumswordentities.length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 59) {
                 dimension.spawnParticle("mmorpg:aetheriumbladeparticle", player.location)
-                player.runCommandAsync("scoreboard players remove @s mana 60")
+                mana.addScore(player, -60)
 
                 dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                    entity.applyDamage(15 + magicalpower, {
+                    entity.applyDamage(15 + magicalpower * 2, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     })
@@ -349,8 +353,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:prismarineblade":
             addlore(["§8Shoot bubbles in a direction", "§8dealing damage and slowing enemies", "§8Guardian's Necklace boosts damage."])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 29) {
-                player.runCommandAsync("scoreboard players remove @s mana 30")
+            if (manaamount > 29) {
+                mana.addScore(player, -30)
                 var rotation = player.getRotation().y
                 rotation = rotation + 90
                 const radians = rotation * Math.PI / 180;
@@ -389,8 +393,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:voidreaver":
             addlore(["§8Shoot a projectile which deals damage", "§8and explodes when it hits an enemy"])
-            if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
-                world.scoreboard.getObjective("mana").addScore(player, -50)
+            if (manaamount > 49) {
+                mana.addScore(player, -50)
                 var rotation = player.getRotation().y
                 rotation = rotation + 90
                 const radians = rotation * Math.PI / 180;
@@ -438,7 +442,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             if (player.getItemCooldown("cobblestoneblade") == 0) {
                 cooldown.startCooldown(player)
-                world.scoreboard.getObjective("mana").addScore(player, 100)
+                mana.addScore(player, 100)
             }
 
 
@@ -513,9 +517,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:ruby_sword":
-            if (world.scoreboard.getObjective("mana").getScore(player) > 49) {
+            if (manaamount > 49) {
                 player.addEffect("regeneration", 50, { amplifier: 15, showParticles: false })
-                world.scoreboard.getObjective("mana").addScore(player, -50)
+                mana.addScore(player, -40)
 
             }
 

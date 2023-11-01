@@ -37,7 +37,7 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             .button("Iron - 250$")//0
                             .button("Oak Log - 50$")//1
                             .button("Diamond - 2000$")
-                            .button("Netherite - 100000$")
+                            .button("Netherite - 10000$")
                             .button("Lava Bucket - 2500$")
                             .button("Aetherium - 2500$")
 
@@ -74,7 +74,7 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             } else if (result.selection == 3) {
                                 var netheritebuy = new ui.ModalFormData()
                                     .title("Buy Netherite")
-                                    .slider("Amount", 0, money / 100000, 1, 0)
+                                    .slider("Amount", 0, money / 10000, 1, 0)
 
                                 netheritebuy.show(player).then(result => {
                                     player.runCommand('give @s netherite_ingot ' + Math.trunc(result.formValues[0] as number))
