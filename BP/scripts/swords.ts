@@ -42,7 +42,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
     var player = eventData.source as server.Player
     var magicalpower = player.getDynamicProperty("magicalpower") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
-    const manaamount = mana.getScore("mana")
+    const manaamount = mana.getScore(player)
     function addlore(lore) {
         var loreitem = item.clone() as server.ItemStack
         loreitem.setLore(lore)

@@ -100,6 +100,9 @@
         "hud_range": 55,
         "name": "Ancient Guardian"
       },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/corebossdrop.json"
+      },
       "minecraft:health": {
         "value": 500,
         "max": 500

@@ -8,7 +8,7 @@ import 'floatingislandsplates.js'
 import 'dailyrewards.js'
 import 'coreboss.js'
 import 'npcs.js'
-import { corebossbehavior } from 'coreboss.js'
+import { corebossbehavior } from './coreboss.js'
 import 'equipment.js'
 import 'skybornespecter.js'
 import 'guilds.js'
@@ -22,6 +22,13 @@ export const displayEnum = [
     "m",
     "b",
 ];
+
+export function distance(location1: server.Vector3, location2: server.Vector3): number {
+  const dx = location1.x - location2.x;
+  const dy = location1.y - location2.y;
+  const dz = location1.z - location2.z;
+  return Math.sqrt(dx * dx + dy * dy + dz * dz);
+}
 
 export function metricNumbers(number) {
     if (number <= 999) return number;
