@@ -48,6 +48,10 @@
 					{
 						"block": "minecraft:copper_ore",
 						"speed": 20
+					},
+					{
+						"block": "amethyst_block",
+						"speed": 20
 					}
 				]
 			},

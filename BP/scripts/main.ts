@@ -15,7 +15,7 @@ import 'guilds.js'
 import 'seasons.js'
 import 'fillmines.js'
 import { fillmines } from "./fillmines.js"
-
+import { snowregion } from "./snowregion.js"
 
 export const displayEnum = [
     "k",
@@ -24,10 +24,10 @@ export const displayEnum = [
 ];
 
 export function distance(location1: server.Vector3, location2: server.Vector3): number {
-  const dx = location1.x - location2.x;
-  const dy = location1.y - location2.y;
-  const dz = location1.z - location2.z;
-  return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    const dx = location1.x - location2.x;
+    const dy = location1.y - location2.y;
+    const dz = location1.z - location2.z;
+    return Math.sqrt(dx * dx + dy * dy + dz * dz);
 }
 
 export function metricNumbers(number) {
@@ -44,20 +44,26 @@ world.afterEvents.worldInitialize.subscribe(() => {
     world.getDimension("minecraft:overworld").runCommand("volumearea remove_all")
     world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:cherryforest -67 81 -155 -345 201 135 cherryforest")
     world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:floatingislands 3200 0 -3200 2800 320 -2800 floatingislands")
+    world.getDimension("minecraft:overworld").runCommand("volumearea add mmorpg:snowregion 8000 0 8000 7000 320 7000 snowregion")
 })
 
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
+    //snowregion(players)
     players.forEach(function (player) { // run for every player
-        let money = player.getDynamicProperty("money")
-        var maxmana = player.getDynamicProperty("maxmana")
+        let money = player.getDynamicProperty("money") as number
+        var maxmana = player.getDynamicProperty("maxmana") as number
         player.runCommandAsync('scoreboard players set @s maxmana ' + maxmana)
+        let rank = player.getDynamicProperty("playerrank")
+        if (rank == undefined) rank = "§l§8PLAYER"
+        player.nameTag = `${player.name}\n§r§c${Math.round(player.getComponent("health").currentValue)} §l§8»§r§b ${world.scoreboard.getObjective("mana").getScore(player)}`
+
         let mana = server.world.scoreboard.getObjective('mana').getScore(player)
         if (mana > maxmana || (Math.trunc(player.location.x) == 0 && Math.trunc(player.location.z) == 0 && Math.trunc(player.location.y) == 65)) {
             mana = maxmana
             player.runCommandAsync('scoreboard players set @s mana ' + mana)
         }
-        if (server.world.getAbsoluteTime() % player.getDynamicProperty("manaregen") == 0) {
+        if (server.world.getAbsoluteTime() % player.getDynamicProperty("manaregen") as number == 0) {
             player.runCommandAsync('scoreboard players add @s mana 1')
         }
 
@@ -76,7 +82,12 @@ server.system.runInterval(() => { // run every tick
         }
         player.onScreenDisplay.setActionBar(`§2Money: §a\$${metricNumbers(money)}`)
     })
+
+
+
     corebossbehavior()
+
+
 
     if (server.system.currentTick % 12000 == 0) {
         fillmines()
@@ -90,8 +101,8 @@ server.system.runInterval(() => { // run every tick
             world.scoreboard.removeObjective("moneydisplay")
             world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:§r§o§7 (k)")
             world.getAllPlayers().forEach(player => {
-                let bank = 0
-                if (player.getDynamicProperty("bankbalance") != undefined) bank = player.getDynamicProperty("bankbalance")
+                let bank: number = 0
+                if (player.getDynamicProperty("bankbalance") != undefined) bank = player.getDynamicProperty("bankbalance") as number
 
 
                 player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc((player.getDynamicProperty("money") + bank) / 1000)}`)

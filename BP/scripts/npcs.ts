@@ -34,12 +34,13 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                     case 0:
                         var resources = new ui.ActionFormData()
                             .title("Resources   Current Balance: " + world.scoreboard.getObjective('money').getScore(player))
-                            .button("Iron - 250$")//0
-                            .button("Oak Log - 50$")//1
+                            .button("Iron - 250$")
+                            .button("Oak Log - 50$")
                             .button("Diamond - 2000$")
                             .button("Netherite - 10000$")
                             .button("Lava Bucket - 2500$")
                             .button("Aetherium - 2500$")
+                            .button("Nether Star - 20000$")
 
                         resources.show(player).then(result => {
 
@@ -97,6 +98,15 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                                 buy.show(player).then(result => {
                                     player.runCommand('give @s mmorpg:aetherium ' + Math.trunc(result.formValues[0] as number))
                                     removemoney(Math.trunc(result.formValues[0] as number) * 2500)
+                                }).catch(() => { })
+                            } else if (result.selection == 6) {
+                                var buy = new ui.ModalFormData()
+                                    .title("Buy Nether Star")
+                                    .slider("Amount", 0, money / 20000, 1, 0)
+
+                                buy.show(player).then(result => {
+                                    player.runCommand('give @s nether_star ' + Math.trunc(result.formValues[0] as number))
+                                    removemoney(Math.trunc(result.formValues[0] as number) * 20000)
                                 }).catch(() => { })
                             }
                         })

@@ -172,6 +172,12 @@
 		},
 		"mmorpg_golden_coin": {
 			"textures": "textures/items/coin"
+		},
+		"mmorpg_amethyst_abyss": {
+			"textures": "textures/items/amethyst_abyss"
+		},
+		"mmorpg_magma_sword": {
+			"textures": "textures/items/magma_sword"
 		}
 	}
 }

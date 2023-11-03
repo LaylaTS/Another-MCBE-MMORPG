@@ -1,0 +1,27 @@
+{
+    "format_version": "1.17.0",
+    "minecraft:volume": {
+        "description": {
+            "identifier": "mmorpg:snowregion"
+        },
+        "components": {
+            "minecraft:fog": {
+                "fog_identifier": "mmorpg:snowregionfog",
+                "priority": 0
+            },
+            "minecraft:bounds": {
+                "dimension": "overworld",
+                "max": [
+                    8000,
+                    1,
+                    7000
+                ],
+                "min": [
+                    7000,
+                    300,
+                    8000
+                ]
+            }
+        }
+    }
+}

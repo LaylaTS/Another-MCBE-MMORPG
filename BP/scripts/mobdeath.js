@@ -14,6 +14,9 @@ world.afterEvents.entityDie.subscribe(eventData => {
             } else {
                 eventmultiplier = 1
             }
+            if (eventData.deadEntity.typeId == "minecraft:player") {
+                world.scoreboard.getObjective("playerkills").addScore(eventData.damageSource.damagingEntity, 1)
+            }
             let temp = Math.trunc(deadhealth / 5) * eventmultiplier
             eventData.damageSource.damagingEntity.runCommandAsync('scoreboard players add @s money ' + temp)
             if (world.getDynamicProperty("seasondaysleft") < 3 && world.getDynamicProperty("seasonhoursleft") < 10) {

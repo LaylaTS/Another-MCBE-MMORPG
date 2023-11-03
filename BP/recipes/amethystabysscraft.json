@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:amethystabysscraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"a": {
+				"item": "amethyst_block"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			"  a",
+			" a ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:amethyst_abyss"
+		}
+	}
+}

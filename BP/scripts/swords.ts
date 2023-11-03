@@ -1,4 +1,4 @@
-import * as server from '@minecraft/server'
+	import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
 import { guildform } from './guilds.js'
 import { mmorpgmenu } from './mmorpgmenu.js'
@@ -98,7 +98,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         })
-                        entity.entity.runCommandAsync('particle minecraft:critical_hit_emitter ~ ~1 ~')
+
                     }
 
                 })
@@ -524,7 +524,65 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
 
-            break
+            break;
+
+        case "mmorpg:amethyst_abyss":
+            let location = player.location
+            if (manaamount > 69) {
+                let entities = dimension.getEntities({ location: { x: location.x, y: location.y, z: location.z }, maxDistance: 8, families: ["mob"], excludeNames: [player.name] })
+                if (entities.length > 0) {
+
+                    entities.forEach((entity, index) => {
+                        server.system.runTimeout(() => {
+                            player.tryTeleport(entity.location)
+                            entity.applyDamage(30 + magicalpower * 2, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+
+                            })
+                            dimension.spawnParticle("minecraft:critical_hit_emitter", entity.location)
+                        }, index * 3)
+                    })
+                    mana.addScore(player, -70)
+                }
+            }
+
+            break;
+        case "mmorpg:magma_sword":
+            if (manaamount > 70) {
+                mana.addScore(player, -70)
+                var rotation = player.getRotation().y
+                rotation = rotation + 90
+                let originallocationx = player.location.x
+                let originallocationz = player.location.z
+                let originallocationy = player.location.y
+                for (let distance = 0; distance < 8; distance++) {
+                    server.system.runTimeout(() => {
+                        for (const j of [0, 45, -45,]) {
+
+                            const radians = (rotation + j) * Math.PI / 180;
+                            const cosval = Math.cos(radians);
+                            const sinval = Math.sin(radians);
+                            let xlocation = originallocationx + distance * cosval
+                            let zlocation = originallocationz + distance * sinval
+                            dimension.spawnParticle("mmorpg:firesword", { x: xlocation, y: originallocationy, z: zlocation })
+                            dimension.getEntities({ location: { x: xlocation, y: originallocationy, z: zlocation }, maxDistance: 1.6, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                                entity.applyDamage(25 + magicalpower * 1.5, {
+                                    damagingEntity: player,
+                                    cause: 'entityAttack' as server.EntityDamageCause
+                                });
+                                entity.setOnFire(3, true)
+                            })
+
+
+
+
+                        }
+                    }, distance)
+                    distance++
+                }
+            }
+            break;
     }
 })
 

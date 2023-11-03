@@ -73,12 +73,6 @@
                         {
                             "function": "set_data",
                             "data": 1
-                        },
-                        {
-                            "function": "set_lore",
-                            "lore": [
-                                "Craft into the Withers Crest to fight the wither!"
-                            ]
                         }
                     ]
                 }

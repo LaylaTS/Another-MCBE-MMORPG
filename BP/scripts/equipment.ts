@@ -37,7 +37,6 @@ server.system.runInterval(() => {
         const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand)?.typeId
         const armorids = [0, 0, 0]
 
-
         switch (helditemid) {
             case "mmorpg:witherscythe":
                 maxmana = maxmana + 20
@@ -139,6 +138,7 @@ server.system.runInterval(() => {
                 break;
             default: break;
         }
+        armorids[2] = 4
         switch (armorids.indexOf(4)) {
             case 0:
                 if (player.isSneaking) {
@@ -167,7 +167,20 @@ server.system.runInterval(() => {
                 }
 
                 break;
-
+            case 2:
+                if (player.isSneaking && world.scoreboard.getObjective("mana").getScore(player) > 1 && server.system.currentTick % 3 == 0) {
+                    world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 6, excludeNames: [player.name], families: ["mob"] }).forEach(entity => {
+                        entity.setOnFire(2)
+                        entity.applyDamage(5 + magicalpower / 4, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        });
+                        entity.clearVelocity()
+                    })
+                    world.getDimension("overworld").spawnParticle("mmorpg:firesword", player.location)
+                    world.scoreboard.getObjective("mana").addScore(player, -2)
+                }
+                break;
             default: break;
         }
 

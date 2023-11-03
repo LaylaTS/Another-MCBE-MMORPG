@@ -44,6 +44,15 @@ export function fillmines() {
             var randy = Math.floor(Math.random() * 263) - 62;
             dimension.fillBlocks({ x: randx, y: randy, z: randz }, { x: randx, y: randy, z: randz }, "mmorpg:deepslate_aetherium_ore")
         }
+        for (let i = 0; i < 5; i++) {
+            var randx = Math.floor(Math.random() * 31) + 4985;
+            var randz = Math.floor(Math.random() * 31) + 4985;
+            var randy = Math.floor(Math.random() * 263) - 62;
+            dimension.fillBlocks({ x: randx, y: randy, z: randz }, { x: randx, y: randy, z: randz }, "amethyst_block")
+        }
+
+
+
         for (let i = 0; i < 650; i++) {
             var randx = Math.floor(Math.random() * 31) + 4985;
             var randz = Math.floor(Math.random() * 31) + 4985;
@@ -68,6 +77,7 @@ export function fillmines() {
             var randy = Math.floor(Math.random() * 100) + 200;
             dimension.fillBlocks({ x: randx, y: randy, z: randz }, { x: randx, y: randy, z: randz }, "minecraft:copper_ore")
         }
+
     })
 
 }

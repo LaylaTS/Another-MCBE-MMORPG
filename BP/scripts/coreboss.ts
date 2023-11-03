@@ -5,7 +5,10 @@ const world = server.world;
 
 
 export function corebossbehavior() {
+
     const dimension = world.getDimension("minecraft:overworld");
+
+
     var corebosstimer = world.getDynamicProperty("corebosstimer") as number
     var corebossattacktype = world.getDynamicProperty("corebossattacktype") as number
 
