@@ -1,0 +1,19 @@
+{
+	"format_version": "1.19.50",
+	"minecraft:block": {
+		"description": {
+			"identifier": "mmorpg:frost_vine"
+		},
+		"components": {
+			"minecraft:collision_box": false,
+			"minecraft:selection_box": true,
+			"minecraft:geometry": "geometry.frost_vine",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "mmorpg_frost_vine",
+					"render_method": "alpha_test"
+				}
+			}
+		}
+	}
+}

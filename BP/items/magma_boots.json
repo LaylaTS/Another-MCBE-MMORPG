@@ -18,6 +18,7 @@
 			"minecraft:armor": {
 				"protection": 2
 			},
+			"minecraft:foil": true,
 			"minecraft:wearable": {
 				"slot": "slot.armor.feet"
 			},

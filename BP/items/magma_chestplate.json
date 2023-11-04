@@ -18,6 +18,7 @@
 			"minecraft:armor": {
 				"protection": 6
 			},
+			"minecraft:foil": true,
 			"minecraft:wearable": {
 				"slot": "slot.armor.chest"
 			},

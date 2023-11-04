@@ -51,6 +51,9 @@
 		},
 		"mmorpg_enchanted_magma_block": {
 			"textures": "textures/blocks/enchanted_magma_block"
+		},
+		"mmorpg_frost_vine": {
+			"textures": "textures/blocks/frost_vine"
 		}
 	}
 }

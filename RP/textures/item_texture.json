@@ -190,6 +190,9 @@
 		},
 		"mmorpg_magma_boots": {
 			"textures": "textures/items/magma_boots"
+		},
+		"mmorpg_emerald_sword": {
+			"textures": "textures/items/emerald_sword"
 		}
 	}
 }
