@@ -178,6 +178,18 @@
 		},
 		"mmorpg_magma_sword": {
 			"textures": "textures/items/magma_sword"
+		},
+		"mmorpg_magma_helmet": {
+			"textures": "textures/items/magma_helmet"
+		},
+		"mmorpg_magma_chestplate": {
+			"textures": "textures/items/magma_chestplate"
+		},
+		"mmorpg_magma_leggings": {
+			"textures": "textures/items/magma_leggings"
+		},
+		"mmorpg_magma_boots": {
+			"textures": "textures/items/magma_boots"
 		}
 	}
 }

@@ -67,6 +67,10 @@ export function equipment(player: server.Player) {
         case "mmorpg:miner_helmet":
             player.addEffect("night_vision", 205, { showParticles: false })
             break;
+        case "mmorpg:magma_helmet":
+            healthboost++
+            armorids[2]++
+            break;
         default: break;
     }
 
@@ -85,6 +89,11 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:miner_chestplate":
             luck = luck + 0.2
+            break;
+        case "mmorpg:magma_chestplate":
+            healthboost = healthboost + 2
+
+            armorids[2]++
             break;
         default: break;
     }
@@ -105,6 +114,10 @@ export function equipment(player: server.Player) {
         case "mmorpg:miner_leggings":
             haste++
             break;
+        case "mmorpg:magma_leggings":
+            healthboost++
+            armorids[2]++
+            break;
         default: break;
 
     }
@@ -123,6 +136,10 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:miner_boots":
             haste++
+            break;
+        case "mmorpg:magma_boots":
+            healthboost++
+            armorids[2]++
             break;
         default: break;
     }
@@ -168,7 +185,7 @@ export function equipment(player: server.Player) {
 
             break;
         case 2:
-            if (player.isSneaking && world.scoreboard.getObjective("mana").getScore(player) > 1 && server.system.currentTick % 3 == 0) {
+            if (player.isSneaking && world.scoreboard.getObjective("mana").getScore(player) > 1 && server.system.currentTick % 5 == 0) {
                 world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 6, excludeNames: [player.name], families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
                     entity.setOnFire(2)
                     entity.applyDamage(5 + magicalpower / 4, {

@@ -100,3 +100,7 @@ item.mmorpg:ruby_heart=§2Ruby Heart§r | §3Gain 4 hearts (+2 life boost)§r
 item.mmorpg:golden_coin=Golden Coin
 item.mmorpg:amethyst_abyss=§5Amethyst Abyss §r| §370 Mana
 item.mmorpg:magma_sword=§5Magma Sword§r | §b70 Mana
+item.mmorpg:magma_helmet=Magma Helmet
+item.mmorpg:magma_chestplate=Magma Chestplate
+item.mmorpg:magma_leggings=Magma Leggings
+item.mmorpg:magma_boots=Magma Boots

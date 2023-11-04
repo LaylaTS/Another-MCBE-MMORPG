@@ -67,7 +67,6 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 var rank = new ui.ModalFormData()
                     .title('Type in rank')
                     .textField('Type in rank', 'rank')
-                    .textField('Type in nickname', 'nick')
 
                 rank.show(player).then(rankoutput => {
                     world.getPlayers({ name: rankoutput.formValues[1] as string })[0].setDynamicProperty("playerrank", rankoutput.formValues[0])
