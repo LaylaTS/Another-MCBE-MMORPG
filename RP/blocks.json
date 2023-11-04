@@ -63,5 +63,9 @@
 	"mmorpg:enchanted_aetherium_block": {
 		"sound": "stone",
 		"textures": "mmorpg_enchanted_aetherium_block"
+	},
+	"mmorpg:enchanted_magma_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_magma_block"
 	}
 }
