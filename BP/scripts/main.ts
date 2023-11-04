@@ -9,7 +9,7 @@ import 'dailyrewards.js'
 import 'coreboss.js'
 import 'npcs.js'
 import { corebossbehavior } from './coreboss.js'
-import 'equipment.js'
+import { equipment } from './equipment.js'
 import 'skybornespecter.js'
 import 'guilds.js'
 import 'seasons.js'
@@ -51,11 +51,11 @@ server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
     //snowregion(players)
     players.forEach(function (player) { // run for every player
+        equipment(player)
         let money = player.getDynamicProperty("money") as number
         var maxmana = player.getDynamicProperty("maxmana") as number
         player.runCommandAsync('scoreboard players set @s maxmana ' + maxmana)
-        let rank = player.getDynamicProperty("playerrank")
-        if (rank == undefined) rank = "§l§8PLAYER"
+
         player.nameTag = `${player.name}\n§r§c${Math.round(player.getComponent("health").currentValue)} §l§8»§r§b ${world.scoreboard.getObjective("mana").getScore(player)}`
 
         let mana = server.world.scoreboard.getObjective('mana').getScore(player)
@@ -63,7 +63,7 @@ server.system.runInterval(() => { // run every tick
             mana = maxmana
             player.runCommandAsync('scoreboard players set @s mana ' + mana)
         }
-        if (server.world.getAbsoluteTime() % player.getDynamicProperty("manaregen") as number == 0) {
+        if (server.world.getAbsoluteTime() % player.getDynamicProperty("manaregen") == 0) {
             player.runCommandAsync('scoreboard players add @s mana 1')
         }
 

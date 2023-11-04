@@ -1,4 +1,4 @@
-	import * as server from '@minecraft/server'
+import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
 import { guildform } from './guilds.js'
 import { mmorpgmenu } from './mmorpgmenu.js'
@@ -582,6 +582,26 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     distance++
                 }
             }
+            break;
+        case "mmorpg:emerald_sword":
+
+            if (manaamount > 14) {
+
+                const mobs = dimension.getEntities({ location: player.location, maxDistance: 12, families: ["mob"], excludeNames: [player.name] })
+                if (mobs.length > 0) {
+                    mana.addScore(player, -15)
+                    const entity: server.Entity = mobs[Math.floor(Math.random() * mobs.length)]
+                    dimension.spawnParticle("mmorpg:emeraldmeteor", entity.location)
+                    server.system.runTimeout(() => {
+
+                        entity.applyDamage(10 + magicalpower * 0.4, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        });
+                    }, 10)
+                }
+            }
+
             break;
     }
 })
