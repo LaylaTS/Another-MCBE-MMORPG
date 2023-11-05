@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "mmorpg:ice"
+		},
+		"components": {
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "ice",
+					"render_method": "blend",
+					"ambient_occlusion": true
+				}
+			},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 1
+			},
+			"minecraft:loot": "loot_tables/ice.json",
+			"minecraft:flammable": false,
+			"tag:diamond_pick_diggable": {},
+			"tag:iron_pick_diggable": {}
+		}
+	}
+}

@@ -108,3 +108,4 @@ item.mmorpg:emerald_sword=§5Emerald Sword§r | §315 Mana
 tile.mmorpg:frost_vine.name=Frost Vine
 entity.mmorpg:skywatcher.name=Sky Watcher
 eentity.mmorpg:core_boss.name=§4§lAncient Guardian§r
+tile.mmorpg:ice.name=Ice

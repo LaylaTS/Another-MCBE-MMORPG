@@ -54,6 +54,9 @@
 		},
 		"mmorpg_frost_vine": {
 			"textures": "textures/blocks/frost_vine"
+		},
+		"mmorpg_ice": {
+			"textures": "textures/blocks/ice"
 		}
 	}
 }

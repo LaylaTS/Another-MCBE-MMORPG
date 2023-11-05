@@ -70,5 +70,9 @@
 	},
 	"mmorpg:frost_vine": {
 		"sound": "stone"
+	},
+	"mmorpg:ice": {
+		"sound": "glass",
+		"textures": "ice"
 	}
 }
