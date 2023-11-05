@@ -35,11 +35,14 @@
         "value": 14,
         "slot": "sword"
       },
+      "minecraft:cooldown": {
+        "category": "purpledagger",
+        "duration": 1
+      },
       "minecraft:hand_equipped": true,
       "minecraft:icon": {
         "texture": "mmorpg_purpledagger"
       },
-      "minecraft:on_use": {},
       "minecraft:max_stack_size": 1,
       "minecraft:repairable": {
         "repair_items": [

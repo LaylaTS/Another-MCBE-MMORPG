@@ -69,8 +69,16 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     .textField('Type in rank', 'rank')
 
                 rank.show(player).then(rankoutput => {
-                    world.getPlayers({ name: rankoutput.formValues[1] as string })[0].setDynamicProperty("playerrank", rankoutput.formValues[0])
+                    const players = world.getPlayers({})
+                    const selection = new ui.ActionFormData()
+                        .title("Choose Player")
 
+                    players.forEach(playerui => {
+                        selection.button(playerui.name)
+                    })
+                    selection.show(player).then(data => {
+                        players[data.selection].setDynamicProperty("playerrank", rankoutput.formValues[0])
+                    })
                 })
 
             }
@@ -78,8 +86,12 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:purpledagger":
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
 
-            if (manaamount > 19) {
+
+
+            if (manaamount > 19 && player.getItemCooldown("purpledagger") == 0) {
+                cooldown.startCooldown(player)
                 let vector3 = player.getViewDirection()
                 if (player.isSneaking) {
                     player.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
@@ -101,6 +113,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     }
 
                 })
+
+
+
             }
             break;
         case "mmorpg:withermenace":
@@ -246,7 +261,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:applesword":
 
 
-            addlore(["§8Using this ability gives", "§8you and all nearby players", "§8regeneration for 5 seconds"])
+            addlore(["§8Using this ability gives", "§8you regeneration for 5 seconds"])
             if (manaamount > 29) {
 
 
@@ -267,7 +282,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:aetheriumblade":
             addlore(["§8Teleport to the nearest enemy", "§8and deal area damage knocking up enemies"])
             if (dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] }).length > 0) {
-                if (manaamount > 49) {
+                if (manaamount > 49 && player.isOnGround) {
                     mana.addScore(player, -50)
 
                     var otherEntity = dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] })[0] as server.Entity
@@ -299,7 +314,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 player.playSound("sword.twilightblossom")
                 twilightblossomentities.forEach(entity => {
                     dimension.spawnParticle("mmorpg:twilightblossomparticle", entity.location)
-                    entity.applyDamage(30 + magicalpower * 3, {
+                    entity.applyDamage(30 + magicalpower * 2, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     })
@@ -392,7 +407,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:voidreaver":
             addlore(["§8Shoot a projectile which deals damage", "§8and explodes when it hits an enemy"])
-            if (manaamount > 49) {
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+            if (manaamount > 49 && player.getItemCooldown("voidreaver") == 0) {
+                cooldown.startCooldown(player)
                 mana.addScore(player, -50)
                 var rotation = player.getRotation().y
                 rotation = rotation + 90
@@ -516,10 +533,12 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:ruby_sword":
-            if (manaamount > 49) {
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+
+            if (manaamount > 49 && player.getItemCooldown("ru") == 0) {
                 player.addEffect("regeneration", 50, { amplifier: 15, showParticles: false })
                 mana.addScore(player, -40)
-
+                cooldown.startCooldown(player)
             }
 
 
@@ -548,6 +567,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:magma_sword":
+            addlore(["§r§l§4PVP DISABLED§r", "§7§oShoot fire in 3 cones", "§7§oignite mobs and deal tons of damage"])
             if (manaamount > 70) {
                 mana.addScore(player, -70)
                 var rotation = player.getRotation().y
@@ -565,8 +585,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
                             let xlocation = originallocationx + distance * cosval
                             let zlocation = originallocationz + distance * sinval
                             dimension.spawnParticle("mmorpg:firesword", { x: xlocation, y: originallocationy, z: zlocation })
-                            dimension.getEntities({ location: { x: xlocation, y: originallocationy, z: zlocation }, maxDistance: 1.6, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                                entity.applyDamage(25 + magicalpower * 1.5, {
+                            dimension.getEntities({ location: { x: xlocation, y: originallocationy, z: zlocation }, maxDistance: 1.6, families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
+                                entity.applyDamage(15 + magicalpower * 2, {
                                     damagingEntity: player,
                                     cause: 'entityAttack' as server.EntityDamageCause
                                 });
@@ -593,12 +613,22 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     dimension.spawnParticle("mmorpg:emeraldmeteor", entity.location)
                     server.system.runTimeout(() => {
 
+                        dimension.spawnParticle("minecraft:critical_hit_emitter", entity.location)
                         entity.applyDamage(10 + magicalpower * 0.4, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         });
                     }, 10)
                 }
+            }
+
+            break;
+        case "minecraft:dragon_breath":
+
+            if (player.name == "SkorpMCBE1676" || player.name == "KrzychTym" || player.name == "WojtekBB") {
+                let blockpos = player.getBlockFromViewDirection().block.location
+                dimension.runCommand(`clone 16 113 96 10 119 102 ${blockpos.x - 3} ${blockpos.y - 3} ${blockpos.z - 3} masked`)
+
             }
 
             break;

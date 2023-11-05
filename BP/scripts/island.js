@@ -24,6 +24,7 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
 
         player.runCommand("scoreboard players add @s playtime 0")
         player.runCommand("scoreboard players add @s deathcounter 0")
+        player.runCommand("scoreboard players add @s playerkills 0")
 
 
 

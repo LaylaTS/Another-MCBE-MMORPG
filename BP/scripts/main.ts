@@ -49,7 +49,7 @@ world.afterEvents.worldInitialize.subscribe(() => {
 
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
-    //snowregion(players)
+    snowregion(players)
     players.forEach(function (player) { // run for every player
         equipment(player)
         let money = player.getDynamicProperty("money") as number
@@ -93,11 +93,11 @@ server.system.runInterval(() => { // run every tick
         fillmines()
         world.sendMessage("\n§5§l> Filled Mines! <§r\n\n")
     }
-    if (server.system.currentTick % 200 == 0) {
+    if (server.system.currentTick % 20 == 0) {
 
 
 
-        if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "deathdisplay") {
+        if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "killdisplay") {
             world.scoreboard.removeObjective("moneydisplay")
             world.scoreboard.addObjective("moneydisplay", "§gMoney Ranking:§r§o§7 (k)")
             world.getAllPlayers().forEach(player => {
@@ -117,7 +117,7 @@ server.system.runInterval(() => { // run every tick
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('playtimedisplay') })
 
-        } else {
+        } else if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "playtimedisplay") {
             world.scoreboard.removeObjective("deathdisplay")
             world.scoreboard.addObjective("deathdisplay", "§4Death Ranking:")
             world.getAllPlayers().forEach(player => {
@@ -125,6 +125,13 @@ server.system.runInterval(() => { // run every tick
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('deathdisplay') })
 
+        } else {
+            world.scoreboard.removeObjective("killdisplay")
+            world.scoreboard.addObjective("killdisplay", "§aKill Ranking:")
+            world.getAllPlayers().forEach(player => {
+                world.scoreboard.getObjective("killdisplay").setScore(player, Math.trunc(world.scoreboard.getObjective("playerkills").getScore(player)))
+                world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('killdisplay') })
+            })
         }
     }
 })

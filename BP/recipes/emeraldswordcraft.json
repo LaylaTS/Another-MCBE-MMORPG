@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:emeraldswordcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"e": {
+				"item": "mmorpg:enchanted_emerald_block"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			"  e",
+			" e ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:emerald_sword"
+		}
+	}
+}

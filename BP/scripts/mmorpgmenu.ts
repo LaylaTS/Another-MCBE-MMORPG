@@ -36,7 +36,7 @@ export function mmorpgmenu(player: server.Player) {
                             if (data.selection == 0) {
                                 player.tryTeleport(randomspawn[Math.floor(Math.random() * randomspawn.length)])
                             } else {
-                                player.tryTeleport({ x: -5000 + Math.random() * 90 - 45, z: 5000 + Math.random() * 90 - 45, y: 100 })
+                                player.tryTeleport({ x: -5000 + Math.random() * 40 - 20, z: 5000 + Math.random() * 40 - 20, y: 100 })
                             }
                         })
                         player.triggerEvent("mmorpg:pvpon")

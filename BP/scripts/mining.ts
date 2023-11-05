@@ -92,7 +92,10 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
                 player.runCommand('give @s mmorpg:ruby')
                 player.playSound('break.amethyst_cluster')
             }
-
+            if (Math.floor((Math.random() * 200 / rng) + 1) == 1) {
+                player.runCommand('give @s minecraft:emerald')
+                player.playSound('break.amethyst_cluster')
+            }
             if (Math.floor((Math.random() * 1000 / rng) + 1) == 1) {
                 player.runCommand('give @s netherite_ingot')
                 player.playSound('respawn_anchor.set_spawn')

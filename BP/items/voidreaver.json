@@ -37,6 +37,10 @@
 				"value": 14,
 				"slot": "sword"
 			},
+			"minecraft:cooldown": {
+				"category": "voidreaver",
+				"duration": 2
+			},
 			"minecraft:hand_equipped": true,
 			"minecraft:icon": {
 				"texture": "mmorpg_voidreaver"

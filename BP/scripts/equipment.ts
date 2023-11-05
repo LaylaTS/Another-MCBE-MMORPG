@@ -68,6 +68,7 @@ export function equipment(player: server.Player) {
             player.addEffect("night_vision", 205, { showParticles: false })
             break;
         case "mmorpg:magma_helmet":
+            maxmana = maxmana + 10
             healthboost++
             armorids[2]++
             break;
@@ -92,7 +93,7 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:magma_chestplate":
             healthboost = healthboost + 2
-
+            magicalpower = magicalpower + 3
             armorids[2]++
             break;
         default: break;
@@ -115,6 +116,7 @@ export function equipment(player: server.Player) {
             haste++
             break;
         case "mmorpg:magma_leggings":
+            manaregen = manaregen - 5
             healthboost++
             armorids[2]++
             break;
@@ -139,6 +141,7 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:magma_boots":
             healthboost++
+            maxmana = maxmana + 10
             armorids[2]++
             break;
         default: break;

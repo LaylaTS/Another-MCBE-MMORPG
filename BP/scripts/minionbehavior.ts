@@ -37,7 +37,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
 
 
         newminionui.show(player).then(data => {
-            if (data.selection == 0) {
+            if (data.selection == 0 && player.getDynamicProperty("minioncount") < 5) {
                 function payprice() {
                     player.setDynamicProperty("money", player.getDynamicProperty("money") as number - 10000)
                 }
@@ -46,7 +46,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     .body(`\n§c§lWARNING:§r This will use one of your minions slots.\n `)
                     .button("Cobblestone")
                     .button("Ruby")
-                    // .button("Emerald")
+                    .button("Emerald")
                     // .button("Iron")
                     .show(player).then(data => {
 
@@ -97,6 +97,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     switch (entity.getDynamicProperty("resource")) {
                         case "Cobblestone": generationspeed = 120; drop = "minecraft:cobblestone"; break;
                         case "Ruby": generationspeed = 450; drop = "mmorpg:ruby"; break;
+                        case "Emerald": generationspeed = 450; drop = "minecraft:emerald"; break;
                     }
                     const lastuse = new Date(entity.getDynamicProperty("lastvisitdate") as string);
                     const currentdate = new Date()
