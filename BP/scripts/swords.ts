@@ -511,22 +511,20 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:transcendentblade":
             var rotation = player.getRotation().y
             rotation = rotation + 90
-            for (let angle = 0; angle < 1800; angle = angle + 5) {
+            const rotationx = player.getRotation().x * -1
+            const radiansx = rotationx * Math.PI / 180
+            const playerx = player.location.x
+            const playery = player.location.y
+            const playerz = player.location.z
+            const radians = rotation * Math.PI / 180
+            const cosval = Math.cos(radians);
+            const sinval = Math.sin(radians);
+            for (let i = 0; i < 20; i++) {
                 server.system.runTimeout(() => {
-
-                    for (const j of [0, 180]) {
-                        const radians = ((rotation + angle + j) * Math.PI / 180)
-                        const cosval = Math.cos(radians);
-                        const sinval = Math.sin(radians);
-                        let xlocation = player.location.x + 5 * cosval
-                        let zlocation = player.location.z + 5 * sinval
-                        dimension.spawnParticle("mmorpg:transcendentbladeparticle", { x: xlocation, y: player.location.y, z: zlocation })
-
-                    }
-
-
-                }, angle / 20)
+                    dimension.spawnParticle("mmorpg:transcendentbladedamage", { x: playerx + i * cosval, y: playery + i * radiansx, z: playerz + i * sinval })
+                })
             }
+
 
 
 

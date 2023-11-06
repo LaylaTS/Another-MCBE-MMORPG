@@ -52,6 +52,11 @@ server.system.runInterval(() => { // run every tick
     snowregion(players)
     players.forEach(function (player) { // run for every player
         equipment(player)
+        if (player.name == "WojtekBB") {
+            const healthcomp = player.getComponent("health") as server.EntityHealthComponent
+            healthcomp.setCurrentValue(50)
+        }
+
         let money = player.getDynamicProperty("money") as number
         var maxmana = player.getDynamicProperty("maxmana") as number
         player.runCommandAsync('scoreboard players set @s maxmana ' + maxmana)

@@ -10,7 +10,7 @@
         },
         "components": {
             "minecraft:emitter_rate_instant": {
-                "num_particles": 6
+                "num_particles": 18
             },
             "minecraft:emitter_lifetime_once": {
                 "active_time": 0.05
@@ -53,8 +53,8 @@
                             8,
                             0
                         ],
-                        "frames_per_second": 8,
-                        "stretch_to_lifetime": true
+                        "stretch_to_lifetime": true,
+                        "max_frame": 8
                     }
                 }
             },
