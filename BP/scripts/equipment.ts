@@ -214,6 +214,7 @@ export function equipment(player: server.Player) {
     }
     if (healthboost > -1) {
         player.addEffect("health_boost", 25, { amplifier: healthboost, showParticles: false })
+        player.setDynamicProperty("healthboost", healthboost)
     }
     player.setDynamicProperty("setbonustimings", setbonustimings)
     player.setDynamicProperty("magicalpower", magicalpower)

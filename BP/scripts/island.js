@@ -8,9 +8,10 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
     if (player.getDynamicProperty("money") == undefined) {
         player.setDynamicProperty("money", 0)
     } else {
-        //player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
+
         player.runCommand("stopsound @s")
     }
+    player.setDynamicProperty("healthboost", 0)
     player.triggerEvent("mmorpg:pvpoff")
 
     if (eventData.player.hasTag('joined') == false) {
@@ -39,7 +40,9 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
 
 
     }
-
+    if (!eventData.initialSpawn) {
+        player.setDynamicProperty("money", Math.trunc(player.getDynamicProperty("money") / 2))
+    }
 
 }
 )
