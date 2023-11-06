@@ -175,7 +175,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:forbiddenscythe":
-            addlore(["§8Teleport to an enemy dealing damage", "§8or jump dealing damage", "§8depending if you are sprinting or not"])
+            addlore(["§8Teleport to an enemy dealing damage", "§8or jump dealing damage", "§8depending on you sprinting"])
             if (manaamount > 29) {
 
                 if (player.getEntitiesFromViewDirection().length > 0) {
@@ -307,8 +307,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:twilightblossom":
-            addlore(["§8Deal massive damage to", "§8all enemies in a 7 block radius"])
-            let twilightblossomentities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeNames: [player.name] })
+            addlore(["§r§l§4PVP DISABLED", "§8Deal massive damage to", "§8all enemies in a 7 block radius"])
+            let twilightblossomentities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] })
             if (twilightblossomentities.length > 0 && manaamount > 99) {
                 mana.addScore(player, -100)
                 player.playSound("sword.twilightblossom")
@@ -533,9 +533,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:ruby_sword":
+            addlore(["§8Regenerate a lot of health", "§with a huge cooldown"])
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
 
-            if (manaamount > 49 && player.getItemCooldown("ru") == 0) {
+            if (manaamount > 49 && player.getItemCooldown("ruby_sword") == 0) {
                 player.addEffect("regeneration", 50, { amplifier: 15, showParticles: false })
                 mana.addScore(player, -40)
                 cooldown.startCooldown(player)
@@ -545,6 +546,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:amethyst_abyss":
+            addlore(["§8Teleport to all nearby mobs", "§8dealing damage to them"])
             let location = player.location
             if (manaamount > 69) {
                 let entities = dimension.getEntities({ location: { x: location.x, y: location.y, z: location.z }, maxDistance: 8, families: ["mob"], excludeNames: [player.name] })
@@ -553,7 +555,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     entities.forEach((entity, index) => {
                         server.system.runTimeout(() => {
                             player.tryTeleport(entity.location)
-                            entity.applyDamage(30 + magicalpower * 2, {
+                            entity.applyDamage(20 + magicalpower * 1.5, {
                                 damagingEntity: player,
                                 cause: 'entityAttack' as server.EntityDamageCause
 
@@ -603,10 +605,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:emerald_sword":
-
+            addlore(["§r§4§lPVP DISABLED", "§8Shoot an emerald meteor at one", "§8of the mobs nearby"])
             if (manaamount > 14) {
 
-                const mobs = dimension.getEntities({ location: player.location, maxDistance: 12, families: ["mob"], excludeNames: [player.name] })
+                const mobs = dimension.getEntities({ location: player.location, maxDistance: 12, families: ["mob"], excludeFamilies: ["player"] })
                 if (mobs.length > 0) {
                     mana.addScore(player, -15)
                     const entity: server.Entity = mobs[Math.floor(Math.random() * mobs.length)]

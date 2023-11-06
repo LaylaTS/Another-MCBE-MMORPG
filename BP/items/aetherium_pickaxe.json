@@ -29,7 +29,7 @@
 				"destroy_speeds": [
 					{
 						"block": {
-							"tags": "query.any_tag('stone', 'metal', 'diamond_pick_diggable')"
+							"tags": "query.any_tag('stone', 'metal', 'diamond_pick_diggable', 'iron_pick_diggable')"
 						},
 						"speed": 20
 					},
@@ -51,6 +51,18 @@
 					},
 					{
 						"block": "amethyst_block",
+						"speed": 20
+					},
+					{
+						"block": "netherrack",
+						"speed": 20
+					},
+					{
+						"block": "minecraft:nether_gold_ore",
+						"speed": 20
+					},
+					{
+						"block": "quartz_ore",
 						"speed": 20
 					}
 				]
