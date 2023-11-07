@@ -26,6 +26,7 @@ export function equipment(player: server.Player) {
     var haste: number = -1
     var healthboost: number = -1
     var luck: number = 1
+    var speed: number = -1
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -46,6 +47,9 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:ruby_pickaxe":
             luck = luck + 0.1
+            break;
+        case "mmorpg:golden_ring":
+            speed++
             break;
         default: break;
     }
@@ -233,6 +237,9 @@ export function equipment(player: server.Player) {
 
     if (haste > -1) {
         player.addEffect("haste", 25, { amplifier: haste, showParticles: false })
+    }
+    if (speed > -1) {
+        player.addEffect("speed", 25, { amplifier: speed, showParticles: false })
     }
     if (healthboost > -1) {
         player.addEffect("health_boost", 25, { amplifier: healthboost, showParticles: false })

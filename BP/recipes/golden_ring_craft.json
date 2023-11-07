@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:golden_ring_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"g": {
+				"item": "mmorpg:enchanted_gold_ingot"
+			},
+			"a": {
+				"item": "mmorpg:enchanted_aetherium_ingot"
+			}
+		},
+		"pattern": [
+			" g ",
+			"gag",
+			" g "
+		],
+		"result": {
+			"item": "mmorpg:golden_ring"
+		}
+	}
+}

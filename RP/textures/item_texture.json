@@ -211,6 +211,9 @@
 		},
 		"mmorpg_enchanted_diamond_boots": {
 			"textures": "textures/items/enchanted_diamond_boots"
+		},
+		"mmorpg_golden_ring": {
+			"textures": "textures/items/golden_ring"
 		}
 	}
 }
