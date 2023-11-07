@@ -658,6 +658,16 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
             break;
+
+        case "mmorpg:skyborn_sword":
+            const entities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] })
+            entities.forEach(entity => {
+                let vector3 = entity.getViewDirection()
+
+                entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3.5, 0.35)
+            })
+
+            break;
     }
 })
 

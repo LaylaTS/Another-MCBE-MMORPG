@@ -11,11 +11,11 @@
 			"mmorpg:roar": {
 				"minecraft:behavior.knockback_roar": {
 					"priority": 1,
-					"attack_time": 2.0,
+					"attack_time": 1.7,
 					"cooldown_time": 0.5,
 					"duration": 2.5,
-					"knockback_damage": 13,
-					"knockback_range": 9,
+					"knockback_damage": 4,
+					"knockback_range": 6,
 					"knockback_vertical_strength": 2,
 					"knockback_horizontal_strength": 5,
 					"on_roar_end": {
@@ -38,7 +38,7 @@
 				"radius": 6
 			},
 			"minecraft:attack": {
-				"damage": 3
+				"damage": -4
 			},
 			"minecraft:collision_box": {
 				"width": 0.5,
