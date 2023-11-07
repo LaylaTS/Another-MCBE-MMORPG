@@ -33,14 +33,14 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                 switch (result.selection) {
                     case 0:
                         var resources = new ui.ActionFormData()
-                            .title("Resources   Current Balance: " + world.scoreboard.getObjective('money').getScore(player))
-                            .button("Iron - 250$")
+                            .title("Resources   Current Balance: " + money)
+                            .button("Iron - 250$", "textures/items/iron_ingot")
                             .button("Oak Log - 50$")
-                            .button("Diamond - 2000$")
-                            .button("Netherite - 10000$")
+                            .button("Diamond - 2000$", "textures/items/diamond")
+                            .button("Netherite - 10000$", "textures/items/netherite_ingot")
                             .button("Lava Bucket - 2500$")
-                            .button("Aetherium - 2500$")
-                            .button("Nether Star - 20000$")
+                            .button("Aetherium - 2500$", "textures/items/aetherium")
+                            .button("Nether Star - 20000$", "textures/items/nether_star")
 
                         resources.show(player).then(result => {
 
@@ -115,7 +115,22 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                         player.sendMessage("Soon")
                         break;
                     case 2:
-                        player.sendMessage("Soon")
+                        const swords = new ui.ActionFormData()
+                            .title("Swords")
+                            .button("Transcendent Blade - 100k", "textures/items/transcendentblade")
+
+                            .show(player).then(data => {
+                                if (data.selection == 0) {
+                                    var buy = new ui.ModalFormData()
+                                        .title("Transcendent Blade")
+                                        .slider("Amount", 0, money / 100000, 1, 0)
+
+                                    buy.show(player).then(result => {
+                                        player.runCommand('give @s mmorpg:transcendentblade ' + Math.trunc(result.formValues[0] as number))
+                                        removemoney(Math.trunc(result.formValues[0] as number) * 100000)
+                                    }).catch(() => { })
+                                }
+                            }).catch(() => { })
                         break;
                     case 3:
                         player.sendMessage("Soon")

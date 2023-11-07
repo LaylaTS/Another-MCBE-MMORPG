@@ -25,6 +25,9 @@
 			"minecraft:creative_category": {
 				"parent": "itemGroup.name.chestplate"
 			},
+			"minecraft:display_name": {
+				"value": "§9Magma Chestplate§r\n§o§7+4 Hearts§r\n§o§7+3 Magical Power§r\n§lSet Bonus:§r §7§ocrouch to burn nearby enemies§r\n§7§oand deal damage to them§r\n§o§7doing this consumes mana"
+			},
 			"minecraft:repairable": {
 				"repair_items": [
 					{

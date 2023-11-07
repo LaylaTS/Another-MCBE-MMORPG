@@ -50,6 +50,7 @@ world.afterEvents.worldInitialize.subscribe(() => {
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
     snowregion(players)
+
     players.forEach(function (player) { // run for every player
         equipment(player)
 
