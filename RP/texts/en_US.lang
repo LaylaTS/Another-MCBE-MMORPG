@@ -113,3 +113,7 @@ eentity.mmorpg:core_boss.name=§4§lAncient Guardian§r
 tile.mmorpg:ice.name=Ice
 item.mmorpg:luck_charm=§2Lucky Charm§r | §3Get 0.1 luck§r
 item.mmorpg:redstone_infuser=§2Redstone Infuser§r | §3Get +1 haste§r
+item.mmorpg:enchanted_diamond_helmet=Enchanted Diamond Helmet
+item.mmorpg:enchanted_diamond_chestplate=Enchanted Diamond Chestplate
+item.mmorpg:enchanted_diamond_leggings=Enchanted Diamond Leggings
+item.mmorpg:enchanted_diamond_boots=Enchanted Diamond Boots

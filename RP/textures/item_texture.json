@@ -199,6 +199,18 @@
 		},
 		"mmorpg_redstone_infuser": {
 			"textures": "textures/items/redstone_infuser"
+		},
+		"mmorpg_enchanted_diamond_helmet": {
+			"textures": "textures/items/enchanted_diamond_helmet"
+		},
+		"mmorpg_enchanted_diamond_chestplate": {
+			"textures": "textures/items/enchanted_diamond_chestplate"
+		},
+		"mmorpg_enchanted_diamond_leggings": {
+			"textures": "textures/items/enchanted_diamond_leggings"
+		},
+		"mmorpg_enchanted_diamond_boots": {
+			"textures": "textures/items/enchanted_diamond_boots"
 		}
 	}
 }

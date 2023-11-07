@@ -72,6 +72,10 @@ export function equipment(player: server.Player) {
             healthboost++
             armorids[2]++
             break;
+        case "mmorpg:enchanted_diamond_helmet":
+            healthboost++
+            manaregen = manaregen - 3
+            break;
         default: break;
     }
 
@@ -95,6 +99,11 @@ export function equipment(player: server.Player) {
             healthboost = healthboost + 2
             magicalpower = magicalpower + 3
             armorids[2]++
+            break;
+        case "mmorpg:enchanted_diamond_chestplate":
+            healthboost = healthboost + 2
+            manaregen = manaregen - 3
+            speed++
             break;
         default: break;
     }
@@ -120,6 +129,11 @@ export function equipment(player: server.Player) {
             healthboost++
             armorids[2]++
             break;
+        case "mmorpg:enchanted_diamond_leggings":
+            healthboost++
+            manaregen = manaregen - 3
+            maxmana = maxmana + 50
+            break;
         default: break;
 
     }
@@ -143,6 +157,10 @@ export function equipment(player: server.Player) {
             healthboost++
             maxmana = maxmana + 10
             armorids[2]++
+            break;
+        case "mmorpg:enchanted_diamond_boots":
+            healthboost++
+            manaregen = manaregen - 3
             break;
         default: break;
     }
