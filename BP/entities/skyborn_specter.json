@@ -1,5 +1,5 @@
 {
-	"format_version": "1.16.0",
+	"format_version": "1.20.30",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "mmorpg:skyborn_specter",
@@ -7,14 +7,35 @@
 			"is_summonable": true,
 			"is_experimental": false
 		},
-		"component_groups": {},
+		"component_groups": {
+			"mmorpg:roar": {
+				"minecraft:behavior.knockback_roar": {
+					"priority": 1,
+					"attack_time": 2.0,
+					"cooldown_time": 0.5,
+					"duration": 2.5,
+					"knockback_damage": 13,
+					"knockback_range": 9,
+					"knockback_vertical_strength": 2,
+					"knockback_horizontal_strength": 5,
+					"on_roar_end": {
+						"event": "mmorpg:endroar"
+					}
+				}
+			}
+		},
 		"components": {
 			"minecraft:type_family": {
 				"family": [
 					"island",
 					"boss",
-					"monster"
+					"monster",
+					"mob"
 				]
+			},
+			"minecraft:tick_world": {
+				"never_despawn": true,
+				"radius": 6
 			},
 			"minecraft:attack": {
 				"damage": 3
@@ -55,6 +76,16 @@
 			"minecraft:behavior.random_look_around": {
 				"priority": 5
 			},
+			"minecraft:timer": {
+				"looping": true,
+				"time": [
+					10,
+					15
+				],
+				"time_down_event": {
+					"event": "mmorpg:roarstart"
+				}
+			},
 			"minecraft:physics": {},
 			"minecraft:jump.static": {},
 			"minecraft:movement.basic": {},
@@ -85,6 +116,21 @@
 				]
 			}
 		},
-		"events": {}
+		"events": {
+			"mmorpg:roarstart": {
+				"add": {
+					"component_groups": [
+						"mmorpg:roar"
+					]
+				}
+			},
+			"mmorpg:endroar": {
+				"remove": {
+					"component_groups": [
+						"mmorpg:roar"
+					]
+				}
+			}
+		}
 	}
 }
