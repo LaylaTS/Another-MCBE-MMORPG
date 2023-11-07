@@ -7,7 +7,8 @@
 				"default": "entity_alphatest"
 			},
 			"textures": {
-				"default": "textures/entity/minion"
+				"default": "textures/entity/minion/cobble",
+				"ruby": "textures/entity/minion/cobble"
 			},
 			"geometry": {
 				"default": "geometry.minion"
@@ -16,8 +17,7 @@
 				"controller.render.minion"
 			],
 			"spawn_egg": {
-				"base_color": "#000000",
-				"overlay_color": "#FFFFFF"
+				"texture": "minion_item"
 			}
 		}
 	}

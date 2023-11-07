@@ -47,6 +47,28 @@
 					]
 				}
 			}
+		},
+		"controller.animation.skyborn_specter_roar_cont": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"roaring": "query.is_roaring" 
+						}
+					]
+				},
+				"roaring": {
+					"animations": [
+						"roar"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_roaring" 
+						}
+					]
+				}
+			}
 		}
 	}
 }

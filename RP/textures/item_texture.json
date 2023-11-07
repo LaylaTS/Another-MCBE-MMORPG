@@ -217,6 +217,9 @@
 		},
 		"mmorpg_golden_ring": {
 			"textures": "textures/items/golden_ring"
+		},
+		"minion_item": {
+			"textures": "textures/items/minion_item"
 		}
 	}
 }

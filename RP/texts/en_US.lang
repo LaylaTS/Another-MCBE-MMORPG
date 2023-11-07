@@ -10,6 +10,7 @@ item.mmorpg:sculked_chestplate=§9Sculked Chestplate§r\n§o§7+5 Magical Power�
 item.mmorpg:sculked_leggings=§9Sculked Leggings§r\n§o§7+20 Max Mana§r\n§lSet Bonus:§r §7When crouching regenerate mana and take less damage§r\n§7but become blind and very slow§r
 item.mmorpg:sculked_boots=§9Sculked Boots§r\n§o§7+20 Max Mana§r\n§lSet Bonus:§r §7When crouching regenerate mana and take less damage§r\n§7but become blind and very slow§r
 item.spawn_egg.entity.mmorpg:buffedzombie.name=Spawn Buffed Zombie
+item.spawn_egg.entity.mmorpg:minion.name=Spawn Minion
 entity.mmorpg:buffedzombie.name=Buffed Zombie
 item.spawn_egg.entity.mmorpg:abilitysculkblast.name=Spawn Sculk Blast
 entity.mmorpg:abilitysculkblast.name=Sculk Blast

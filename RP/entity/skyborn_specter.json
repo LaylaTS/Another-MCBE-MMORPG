@@ -15,7 +15,9 @@
 				"move_cont": "controller.animation.skyborn_specter_walk_cont",
 				"wings": "animation.skyborn_specter.wings",
 				"attack_cont": "controller.animation.skyborn_specter_attack_cont",
-				"attack": "animation.skyborn_specter.attack"
+				"attack": "animation.skyborn_specter.attack",
+				"roar": "animation.skyborn_specter.knockback_roar",
+				"roar_cont": "controller.animation.skyborn_specter_roar_cont"
 			},
 			"geometry": {
 				"default": "geometry.skyborn_specter"
@@ -25,7 +27,8 @@
 					"move_cont",
 					"look_at_target",
 					"wings",
-					"attack_cont"
+					"attack_cont",
+					"roar_cont"
 				]
 			},
 			"render_controllers": [
