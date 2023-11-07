@@ -519,9 +519,32 @@ world.afterEvents.itemUse.subscribe(eventData => {
             const radians = rotation * Math.PI / 180
             const cosval = Math.cos(radians);
             const sinval = Math.sin(radians);
+            let hitscan = 0
             for (let i = 0; i < 20; i++) {
-                server.system.runTimeout(() => {
-                    dimension.spawnParticle("mmorpg:transcendentbladedamage", { x: playerx + i * cosval, y: playery + i * radiansx, z: playerz + i * sinval })
+
+
+                let location: server.Vector3 = { x: playerx + i * cosval, y: playery + i * radiansx, z: playerz + i * sinval }
+                dimension.spawnParticle("mmorpg:transcendentbladedamage", location)
+                let entities = dimension.getEntities({ location: location, maxDistance: 1.6, families: ["mob"], excludeNames: [player.name] })
+
+                entities.forEach(entity => {
+                    entity.applyDamage(35 * (1 + (player.getDynamicProperty("healingpower") as number / 100)), {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    });
+                })
+                if (entities.length > 0) {
+
+                    hitscan++
+                }
+
+
+            }
+            if (hitscan > 0) {
+                dimension.getPlayers({ location: player.location, maxDistance: 8, excludeFamilies: ["mob"] }).forEach(playerh => {
+                    const hpcomp = playerh.getComponent("health") as server.EntityHealthComponent
+                    hpcomp.setCurrentValue(hpcomp.currentValue + 5 * (1 + (player.getDynamicProperty("healingpower") as number / 100)))
+                    dimension.spawnParticle("mmorpg:transcendentbladeheal", playerh.location)
                 })
             }
 

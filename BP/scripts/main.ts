@@ -52,10 +52,7 @@ server.system.runInterval(() => { // run every tick
     snowregion(players)
     players.forEach(function (player) { // run for every player
         equipment(player)
-        if (player.name == "WojtekBB") {
-            const healthcomp = player.getComponent("health") as server.EntityHealthComponent
-            healthcomp.setCurrentValue(50)
-        }
+
 
         let money = player.getDynamicProperty("money") as number
         var maxmana = player.getDynamicProperty("maxmana") as number
@@ -98,7 +95,7 @@ server.system.runInterval(() => { // run every tick
         fillmines()
         world.sendMessage("\n§5§l> Filled Mines! <§r\n\n")
     }
-    if (server.system.currentTick % 20 == 0) {
+    if (server.system.currentTick % 200 == 0) {
 
 
 

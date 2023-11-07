@@ -27,6 +27,7 @@ export function equipment(player: server.Player) {
     var healthboost: number = -1
     var luck: number = 1
     var speed: number = -1
+    var healingpower: number = 0
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -250,7 +251,7 @@ export function equipment(player: server.Player) {
     player.setDynamicProperty("manaregen", Math.trunc(manaregen))
     player.setDynamicProperty("maxmana", maxmana)
     player.setDynamicProperty("luck", luck)
-
+    player.setDynamicProperty("healingpower", healingpower)
 
 
 }
