@@ -159,6 +159,9 @@ export function equipment(player: server.Player) {
         case "mmorpg:luck_charm":
             luck = luck + 0.1
             break;
+        case "mmorpg:redstone_infuser":
+            haste++
+            break;
         default: break;
     }
 
@@ -183,8 +186,6 @@ export function equipment(player: server.Player) {
                 player.addEffect("resistance", 5, { showParticles: false })
                 player.addEffect("slowness", 5, { showParticles: false, amplifier: 25 })
                 if (world.getAbsoluteTime() % 2 == 0) {
-
-
                     world.scoreboard.getObjective("mana").addScore(player, 1)
                 }
             }
@@ -192,7 +193,7 @@ export function equipment(player: server.Player) {
             break;
         case 2:
             if (player.isSneaking && world.scoreboard.getObjective("mana").getScore(player) > 1 && server.system.currentTick % 5 == 0) {
-                world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 6, excludeNames: [player.name], families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
+                world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 6, families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
                     entity.setOnFire(2)
                     entity.applyDamage(5 + magicalpower / 4, {
                         damagingEntity: player,

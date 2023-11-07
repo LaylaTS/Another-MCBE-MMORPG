@@ -196,6 +196,9 @@
 		},
 		"mmorpg_luck_charm": {
 			"textures": "textures/items/luck_charm"
+		},
+		"mmorpg_redstone_infuser": {
+			"textures": "textures/items/redstone_infuser"
 		}
 	}
 }

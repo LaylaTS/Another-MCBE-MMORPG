@@ -1,0 +1,38 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:redstone_infuser",
+			"category": "equipment"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "mmorpg_redstone_infuser"
+			},
+			"minecraft:max_stack_size": 1,
+			"minecraft:foil": true,
+			"minecraft:wearable": {
+				"dispensable": true,
+				"slot": "slot.weapon.offhand"
+			},
+			"minecraft:render_offsets": {
+				"off_hand": {
+					"first_person": {
+						"scale": [
+							0,
+							0,
+							0
+						]
+					},
+					"third_person": {
+						"scale": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			}
+		}
+	}
+}
