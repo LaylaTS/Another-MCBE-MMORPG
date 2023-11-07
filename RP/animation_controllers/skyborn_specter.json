@@ -1,0 +1,52 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.skyborn_specter_walk_cont": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"blend_transition": 1,
+					"transitions": [
+						{
+							"move": "query.modified_move_speed > 0.1"
+						}
+					]
+				},
+				"move": {
+					"blend_transition": 1,
+					"animations": [
+						"move",
+						"look_at_target"
+					],
+					"transitions": [
+						{
+							"default": "query.modified_move_speed < 0.1"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.skyborn_specter_attack_cont": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"attack": "variable.attack_time > 0.0"
+						}
+					]
+				},
+				"attack": {
+					"animations": [
+						"attack"
+					],
+					"transitions": [
+						{
+							"default": "variable.attack_time <= 0.0"
+						}
+					]
+				}
+			}
+		}
+	}
+}

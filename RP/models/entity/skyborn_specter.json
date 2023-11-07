@@ -1,0 +1,103 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.skyborn_specter",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "waist",
+					"pivot": [0, 12, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [28, 28]}
+					]
+				},
+				{
+					"name": "leftwing",
+					"parent": "body",
+					"pivot": [0, 20, 2],
+					"rotation": [0, -30, 0],
+					"cubes": [
+						{"origin": [0, 15, 2], "size": [7, 9, 0], "uv": [50, 55]}
+					]
+				},
+				{
+					"name": "leftwing2",
+					"parent": "leftwing",
+					"pivot": [7, 19.5, 2],
+					"rotation": [0, 17.5, 0],
+					"cubes": [
+						{"origin": [7, 15, 2], "size": [13, 9, 0], "uv": [38, 45]}
+					]
+				},
+				{
+					"name": "rightwing",
+					"parent": "body",
+					"pivot": [0, 20, 2],
+					"rotation": [0, 30, 0],
+					"cubes": [
+						{"origin": [-7, 15, 2], "size": [7, 9, 0], "uv": [50, 55], "mirror": true}
+					]
+				},
+				{
+					"name": "rightwing2",
+					"parent": "rightwing",
+					"pivot": [-7, 19.5, 2],
+					"rotation": [0, -17.5, 0],
+					"cubes": [
+						{"origin": [-20, 15, 2], "size": [13, 9, 0], "uv": [38, 45], "mirror": true}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 25, 0],
+					"cubes": [
+						{"origin": [-4, 25, -4], "size": [8, 8, 8], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "hat",
+					"parent": "head",
+					"pivot": [0, 25, 0],
+					"cubes": [
+						{"origin": [-4, 25, -4], "size": [8, 8, 8], "inflate": 0.5, "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "rightArm",
+					"parent": "body",
+					"pivot": [-6, 22, 0],
+					"cubes": [
+						{"origin": [-9, 12, -2], "size": [4, 12, 4], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm",
+					"pivot": [-7, 14, 1]
+				},
+				{
+					"name": "leftArm",
+					"parent": "body",
+					"pivot": [6, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [5, 12, -2], "size": [4, 12, 4], "uv": [0, 32]}
+					]
+				}
+			]
+		}
+	]
+}

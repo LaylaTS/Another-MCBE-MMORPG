@@ -1,4 +1,4 @@
-{
+	{
 	"entity_sounds": {
 		"entities": {
 			"mmorpg:bloodyravager": {
@@ -108,6 +108,18 @@
 							1.2
 						]
 					}
+				}
+			},
+			"mmorpg:skyborn_specter": {
+				"volume": 1,
+				"pitch": [
+					0.80,
+					1.20
+				],
+				"events": {
+					"ambient": "mob.blaze.breathe",
+					"hurt": "mob.blaze.hit",
+					"death": "mob.blaze.death"
 				}
 			}
 		}

@@ -1,0 +1,40 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:skyborn_specter",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/skyborn_specter"
+			},
+			"animations": {
+				"look_at_target": "animation.humanoid.look_at_target.default",
+				"move": "animation.skyborn_specter.walk",
+				"move_cont": "controller.animation.skyborn_specter_walk_cont",
+				"wings": "animation.skyborn_specter.wings",
+				"attack_cont": "controller.animation.skyborn_specter_attack_cont",
+				"attack": "animation.skyborn_specter.attack"
+			},
+			"geometry": {
+				"default": "geometry.skyborn_specter"
+			},
+			"scripts": {
+				"animate": [
+					"move_cont",
+					"look_at_target",
+					"wings",
+					"attack_cont"
+				]
+			},
+			"render_controllers": [
+				"controller.render.skyborn_specter"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}
