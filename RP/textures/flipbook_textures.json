@@ -58,5 +58,11 @@
         "flipbook_texture": "textures/blocks/enchanted_magma_block",
         "ticks_per_frame": 10,
         "blend_frames": true
+    },
+    {
+        "atlas_tile": "mmorpg_enchanted_quartz_block",
+        "flipbook_texture": "textures/blocks/enchanted_quartz_block",
+        "ticks_per_frame": 10,
+        "blend_frames": true
     }
 ]

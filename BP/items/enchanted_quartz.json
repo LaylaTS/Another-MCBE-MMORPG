@@ -1,0 +1,15 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:enchanted_quartz",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "quartz"
+			},
+			"minecraft:foil": true
+		}
+	}
+}

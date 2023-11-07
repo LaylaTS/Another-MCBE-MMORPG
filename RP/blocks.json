@@ -68,6 +68,10 @@
 		"sound": "stone",
 		"textures": "mmorpg_enchanted_magma_block"
 	},
+	"mmorpg:enchanted_quartz_block": {
+		"sound": "stone",
+		"textures": "mmorpg_enchanted_quartz_block"
+	},
 	"mmorpg:frost_vine": {
 		"sound": "stone"
 	},
