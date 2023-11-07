@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:redstone_infuser_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"c": {
+				"item": "mmorpg:compressedcobblestone"
+			},
+			"r": {
+				"item": "mmorpg:enchanted_redstone_block"
+			}
+		},
+		"pattern": [
+			" cr",
+			"crc",
+			"rc "
+		],
+		"result": {
+			"item": "mmorpg:redstone_infuser"
+		}
+	}
+}

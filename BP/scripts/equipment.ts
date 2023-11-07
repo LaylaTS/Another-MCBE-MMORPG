@@ -26,6 +26,8 @@ export function equipment(player: server.Player) {
     var haste: number = -1
     var healthboost: number = -1
     var luck: number = 1
+    var speed: number = -1
+    var healingpower: number = 0
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -46,6 +48,9 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:ruby_pickaxe":
             luck = luck + 0.1
+            break;
+        case "mmorpg:golden_ring":
+            speed++
             break;
         default: break;
     }
@@ -72,6 +77,10 @@ export function equipment(player: server.Player) {
             healthboost++
             armorids[2]++
             break;
+        case "mmorpg:enchanted_diamond_helmet":
+            healthboost++
+            manaregen = manaregen - 3
+            break;
         default: break;
     }
 
@@ -95,6 +104,11 @@ export function equipment(player: server.Player) {
             healthboost = healthboost + 2
             magicalpower = magicalpower + 3
             armorids[2]++
+            break;
+        case "mmorpg:enchanted_diamond_chestplate":
+            healthboost = healthboost + 2
+            manaregen = manaregen - 3
+            speed++
             break;
         default: break;
     }
@@ -120,6 +134,11 @@ export function equipment(player: server.Player) {
             healthboost++
             armorids[2]++
             break;
+        case "mmorpg:enchanted_diamond_leggings":
+            healthboost++
+            manaregen = manaregen - 3
+            maxmana = maxmana + 50
+            break;
         default: break;
 
     }
@@ -143,6 +162,10 @@ export function equipment(player: server.Player) {
             healthboost++
             maxmana = maxmana + 10
             armorids[2]++
+            break;
+        case "mmorpg:enchanted_diamond_boots":
+            healthboost++
+            manaregen = manaregen - 3
             break;
         default: break;
     }
@@ -216,6 +239,9 @@ export function equipment(player: server.Player) {
     if (haste > -1) {
         player.addEffect("haste", 25, { amplifier: haste, showParticles: false })
     }
+    if (speed > -1) {
+        player.addEffect("speed", 25, { amplifier: speed, showParticles: false })
+    }
     if (healthboost > -1) {
         player.addEffect("health_boost", 25, { amplifier: healthboost, showParticles: false })
         player.setDynamicProperty("healthboost", healthboost)
@@ -225,7 +251,7 @@ export function equipment(player: server.Player) {
     player.setDynamicProperty("manaregen", Math.trunc(manaregen))
     player.setDynamicProperty("maxmana", maxmana)
     player.setDynamicProperty("luck", luck)
-
+    player.setDynamicProperty("healingpower", healingpower)
 
 
 }
