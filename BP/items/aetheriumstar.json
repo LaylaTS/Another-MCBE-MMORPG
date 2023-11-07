@@ -3,12 +3,13 @@
   "minecraft:item": {
     "description": {
       "identifier": "mmorpg:aetheriumstar",
-      "category": "nature"
+      "category": "equipment"
     },
     "components": {
       "minecraft:icon": {
         "texture": "mmorpg_aetheriumstar"
       },
+      "minecraft:max_stack_size": 1,
       "minecraft:foil": true,
       "minecraft:wearable": {
         "dispensable": true,

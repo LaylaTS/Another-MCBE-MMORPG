@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:luck_charm_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"e": {
+				"item": "mmorpg:enchanted_emerald"
+			}
+		},
+		"pattern": [
+			" e ",
+			"eee",
+			" e "
+		],
+		"result": {
+			"item": "mmorpg:luck_charm"
+		}
+	}
+}

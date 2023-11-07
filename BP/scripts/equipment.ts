@@ -156,6 +156,9 @@ export function equipment(player: server.Player) {
         case "mmorpg:ruby_heart":
             healthboost = healthboost + 2
             break;
+        case "mmorpg:luck_charm":
+            luck = luck + 0.1
+            break;
         default: break;
     }
 

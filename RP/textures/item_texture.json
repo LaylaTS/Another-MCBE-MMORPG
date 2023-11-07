@@ -193,6 +193,9 @@
 		},
 		"mmorpg_emerald_sword": {
 			"textures": "textures/items/emerald_sword"
+		},
+		"mmorpg_luck_charm": {
+			"textures": "textures/items/luck_charm"
 		}
 	}
 }

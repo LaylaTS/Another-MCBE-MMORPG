@@ -109,3 +109,4 @@ tile.mmorpg:frost_vine.name=Frost Vine
 entity.mmorpg:skywatcher.name=Sky Watcher
 eentity.mmorpg:core_boss.name=§4§lAncient Guardian§r
 tile.mmorpg:ice.name=Ice
+item.mmorpg:luck_charm=§2Lucky Charm§r | §3Get 0.1 luck§r
