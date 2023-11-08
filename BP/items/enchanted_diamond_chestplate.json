@@ -18,6 +18,10 @@
 			"minecraft:armor": {
 				"protection": 7
 			},
+			"minecraft:foil": true,
+			"minecraft:display_name": {
+				"value": "§9Enchanted Diamond Chestplate§r\n§o§7+4 hearts§r\n§7§o-3 Mana Regen§r\n§o§7+1 Speed§r"
+			},
 			"minecraft:wearable": {
 				"slot": "slot.armor.chest"
 			},

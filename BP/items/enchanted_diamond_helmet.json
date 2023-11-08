@@ -21,6 +21,10 @@
 			"minecraft:wearable": {
 				"slot": "slot.armor.head"
 			},
+			"minecraft:display_name": {
+				"value": "§9Enchanted Diamond Helmet§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r"
+			},
+			"minecraft:foil": true,
 			"minecraft:creative_category": {
 				"parent": "itemGroup.name.helmet"
 			},

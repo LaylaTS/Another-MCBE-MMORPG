@@ -24,6 +24,10 @@
 			"minecraft:creative_category": {
 				"parent": "itemGroup.name.leggings"
 			},
+			"minecraft:display_name": {
+				"value": "§9Enchanted Diamond Leggings§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r\n§o§7+50 Max Mana§r"
+			},
+			"minecraft:foil": true,
 			"minecraft:repairable": {
 				"repair_items": [
 					{
