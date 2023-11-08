@@ -280,7 +280,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:aetheriumblade":
-            addlore(["§8Teleport to the nearest enemy", "§8and deal area damage knocking up enemies"])
+            addlore(["§8Teleport to the nearest enemy", "§8and deal area damage"])
             if (dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] }).length > 0) {
                 if (manaamount > 49 && player.isOnGround) {
                     mana.addScore(player, -50)
@@ -298,7 +298,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                                     cause: 'entityAttack' as server.EntityDamageCause
                                 })
 
-                                entity.applyKnockback(0, 0, 0, 1)
+
 
                             }
                         )
@@ -351,9 +351,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:heavyaetheriumsword":
             addlore(["§8Make a small blast", "§8and deal a lot of damage to nearby enemies", "§8knocking them up"])
             let heavyaetheriumswordentities = dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] })
-            if (heavyaetheriumswordentities.length > 0 && world.scoreboard.getObjective("mana").getScore(player) > 59) {
+            if (heavyaetheriumswordentities.length > 0 && manaamount > 49) {
                 dimension.spawnParticle("mmorpg:aetheriumbladeparticle", player.location)
-                mana.addScore(player, -60)
+                mana.addScore(player, -50)
 
                 dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
                     entity.applyDamage(15 + magicalpower * 2, {
@@ -660,13 +660,23 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:skyborn_sword":
-            const entities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] })
-            entities.forEach(entity => {
-                let vector3 = entity.getViewDirection()
+            if (manaamount > 59) {
+                mana.addScore(player, -60)
+                const entities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] })
+                dimension.spawnParticle("mmorpg:skyborn_sword", player.location)
+                server.system.runTimeout(() => {
+                    entities.forEach(entity => {
+                        let vector3 = entity.getViewDirection()
 
-                entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3.5, 0.35)
-            })
+                        entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3.5, 0.35)
+                        entity.applyDamage(20 + magicalpower * 0.8, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        });
+                    })
+                }, 3)
 
+            }
             break;
     }
 })

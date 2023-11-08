@@ -10,11 +10,14 @@
         "key": {
             "a": {
                 "item": "mmorpg:aetheriumingot"
+            },
+            "s": {
+                "item": "mmorpg:skyborn_core"
             }
         },
         "pattern": [
             "aaa",
-            "a a",
+            "asa",
             "a a"
         ],
         "result": {

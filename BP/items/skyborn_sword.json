@@ -11,7 +11,7 @@
 				"parent": "itemGroup.name.sword"
 			},
 			"minecraft:foil": true,
-			"minecraft:damage": 15,
+			"minecraft:damage": 14,
 			"minecraft:digger": {
 				"use_efficiency": true,
 				"destroy_speeds": [

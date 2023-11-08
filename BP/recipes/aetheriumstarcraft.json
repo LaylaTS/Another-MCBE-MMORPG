@@ -11,13 +11,16 @@
 			"n": {
 				"item": "nether_star"
 			},
+			"s": {
+				"item": "mmorpg:skyborn_core"
+			},
 			"a": {
-				"item": "mmorpg:aetheriumingot"
+				"item": "mmorpg:enchanted_aetherium_ingot"
 			}
 		},
 		"pattern": [
 			" n ",
-			"nan",
+			"sas",
 			" n "
 		],
 		"result": {

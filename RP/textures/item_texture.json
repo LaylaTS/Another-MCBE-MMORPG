@@ -220,6 +220,9 @@
 		},
 		"minion_item": {
 			"textures": "textures/items/minion_item"
+		},
+		"mmorpg_skyborn_core": {
+			"textures": "textures/items/skyborn_core"
 		}
 	}
 }

@@ -1,0 +1,16 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mmorpg:skyborn_sword"
+                },
+                {
+                    "type": "item",
+                    "name": "mmorpg:skyborn_core"
+                }
+            ]
+        }
+    ]
+}
