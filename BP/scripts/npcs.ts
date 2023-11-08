@@ -53,24 +53,26 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                     case 0:
                         const ironPrice = world.getDynamicProperty("iron_price") as number
                         const diamondPrice = world.getDynamicProperty("diamond_price") as number
+                        const netheritePrice = world.getDynamicProperty("netherite_price") as number
+                        const aetheriumPrice = world.getDynamicProperty("aetherium_price") as number
                         var resources = new ui.ActionFormData()
                             .title("Resources   Current Balance: " + money)
-                            .button(`Iron - ${ironPrice.toFixed(2) + "$"}`, "textures/items/iron_ingot")
+                            .button(`Iron - ${ironPrice + "$"}`, "textures/items/iron_ingot")
                             .button(`Oak Log - 50\$`)
-                            .button(`Diamond - ${diamondPrice.toFixed(2) + "$"}`, "textures/items/diamond")
-                            .button("Netherite - 10000$", "textures/items/netherite_ingot")
+                            .button(`Diamond - ${diamondPrice + "$"}`, "textures/items/diamond")
+                            .button(`Netherite - ${netheritePrice + "$"}`, "textures/items/netherite_ingot")
                             .button("Lava Bucket - 2500$")
-                            .button("Aetherium - 2500$", "textures/items/aetherium")
+                            .button(`Aetherium - ${aetheriumPrice + "$"}`, "textures/items/aetherium")
                             .button("Nether Star - 20000$", "textures/items/nether_star")
 
                         resources.show(player).then(result => {
 
                             if (result.selection == 0) {
-                                var ironbuy = new ui.ModalFormData()
+                                var buy = new ui.ModalFormData()
                                     .title("Buy Iron")
                                     .slider("Amount", 0, maxquantity(ironPrice), 1, 0)
 
-                                ironbuy.show(player).then(result => {
+                                buy.show(player).then(result => {
                                     player.runCommand('give @s iron_ingot ' + Math.trunc(result.formValues[0] as number))
                                     removemoney(cost(ironPrice, (result.formValues[0] as number)))
                                     world.setDynamicProperty("iron_price", ironPrice + Math.trunc((ironPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
@@ -87,23 +89,24 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
 
                                 }).catch(() => { })
                             } else if (result.selection == 2) {
-                                var diamondbuy = new ui.ModalFormData()
+                                var buy = new ui.ModalFormData()
                                     .title("Buy Diamond")
-                                    .slider("Amount", 0, money / diamondPrice, 1, 0)
+                                    .slider("Amount", 0, maxquantity(diamondPrice), 1, 0)
 
-                                diamondbuy.show(player).then(result => {
+                                buy.show(player).then(result => {
                                     player.runCommand('give @s diamond ' + Math.trunc(result.formValues[0] as number))
-                                    removemoney(Math.trunc(result.formValues[0] as number) * diamondPrice)
-                                    world.setDynamicProperty("diamond_price", diamondPrice + Math.trunc((diamondPrice * 0.0025 * (Math.trunc(result.formValues[0] as number)))))
+                                    removemoney(cost(diamondPrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("diamond_price", diamondPrice + Math.trunc((diamondPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
                                 }).catch(() => { })
                             } else if (result.selection == 3) {
-                                var netheritebuy = new ui.ModalFormData()
+                                var buy = new ui.ModalFormData()
                                     .title("Buy Netherite")
-                                    .slider("Amount", 0, money / 10000, 1, 0)
+                                    .slider("Amount", 0, maxquantity(netheritePrice), 1, 0)
 
-                                netheritebuy.show(player).then(result => {
+                                buy.show(player).then(result => {
                                     player.runCommand('give @s netherite_ingot ' + Math.trunc(result.formValues[0] as number))
-                                    removemoney(Math.trunc(result.formValues[0] as number) * 10000)
+                                    removemoney(cost(netheritePrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("netherite_price", netheritePrice + Math.trunc((netheritePrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
                                 }).catch(() => { })
                             } else if (result.selection == 4) {
                                 var lavabuy = new ui.ModalFormData()
@@ -117,11 +120,12 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             } else if (result.selection == 5) {
                                 var buy = new ui.ModalFormData()
                                     .title("Buy Aetherium")
-                                    .slider("Amount", 0, money / 2500, 1, 0)
+                                    .slider("Amount", 0, maxquantity(aetheriumPrice), 1, 0)
 
                                 buy.show(player).then(result => {
                                     player.runCommand('give @s mmorpg:aetherium ' + Math.trunc(result.formValues[0] as number))
-                                    removemoney(Math.trunc(result.formValues[0] as number) * 2500)
+                                    removemoney(cost(aetheriumPrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("aetherium_price", aetheriumPrice + Math.trunc((aetheriumPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
                                 }).catch(() => { })
                             } else if (result.selection == 6) {
                                 var buy = new ui.ModalFormData()
@@ -186,8 +190,8 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
         } else if (entity.hasTag('bankingentity')) {
             let form = new ui.ActionFormData()
                 .title("Bank")
-                .button("Deposit", "textures/ui_icons/arrow-down-line.png")
-                .button("Withdraw", "textures/ui_icons/arrow-up-line.png")
+                .button("Deposit", "textures/ui/arrow_down_large.png")
+                .button("Withdraw", "textures/ui/arrow_up_large.png")
                 .button(" Check Current Balance")
 
 
