@@ -28,6 +28,7 @@ export function equipment(player: server.Player) {
     var luck: number = 1
     var speed: number = -1
     var healingpower: number = 0
+    var harvesting: number = 1
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -252,6 +253,7 @@ export function equipment(player: server.Player) {
     player.setDynamicProperty("maxmana", maxmana)
     player.setDynamicProperty("luck", luck)
     player.setDynamicProperty("healingpower", healingpower)
+    player.setDynamicProperty("harvesting", harvesting)
 
 
 }

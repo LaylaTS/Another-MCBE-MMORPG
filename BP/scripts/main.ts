@@ -3,7 +3,6 @@ import 'chat.js'
 import 'swords.js'
 import 'mobdeath.js'
 import 'island.js'
-import 'mining.js'
 import 'floatingislandsplates.js'
 import 'dailyrewards.js'
 import 'coreboss.js'
@@ -16,6 +15,7 @@ import 'seasons.js'
 import 'fillmines.js'
 import { fillmines } from "./fillmines.js"
 import { snowregion } from "./snowregion.js"
+import 'blockbreak.js'
 
 export const displayEnum = [
     "k",

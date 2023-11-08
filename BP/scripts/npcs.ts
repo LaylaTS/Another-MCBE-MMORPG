@@ -17,6 +17,25 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
         function removemoney(amount) {
             player.setDynamicProperty("money", money - amount)
         }
+        function maxquantity(price) {
+            let max = 0
+            let temp = money
+            while (temp >= price) {
+                max++
+                temp -= price
+                price = Math.ceil(price * 1.005)
+            }
+
+            return max
+        }
+        function cost(price, amount) {
+            let cost = 0
+            for (let i = 0; i < amount; i++) {
+                cost += price
+                price = Math.ceil(price * 1.005)
+            }
+            return cost
+        }
         if (entity.hasTag('marketsniffer')) {
 
 
@@ -32,11 +51,13 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
             form.show(player).then(result => {
                 switch (result.selection) {
                     case 0:
+                        const ironPrice = world.getDynamicProperty("iron_price") as number
+                        const diamondPrice = world.getDynamicProperty("diamond_price") as number
                         var resources = new ui.ActionFormData()
                             .title("Resources   Current Balance: " + money)
-                            .button("Iron - 250$", "textures/items/iron_ingot")
-                            .button("Oak Log - 50$")
-                            .button("Diamond - 2000$", "textures/items/diamond")
+                            .button(`Iron - ${ironPrice.toFixed(2) + "$"}`, "textures/items/iron_ingot")
+                            .button(`Oak Log - 50\$`)
+                            .button(`Diamond - ${diamondPrice.toFixed(2) + "$"}`, "textures/items/diamond")
                             .button("Netherite - 10000$", "textures/items/netherite_ingot")
                             .button("Lava Bucket - 2500$")
                             .button("Aetherium - 2500$", "textures/items/aetherium")
@@ -47,11 +68,12 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             if (result.selection == 0) {
                                 var ironbuy = new ui.ModalFormData()
                                     .title("Buy Iron")
-                                    .slider("Amount", 0, money / 250, 1, 0)
+                                    .slider("Amount", 0, maxquantity(ironPrice), 1, 0)
 
                                 ironbuy.show(player).then(result => {
                                     player.runCommand('give @s iron_ingot ' + Math.trunc(result.formValues[0] as number))
-                                    removemoney(Math.trunc(result.formValues[0] as number) * 250)
+                                    removemoney(cost(ironPrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("iron_price", ironPrice + Math.trunc((ironPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
 
                                 }).catch(() => { })
                             } else if (result.selection == 1) {
@@ -62,15 +84,17 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                                 oakbuy.show(player).then(result => {
                                     player.runCommand('give @s log ' + Math.trunc(result.formValues[0] as number))
                                     removemoney(Math.trunc(result.formValues[0] as number) * 50)
+
                                 }).catch(() => { })
                             } else if (result.selection == 2) {
                                 var diamondbuy = new ui.ModalFormData()
                                     .title("Buy Diamond")
-                                    .slider("Amount", 0, money / 2000, 1, 0)
+                                    .slider("Amount", 0, money / diamondPrice, 1, 0)
 
                                 diamondbuy.show(player).then(result => {
                                     player.runCommand('give @s diamond ' + Math.trunc(result.formValues[0] as number))
-                                    removemoney(Math.trunc(result.formValues[0] as number) * 2000)
+                                    removemoney(Math.trunc(result.formValues[0] as number) * diamondPrice)
+                                    world.setDynamicProperty("diamond_price", diamondPrice + Math.trunc((diamondPrice * 0.0025 * (Math.trunc(result.formValues[0] as number)))))
                                 }).catch(() => { })
                             } else if (result.selection == 3) {
                                 var netheritebuy = new ui.ModalFormData()

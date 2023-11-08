@@ -2,9 +2,12 @@ import * as server from '@minecraft/server'
 
 const world = server.world
 
-world.afterEvents.playerBreakBlock.subscribe(eventData => {
-    if (eventData.dimension.id == 'minecraft:overworld') {
-        let player = eventData.player
+
+export function mining(player: server.Player, blockid) {
+    server.system.run(() => {
+
+
+
         if (Math.floor((Math.random() * 10) + 1) == 1) {
             if (world.getDynamicProperty("seasondaysleft") < 3 && world.getDynamicProperty("seasonhoursleft") < 10) {
                 world.scoreboard.getObjective("guildpoints").addScore(String(player.getDynamicProperty("guildid")), 2)
@@ -13,7 +16,7 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
 
             }
         }
-        const luck: number = 0 // for future rng mechanics
+        const luck: number = player.getDynamicProperty("luck") as number
         const now = new Date()
         var eventmultiplier: number
         if (now.getDay() === 1 && now.getHours() == 18) {
@@ -22,7 +25,7 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
             eventmultiplier = 0
         }
         const rng = 1 + luck + eventmultiplier
-        if (eventData.brokenBlockPermutation.type.id == "minecraft:cobblestone" || eventData.brokenBlockPermutation.type.id == "minecraft:stone") {
+        if (blockid == "minecraft:cobblestone" || blockid == "minecraft:stone") {
 
             if (Math.floor((Math.random() * 8 / rng) + 1) == 1) {
                 player.runCommand('scoreboard players add @s money 3')
@@ -59,7 +62,7 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
             }
 
 
-        } else if (eventData.brokenBlockPermutation.type.id == "minecraft:deepslate") {
+        } else if (blockid == "minecraft:deepslate") {
             if (Math.floor((Math.random() * 4 / rng) + 1) == 1) {
                 player.runCommand('scoreboard players add @s money 3')
                 player.playSound('random.orb')
@@ -101,6 +104,24 @@ world.afterEvents.playerBreakBlock.subscribe(eventData => {
                 player.playSound('respawn_anchor.set_spawn')
 
             }
+        } else if (blockid == "minecraft:netherrack") {
+            if (Math.floor((Math.random() * 6 / rng) + 1) == 1) {
+                player.runCommand('scoreboard players add @s money 2')
+                player.playSound('random.orb')
+            }
+            if (Math.floor((Math.random() * 1500 / rng) + 1) == 1) {
+                player.runCommand('give @s netherite_ingot')
+                player.playSound('respawn_anchor.set_spawn')
+
+            }
+            if (Math.floor((Math.random() * 40 / rng) + 1) == 1) {
+                player.runCommand('give @s raw_gold')
+                player.playSound('random.pop2')
+            }
+            if (Math.floor((Math.random() * 70 / rng) + 1) == 1) {
+                player.runCommand('give @s quartz')
+                player.playSound('random.pop')
+            }
         }
-    }
-})
+    })
+}
