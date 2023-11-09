@@ -223,6 +223,21 @@
 		},
 		"mmorpg_skyborn_core": {
 			"textures": "textures/items/skyborn_core"
+		},
+		"mmorpg_bone_hoe": {
+			"textures": "textures/items/bone_hoe"
+		},
+		"mmorpg_ruby_hoe": {
+			"textures": "textures/items/ruby_hoe"
+		},
+		"mmorpg_sculked_hoe": {
+			"textures": "textures/items/sculked_hoe"
+		},
+		"mmorpg_aetherium_hoe": {
+			"textures": "textures/items/aetherium_hoe"
+		},
+		"bundle": {
+			"textures": "textures/items/bundle"
 		}
 	}
 }

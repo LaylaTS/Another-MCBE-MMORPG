@@ -113,7 +113,7 @@
 			}
 		},
 		"animation.skyborn_specter.knockback_roar": {
-			"animation_length": 1.875,
+			"animation_length": 2,
 			"bones": {
 				"body": {
 					"rotation": {

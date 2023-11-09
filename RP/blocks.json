@@ -78,5 +78,21 @@
 	"mmorpg:ice": {
 		"sound": "glass",
 		"textures": "ice"
+	},
+	"mmorpg:barrel_of_carrots": {
+		"sound": "wood",
+		"textures": {
+			"down": "barrel_bottom",
+			"up": "barrel_top",
+			"side": "barrel_side"
+		}
+	},
+	"mmorpg:barrel_of_potatoes": {
+		"sound": "wood",
+		"textures": {
+			"down": "barrel_bottom",
+			"up": "barrel_top",
+			"side": "barrel_side"
+		}
 	}
 }

@@ -1,0 +1,23 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:aetheriumingot2"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"#": {
+				"item": "mmorpg:aetherium_block"
+			}
+		},
+		"pattern": [
+			"#"
+		],
+		"result": {
+			"item": "mmorpg:aetheriumingot",
+			"count": 9
+		}
+	}
+}

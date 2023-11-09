@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:ruby_hoe"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"r": {
+				"item": "mmorpg:ruby"
+			},
+			"s": {
+				"item": "minecraft:stick"
+			},
+			"n": {
+				"item": "mmorpg:skyborn_core"
+			}
+		},
+		"pattern": [
+			"rn",
+			" s ",
+			" s "
+		],
+		"result": {
+			"item": "mmorpg:ruby_hoe"
+		}
+	}
+}

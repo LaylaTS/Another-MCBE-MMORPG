@@ -1,0 +1,17 @@
+{
+	"format_version": "1.20.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "mmorpg:barrel_of_potatoes",
+			"menu_category": {
+				"category": "items"
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 1
+			},
+			"tag:wood": {}
+		}
+	}
+}

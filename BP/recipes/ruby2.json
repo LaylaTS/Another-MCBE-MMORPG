@@ -1,0 +1,23 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:ruby_block2"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"#": {
+				"item": "mmorpg:ruby_block"
+			}
+		},
+		"pattern": [
+			"#"
+		],
+		"result": {
+			"item": "mmorpg:ruby",
+			"count": 9
+		}
+	}
+}
