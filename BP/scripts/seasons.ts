@@ -73,15 +73,13 @@ server.system.runInterval(() => {
     if (days == 0 && hours == 0 && minutes == 0 && seconds == 0 && guildnames[0] != undefined) {
         world.sendMessage(`§g§lSeason Winner:§r ${guildnames[0]}`)
 
-        world.scoreboard.getObjective("guildbank").addScore(String(guilds[0][0]), 100000)
         world.setDynamicProperty("lastseasonwinner", parseInt(guilds[0][0]))
         if (guildnames[1] != undefined) {
             world.sendMessage(`§e§lSecond Place:§r ${guildnames[1]}`)
 
-            scoreboard.getObjective("guildbank").addScore(String(guilds[1][0]), 50000)
             if (guildnames[2] != undefined) {
                 world.sendMessage(`§6§lThird Place:§r ${guildnames[2]}`)
-                scoreboard.getObjective("guildbank").addScore(String(guilds[2][0]), 25000)
+               
             }
         }
         scoreboard.removeObjective("guildpoints")

@@ -25,5 +25,25 @@ export function farming(data: server.PlayerBreakBlockBeforeEvent) {
         } else {
             data.cancel = true
         }
+    } else if (id == "minecraft:carrots") {
+        if (growth == 7) {
+            server.system.run(() => {
+
+                player.runCommand(`give @s carrot ${Math.floor(Math.random() * 2 * harvesting)}`)
+                regrow(id)
+            })
+        } else {
+            data.cancel = true
+        }
+    } else if (id == "minecraft:potatoes") {
+        if (growth == 7) {
+            server.system.run(() => {
+
+                player.runCommand(`give @s potato ${Math.floor(Math.random() * 2 * harvesting)}`)
+                regrow(id)
+            })
+        } else {
+            data.cancel = true
+        }
     }
 }
