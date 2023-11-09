@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:minion_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"n": {
+				"item": "netherite_ingot"
+			},
+			"s": {
+				"item": "mmorpg:skyborn_core"
+			},
+			"c": {
+				"item": "mmorpg:enchanted_copper_ingot"
+			}
+		},
+		"pattern": [
+			"csc",
+			" s ",
+			"nnn"
+		],
+		"result": {
+			"item": "mmorpg:minion_spawn_egg"
+		}
+	}
+}

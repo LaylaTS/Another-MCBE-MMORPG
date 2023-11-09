@@ -47,7 +47,8 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     .button("Cobblestone")
                     .button("Ruby")
                     .button("Emerald")
-                    // .button("Iron")
+                    .button("Iron")
+                    .button("Diamond")
                     .show(player).then(data => {
 
 
@@ -61,6 +62,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                                 case 1: entity.setDynamicProperty("resource", "Ruby"); break;
                                 case 2: entity.setDynamicProperty("resource", "Emerald"); break;
                                 case 3: entity.setDynamicProperty("resource", "Iron"); break;
+                                case 4: entity.setDynamicProperty("resource", "Diamond"); break;
                             }
                             player.setDynamicProperty("minioncount", player.getDynamicProperty("minioncount") as number + 1)
                             entity.nameTag = `${entity.getDynamicProperty("resource")} Minion\nLevel: 1`
@@ -80,7 +82,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
 
         const mainui = new ui.ActionFormData()
             .title(`${entity.getDynamicProperty("resource")} Minion`)
-            .body(`§l§bLevel: §r${entity.getDynamicProperty("level")}\n§l§bResources/Day: §r${100}\n `)
+            .body(`§l§bLevel: §r${entity.getDynamicProperty("level")}`)
             .button("§l§2Claim Rewards")
             .button(`Upgrade - ${metricNumbers(prices[entity.getDynamicProperty("level") as unknown as number])}`)
             .button("Accessory Slot 1")
@@ -96,8 +98,10 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     let drop = "minecraft:air"
                     switch (entity.getDynamicProperty("resource")) {
                         case "Cobblestone": generationspeed = 120; drop = "minecraft:cobblestone"; break;
-                        case "Ruby": generationspeed = 450; drop = "mmorpg:ruby"; break;
-                        case "Emerald": generationspeed = 450; drop = "minecraft:emerald"; break;
+                        case "Ruby": generationspeed = 650; drop = "mmorpg:ruby"; break;
+                        case "Emerald": generationspeed = 650; drop = "minecraft:emerald"; break;
+                        case "Iron": generationspeed = 325; drop = "minecraft:iron_ingot"; break;
+                        case "Diamond": generationspeed = 700; drop = "minecraft:diamond"; break;
                     }
                     const lastuse = new Date(entity.getDynamicProperty("lastvisitdate") as string);
                     const currentdate = new Date()

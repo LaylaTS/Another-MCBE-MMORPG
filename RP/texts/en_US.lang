@@ -122,4 +122,5 @@ item.mmorpg:enchanted_diamond_helmet=Enchanted Diamond Helmet
 item.mmorpg:enchanted_diamond_chestplate=Enchanted Diamond Chestplate
 item.mmorpg:enchanted_diamond_leggings=Enchanted Diamond Leggings
 item.mmorpg:enchanted_diamond_boots=Enchanted Diamond Boots
-item.mmorpg:golden_ring=Golden Ring
+item.mmorpg:golden_ring=§2Golden Ring§r | §3Get +1 speed§r
+item.mmorpg:skyborn_core=§4Skyborn Core

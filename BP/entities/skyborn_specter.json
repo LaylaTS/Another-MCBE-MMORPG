@@ -56,6 +56,9 @@
 			"minecraft:boss": {
 				"name": "Skyborn Specter"
 			},
+			"minecraft:loot": {
+				"table": "loot_tables/entities/skyborn_specter.json"
+			},
 			"minecraft:behavior.float": {
 				"priority": 0
 			},

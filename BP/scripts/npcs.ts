@@ -9,7 +9,7 @@ const world = server.world
 
 
 world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
-    let entity = eventData.target
+    let entity: server.Entity = eventData.target
 
     if (entity.typeId == "mmorpg:marketsniffer") {
         let player = eventData.player as server.Player
@@ -17,25 +17,12 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
         function removemoney(amount) {
             player.setDynamicProperty("money", money - amount)
         }
-        function maxquantity(price) {
-            let max = 0
-            let temp = money
-            while (temp >= price) {
-                max++
-                temp -= price
-                price = Math.ceil(price * 1.005)
-            }
-
-            return max
-        }
-        function cost(price, amount) {
-            let cost = 0
-            for (let i = 0; i < amount; i++) {
-                cost += price
-                price = Math.ceil(price * 1.005)
-            }
-            return cost
-        }
+        const ironPrice = world.getDynamicProperty("iron_price") as number
+        const diamondPrice = world.getDynamicProperty("diamond_price") as number
+        const netheritePrice = world.getDynamicProperty("netherite_price") as number
+        const aetheriumPrice = world.getDynamicProperty("aetherium_price") as number
+        const emeraldPrice = world.getDynamicProperty("emerald_price") as number
+        const rubyPrice = world.getDynamicProperty("ruby_price") as number
         if (entity.hasTag('marketsniffer')) {
 
 
@@ -51,19 +38,36 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
             form.show(player).then(result => {
                 switch (result.selection) {
                     case 0:
-                        const ironPrice = world.getDynamicProperty("iron_price") as number
-                        const diamondPrice = world.getDynamicProperty("diamond_price") as number
-                        const netheritePrice = world.getDynamicProperty("netherite_price") as number
-                        const aetheriumPrice = world.getDynamicProperty("aetherium_price") as number
+                        function maxquantity(price) {
+                            let max = 0
+                            let temp = money
+                            while (temp >= price) {
+                                max++
+                                temp -= price
+                                price = Math.ceil(price * 1.005)
+                            }
+
+                            return max
+                        }
+                        function cost(price, amount) {
+                            let cost = 0
+                            for (let i = 0; i < amount; i++) {
+                                cost += price
+                                price = Math.ceil(price * 1.005)
+                            }
+                            return cost
+                        }
                         var resources = new ui.ActionFormData()
                             .title("Resources   Current Balance: " + money)
                             .button(`Iron - ${ironPrice + "$"}`, "textures/items/iron_ingot")
-                            .button(`Oak Log - 50\$`)
+                            .button(`Oak Log - 50\$`, "textures/ui_icons/oak_log.png")
                             .button(`Diamond - ${diamondPrice + "$"}`, "textures/items/diamond")
                             .button(`Netherite - ${netheritePrice + "$"}`, "textures/items/netherite_ingot")
-                            .button("Lava Bucket - 2500$")
+                            .button("Lava Bucket - 2500$", "textures/ui_icons/lava_bucket.png")
                             .button(`Aetherium - ${aetheriumPrice + "$"}`, "textures/items/aetherium")
                             .button("Nether Star - 20000$", "textures/items/nether_star")
+                            .button(`Emerald - ${emeraldPrice + "$"}`, "textures/items/emerald")
+                            .button(`Ruby - ${rubyPrice + "$"}`, "textures/items/ruby")
 
                         resources.show(player).then(result => {
 
@@ -135,6 +139,26 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                                 buy.show(player).then(result => {
                                     player.runCommand('give @s nether_star ' + Math.trunc(result.formValues[0] as number))
                                     removemoney(Math.trunc(result.formValues[0] as number) * 20000)
+                                }).catch(() => { })
+                            } else if (result.selection == 7) {
+                                var buy = new ui.ModalFormData()
+                                    .title("Buy Emerald")
+                                    .slider("Amount", 0, maxquantity(emeraldPrice), 1, 0)
+
+                                buy.show(player).then(result => {
+                                    player.runCommand('give @s minecraft:emerald ' + Math.trunc(result.formValues[0] as number))
+                                    removemoney(cost(emeraldPrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("emerald_price", emeraldPrice + Math.trunc((emeraldPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
+                                }).catch(() => { })
+                            } else if (result.selection == 8) {
+                                var buy = new ui.ModalFormData()
+                                    .title("Buy Ruby")
+                                    .slider("Amount", 0, maxquantity(rubyPrice), 1, 0)
+
+                                buy.show(player).then(result => {
+                                    player.runCommand('give @s mmorpg:ruby ' + Math.trunc(result.formValues[0] as number))
+                                    removemoney(cost(rubyPrice, (result.formValues[0] as number)))
+                                    world.setDynamicProperty("ruby_price", rubyPrice + Math.trunc((rubyPrice * 0.005 * (Math.trunc(result.formValues[0] as number)))))
                                 }).catch(() => { })
                             }
                         })
@@ -244,6 +268,56 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
 
 
             })
+        } else if (entity.hasTag("sellnpc")) {
+            function countitem(itemName: string) {
+                const container = player.getComponent("inventory").container as server.PlayerInventoryComponentContainer
+
+                let cnt = 0
+                for (let i = 0; i < 36; i++) {
+                    let item = container.getSlot(i)?.getItem()
+                    if (item?.typeId == itemName) {
+                        cnt += item.amount
+                    }
+                }
+                return cnt
+            }
+            function sellitem(price, name, title, dynamicProperty) {
+                let itemcnt = countitem(name)
+                let money = 0
+                new ui.ModalFormData().title(title).slider("Sell Amount", 0, itemcnt, 1, 0).show(player).then(data => {
+                    console.warn(data.formValues[0])
+                    for (let i = 0; i < data.formValues[0]; i++) {
+                        money += price
+
+                        price = Math.round(price * 0.995)
+                    }
+                    world.setDynamicProperty(dynamicProperty, price)
+                    world.scoreboard.getObjective("money").addScore(player, Math.trunc(money * 0.9))
+                    player.runCommand(`clear @s ${name} 0 ${data.formValues[0]}`)
+                }).catch(() => { })
+            }
+
+            const sellitems = new ui.ActionFormData()
+                .title("Sellable Items")
+                .button(`Iron - ${ironPrice + "$"}`, "textures/items/iron_ingot")
+                .button(`Diamond - ${diamondPrice + "$"}`, "textures/items/diamond")
+                .button(`Netherite - ${netheritePrice + "$"}`, "textures/items/netherite_ingot")
+                .button(`Aetherium - ${aetheriumPrice + "$"}`, "textures/items/aetherium")
+                .button(`Emerald - ${emeraldPrice + "$"}`, "textures/items/emerald")
+                .button(`Ruby - ${rubyPrice + "$"}`, "textures/items/ruby")
+
+                .show(player).then(data => {
+                    switch (data.selection) {
+                        case 0: sellitem(ironPrice, "minecraft:iron_ingot", "Sell Iron", "iron_price"); break;
+                        case 1: sellitem(diamondPrice, "minecraft:diamond", "Sell Diamonds", "diamond_price"); break;
+                        case 2: sellitem(netheritePrice, "minecraft:netherite_ingot", "Sell Netherite", "netherite_price"); break;
+                        case 3: sellitem(aetheriumPrice, "mmorpg:aetherium", "Sell Aetherium", "aetherium_price"); break;
+                        case 4: sellitem(emeraldPrice, "minecraft:emerald", "Sell Emerald", "emerald_price"); break;
+                        case 5: sellitem(rubyPrice, "mmorpg:ruby", "Sell Ruby", "ruby_price"); break;
+                        default: break;
+                    }
+                }).catch(() => { })
+
         }
     } else if (entity.typeId == "mmorpg:withernpc") {
         let player = eventData.player as server.Player

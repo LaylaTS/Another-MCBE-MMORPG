@@ -16,9 +16,9 @@
 		},
 		"components": {
 			"minecraft:health": {
-				"value": 10,
+				"value": 1,
 				"min": 1,
-				"max": 10
+				"max": 1
 			},
 			"minecraft:nameable": {
 				"always_show": true,
@@ -28,6 +28,7 @@
 				"has_collision": true,
 				"has_gravity": true
 			},
+			"minecraft:persistent": {},
 			"minecraft:collision_box": {
 				"height": 2,
 				"width": 1
