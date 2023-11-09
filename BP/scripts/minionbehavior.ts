@@ -49,6 +49,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                     .button("Emerald")
                     .button("Iron")
                     .button("Diamond")
+                    .button("Aetherium")
                     .show(player).then(data => {
 
 
@@ -63,6 +64,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                                 case 2: entity.setDynamicProperty("resource", "Emerald"); break;
                                 case 3: entity.setDynamicProperty("resource", "Iron"); break;
                                 case 4: entity.setDynamicProperty("resource", "Diamond"); break;
+                                case 5: entity.setDynamicProperty("resource", "Aetherium"); break;
                             }
                             player.setDynamicProperty("minioncount", player.getDynamicProperty("minioncount") as number + 1)
                             entity.nameTag = `${entity.getDynamicProperty("resource")} Minion\nLevel: 1`
@@ -102,6 +104,7 @@ export function minioninteract(player: server.Player, entity: server.Entity) {
                         case "Emerald": generationspeed = 650; drop = "minecraft:emerald"; break;
                         case "Iron": generationspeed = 325; drop = "minecraft:iron_ingot"; break;
                         case "Diamond": generationspeed = 700; drop = "minecraft:diamond"; break;
+                        case "Aetherium": generationspeed = 300; drop = "mmorpg:aetherium"; break;
                     }
                     const lastuse = new Date(entity.getDynamicProperty("lastvisitdate") as string);
                     const currentdate = new Date()

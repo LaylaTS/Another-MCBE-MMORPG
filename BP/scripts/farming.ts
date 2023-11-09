@@ -15,11 +15,14 @@ export function farming(data: server.PlayerBreakBlockBeforeEvent) {
             data.block.setType(id)
         }
     }
+    const inv = player.getComponent("inventory") as server.EntityInventoryComponent
     if (id == "minecraft:wheat") {
         if (growth == 7) {
             server.system.run(() => {
+                console.warn(Math.floor(Math.random() * 2 * harvesting))
 
-                player.runCommand(`give @s wheat ${Math.floor(Math.random() * 2 * harvesting)}`)
+                // inv.container.addItem(new server.ItemStack("minecraft:wheat", ))
+
                 regrow(id)
             })
         } else {

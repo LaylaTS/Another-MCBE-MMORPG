@@ -1,14 +1,19 @@
 {
     "pools": [
         {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mmorpg:skyborn_core"
+                }
+            ]
+        },
+        {
             "entries": [
                 {
                     "type": "item",
                     "name": "mmorpg:skyborn_sword"
-                },
-                {
-                    "type": "item",
-                    "name": "mmorpg:skyborn_core"
                 }
             ]
         }

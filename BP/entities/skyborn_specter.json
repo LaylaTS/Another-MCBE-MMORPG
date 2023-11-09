@@ -33,6 +33,9 @@
 					"mob"
 				]
 			},
+			"minecraft:knockback_resistance": {
+				"value": 5
+			},
 			"minecraft:tick_world": {
 				"never_despawn": true,
 				"radius": 6
@@ -48,7 +51,7 @@
 				"priority": 3
 			},
 			"minecraft:movement": {
-				"value": 0.3
+				"value": 0.45
 			},
 			"minecraft:health": {
 				"value": 425
