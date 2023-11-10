@@ -2,6 +2,7 @@ import * as server from "@minecraft/server";
 import { getguildname } from "./guilds.js"
 import { fillmines } from "./fillmines.js"
 import { refreshprices } from "./refresh_prices.js"
+import { listitem } from "./playermarket.js"
 const world = server.world
 
 
@@ -30,6 +31,10 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
                 case "!refreshprices":
                     refreshprices()
                     break;
+                case "!listitem": server.system.run(() => {
+
+                    listitem(player);
+                }); break;
                 case "!resetmoney": player.setDynamicProperty("money", 0); break;
                 default: player.sendMessage("§4§oCommand does not exist!")
                     break;
