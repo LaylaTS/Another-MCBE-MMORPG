@@ -8,21 +8,20 @@ export function farming(data: server.PlayerBreakBlockBeforeEvent) {
     const player = data.player
     const growth = data.block.permutation.getState("growth")
     const harvesting = player.getDynamicProperty("harvesting") as number
+    const regrowth = player.getDynamicProperty("regrowth") as number
+    const rngDrop = (Math.floor(Math.random() * harvesting) + 1)
     function regrow(id) {
-        if (data.block.x > 9000 && data.block.x < 10000 && data.block.z < 10000 && data.block.z > 9000) {
+        if (data.block.x > 9000 && data.block.x < 10000 && data.block.z < 10000 && data.block.z > 9000 || regrowth > 0) {
 
 
-            data.block.setType(id)
+            data.block.setPermutation(server.BlockPermutation.resolve(id).withState("growth", regrowth))
         }
     }
     const inv = player.getComponent("inventory") as server.EntityInventoryComponent
     if (id == "minecraft:wheat") {
         if (growth == 7) {
             server.system.run(() => {
-                console.warn(Math.floor(Math.random() * 2 * harvesting))
-
-                // inv.container.addItem(new server.ItemStack("minecraft:wheat", ))
-
+                inv.container.addItem(new server.ItemStack("minecraft:wheat", rngDrop))
                 regrow(id)
             })
         } else {
@@ -31,8 +30,7 @@ export function farming(data: server.PlayerBreakBlockBeforeEvent) {
     } else if (id == "minecraft:carrots") {
         if (growth == 7) {
             server.system.run(() => {
-
-                player.runCommand(`give @s carrot ${Math.floor(Math.random() * 2 * harvesting)}`)
+                inv.container.addItem(new server.ItemStack("minecraft:carrot", rngDrop))
                 regrow(id)
             })
         } else {
@@ -41,8 +39,7 @@ export function farming(data: server.PlayerBreakBlockBeforeEvent) {
     } else if (id == "minecraft:potatoes") {
         if (growth == 7) {
             server.system.run(() => {
-
-                player.runCommand(`give @s potato ${Math.floor(Math.random() * 2 * harvesting)}`)
+                inv.container.addItem(new server.ItemStack("minecraft:potato", rngDrop))
                 regrow(id)
             })
         } else {

@@ -29,6 +29,7 @@ export function equipment(player: server.Player) {
     var speed: number = -1
     var healingpower: number = 0
     var harvesting: number = 1
+    var regrowth: number = 0
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
     const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
@@ -38,7 +39,7 @@ export function equipment(player: server.Player) {
     const leggingsid = equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId
     const bootsid = equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId
     const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand)?.typeId
-    const armorids = [0, 0, 0]
+    const armorids = [0, 0, 0, 0, 0]
 
     switch (helditemid) {
         case "mmorpg:witherscythe":
@@ -50,8 +51,16 @@ export function equipment(player: server.Player) {
         case "mmorpg:ruby_pickaxe":
             luck = luck + 0.1
             break;
-        case "mmorpg:golden_ring":
-            speed++
+        case "mmorpg:sculked_hoe":
+            harvesting++
+            break;
+        case "mmorpg:ruby_hoe":
+            harvesting = harvesting++
+            regrowth++
+            break;
+        case "mmorpg:aetherium_hoe":
+            harvesting = harvesting + 2
+
             break;
         default: break;
     }
@@ -81,6 +90,10 @@ export function equipment(player: server.Player) {
         case "mmorpg:enchanted_diamond_helmet":
             healthboost++
             manaregen = manaregen - 3
+            armorids[3]++
+            break;
+        case "mmorpg:farmer_helmet":
+            harvesting = harvesting + 2
             break;
         default: break;
     }
@@ -110,6 +123,11 @@ export function equipment(player: server.Player) {
             healthboost = healthboost + 2
             manaregen = manaregen - 3
             speed++
+            armorids[3]++
+            break;
+        case "mmorpg:farmer_chestplate":
+            regrowth++
+            harvesting = harvesting + 2
             break;
         default: break;
     }
@@ -139,6 +157,11 @@ export function equipment(player: server.Player) {
             healthboost++
             manaregen = manaregen - 3
             maxmana = maxmana + 50
+            armorids[3]++
+            break;
+        case "mmorpg:farmer_leggings":
+            harvesting = harvesting + 2
+            speed++
             break;
         default: break;
 
@@ -167,6 +190,10 @@ export function equipment(player: server.Player) {
         case "mmorpg:enchanted_diamond_boots":
             healthboost++
             manaregen = manaregen - 3
+            armorids[3]++
+            break;
+        case "mmorpg:farmer_boots":
+            speed++
             break;
         default: break;
     }
@@ -185,6 +212,9 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:redstone_infuser":
             haste++
+            break;
+        case "mmorpg:golden_ring":
+            speed++
             break;
         default: break;
     }
@@ -229,6 +259,14 @@ export function equipment(player: server.Player) {
                 world.scoreboard.getObjective("mana").addScore(player, -2)
             }
             break;
+        case 3:
+            if (server.system.currentTick % 40 == 0) {
+                const hpcomp = player.getComponent("health") as server.EntityHealthComponent
+                hpcomp.setCurrentValue(hpcomp.currentValue + 1)
+
+            }
+
+            break;
         default: break;
     }
 
@@ -254,6 +292,7 @@ export function equipment(player: server.Player) {
     player.setDynamicProperty("luck", luck)
     player.setDynamicProperty("healingpower", healingpower)
     player.setDynamicProperty("harvesting", harvesting)
+    player.setDynamicProperty("regrowth", regrowth)
 
 
 }

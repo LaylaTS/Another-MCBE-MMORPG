@@ -8,7 +8,7 @@
 				"enchanted": "armor_enchanted"
 			},
 			"textures": {
-				"default": "textures/models/armor/diamond_1",
+				"default": "textures/models/armor/enchanted_diamond_1",
 				"enchanted": "textures/misc/enchanted_item_glint"
 			},
 			"geometry": {

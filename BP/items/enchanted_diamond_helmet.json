@@ -22,7 +22,7 @@
 				"slot": "slot.armor.head"
 			},
 			"minecraft:display_name": {
-				"value": "§9Enchanted Diamond Helmet§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r"
+				"value": "§9Enchanted Diamond Helmet§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r\n§lSet Bonus:§r §7§oRegenerate health faster§r"
 			},
 			"minecraft:foil": true,
 			"minecraft:creative_category": {

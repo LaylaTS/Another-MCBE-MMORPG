@@ -25,7 +25,7 @@
 				"parent": "itemGroup.name.leggings"
 			},
 			"minecraft:display_name": {
-				"value": "§9Enchanted Diamond Leggings§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r\n§o§7+50 Max Mana§r"
+				"value": "§9Enchanted Diamond Leggings§r\n§o§7+2 hearts§r\n§7§o-3 Mana Regen§r\n§o§7+50 Max Mana§r\n§lSet Bonus:§r §7§oRegenerate health faster§r"
 			},
 			"minecraft:foil": true,
 			"minecraft:repairable": {

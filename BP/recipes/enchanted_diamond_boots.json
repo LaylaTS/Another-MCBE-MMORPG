@@ -1,0 +1,23 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:enchanted_diamond_boots"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"#": {
+				"item": "mmorpg:enchanted_diamond_block"
+			}
+		},
+		"pattern": [
+			"# #",
+			"# #"
+		],
+		"result": {
+			"item": "mmorpg:enchanted_diamond_boots"
+		}
+	}
+}

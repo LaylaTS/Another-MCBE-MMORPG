@@ -50,7 +50,17 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
         if (inventory.container.getItem(player.selectedSlot).typeId == loreitem.typeId) {
             inventory.container.setItem(player.selectedSlot, loreitem)
+
         }
+    }
+    function addcandestroy() {
+        var clone = item.clone()
+        clone.setCanDestroy(["wheat", "carrots", "potatoes"])
+        if (inventory.container.getItem(player.selectedSlot).typeId == clone.typeId) {
+            inventory.container.setItem(player.selectedSlot, clone)
+
+        }
+
     }
     switch (item.typeId) {
         case "mmorpg:return":
@@ -678,6 +688,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             }
             break;
+        // hoes
+        case "mmorpg:aetherium_hoe": addcandestroy(); break; case "mmorpg:ruby_hoe": addcandestroy(); break; case "mmorpg:bone_hoe": addcandestroy(); break; case "mmorpg:sculked_hoe": addcandestroy(); break;
     }
 })
 
