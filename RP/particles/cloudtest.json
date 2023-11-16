@@ -1,0 +1,66 @@
+{
+    "format_version": "1.10.0",
+    "particle_effect": {
+        "description": {
+            "identifier": "mmorpg:cloudtest",
+            "basic_render_parameters": {
+                "material": "particles_add",
+                "texture": "textures/particle/particles"
+            }
+        },
+        "components": {
+            "minecraft:emitter_rate_instant": {
+                "num_particles": 20
+            },
+            "minecraft:emitter_lifetime_once": {
+                "active_time": 50
+            },
+            "minecraft:emitter_shape_disc": {
+                "offset": [
+                    "250-variable.emitter_random_1*500",
+                    "50+variable.emitter_random_3*150",
+                    "250-variable.emitter_random_2*500"
+                ],
+                "radius": 20,
+                "direction": "inwards"
+            },
+            "minecraft:particle_lifetime_expression": {
+                "max_lifetime": "variable.emitter_random_1*50"
+            },
+            "minecraft:particle_initial_speed": 1,
+            "minecraft:particle_motion_dynamic": {
+                "linear_drag_coefficient": 1
+            },
+            "minecraft:particle_appearance_billboard": {
+                "size": [
+                    10,
+                    10
+                ],
+                "facing_camera_mode": "rotate_xyz",
+                "uv": {
+                    "texture_width": 128,
+                    "texture_height": 128,
+                    "uv": [
+                        32,
+                        16
+                    ],
+                    "uv_size": [
+                        32,
+                        32
+                    ]
+                }
+            },
+            "minecraft:particle_appearance_tinting": {
+                "color": {
+                    "interpolant": "v.particle_age / v.particle_lifetime",
+                    "gradient": {
+                        "0.0": "#00938496",
+                        "0.14": "#2EDBC3E0",
+                        "0.75": "#219972A2",
+                        "1.0": "#009C8DA5"
+                    }
+                }
+            }
+        }
+    }
+}
