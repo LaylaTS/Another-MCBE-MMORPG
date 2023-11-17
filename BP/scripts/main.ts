@@ -146,3 +146,34 @@ world.beforeEvents.pistonActivate.subscribe(data => {
     })
 
 })
+
+export function deepClone(obj, visited = new WeakMap()) {
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+    if (visited.has(obj)) {
+        return visited.get(obj);
+    }
+
+    if (Array.isArray(obj)) {
+        const arrCopy = [];
+        visited.set(obj, arrCopy);
+
+        for (let i = 0; i < obj.length; i++) {
+            arrCopy[i] = deepClone(obj[i], visited);
+        }
+
+        return arrCopy;
+    }
+
+    const objCopy = {};
+    visited.set(obj, objCopy);
+
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            objCopy[key] = deepClone(obj[key], visited);
+        }
+    }
+
+    return objCopy;
+}

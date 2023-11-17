@@ -216,6 +216,12 @@ export function equipment(player: server.Player) {
         case "mmorpg:golden_ring":
             speed++
             break;
+        case "mmorpg:farming_gloves":
+            harvesting = harvesting + 4
+            break;
+        case "mmorpg:magical_watering_can":
+            regrowth = regrowth + 2
+            break;
         default: break;
     }
 

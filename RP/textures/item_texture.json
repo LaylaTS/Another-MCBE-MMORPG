@@ -238,6 +238,30 @@
 		},
 		"bundle": {
 			"textures": "textures/items/bundle"
+		},
+		"mmorpg_farmer_helmet": {
+			"textures": "textures/items/farmer_helmet"
+		},
+		"mmorpg_farmer_chestplate": {
+			"textures": "textures/items/farmer_chestplate"
+		},
+		"mmorpg_farmer_leggings": {
+			"textures": "textures/items/farmer_leggings"
+		},
+		"mmorpg_farmer_boots": {
+			"textures": "textures/items/farmer_boots"
+		},
+		"mmorpg_ice_blade": {
+			"textures": "textures/items/ice_blade"
+		},
+		"mmorpg_frost_scythe": {
+			"textures": "textures/items/frost_scythe"
+		},
+		"mmorpg_magical_watering_can": {
+			"textures": "textures/items/magical_watering_can"
+		},
+		"mmorpg_farming_gloves": {
+			"textures": "textures/items/farming_gloves"
 		}
 	}
 }

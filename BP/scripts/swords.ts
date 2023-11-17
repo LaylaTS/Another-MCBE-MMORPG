@@ -690,6 +690,63 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         // hoes
         case "mmorpg:aetherium_hoe": addcandestroy(); break; case "mmorpg:ruby_hoe": addcandestroy(); break; case "mmorpg:bone_hoe": addcandestroy(); break; case "mmorpg:sculked_hoe": addcandestroy(); break;
+
+        case "mmorpg:ice_blade":
+            if (manaamount > 39) {
+                mana.addScore(player, -39)
+                var rotation = player.getRotation().y
+                rotation = rotation + 90
+                const radians = rotation * Math.PI / 180;
+                const cosval = Math.cos(radians);
+                const sinval = Math.sin(radians);
+                let originallocationx = player.location.x
+                let originallocationz = player.location.z
+                let originallocationy = player.location.y
+                for (let distance = 0; distance < 45; distance++) {
+                    server.system.runTimeout(() => {
+                        let xlocation = originallocationx + (distance / 3) * cosval
+                        let zlocation = originallocationz + (distance / 3) * sinval
+                        dimension.spawnParticle("mmorpg:ice_blade_particle", { x: xlocation, y: originallocationy + 1, z: zlocation })
+                        dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 2, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                            entity.applyDamage(30 + magicalpower * 1.5, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            });
+                            if (entity.typeId != "minecraft:player") entity.clearVelocity()
+
+                            entity.addEffect("slowness", 10, { amplifier: 10 })
+                        })
+
+
+                        dimension.spawnParticle("mmorpg:ice_blade_particle", { x: xlocation, y: originallocationy + 1, z: zlocation })
+
+
+                    }, distance)
+                    distance++
+                }
+
+            }
+            break;
+        case "mmorpg:frost_scythe":
+            if (manaamount > 100) {
+                mana.addScore(player, -100)
+                for (let j = 0; j < 4; j++) {
+                    server.system.runTimeout(() => {
+                        dimension.spawnParticle("mmorpg:frost_scythe", player.location)
+                        dimension.getEntities({ location: player.location, maxDistance: 10, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                            entity.applyDamage(12 + magicalpower, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            });
+                        })
+                        let view = player.getViewDirection()
+                        player.applyKnockback(view.x, view.z, 3, 0.4)
+
+                    }, j * 15)
+                }
+            }
+
+            break;
     }
 })
 
