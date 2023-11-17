@@ -22,6 +22,15 @@ export function playerinteract(iplayer: server.Player, player: server.Player) {
                     iplayer.sendMessage("§3You got a guild invite!")
                 } else { player.sendMessage("§4ERROR!") }
                 break;
+            case 2:
+                new ui.ModalFormData()
+                    .title("Send Money")
+                    .slider("Choose Amount", 0, Math.trunc(player.getDynamicProperty("money") as number), 1, 0)
+                    .show(player).then((data) => {
+                        iplayer.setDynamicProperty("money", iplayer.getDynamicProperty("money") + data[0])
+                        player.setDynamicProperty("money", player.getDynamicProperty("money") as number - data[0])
+                    })
+                break;
         }
     })
 }
