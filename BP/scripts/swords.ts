@@ -728,7 +728,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:frost_scythe":
-            if (manaamount > 100) {
+            if (manaamount > 99) {
                 mana.addScore(player, -100)
                 for (let j = 0; j < 4; j++) {
                     server.system.runTimeout(() => {

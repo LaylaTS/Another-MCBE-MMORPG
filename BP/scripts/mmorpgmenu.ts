@@ -6,7 +6,7 @@ import * as ui from '@minecraft/server-ui'
 export function mmorpgmenu(player: server.Player) {
     const world = server.world
     const mmorpgui = new ui.ActionFormData()
-        .title("MMORPG").button("Teleport").button("Auction House")
+        .title("MMORPG").button("Teleport").button("Auction House (SOON)")
         .body(`\n§7Max Mana: §b§l${player.getDynamicProperty("maxmana")}\n§r§7Magical Power: §b§l${player.getDynamicProperty("magicalpower")}§r\n§7Mana Regen: §b§l${player.getDynamicProperty("manaregen")}\n§r§7Luck: §b§l${player.getDynamicProperty("luck").toFixed(2)}\n§r`).show(player).then(data => {
             if (data.selection == 0) {
                 if (world.scoreboard.getObjective('spawntimer').getScore(player) > 200) {
@@ -50,7 +50,7 @@ export function mmorpgmenu(player: server.Player) {
                 }
 
             } else if (data.selection == 1) {
-                console.warn("test")
+
             }
         })
 
