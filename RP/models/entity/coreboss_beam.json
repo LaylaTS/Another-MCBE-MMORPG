@@ -5,8 +5,8 @@
 			"description": {
 				"identifier": "geometry.coreboss_beam",
 				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 3,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
 				"visible_bounds_height": 18,
 				"visible_bounds_offset": [0, 8, 0]
 			},
@@ -16,15 +16,15 @@
 					"pivot": [0, 0, 0],
 					"cubes": [
 						{
-							"origin": [-8, 0, -8],
-							"size": [16, 0, 16],
+							"origin": [-12, 0, -12],
+							"size": [24, 0, 24],
 							"uv": {
-								"north": {"uv": [16, 16], "uv_size": [16, 0]},
-								"east": {"uv": [0, 16], "uv_size": [16, 0]},
-								"south": {"uv": [48, 16], "uv_size": [16, 0]},
-								"west": {"uv": [32, 16], "uv_size": [16, 0]},
-								"up": {"uv": [16, 0], "uv_size": [16, 16]},
-								"down": {"uv": [32, 16], "uv_size": [16, -16]}
+								"north": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"east": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"south": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"west": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"up": {"uv": [9, 0], "uv_size": [23, 23]},
+								"down": {"uv": [0, 0], "uv_size": [9, 9]}
 							}
 						}
 					]
@@ -66,6 +66,61 @@
 								"west": {"uv": [32, 5], "uv_size": [5, 5]},
 								"up": {"uv": [37, 10], "uv_size": [-5, -5]},
 								"down": {"uv": [37, 10], "uv_size": [-5, -5]}
+							}
+						}
+					]
+				},
+				{
+					"name": "beamring",
+					"parent": "beam",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-17, 44, -17],
+							"size": [34, 0, 34],
+							"uv": {
+								"north": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"east": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"south": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"west": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"up": {"uv": [9, 0], "uv_size": [23, 23]},
+								"down": {"uv": [0, 0], "uv_size": [9, 9]}
+							}
+						},
+						{
+							"origin": [-12, 68, -12],
+							"size": [24, 0, 24],
+							"uv": {
+								"north": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"east": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"south": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"west": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"up": {"uv": [9, 0], "uv_size": [23, 23]},
+								"down": {"uv": [0, 0], "uv_size": [9, 9]}
+							}
+						},
+						{
+							"origin": [-17, 94, -17],
+							"size": [34, 0, 34],
+							"uv": {
+								"north": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"east": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"south": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"west": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"up": {"uv": [9, 0], "uv_size": [23, 23]},
+								"down": {"uv": [0, 0], "uv_size": [9, 9]}
+							}
+						},
+						{
+							"origin": [-12, 21, -12],
+							"size": [24, 0, 24],
+							"uv": {
+								"north": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"east": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"south": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"west": {"uv": [32, 23], "uv_size": [-23, -23]},
+								"up": {"uv": [9, 0], "uv_size": [23, 23]},
+								"down": {"uv": [0, 0], "uv_size": [9, 9]}
 							}
 						}
 					]

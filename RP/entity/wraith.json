@@ -1,0 +1,32 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:wraith",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/wraith"
+			},
+			"geometry": {
+				"default": "geometry.wraith"
+			},
+			"render_controllers": [
+				"controller.render.wraith"
+			],
+			"scripts": {
+				"animate": [
+					"look_at_target"
+				]
+			},
+			"animations": {
+				"look_at_target": "controller.animation.humanoid.look_at_target"
+			},
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

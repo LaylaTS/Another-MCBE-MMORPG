@@ -5,8 +5,7 @@
       "geometry": "Geometry.default",
       "materials": [
         {
-          "*": "Material.default",
-          "*beam": "Material.transparent"
+          "*": "Material.default"
         }
       ],
       "textures": [

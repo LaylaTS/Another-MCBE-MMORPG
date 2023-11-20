@@ -16,18 +16,10 @@
 				"destroy_speeds": [
 					{
 						"block": "minecraft:web",
-						"on_dig": {
-							"event": "on_tool_used",
-							"target": "self"
-						},
 						"speed": 15
 					},
 					{
 						"block": "minecraft:bamboo",
-						"on_dig": {
-							"event": "on_tool_used",
-							"target": "self"
-						},
 						"speed": 60
 					}
 				]
@@ -36,6 +28,7 @@
 				"value": 14,
 				"slot": "sword"
 			},
+			"minecraft:foil": true,
 			"minecraft:hand_equipped": true,
 			"minecraft:icon": {
 				"texture": "mmorpg_frost_scythe"
@@ -57,12 +50,7 @@
 					}
 				]
 			},
-			"minecraft:weapon": {
-				"on_hurt_entity": {
-					"event": "damaged",
-					"target": "self"
-				}
-			},
+			"minecraft:weapon": {},
 			"tag:minecraft:is_sword": {},
 			"tag:minecraft:is_tool": {}
 		}

@@ -2,7 +2,7 @@
   "format_version": "1.16.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "mmorpg:coreboss_beam",
+      "identifier": "mmorpg:skyborn_beam",
       "is_spawnable": false,
       "is_summonable": false,
       "is_experimental": false
@@ -31,7 +31,7 @@
       "minecraft:type_family": {
         "family": [
           "attack",
-          "core",
+          "skyborn",
           "inanimate"
         ]
       },
@@ -41,7 +41,7 @@
       },
       "minecraft:timer": {
         "looping": false,
-        "time": 2,
+        "time": 1,
         "time_down_event": {
           "event": "deal_damage"
         }
