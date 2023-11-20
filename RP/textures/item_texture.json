@@ -262,6 +262,18 @@
 		},
 		"mmorpg_farming_gloves": {
 			"textures": "textures/items/farming_gloves"
+		},
+		"mmorpg_frost_helmet": {
+			"textures": "textures/items/frost_helmet"
+		},
+		"mmorpg_frost_chestplate": {
+			"textures": "textures/items/frost_chestplate"
+		},
+		"mmorpg_frost_leggings": {
+			"textures": "textures/items/frost_leggings"
+		},
+		"mmorpg_frost_boots": {
+			"textures": "textures/items/frost_boots"
 		}
 	}
 }

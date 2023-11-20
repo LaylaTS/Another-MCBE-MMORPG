@@ -540,7 +540,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                     let entities = dimension.getEntities({ location: location, maxDistance: 1.6, families: ["mob"], excludeNames: [player.name] })
 
                     entities.forEach(entity => {
-                        entity.applyDamage(35 * (1 + (player.getDynamicProperty("healingpower") as number / 100)), {
+                        entity.applyDamage(35 + magicalpower / 2, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         });
@@ -555,7 +555,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 if (hitscan > 0) {
                     dimension.getPlayers({ location: player.location, maxDistance: 8, excludeFamilies: ["mob"] }).forEach(playerh => {
                         const hpcomp = playerh.getComponent("health") as server.EntityHealthComponent
-                        hpcomp.setCurrentValue(hpcomp.currentValue + 5 * (1 + (player.getDynamicProperty("healingpower") as number / 100)))
+                        hpcomp.setCurrentValue(hpcomp.currentValue + 5 + magicalpower / 5)
                         dimension.spawnParticle("mmorpg:transcendentbladeheal", playerh.location)
                     })
                 }

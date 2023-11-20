@@ -16,7 +16,10 @@
 			},
 			"minecraft:render_offsets": "leggings",
 			"minecraft:armor": {
-				"protection": 5
+				"protection": 1
+			},
+			"minecraft:display_name": {
+				"value": "§9Farmer Leggings§r\n§o§7+1 Speed§r\n§7§o+2 Harvesting§r"
 			},
 			"minecraft:wearable": {
 				"slot": "slot.armor.legs"

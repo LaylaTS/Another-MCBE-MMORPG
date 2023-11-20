@@ -27,7 +27,6 @@ export function equipment(player: server.Player) {
     var healthboost: number = -1
     var luck: number = 1
     var speed: number = -1
-    var healingpower: number = 0
     var harvesting: number = 1
     var regrowth: number = 0
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
@@ -39,7 +38,7 @@ export function equipment(player: server.Player) {
     const leggingsid = equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId
     const bootsid = equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId
     const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand)?.typeId
-    const armorids = [0, 0, 0, 0, 0]
+    const armorids = [0, 0, 0, 0, 0, 0, 0, 0]
 
     switch (helditemid) {
         case "mmorpg:witherscythe":
@@ -60,7 +59,6 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:aetherium_hoe":
             harvesting = harvesting + 2
-
             break;
         default: break;
     }
@@ -94,6 +92,11 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:farmer_helmet":
             harvesting = harvesting + 2
+            break;
+        case "mmorpg:frost_helmet":
+            magicalpower = magicalpower + 5
+            maxmana = maxmana + 30
+            armorids[5]++
             break;
         default: break;
     }
@@ -129,6 +132,11 @@ export function equipment(player: server.Player) {
             regrowth++
             harvesting = harvesting + 2
             break;
+        case "mmorpg:frost_chestplate":
+            magicalpower = magicalpower + 5
+            armorids[5]++
+            speed++
+            break;
         default: break;
     }
 
@@ -163,6 +171,11 @@ export function equipment(player: server.Player) {
             harvesting = harvesting + 2
             speed++
             break;
+        case "mmorpg:frost_leggings":
+            armorids[5]++
+            magicalpower = magicalpower + 5
+            speed++
+            break;
         default: break;
 
     }
@@ -194,6 +207,11 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:farmer_boots":
             speed++
+            break;
+        case "mmorpg:frost_boots":
+            magicalpower = magicalpower + 5
+            armorids[5]++
+            maxmana = maxmana + 30
             break;
         default: break;
     }
@@ -228,7 +246,7 @@ export function equipment(player: server.Player) {
     switch (armorids.indexOf(4)) {
         case 0:
             if (player.isSneaking) {
-                if (setbonustimings < 80 && player.getComponent('health').currentValue > 6) {
+                if (setbonustimings < 20 && player.getComponent('health').currentValue > 6) {
                     player.applyDamage(6, { cause: server.EntityDamageCause.void } as server.EntityApplyDamageOptions)
                     setbonustimings = 110
                     player.runCommand("scoreboard players add @s mana 50")
@@ -273,6 +291,19 @@ export function equipment(player: server.Player) {
             }
 
             break;
+        case 4:
+            console.warn("farmer")
+            break;
+        case 5:
+            if (server.system.currentTick % 5 == 0) {
+                world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
+                    entity.addEffect("slowness", 10, { showParticles: true, amplifier: 0 })
+
+                    world.scoreboard.getObjective("mana").addScore(player, 1)
+                })
+            }
+            world.getDimension("overworld").spawnParticle("mmorpg:frostarmorparticle", player.location)
+            break;
         default: break;
     }
 
@@ -296,7 +327,6 @@ export function equipment(player: server.Player) {
     player.setDynamicProperty("manaregen", Math.trunc(manaregen))
     player.setDynamicProperty("maxmana", maxmana)
     player.setDynamicProperty("luck", luck)
-    player.setDynamicProperty("healingpower", healingpower)
     player.setDynamicProperty("harvesting", harvesting)
     player.setDynamicProperty("regrowth", regrowth)
 

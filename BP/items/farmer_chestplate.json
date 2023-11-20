@@ -16,7 +16,10 @@
 			},
 			"minecraft:render_offsets": "chestplates",
 			"minecraft:armor": {
-				"protection": 6
+				"protection": 1
+			},
+			"minecraft:display_name": {
+				"value": "§9Farmer Chestplate§r\n§o§7+1 Regrowth§r\n§7§o+2 Harvesting§r"
 			},
 			"minecraft:wearable": {
 				"slot": "slot.armor.chest"

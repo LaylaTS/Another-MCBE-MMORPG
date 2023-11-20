@@ -16,7 +16,10 @@
 			},
 			"minecraft:render_offsets": "helmets",
 			"minecraft:armor": {
-				"protection": 2
+				"protection": 1
+			},
+			"minecraft:display_name": {
+				"value": "§9Farmer Helmet§r\n§o§7+2 Harvesting§r"
 			},
 			"minecraft:wearable": {
 				"slot": "slot.armor.head"

@@ -2,7 +2,7 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "mmorpg:farmer_boots",
+			"identifier": "mmorpg:frost_boots",
 			"category": "equipment"
 		},
 		"components": {
@@ -12,14 +12,14 @@
 				"slot": "armor_feet"
 			},
 			"minecraft:icon": {
-				"texture": "mmorpg_farmer_boots"
+				"texture": "mmorpg_frost_boots"
 			},
 			"minecraft:render_offsets": "boots",
 			"minecraft:armor": {
-				"protection": 1
+				"protection": 3
 			},
 			"minecraft:display_name": {
-				"value": "§9Farmer Boots§r\n§o§7+1 Speed§r"
+				"value": "§9Frost Boots§r\n§o§7+5 Magical Power§r\n§7§o+30 Max Mana§r\n§lSet Bonus:§r §7§oSlow nearby mobs and regenerate mana for each slowed mob§r"
 			},
 			"minecraft:wearable": {
 				"slot": "slot.armor.feet"
@@ -37,7 +37,7 @@
 					},
 					{
 						"items": [
-							"mmorpg:farmer_boots"
+							"mmorpg:frost_boots"
 						],
 						"repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
 					}

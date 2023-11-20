@@ -2,30 +2,30 @@
 	"format_version": "1.16.100",
 	"minecraft:item": {
 		"description": {
-			"identifier": "mmorpg:farmer_boots",
+			"identifier": "mmorpg:frost_leggings",
 			"category": "equipment"
 		},
 		"components": {
 			"minecraft:max_stack_size": 1,
 			"minecraft:enchantable": {
 				"value": 9,
-				"slot": "armor_feet"
+				"slot": "armor_legs"
 			},
 			"minecraft:icon": {
-				"texture": "mmorpg_farmer_boots"
+				"texture": "mmorpg_frost_leggings"
 			},
-			"minecraft:render_offsets": "boots",
+			"minecraft:render_offsets": "leggings",
 			"minecraft:armor": {
-				"protection": 1
-			},
-			"minecraft:display_name": {
-				"value": "§9Farmer Boots§r\n§o§7+1 Speed§r"
+				"protection": 6
 			},
 			"minecraft:wearable": {
-				"slot": "slot.armor.feet"
+				"slot": "slot.armor.legs"
+			},
+			"minecraft:display_name": {
+				"value": "§9Frost Leggings§r\n§o§7+5 Magical Power§r\n§7§o+1 Speed§r\n§lSet Bonus:§r §7§oSlow nearby mobs and regenerate mana for each slowed mob§r"
 			},
 			"minecraft:creative_category": {
-				"parent": "itemGroup.name.boots"
+				"parent": "itemGroup.name.leggings"
 			},
 			"minecraft:repairable": {
 				"repair_items": [
@@ -37,7 +37,7 @@
 					},
 					{
 						"items": [
-							"mmorpg:farmer_boots"
+							"mmorpg:frost_leggings"
 						],
 						"repair_amount": "context.other->query.remaining_durability + 0.12 * context.other->query.max_durability"
 					}
