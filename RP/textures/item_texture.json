@@ -283,6 +283,12 @@
 		},
 		"mmorpg_magma_gauntlet": {
 			"textures": "textures/items/magma_gauntlet"
+		},
+		"mmorpg_quartz_mana_charm": {
+			"textures": "textures/items/quartz_mana_charm"
+		},
+		"mmorpg_copper_mana_amulet": {
+			"textures": "textures/items/copper_mana_amulet"
 		}
 	}
 }

@@ -273,7 +273,13 @@ export function equipment(player: server.Player) {
             magicalpower += Math.round(((maxmana - world.scoreboard.getObjective("mana").getScore(player)) / 5))
             break;
         case "mmorpg:magma_gauntlet":
-            magicalpower += Math.round(world.scoreboard.getObjective("mana").getScore(player) / 5)
+            magicalpower += Math.round(world.scoreboard.getObjective("mana").getScore(player) / 8)
+            break;
+        case "mmorpg:quartz_mana_charm":
+            maxmana = maxmana + 100
+            break;
+        case "mmorpg:copper_mana_amulet":
+            manaregen = manaregen - 5
             break;
         default: break;
     }
@@ -368,7 +374,11 @@ export function equipment(player: server.Player) {
     }
     player.setDynamicProperty("setbonustimings", setbonustimings)
     player.setDynamicProperty("magicalpower", magicalpower)
-    player.setDynamicProperty("manaregen", Math.trunc(manaregen))
+    if (manaregen >= 2) {
+        player.setDynamicProperty("manaregen", manaregen)
+    } else {
+        player.setDynamicProperty("manaregen", 2)
+    }
     player.setDynamicProperty("maxmana", maxmana)
     player.setDynamicProperty("luck", luck)
     player.setDynamicProperty("harvesting", harvesting)

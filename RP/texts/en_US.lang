@@ -150,3 +150,5 @@ item.mmorpg:frostfire_leggings=FrostFire Leggings
 item.mmorpg:frostfire_boots=FrostFire Boots
 item.mmorpg:frozen_gauntlet=§2Frozen Gauntlet§r | §3Get Magical Power based on your missing mana§r
 item.mmorpg:magma_gauntlet=§2Magma Gauntlet§r | §3Get Magical Power based on your current mana§r
+item.mmorpg:quartz_mana_charm=§2Quartz Mana Charm§r | §3Gives you 100 max mana§r
+item.mmorpg:copper_mana_amulet=§2Copper Mana Amulet§r | §3Gives you 5 mana regen§r

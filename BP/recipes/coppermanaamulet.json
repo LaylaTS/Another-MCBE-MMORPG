@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:coppermanaamulet"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"c": {
+				"item": "mmorpg:enchanted_copper_ingot"
+			}
+		},
+		"pattern": [
+			" c ",
+			"c c",
+			" c "
+		],
+		"result": {
+			"item": "mmorpg:copper_mana_amulet"
+		}
+	}
+}

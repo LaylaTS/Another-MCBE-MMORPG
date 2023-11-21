@@ -1,0 +1,24 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:quartzmanacharmcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"Q": {
+				"item": "mmorpg:enchanted_quartz"
+			}
+		},
+		"pattern": [
+			" Q ",
+			"Q Q",
+			" Q"
+		],
+		"result": {
+			"item": "mmorpg:quartz_mana_charm"
+		}
+	}
+}
