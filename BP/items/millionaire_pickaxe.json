@@ -17,6 +17,9 @@
 			"minecraft:icon": {
 				"texture": "mmorpg_millionaire_pickaxe"
 			},
+			"minecraft:display_name": {
+				"value": "Millionaire Pickaxe"
+			},
 			"minecraft:mining_speed": 22,
 			"minecraft:damage": 3,
 			"minecraft:enchantable": {

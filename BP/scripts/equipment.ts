@@ -50,6 +50,10 @@ export function equipment(player: server.Player) {
         case "mmorpg:ruby_pickaxe":
             luck = luck + 0.1
             break;
+        case "mmorpg:millionaire_pickaxe":
+            haste = haste + 2
+            luck = luck + 0.2
+            break;
         case "mmorpg:sculked_hoe":
             harvesting++
             break;
@@ -96,6 +100,12 @@ export function equipment(player: server.Player) {
         case "mmorpg:frost_helmet":
             magicalpower = magicalpower + 5
             maxmana = maxmana + 30
+            armorids[4]++
+            break;
+        case "mmorpg:frostfire_helmet":
+            maxmana = maxmana + 50
+            magicalpower = magicalpower + 7
+            healthboost++
             armorids[5]++
             break;
         default: break;
@@ -134,8 +144,14 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:frost_chestplate":
             magicalpower = magicalpower + 5
-            armorids[5]++
+            armorids[4]++
             speed++
+            break;
+        case "mmorpg:frostfire_chestplate":
+            magicalpower = magicalpower + 10
+            speed++
+            healthboost = healthboost + 2
+            armorids[5]++
             break;
         default: break;
     }
@@ -172,9 +188,16 @@ export function equipment(player: server.Player) {
             speed++
             break;
         case "mmorpg:frost_leggings":
-            armorids[5]++
+            armorids[4]++
             magicalpower = magicalpower + 5
             speed++
+            break;
+        case "mmorpg:frostfire_leggings":
+            healthboost++
+            speed++
+            magicalpower = magicalpower + 7
+            manaregen = manaregen - 5
+            armorids[5]++
             break;
         default: break;
 
@@ -210,8 +233,14 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:frost_boots":
             magicalpower = magicalpower + 5
-            armorids[5]++
+            armorids[4]++
             maxmana = maxmana + 30
+            break;
+        case "mmorpg:frostfire_boots":
+            maxmana = maxmana + 50
+            magicalpower = magicalpower + 7
+            healthboost++
+            armorids[5]++
             break;
         default: break;
     }
@@ -239,6 +268,12 @@ export function equipment(player: server.Player) {
             break;
         case "mmorpg:magical_watering_can":
             regrowth = regrowth + 2
+            break;
+        case "mmorpg:frozen_gauntlet":
+            magicalpower += Math.round(((maxmana - world.scoreboard.getObjective("mana").getScore(player)) / 5))
+            break;
+        case "mmorpg:magma_gauntlet":
+            magicalpower += Math.round(world.scoreboard.getObjective("mana").getScore(player) / 5)
             break;
         default: break;
     }
@@ -292,9 +327,6 @@ export function equipment(player: server.Player) {
 
             break;
         case 4:
-            console.warn("farmer")
-            break;
-        case 5:
             if (server.system.currentTick % 5 == 0) {
                 world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
                     entity.addEffect("slowness", 10, { showParticles: true, amplifier: 0 })
@@ -303,6 +335,18 @@ export function equipment(player: server.Player) {
                 })
             }
             world.getDimension("overworld").spawnParticle("mmorpg:frostarmorparticle", player.location)
+            break;
+        case 5:
+            if (server.system.currentTick % 10 == 0) {
+                world.getDimension("overworld").getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] }).forEach(entity => {
+                    world.getDimension("overworld").spawnParticle("mmorpg:frostfirearmor", entity.location)
+                    entity.addEffect("slowness", 15, { showParticles: true, amplifier: 0 })
+                    entity.setOnFire(1)
+                    entity.applyDamage(1 + magicalpower / 10, { cause: server.EntityDamageCause.entityAttack, damagingEntity: player })
+                    entity.clearVelocity()
+                    world.scoreboard.getObjective("mana").addScore(player, 2)
+                })
+            }
             break;
         default: break;
     }

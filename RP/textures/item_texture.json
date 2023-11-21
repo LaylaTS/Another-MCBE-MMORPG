@@ -80,18 +80,6 @@
 		"mmorpg_biggraysword": {
 			"textures": "textures/items/biggraysword"
 		},
-		"mmorpg_aetherium_helmet": {
-			"textures": "textures/items/aetherium_helmet"
-		},
-		"mmorpg_aetherium_chestplate": {
-			"textures": "textures/items/aetherium_chestplate"
-		},
-		"mmorpg_aetherium_leggings": {
-			"textures": "textures/items/aetherium_leggings"
-		},
-		"mmorpg_aetherium_boots": {
-			"textures": "textures/items/aetherium_boots"
-		},
 		"mmorpg_aetheriumstar": {
 			"textures": "textures/items/aetheriumstar"
 		},
@@ -274,6 +262,27 @@
 		},
 		"mmorpg_frost_boots": {
 			"textures": "textures/items/frost_boots"
+		},
+		"mmorpg_frostfire_helmet": {
+			"textures": "textures/items/frostfire_helmet"
+		},
+		"mmorpg_frostfire_chestplate": {
+			"textures": "textures/items/frostfire_chestplate"
+		},
+		"mmorpg_frostfire_leggings": {
+			"textures": "textures/items/frostfire_leggings"
+		},
+		"mmorpg_frostfire_boots": {
+			"textures": "textures/items/frostfire_boots"
+		},
+		"mmorpg_millionaire_pickaxe": {
+			"textures": "textures/items/millionaire_pickaxe"
+		},
+		"mmorpg_frozen_gauntlet": {
+			"textures": "textures/items/frozen_gauntlet"
+		},
+		"mmorpg_magma_gauntlet": {
+			"textures": "textures/items/magma_gauntlet"
 		}
 	}
 }
