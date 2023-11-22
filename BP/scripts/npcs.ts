@@ -185,7 +185,21 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                             }).catch(() => { })
                         break;
                     case 3:
-                        player.sendMessage("Soon")
+                        const tools = new ui.ActionFormData()
+                            .title("Tools")
+                            .button("Millionaire Pickaxe - 1m", "textures/items/millionaire_pickaxe")
+                            .show(player).then(data => {
+                                if (data.selection == 1) {
+                                    var buy = new ui.ModalFormData()
+                                        .title("Millionaire Pickaxe")
+                                        .slider("Amount", 0, money / 1000000, 1, 0)
+
+                                    buy.show(player).then(result => {
+                                        player.runCommand('give @s mmorpg:millionaire_pickaxe ' + Math.trunc(result.formValues[0] as number))
+                                        removemoney(Math.trunc(result.formValues[0] as number) * 1000000)
+                                    }).catch(() => { })
+                                }
+                            }).catch(() => { })
                         break;
                     case 4:
                         var potions = new ui.ActionFormData()

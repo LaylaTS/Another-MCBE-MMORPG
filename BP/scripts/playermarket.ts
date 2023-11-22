@@ -1,37 +1,31 @@
 import * as server from '@minecraft/server'
 import * as ui from '@minecraft/server-ui'
-import { deepClone } from './main.js'
+
 
 export function listitem(player: server.Player) {
+    const invcomp = player.getComponent("inventory") as server.EntityInventoryComponent
     function removelisting() {
-        if (player.getDynamicProperty("solditem") != undefined) {
-            let item = player.getDynamicProperty("solditem") as string
-            invcomp.container.addItem(JSON.parse(item))
+
+        if (player.getDynamicProperty("solditemid") != undefined) {
+            let itemid = player.getDynamicProperty("solditemid") as string
+            let amount = player.getDynamicProperty("solditemamount") as number
+
+
+            let newitem = new server.ItemStack(itemid, amount)
+
+
+
+
+            invcomp.container.addItem(newitem)
         }
-        player.setDynamicProperty("solditem", undefined)
+        player.setDynamicProperty("solditemid", undefined)
+        player.setDynamicProperty("solditemamount", undefined)
+        player.setDynamicProperty("solditemdesc", undefined)
         player.setDynamicProperty("solditemprice", undefined)
 
     }
-    const invcomp = player.getComponent("inventory") as server.EntityInventoryComponent
     server.system.run(() => {
-        let a = invcomp.container.getItem(player.selectedSlot);
 
-        // Check if a has a typeId property
-        if (a && a.typeId) {
-            console.warn("Before JSON.stringify:", a.typeId);
-
-            // Use Object.assign to create a deep copy of 'a'
-            let copyOfA = Object.assign({}, a);
-
-            // Stringify and parse the copied object
-            let i = JSON.stringify(copyOfA);
-            console.warn("Stringified:", i);
-
-            let b = JSON.parse(i) as server.ItemStack;
-            console.warn("After JSON.parse:", b.typeId);
-        } else {
-            console.warn("The 'a' object does not have a 'typeId' property.");
-        }
 
 
 
@@ -43,17 +37,67 @@ export function listitem(player: server.Player) {
 
 
 
-    // server.system.run(() => {
-    //     listitemui.show(player).then(data => {
-    //         if (data.selection == 0) {
-    //             //removelisting()
+    server.system.runTimeout(() => {
+        listitemui.show(player).then(data => {
 
-    //             //player.setDynamicProperty("solditem", JSON.stringify(invcomp.container.getItem(player.selectedSlot)))
-    //             //invcomp.container.setItem(player.selectedSlot, new server.ItemStack("minecraft:air", 1))
+            if (data.selection == 0) {
+                const item = invcomp.container.getItem(player.selectedSlot) as server.ItemStack
+
+                new ui.ModalFormData()
+                    .title("Listing Details")
+                    .textField("Listing Title", "Diamond Sword", item.typeId)
+                    .textField("Price: (FOR ALL ITEMS NOT JUST ONE)", "100", "100")
+                    .show(player).then(data => {
+
+                        let price = parseInt(data.formValues[1] as string)
+                        if (isNaN(price)) price = 1
+                        console.warn(price)
+                        removelisting()
+
+                        player.setDynamicProperty("solditemid", item.typeId)
+                        player.setDynamicProperty("solditemamount", item.amount)
+                        player.setDynamicProperty("solditemprice", price)
+                        player.setDynamicProperty("solditemdesc", data.formValues[0])
+                        invcomp.container.getSlot(player.selectedSlot).setItem(undefined)
 
 
-    //         } else { removelisting() }
+                    }).catch(() => { player.sendMessage("ERROR") })
+            } else if (data.selection == 1) { removelisting() }
 
-    //     })//.catch(() => { })
-    // })
+        }).catch(() => { player.sendMessage("ERROR") })
+    }, 20)
+}
+
+export function viewauctions(player: server.Player) {
+    const world = server.world
+    const playerswithlistings: server.Player[] = []
+    const listingui = new ui.ActionFormData()
+        .title("Listings")
+    world.getAllPlayers().forEach(player => {
+        if (player.getDynamicProperty("solditemid") != undefined) {
+            playerswithlistings.push(player)
+            listingui.button(`${player.getDynamicProperty("solditemdesc")}\nPrice: ${player.getDynamicProperty("solditemprice")} - Item ID: ${player.getDynamicProperty("solditemid")}`)
+        }
+    })
+    server.system.runTimeout(() => {
+
+        listingui.show(player).then(data => {
+            let list = playerswithlistings[data.selection]
+            let itemid = list.getDynamicProperty("solditemid") as string
+            let price = list.getDynamicProperty("solditemprice") as number
+            let amount = list.getDynamicProperty("solditemamount") as number
+            new ui.ActionFormData()
+                .title("BUY")
+                .body(`Seller: ${list.name}\nListing Title: ${list.getDynamicProperty("listingdesc")}\nSold Item ID:${itemid}\nSold Item Amount: ${price}\nSold Item Price: ${price}\n`)
+                .button("Confirm")
+                .show(player).then(data => {
+                    if (data.selection && player.getDynamicProperty("money") >= price && list.isValid()) {
+                        let invcomp = player.getComponent("inventory") as server.EntityInventoryComponent
+                        invcomp.container.addItem(new server.ItemStack(itemid,))
+                    } else player.sendMessage("Transaction Failed")
+                }).catch(() => { })
+        })
+
+    }, 20)
+
 }
