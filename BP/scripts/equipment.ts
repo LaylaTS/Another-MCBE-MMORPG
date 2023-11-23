@@ -281,6 +281,24 @@ export function equipment(player: server.Player) {
         case "mmorpg:copper_mana_amulet":
             manaregen = manaregen - 5
             break;
+        case "mmorpg:celestial_vitality_amulet":
+            let hpcomp = player.getComponent("health") as server.EntityHealthComponent
+            magicalpower += Math.trunc(hpcomp.currentValue / 2)
+            break;
+        case "mmorpg:lunar_sundial_charm":
+            let a = world.getTimeOfDay()
+            if (a > 1000 && a < 13000) {
+
+                if (server.system.currentTick % 20 == 0) {
+                    const hpcomp = player.getComponent("health") as server.EntityHealthComponent
+                    hpcomp.setCurrentValue(hpcomp.currentValue + 1)
+
+                }
+            } else {
+                magicalpower = magicalpower + 15
+
+            }
+            break;
         default: break;
     }
 

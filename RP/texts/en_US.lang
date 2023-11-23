@@ -152,3 +152,5 @@ item.mmorpg:frozen_gauntlet=§2Frozen Gauntlet§r | §3Get Magical Power based o
 item.mmorpg:magma_gauntlet=§2Magma Gauntlet§r | §3Get Magical Power based on your current mana§r
 item.mmorpg:quartz_mana_charm=§2Quartz Mana Charm§r | §3Gives you 100 max mana§r
 item.mmorpg:copper_mana_amulet=§2Copper Mana Amulet§r | §3Gives you 5 mana regen§r
+item.mmorpg:celestial_vitality_amulet=§2Celestial Vitality Amulet§r | §3Gives you magical power depending on your current health§r
+item.mmorpg:lunar_sundial_charm=§2Lunar Sundial Charm§r | §3Regenerate a lot of health during the day and gain 15 magical power during the night§r

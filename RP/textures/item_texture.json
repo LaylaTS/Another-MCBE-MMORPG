@@ -289,6 +289,12 @@
 		},
 		"mmorpg_copper_mana_amulet": {
 			"textures": "textures/items/copper_mana_amulet"
+		},
+		"mmorpg_celestial_vitality_amulet": {
+			"textures": "textures/items/celestial_vitality_amulet"
+		},
+		"mmorpg_lunar_sundial_charm": {
+			"textures": "textures/items/lunar_sundial_charm"
 		}
 	}
 }
