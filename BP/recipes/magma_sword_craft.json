@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:magma_sword_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"m": {
+				"item": "mmorpg:enchanted_magma_block"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			"  m",
+			" m ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:magma_sword"
+		}
+	}
+}

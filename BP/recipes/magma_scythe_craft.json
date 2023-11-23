@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:magma_scythe_craft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"m": {
+				"item": "mmorpg:enchanted_magma_block"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			" mm",
+			" s ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:magma_scythe"
+		}
+	}
+}

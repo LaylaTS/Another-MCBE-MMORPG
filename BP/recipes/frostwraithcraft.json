@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:frostwraithcraft"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"g": {
+				"item": "mmorpg:enchanted_ghost_orb"
+			},
+			"s": {
+				"item": "stick"
+			}
+		},
+		"pattern": [
+			"  g",
+			" g ",
+			"s  "
+		],
+		"result": {
+			"item": "mmorpg:wraithfrost_blade"
+		}
+	}
+}

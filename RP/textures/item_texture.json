@@ -301,6 +301,9 @@
 		},
 		"mmorpg_wraithfrost_blade": {
 			"textures": "textures/items/wraithfrost_blade"
+		},
+		"mmorpg_ghost_orb": {
+			"textures": "textures/items/ghost_orb"
 		}
 	}
 }

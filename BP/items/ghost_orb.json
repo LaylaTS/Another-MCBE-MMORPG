@@ -1,0 +1,14 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:ghost_orb",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "mmorpg_ghost_orb"
+			}
+		}
+	}
+}

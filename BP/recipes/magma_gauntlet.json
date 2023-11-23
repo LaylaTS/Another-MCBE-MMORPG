@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "mmorpg:magma_gauntlet"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"key": {
+			"m": {
+				"item": "mmorpg:enchanted_magma_block"
+			},
+			"w": {
+				"item": "wool"
+			}
+		},
+		"pattern": [
+			"mmm",
+			"www",
+			" w "
+		],
+		"result": {
+			"item": "mmorpg:magma_gauntlet"
+		}
+	}
+}
