@@ -298,6 +298,9 @@
 		},
 		"mmorpg_magma_scythe": {
 			"textures": "textures/items/magma_scythe"
+		},
+		"mmorpg_wraithfrost_blade": {
+			"textures": "textures/items/wraithfrost_blade"
 		}
 	}
 }

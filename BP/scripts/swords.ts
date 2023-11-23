@@ -771,17 +771,52 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         let zlocation = originallocationz + 5 * sinval
                         dimension.spawnParticle("mmorpg:firesword", { x: xlocation, y: originallocationy + 1, z: zlocation })
                         dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 2, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                            entity.applyDamage(20 + magicalpower * 0.5, {
+                            entity.applyDamage(20 + magicalpower * 0.75, {
                                 damagingEntity: player,
                                 cause: 'entityAttack' as server.EntityDamageCause
                             });
-                            entity.setOnFire(30)
+                            entity.setOnFire(3)
 
                         })
                     }, i / 2)
 
                 }
             }
+            break;
+        case "mmorpg:wraithfrost_blade":
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+
+
+
+            if (manaamount > 19 && player.getItemCooldown("wraithfrost_blade") == 0) {
+                cooldown.startCooldown(player)
+                let vector3 = player.getViewDirection()
+                if (player.isSneaking) {
+                    player.applyKnockback(vector3.x * -1, vector3.z * -1, 4, 0.35)
+
+
+                } else {
+                    player.applyKnockback(vector3.x, vector3.z, 4, 0.35)
+
+                }
+                mana.addScore(player, -20)
+                let entity = player.getEntitiesFromViewDirection()
+                entity.forEach(entity => {
+                    if (!avoidableentities.includes(entity.entity.typeId)) {
+                        entity.entity.applyDamage(25 + magicalpower, {
+                            damagingEntity: player,
+                            cause: 'entityAttack' as server.EntityDamageCause
+                        })
+                        entity.entity.addEffect("slowness", 20, { amplifier: 3, showParticles: true })
+
+                    }
+
+                })
+
+
+
+            }
+
             break;
     }
 })

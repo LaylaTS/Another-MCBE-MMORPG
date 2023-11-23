@@ -343,7 +343,7 @@ export function equipment(player: server.Player) {
             }
             break;
         case 3:
-            if (server.system.currentTick % 40 == 0) {
+            if (server.system.currentTick % 20 == 0) {
                 const hpcomp = player.getComponent("health") as server.EntityHealthComponent
                 hpcomp.setCurrentValue(hpcomp.currentValue + 1)
 
