@@ -15,6 +15,7 @@ import 'fillmines.js'
 import { fillmines } from "./fillmines.js"
 import { snowregion } from "./snowregion.js"
 import 'blockbreak.js'
+import 'damagedisplay.js'
 
 export const displayEnum = [
     "k",
