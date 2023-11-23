@@ -295,6 +295,9 @@
 		},
 		"mmorpg_lunar_sundial_charm": {
 			"textures": "textures/items/lunar_sundial_charm"
+		},
+		"mmorpg_magma_scythe": {
+			"textures": "textures/items/magma_scythe"
 		}
 	}
 }

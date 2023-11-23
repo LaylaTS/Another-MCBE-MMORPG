@@ -154,3 +154,6 @@ item.mmorpg:quartz_mana_charm=§2Quartz Mana Charm§r | §3Gives you 100 max man
 item.mmorpg:copper_mana_amulet=§2Copper Mana Amulet§r | §3Gives you 5 mana regen§r
 item.mmorpg:celestial_vitality_amulet=§2Celestial Vitality Amulet§r | §3Gives you magical power depending on your current health§r
 item.mmorpg:lunar_sundial_charm=§2Lunar Sundial Charm§r | §3Regenerate a lot of health during the day and gain 15 magical power during the night§r
+item.mmorpg:magma_scythe=magma scythe todo
+
+entity.mmorpg:thrown_magma_scythe.name=magma scythe todo

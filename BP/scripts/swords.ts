@@ -115,7 +115,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 let entity = player.getEntitiesFromViewDirection()
                 entity.forEach(entity => {
                     if (!avoidableentities.includes(entity.entity.typeId)) {
-                        entity.entity.applyDamage(10 + magicalpower * 2, {
+                        entity.entity.applyDamage(15 + magicalpower * 0.7, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         })
@@ -140,7 +140,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                                 if (!avoidableentities.includes(entity.entity.typeId)) {
                                     entity.entity.applyKnockback(vector3.x * -1, vector3.z * -1, 3, 0.3)
                                     entity.entity.addEffect('slowness', 100, { amplifier: 2 })
-                                    entity.entity.applyDamage(20 + magicalpower, {
+                                    entity.entity.applyDamage(20 + magicalpower * 0.6, {
                                         damagingEntity: player,
                                         cause: 'entityAttack' as server.EntityDamageCause
                                     })
@@ -175,7 +175,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 server.system.runTimeout(() => {
 
                     dimension.getEntities({ location: player.location, maxDistance: 8, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                        entity.applyDamage(30 + magicalpower * 2, {
+                        entity.applyDamage(30 + magicalpower, {
                             damagingEntity: player,
                             cause: 'entityAttack' as server.EntityDamageCause
                         })
@@ -203,7 +203,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
                     }
 
-                    (entity.applyDamage(35 + magicalpower, {
+                    (entity.applyDamage(20 + magicalpower / 2, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     }))
@@ -366,7 +366,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 mana.addScore(player, -50)
 
                 dimension.getEntities({ location: player.location, maxDistance: 5, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                    entity.applyDamage(15 + magicalpower * 2, {
+                    entity.applyDamage(15 + magicalpower, {
                         damagingEntity: player,
                         cause: 'entityAttack' as server.EntityDamageCause
                     })
@@ -670,6 +670,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
 
         case "mmorpg:skyborn_sword":
+            addlore(["§8Create an explosion", "§8dealing huge damage to nearby mobs"])
             if (manaamount > 59) {
                 mana.addScore(player, -60)
                 const entities = dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeFamilies: ["player"] })
@@ -692,6 +693,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:aetherium_hoe": addcandestroy(); break; case "mmorpg:ruby_hoe": addcandestroy(); break; case "mmorpg:bone_hoe": addcandestroy(); break; case "mmorpg:sculked_hoe": addcandestroy(); break;
 
         case "mmorpg:ice_blade":
+            addlore(["§8Shoot a projectile", "§8slowing and damaging enemies hit"])
             if (manaamount > 39) {
                 mana.addScore(player, -39)
                 var rotation = player.getRotation().y
@@ -708,7 +710,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
                         let zlocation = originallocationz + (distance / 3) * sinval
                         dimension.spawnParticle("mmorpg:ice_blade_particle", { x: xlocation, y: originallocationy + 1, z: zlocation })
                         dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 2, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
-                            entity.applyDamage(30 + magicalpower * 1.5, {
+                            entity.applyDamage(30 + magicalpower * 1, {
                                 damagingEntity: player,
                                 cause: 'entityAttack' as server.EntityDamageCause
                             });
@@ -728,6 +730,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:frost_scythe":
+
+            addlore(["§8Dash 4 times", "§8dealing damage to nearby mobs"])
             if (manaamount > 99) {
                 mana.addScore(player, -100)
                 for (let j = 0; j < 4; j++) {
@@ -746,6 +750,38 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 }
             }
 
+            break;
+        case "mmorpg:magma_scythe":
+            addlore(["§8Slash in front of you", "§8dealing huge damage and burning hit mobs"])
+            if (manaamount > 24) {
+                mana.addScore(player, -25)
+                var rotation = player.getRotation().y
+                rotation = rotation + 20
+                let originallocationx = player.location.x
+                let originallocationz = player.location.z
+                let originallocationy = player.location.y
+                for (let i = 0; i < 7; i++) {
+                    server.system.runTimeout(() => {
+
+                        rotation += 20
+                        const radians = rotation * Math.PI / 180;
+                        const cosval = Math.cos(radians);
+                        const sinval = Math.sin(radians);
+                        let xlocation = originallocationx + 5 * cosval
+                        let zlocation = originallocationz + 5 * sinval
+                        dimension.spawnParticle("mmorpg:firesword", { x: xlocation, y: originallocationy + 1, z: zlocation })
+                        dimension.getEntities({ location: { x: xlocation, y: originallocationy + 1, z: zlocation }, maxDistance: 2, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                            entity.applyDamage(20 + magicalpower * 0.5, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            });
+                            entity.setOnFire(30)
+
+                        })
+                    }, i / 2)
+
+                }
+            }
             break;
     }
 })
