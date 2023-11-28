@@ -307,6 +307,9 @@
 		},
 		"mmorpg_leaf_sword": {
 			"textures": "textures/items/leaf_sword"
+		},
+		"mmorpg_lunar_blade": {
+			"textures": "textures/items/lunar_blade"
 		}
 	}
 }

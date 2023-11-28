@@ -833,6 +833,26 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 })
             }
             break;
+        case "mmorpg:lunar_blade":
+            var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
+            if (cooldown.cooldownTicks == 0) {
+                cooldown.startCooldown(player)
+                let rot = player.getViewDirection()
+                player.applyKnockback(rot.x, rot.z, 5, 0.4)
+                dimension.spawnParticle("mmorpg:lunar_blade_particle", player.location)
+                dimension.getEntities({ location: player.location, maxDistance: 6, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                    entity.applyDamage(16 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    });
+                })
+            }
+            break;
+        case "mmorpg:solar_blade":
+
+
+
+            break;
     }
 })
 
