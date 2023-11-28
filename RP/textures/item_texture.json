@@ -304,6 +304,9 @@
 		},
 		"mmorpg_ghost_orb": {
 			"textures": "textures/items/ghost_orb"
+		},
+		"mmorpg_leaf_sword": {
+			"textures": "textures/items/leaf_sword"
 		}
 	}
 }

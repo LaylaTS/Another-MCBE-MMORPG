@@ -818,6 +818,21 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
             break;
+        case "mmorpg:leaf_sword":
+            if (manaamount > 49) {
+
+                mana.addScore(player, -50)
+                dimension.getEntities({ location: player.location, maxDistance: 12, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                    entity.applyDamage(Math.random() * magicalpower * 2, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    });
+                    dimension.spawnParticle("mmorpg:leaf_particle", entity.location)
+
+
+                })
+            }
+            break;
     }
 })
 
