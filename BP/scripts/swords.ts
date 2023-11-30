@@ -785,7 +785,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "mmorpg:wraithfrost_blade":
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
-
+            addlore(["§8Works just like purple dagger"])
 
 
             if (manaamount > 19 && player.getItemCooldown("wraithfrost_blade") == 0) {
@@ -819,6 +819,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
 
             break;
         case "mmorpg:leaf_sword":
+            addlore(["§8Deal random damage to nearby mobs"])
             if (manaamount > 49) {
 
                 mana.addScore(player, -50)
@@ -834,8 +835,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
             break;
         case "mmorpg:lunar_blade":
+            addlore(["§8Dash and deal damage to nearby mobs"])
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
-            if (cooldown.cooldownTicks == 0) {
+            if (cooldown.cooldownTicks == 0 && manaamount > 29) {
+                mana.addScore(player, -30)
                 cooldown.startCooldown(player)
                 let rot = player.getViewDirection()
                 player.applyKnockback(rot.x, rot.z, 5, 0.4)
@@ -848,7 +851,35 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 })
             }
             break;
+        case "mmorpg:coal_blade":
+
+
+            break;
         case "mmorpg:solar_blade":
+
+
+
+            break;
+        case "mmorpg:magma_staff":
+            addlore(["§8Ignite an arena for 5 seconds", "§8deal damage and ignite mobs in the arena"])
+            if (manaamount > 49) {
+                mana.addScore(player, -50)
+                let loc = player.location
+                for (let i = 0; i < 5; i++) {
+                    server.system.runTimeout(() => {
+                        dimension.spawnParticle("mmorpg:fire", loc)
+                        dimension.getEntities({ location: loc, maxDistance: 4, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                            entity.applyDamage(16 + magicalpower / 2, {
+                                damagingEntity: player,
+                                cause: 'entityAttack' as server.EntityDamageCause
+                            });
+                            entity.setOnFire(3)
+                        })
+
+
+                    }, i * 20)
+                }
+            }
 
 
 

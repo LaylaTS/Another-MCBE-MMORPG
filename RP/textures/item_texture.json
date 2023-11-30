@@ -310,6 +310,9 @@
 		},
 		"mmorpg_lunar_blade": {
 			"textures": "textures/items/lunar_blade"
+		},
+		"mmorpg_magma_staff": {
+			"textures": "textures/items/magma_staff"
 		}
 	}
 }
