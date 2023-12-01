@@ -65,22 +65,6 @@
 			},
 			"tag:minecraft:is_sword": {},
 			"tag:minecraft:is_tool": {}
-		},
-		"events": {
-			"damaged": {
-				"damage": {
-					"type": "durability",
-					"amount": 1,
-					"target": "self"
-				}
-			},
-			"on_tool_used": {
-				"damage": {
-					"type": "durability",
-					"amount": 2,
-					"target": "self"
-				}
-			}
 		}
 	}
 }
