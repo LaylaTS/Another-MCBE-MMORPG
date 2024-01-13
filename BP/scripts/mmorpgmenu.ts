@@ -47,7 +47,7 @@ export function mmorpgmenu(player: server.Player) {
 
                     }).catch(() => { })
 
-                }
+                } else player.sendMessage("§4§lYou can't teleport after taking damage!")
 
             } else if (data.selection == 1) {
 

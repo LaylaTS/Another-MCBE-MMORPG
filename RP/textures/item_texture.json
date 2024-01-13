@@ -304,6 +304,15 @@
 		},
 		"mmorpg_ghost_orb": {
 			"textures": "textures/items/ghost_orb"
+		},
+		"mmorpg_leaf_sword": {
+			"textures": "textures/items/leaf_sword"
+		},
+		"mmorpg_lunar_blade": {
+			"textures": "textures/items/lunar_blade"
+		},
+		"mmorpg_magma_staff": {
+			"textures": "textures/items/magma_staff"
 		}
 	}
 }
