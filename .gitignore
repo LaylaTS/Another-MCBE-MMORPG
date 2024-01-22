@@ -9,3 +9,5 @@
 .bridge/.lightningCache
 .bridge/openedFiles_0.json
 .bridge/openedFiles_1.json
+/builds
+/.bridge

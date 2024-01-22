@@ -79,25 +79,31 @@ export function viewauctions(player: server.Player) {
             listingui.button(`${player.getDynamicProperty("solditemdesc")}\nPrice: ${player.getDynamicProperty("solditemprice")} - Item ID: ${player.getDynamicProperty("solditemid")}`)
         }
     })
-    server.system.runTimeout(() => {
+    if (playerswithlistings.length > 0) {
 
-        listingui.show(player).then(data => {
-            let list = playerswithlistings[data.selection]
-            let itemid = list.getDynamicProperty("solditemid") as string
-            let price = list.getDynamicProperty("solditemprice") as number
-            let amount = list.getDynamicProperty("solditemamount") as number
-            new ui.ActionFormData()
-                .title("BUY")
-                .body(`Seller: ${list.name}\nListing Title: ${list.getDynamicProperty("listingdesc")}\nSold Item ID:${itemid}\nSold Item Amount: ${price}\nSold Item Price: ${price}\n`)
-                .button("Confirm")
-                .show(player).then(data => {
-                    if (data.selection && player.getDynamicProperty("money") >= price && list.isValid()) {
-                        let invcomp = player.getComponent("inventory") as server.EntityInventoryComponent
-                        invcomp.container.addItem(new server.ItemStack(itemid,))
-                    } else player.sendMessage("Transaction Failed")
-                }).catch(() => { })
-        })
+        server.system.runTimeout(() => {
 
-    }, 20)
+            listingui.show(player).then(data => {
+                let list = playerswithlistings[data.selection]
+                let itemid = list.getDynamicProperty("solditemid") as string
+                let price = list.getDynamicProperty("solditemprice") as number
+                let amount = list.getDynamicProperty("solditemamount") as number
+                new ui.ActionFormData()
+                    .title("BUY")
+                    .body(`Seller: ${list.name}\nListing Title: ${list.getDynamicProperty("listingdesc")}\nSold Item ID: ${itemid}\nSold Item Amount: ${price}\nSold Item Price: ${price}\n`)
+                    .button("Confirm")
+                    .show(player).then(data => {
+                        if (player.getDynamicProperty("money") >= price && list.isValid()) {
+                            let invcomp = player.getComponent("inventory") as server.EntityInventoryComponent
+                            invcomp.container.addItem(new server.ItemStack(itemid, amount))
+                            player.setDynamicProperty("money", player.getDynamicProperty("money") as number - price)
+                            list.setDynamicProperty("money", list.getDynamicProperty("money") as number + price)
+                            list.setDynamicProperty("solditemid", undefined)
+                        } else player.sendMessage("Transaction Failed")
+                    }).catch(() => { })
+            })
+
+        }, 20)
+    } else { player.sendMessage("NO ACTIVE OFFERS") }
 
 }
