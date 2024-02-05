@@ -1,4 +1,4 @@
-import * as server from '@minecraft/server'
+	import * as server from '@minecraft/server'
 import 'chat.js'
 import 'swords.js'
 import 'mobdeath.js'
@@ -16,7 +16,7 @@ import { fillmines } from "./fillmines.js"
 import { snowregion } from "./snowregion.js"
 import 'blockbreak.js'
 import 'damagedisplay.js'
-import 'wormboss.js'
+import 'buttons.js'
 
 export const displayEnum = [
     "k",
