@@ -161,3 +161,5 @@ item.mmorpg:ghost_orb=Ghost Orb
 item.mmorpg:leaf_sword=§5Leaf Sword§r | §350 Mana
 item.mmorpg:lunar_blade=§5Lunar Blade§r | §330 Mana
 item.mmorpg:magma_staff=Magma Staff\
+item.spawn_egg.entity.mmorpg:wormbosssegment.name=Spawn wormboss
+entity.mmorpg:wormbosssegment.name=wormboss

@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "particle_effect": {
+        "description": {
+            "identifier": "mmorpg:wormbosschargewarning",
+            "basic_render_parameters": {
+                "material": "particles_add",
+                "texture": "textures/particle/particles"
+            }
+        },
+        "components": {
+            "minecraft:emitter_rate_instant": {
+                "num_particles": 20
+            },
+            "minecraft:emitter_lifetime_looping": {
+                "active_time": 1
+            },
+            "minecraft:emitter_shape_sphere": {
+                "radius": 3,
+                "direction": "outwards"
+            },
+            "minecraft:particle_lifetime_expression": {
+                "max_lifetime": 1
+            },
+            "minecraft:particle_initial_speed": 12,
+            "minecraft:particle_motion_dynamic": {
+                "linear_drag_coefficient": 2
+            },
+            "minecraft:particle_appearance_billboard": {
+                "size": [
+                    "math.sin(variable.particle_age*360)/1.5",
+                    "math.sin(variable.particle_age*360)/1.5"
+                ],
+                "facing_camera_mode": "rotate_xyz",
+                "uv": {
+                    "texture_width": 128,
+                    "texture_height": 128,
+                    "flipbook": {
+                        "base_UV": [
+                            0,
+                            72
+                        ],
+                        "size_UV": [
+                            8,
+                            8
+                        ],
+                        "step_UV": [
+                            8,
+                            0
+                        ],
+                        "max_frame": 8,
+                        "stretch_to_lifetime": true
+                    }
+                }
+            },
+            "minecraft:particle_appearance_tinting": {
+                "color": {
+                    "interpolant": "v.particle_age / v.particle_lifetime",
+                    "gradient": {
+                        "0.0": "#CFFF0000",
+                        "1.0": "#FF7C1717"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
         if (eventData.message[0] == '!') {
 
 
-            switch (eventData.message) {
+            switch (eventData.message.split(" ")[0].toLowerCase()) {
                 case '!spawn':
 
                     player.runCommandAsync('tp @s 0 66 0');
@@ -29,7 +29,10 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
                     break;
                 case "!refreshprices":
-                    refreshprices()
+                    if (player.name == "WojtekBB") {
+
+                        refreshprices()
+                    }
                     break;
                 case "!listitem": server.system.run(() => {
 
@@ -37,6 +40,8 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
                 }); break;
                 case "!resetmoney": player.setDynamicProperty("money", 0); break;
                 case "!viewauctions": viewauctions(player); break;
+                case "!spawnboss": spawnBoss(); break;
+                case "!selectphase": world.setDynamicProperty("bossphase", parseInt(eventData.message.split(" ")[1])); break;
                 default: player.sendMessage("§4§oCommand does not exist!")
                     break;
 
@@ -74,7 +79,15 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
     }
 });
 
-
+const dimension = world.getDimension("overworld")
+function spawnBoss() {
+    server.system.run(() => {
+        for (let i = 0; i < 100; i++) {
+            const entity = dimension.spawnEntity("mmorpg:wormbosssegment", new server.Vector(-6000, 101, -6000))
+            entity.setDynamicProperty("bossSegment", i)
+        }
+    })
+}
 
 
 world.afterEvents.entityHurt.subscribe((eventData => {

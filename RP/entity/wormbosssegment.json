@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mmorpg:wormbosssegment",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/wormbosssegment"
+			},
+			"geometry": {
+				"default": "geometry.wormbosssegment"
+			},
+			"render_controllers": [
+				"controller.render.wormbosssegment"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

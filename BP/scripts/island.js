@@ -5,10 +5,10 @@ world.afterEvents.playerSpawn.subscribe(eventData => {
     let player = eventData.player
     player.addEffect("regeneration", 20, { showParticles: false, amplifier: 255 })
     world.scoreboard.getObjective("spawntimer").setScore(player, 200)
+    if (player.getDynamicProperty("bank") == undefined) player.setDynamicProperty("bank", 0)
     if (player.getDynamicProperty("money") == undefined) {
         player.setDynamicProperty("money", 0)
     } else {
-
         player.runCommand("stopsound @s")
     }
     player.setDynamicProperty("healthboost", 0)

@@ -336,9 +336,9 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "minecraft:glow_ink_sac":
             var block = player.getBlockFromViewDirection().block
             dimension.spawnParticle("mmorpg:core_boss_projectile", block)
-            dimension.fillBlocks({ x: block.location.x + 1, y: block.location.y, z: block.location.z } as server.Vector3, { x: block.location.x - 1, y: block.location.y, z: block.location.z }, "minecraft:stone")
-            dimension.fillBlocks({ x: block.location.x, y: block.location.y - 1, z: block.location.z } as server.Vector3, { x: block.location.x, y: block.location.y + 1, z: block.location.z }, "minecraft:stone")
-            dimension.fillBlocks({ x: block.location.x, y: block.location.y, z: block.location.z + 1 } as server.Vector3, { x: block.location.x, y: block.location.y, z: block.location.z - 1 }, "minecraft:stone")
+            dimension.fillBlocks({ x: block.location.x + 1, y: block.location.y, z: block.location.z } as server.Vector3, { x: block.location.x - 1, y: block.location.y, z: block.location.z }, "minecraft:sponge")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y - 1, z: block.location.z } as server.Vector3, { x: block.location.x, y: block.location.y + 1, z: block.location.z }, "minecraft:sponge")
+            dimension.fillBlocks({ x: block.location.x, y: block.location.y, z: block.location.z + 1 } as server.Vector3, { x: block.location.x, y: block.location.y, z: block.location.z - 1 }, "minecraft:sponge")
 
 
             break;
@@ -661,7 +661,7 @@ world.afterEvents.itemUse.subscribe(eventData => {
             break;
         case "minecraft:dragon_breath":
 
-            if (player.name == "SkorpMCBE1676" || player.name == "KrzychTym" || player.name == "WojtekBB") {
+            if (player.name == "SkorpMCBE1676" || player.name == "KrzychTym" || player.name == "WojtekBB" || player.name == "Tsarovski" || player.name == "MAM KONTO9616") {
                 let blockpos = player.getBlockFromViewDirection().block.location
                 dimension.runCommand(`clone 16 113 96 10 119 102 ${blockpos.x - 3} ${blockpos.y - 3} ${blockpos.z - 3} masked`)
 

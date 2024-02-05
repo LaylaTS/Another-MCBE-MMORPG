@@ -16,6 +16,7 @@ import { fillmines } from "./fillmines.js"
 import { snowregion } from "./snowregion.js"
 import 'blockbreak.js'
 import 'damagedisplay.js'
+import 'wormboss.js'
 
 export const displayEnum = [
     "k",
@@ -49,7 +50,7 @@ world.afterEvents.worldInitialize.subscribe(() => {
 
 server.system.runInterval(() => { // run every tick
     var players = server.world.getAllPlayers()
-    snowregion(players)
+    //snowregion(players)
 
     players.forEach(function (player) { // run for every player
         equipment(player)
@@ -57,17 +58,17 @@ server.system.runInterval(() => { // run every tick
 
         let money = player.getDynamicProperty("money") as number
         var maxmana = player.getDynamicProperty("maxmana") as number
-        player.runCommandAsync('scoreboard players set @s maxmana ' + maxmana)
+        world.scoreboard.getObjective("maxmana").setScore(player, maxmana)
 
         player.nameTag = `${player.name}\n§r§c${Math.round(player.getComponent("health").currentValue)} §l§8»§r§b ${world.scoreboard.getObjective("mana").getScore(player)}`
 
         let mana = server.world.scoreboard.getObjective('mana').getScore(player)
         if (mana > maxmana || (Math.trunc(player.location.x) == 0 && Math.trunc(player.location.z) == 0 && Math.trunc(player.location.y) == 65)) {
             mana = maxmana
-            player.runCommandAsync('scoreboard players set @s mana ' + mana)
+            world.scoreboard.getObjective("mana").setScore(player, mana)
         }
-        if (server.world.getAbsoluteTime() % player.getDynamicProperty("manaregen") == 0) {
-            player.runCommandAsync('scoreboard players add @s mana 1')
+        if (server.system.currentTick % (player.getDynamicProperty("manaregen") as number) == 0) {
+            world.scoreboard.getObjective("mana").addScore(player, 1)
         }
 
         player.resetLevel()
@@ -108,7 +109,7 @@ server.system.runInterval(() => { // run every tick
                 if (player.getDynamicProperty("bankbalance") != undefined) bank = player.getDynamicProperty("bankbalance") as number
 
 
-                player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc((player.getDynamicProperty("money") + bank) / 1000)}`)
+                player.runCommand(`scoreboard players set @s moneydisplay ${Math.trunc((player.getDynamicProperty("money") as number + bank) / 1000)}`)
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('moneydisplay') })
         } else if (world.scoreboard.getObjectiveAtDisplaySlot(server.DisplaySlotId.List).objective.id == "moneydisplay") {
@@ -124,6 +125,7 @@ server.system.runInterval(() => { // run every tick
             world.scoreboard.removeObjective("deathdisplay")
             world.scoreboard.addObjective("deathdisplay", "§4Death Ranking:")
             world.getAllPlayers().forEach(player => {
+                world.scoreboard.getObjective("deathcounter").addScore(player, 0)
                 world.scoreboard.getObjective("deathdisplay").setScore(player, Math.trunc(world.scoreboard.getObjective("deathcounter").getScore(player)))
             })
             world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('deathdisplay') })
@@ -132,6 +134,7 @@ server.system.runInterval(() => { // run every tick
             world.scoreboard.removeObjective("killdisplay")
             world.scoreboard.addObjective("killdisplay", "§aKill Ranking:")
             world.getAllPlayers().forEach(player => {
+                world.scoreboard.getObjective("playerkills").addScore(player, 0)
                 world.scoreboard.getObjective("killdisplay").setScore(player, Math.trunc(world.scoreboard.getObjective("playerkills").getScore(player)))
                 world.scoreboard.setObjectiveAtDisplaySlot(server.DisplaySlotId.List, { objective: world.scoreboard.getObjective('killdisplay') })
             })
