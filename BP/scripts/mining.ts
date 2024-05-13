@@ -118,6 +118,10 @@ export function mining(player: server.Player, blockid) {
                 player.runCommand('give @s raw_gold')
                 player.playSound('random.pop2')
             }
+            if (Math.floor((Math.random() * 40 / rng) + 1) == 1) {
+                player.runCommand('give @s magma_cream')
+                player.playSound('random.pop2')
+            }
             if (Math.floor((Math.random() * 70 / rng) + 1) == 1) {
                 player.runCommand('give @s quartz')
                 player.playSound('random.pop')

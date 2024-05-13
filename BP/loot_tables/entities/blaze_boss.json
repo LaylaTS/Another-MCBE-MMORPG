@@ -1,0 +1,29 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "mmorpg:magma_boots",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "mmorpg:magma_leggings",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "mmorpg:magma_chestplate",
+					"weight": 1
+				},
+				{
+					"type": "item",
+					"name": "mmorpg:magma_helmet",
+					"weight": 1
+				}
+			]
+		}
+	]
+}

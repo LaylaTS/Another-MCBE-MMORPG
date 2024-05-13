@@ -2,11 +2,11 @@
 	"format_version": 2,
 	"metadata": {
 		"authors": [
-			"wojtekbb"
+			"laylabb"
 		],
 		"generated_with": {
 			"bridge": [
-				"2.7.10"
+				"2.7.17"
 			],
 			"dash": [
 				"github:bridge-core/dash-compiler#8fa35c73292f6382747d0f411fca26431a6d2c8e"
@@ -25,7 +25,7 @@
 		"version": [
 			1,
 			0,
-			0
+			4
 		]
 	},
 	"modules": [

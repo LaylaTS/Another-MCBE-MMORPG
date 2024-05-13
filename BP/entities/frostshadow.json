@@ -15,17 +15,12 @@
         "breathes_water": true
       },
       "minecraft:health": {
-        "value": 20,
-        "max": 20
+        "value": 350,
+        "max": 350
       },
       "minecraft:collision_box": {
-        "width": 0.1,
-        "height": 0.1
-      },
-      "minecraft:attack": {
-        "damage": 4,
-        "effect_name": "blindness",
-        "effect_duration": 3
+        "width": 0.8,
+        "height": 2
       },
       "minecraft:movement": {
         "value": 0.25
@@ -45,17 +40,40 @@
       "minecraft:despawn": {
         "despawn_from_distance": {}
       },
+      "minecraft:behavior.nearest_attackable_target": {
+        "must_see": false,
+        "reselect_targets": true,
+        "within_radius": 25.0,
+        "entity_types": [
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "max_dist": 48.0
+          }
+        ]
+      },
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
       },
-      "minecraft:behavior.melee_attack": {
-        "priority": 4,
-        "track_target": true,
-        "speed_multiplier": 1.25
+      "minecraft:shooter": {
+        "def": "mmorpg:frostshadow_skull"
+      },
+      "minecraft:behavior.ranged_attack": {
+        "priority": 2,
+        "ranged_fov": 90.0, //The allowable FOV the actor will use to determine if it can make a valid ranged attack
+        "attack_interval_min": 1.0,
+        "attack_interval_max": 3.0,
+        "attack_radius": 15.0
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
         "speed_multiplier": 1
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/frostfirecoreDrop.json"
       },
       "minecraft:behavior.random_look_around": {
         "priority": 8
@@ -80,3 +98,18 @@
     }
   }
 }
+// "minecraft:behavior.sonic_boom": {
+//   "priority": 3,
+//   "duration": 3.0,
+//   "speed_multiplier": 1.2,
+//   "attack_damage": 16,
+//   "attack_range_horizontal": 15,
+//   "attack_range_vertical": 20,
+//   "attack_cooldown": 20,
+//   "knockback_vertical_strength": 2.5,
+//   "knockback_horizontal_strength": 4.5,
+//   "knockback_height_cap": 3,
+//   "duration_until_attack_sound": 1.7,
+//   "charge_sound": "sonic_charge",
+//   "attack_sound": "sonic_boom"
+// },

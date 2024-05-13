@@ -54,12 +54,12 @@ export function guildform(player: server.Player) {
                                         invited.setDynamicProperty("guildinvite", player.getDynamicProperty("guildid"))
                                         invited.sendMessage("§3You got a guild invite!")
 
-                                    }).catch(() => { })
+                                    })
                                 } else { player.sendMessage("§4Too many players in the guild!") }
 
                                 break;
                             case 1:
-                                if (player.location.x < 50 && player.location.x > -50 && player.location.z < 150 && player.location.z > -50) {
+                                if (player.location.x < 250 && player.location.x > -250 && player.location.z < 250 && player.location.z > -250) {
                                     const guildbankamount: number = world.getDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`) as number
 
                                     const money: number = player.getDynamicProperty("money") as number
@@ -79,7 +79,7 @@ export function guildform(player: server.Player) {
                                                 let depositamount = Math.trunc(data.formValues[0] as number)
                                                 player.setDynamicProperty("money", money - depositamount)
                                                 world.setDynamicProperty(`guildbank${String(player.getDynamicProperty("guildid"))}`, guildbankamount + depositamount)
-                                            }).catch(() => { })
+                                            })
                                         } else if (data.selection == 1) {
                                             const withdraw = new ui.ModalFormData()
                                                 .title("Withdraw")
@@ -104,7 +104,7 @@ export function guildform(player: server.Player) {
                                 player.sendMessage("§4§lYou have left a guild!")
                                 break;
                         }
-                    }).catch(() => { })
+                    })
 
                 } else {
                     player.sendMessage("§4§lJoin a guild first!")
@@ -138,7 +138,7 @@ export function guildform(player: server.Player) {
                         } else {
                             player.sendMessage("§4You have declined an invitation to a guild!")
                         }
-                    }).catch(() => { })
+                    })
 
                 } else {
                     player.sendMessage("§4You have no invites!")
@@ -160,12 +160,12 @@ export function guildform(player: server.Player) {
                         world.setDynamicProperty(`guildbank${String(maxid + 1)}`, 1)
 
                     } else {
-                        player.sendMessage("§4§lSOMETHING WENT WRONG")
+                        player.sendMessage("§4§lSOMETHING WENT WRONG\nCommon reasons:\nNot Enough Money\nYou are already in a guild\nThe name is too short")
                     }
 
-                }).catch(() => { })
+                })
                 break;
             default: break;
         }
-    }).catch(() => { })
+    })
 }

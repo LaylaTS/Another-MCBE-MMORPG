@@ -228,8 +228,8 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
         } else if (entity.hasTag('bankingentity')) {
             let form = new ui.ActionFormData()
                 .title("Bank")
-                .button("Deposit", "textures/ui/arrow_down_large.png")
-                .button("Withdraw", "textures/ui/arrow_up_large.png")
+                .button("Deposit")
+                .button("Withdraw")
                 .button(" Check Current Balance")
 
 
@@ -284,7 +284,7 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
             })
         } else if (entity.hasTag("sellnpc")) {
             function countitem(itemName: string) {
-                const container = player.getComponent("inventory").container as server.PlayerInventoryComponentContainer
+                const container = player.getComponent("inventory").container
 
                 let cnt = 0
                 for (let i = 0; i < 36; i++) {
@@ -319,6 +319,7 @@ world.afterEvents.playerInteractWithEntity.subscribe(eventData => {
                 .button(`Aetherium - ${aetheriumPrice + "$"}`, "textures/items/aetherium")
                 .button(`Emerald - ${emeraldPrice + "$"}`, "textures/items/emerald")
                 .button(`Ruby - ${rubyPrice + "$"}`, "textures/items/ruby")
+
 
                 .show(player).then(data => {
                     switch (data.selection) {

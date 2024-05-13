@@ -11,26 +11,9 @@
 				"parent": "itemGroup.name.sword"
 			},
 			"minecraft:damage": 19,
-			"minecraft:digger": {
-				"use_efficiency": true,
-				"destroy_speeds": [
-					{
-						"block": "minecraft:web",
-						"on_dig": {
-							"event": "on_tool_used",
-							"target": "self"
-						},
-						"speed": 15
-					},
-					{
-						"block": "minecraft:bamboo",
-						"on_dig": {
-							"event": "on_tool_used",
-							"target": "self"
-						},
-						"speed": 60
-					}
-				]
+			"minecraft:cooldown": {
+				"category": "lunar_blade",
+				"duration": 2
 			},
 			"minecraft:enchantable": {
 				"value": 14,

@@ -1,0 +1,12 @@
+{
+    "pools": [
+        {
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mmorpg:frostfire_core"
+                }
+            ]
+        }
+    ]
+}

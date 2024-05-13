@@ -8,11 +8,17 @@ world.afterEvents.entityHurt.subscribe(eventData => {
     if (eventData.hurtEntity.typeId == "minecraft:player") {
         const player = eventData.hurtEntity as server.Player
         const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
-        if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand) != undefined) {
-            if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:giantspidereye") {
+        const slot = equipment.getEquipmentSlot(server.EquipmentSlot.Offhand)
+
+        if (slot.hasItem()) {
+            const typeId = slot.typeId
+            if (typeId == "mmorpg:giantspidereye") {
                 player.runCommand('scoreboard players add @s mana 15')
             }
+
         }
+
+
 
     }
 })
@@ -31,13 +37,55 @@ export function equipment(player: server.Player) {
     var regrowth: number = 0
     var setbonustimings: number = player.getDynamicProperty("setbonustimings") as number
     const inventory = player.getComponent("inventory") as server.EntityInventoryComponent
-    const helditemid = inventory.container.getSlot(player.selectedSlot).typeId
+    const helditemid: string = inventory.container?.getItem(player.selectedSlot)?.typeId
     const equipment = player.getComponent("equippable") as server.EntityEquippableComponent
-    const helmetid = equipment.getEquipmentSlot(server.EquipmentSlot.Head).typeId
-    const chestplateid = equipment.getEquipmentSlot(server.EquipmentSlot.Chest).typeId
-    const leggingsid = equipment.getEquipmentSlot(server.EquipmentSlot.Legs).typeId
-    const bootsid = equipment.getEquipmentSlot(server.EquipmentSlot.Feet).typeId
-    const offhandid = equipment.getEquipment(server.EquipmentSlot.Offhand)?.typeId
+    var bootsid: string;
+    var helmetid: string;
+    var chestplateid: string;
+    var leggingsid: string;
+
+    // Retrieving boots item ID
+    const boots = equipment.getEquipmentSlot(server.EquipmentSlot.Feet);
+    if (boots.getItem() instanceof server.ItemStack) {
+        bootsid = boots.typeId;
+    } else {
+        bootsid = "sus";
+    }
+
+    // Retrieving helmet item ID
+    const helmet = equipment.getEquipmentSlot(server.EquipmentSlot.Head);
+    if (helmet.getItem() instanceof server.ItemStack) {
+        helmetid = helmet.typeId;
+    } else {
+        helmetid = "sus";
+    }
+
+    // Retrieving chestplate item ID
+    const chestplate = equipment.getEquipmentSlot(server.EquipmentSlot.Chest);
+    if (chestplate.getItem() instanceof server.ItemStack) {
+        chestplateid = chestplate.typeId;
+    } else {
+        chestplateid = "sus";
+    }
+
+    // Retrieving leggings item ID
+    const leggings = equipment.getEquipmentSlot(server.EquipmentSlot.Legs);
+    if (leggings.getItem() instanceof server.ItemStack) {
+        leggingsid = leggings.typeId;
+    } else {
+        leggingsid = "sus";
+    }
+
+
+
+
+
+    const offhandid = equipment?.getEquipment(server.EquipmentSlot.Offhand)?.typeId
+
+
+
+
+
     const armorids = [0, 0, 0, 0, 0, 0, 0, 0]
 
     switch (helditemid) {

@@ -1,0 +1,195 @@
+{
+    "format_version": "1.20.10",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "mmorpg:buffed_husk",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {},
+        "components": {
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0,
+                "breathes_water": true
+            },
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.9
+            },
+            "minecraft:nameable": {},
+            // Zombie_husk Components
+            "minecraft:type_family": {
+                "family": [
+                    "husk",
+                    "zombie",
+                    "undead",
+                    "monster",
+                    "mob"
+                ]
+            },
+            "minecraft:scale": {
+                "value": 1.6
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/frostfirecoreDrop.json"
+            },
+            "minecraft:health": {
+                "value": 300,
+                "max": 300
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 6,
+                "effect_name": "poison",
+                "effect_duration": 30
+            },
+            "minecraft:variant": {
+                "value": 2
+            },
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:navigation.walk": {
+                "is_amphibious": true,
+                "can_pass_doors": true,
+                "can_break_doors": true,
+                "avoid_portals": false
+            },
+            "minecraft:movement.basic": {},
+            "minecraft:jump.static": {},
+            "minecraft:can_climb": {},
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": {
+                            "test": "is_underwater",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "event": "minecraft:start_transforming"
+                    }
+                ]
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": {}
+            },
+            // Zombie_husk Behaviors
+            "minecraft:behavior.equip_item": {
+                "priority": 2
+            },
+            "minecraft:behavior.melee_box_attack": {
+                "can_spread_on_fire": true,
+                "priority": 3
+            },
+            "minecraft:behavior.stomp_turtle_egg": {
+                "priority": 4,
+                "speed_multiplier": 1,
+                "search_range": 10,
+                "search_height": 2,
+                "goal_radius": 1.14,
+                "interval": 20
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 7,
+                "speed_multiplier": 1
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 8,
+                "look_distance": 6,
+                "probability": 0.02
+            },
+            "minecraft:behavior.random_look_around": {
+                "priority": 9
+            },
+            "minecraft:behavior.hurt_by_target": {
+                "priority": 1
+            },
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 2,
+                "must_see": true,
+                "reselect_targets": true,
+                "within_radius": 25.0,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "player"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "snowgolem"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "irongolem"
+                                }
+                            ]
+                        },
+                        "max_dist": 35
+                    },
+                    {
+                        "filters": {
+                            "any_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "villager"
+                                },
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "wandering_trader"
+                                }
+                            ]
+                        },
+                        "max_dist": 35,
+                        "must_see": false
+                    },
+                    {
+                        "filters": {
+                            "all_of": [
+                                {
+                                    "test": "is_family",
+                                    "subject": "other",
+                                    "value": "baby_turtle"
+                                },
+                                {
+                                    "test": "in_water",
+                                    "subject": "other",
+                                    "operator": "!=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        "max_dist": 35
+                    }
+                ]
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        }
+    }
+}

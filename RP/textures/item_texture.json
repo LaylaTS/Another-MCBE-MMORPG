@@ -313,6 +313,15 @@
 		},
 		"mmorpg_magma_staff": {
 			"textures": "textures/items/magma_staff"
+		},
+		"mmorpg_chest_key": {
+			"textures": "textures/items/chest_key"
+		},
+		"mmorpg_jar": {
+			"textures": "textures/items/jar"
+		},
+		"mmorpg_frostfire_core": {
+			"textures": "textures/items/frostfire_core"
 		}
 	}
 }

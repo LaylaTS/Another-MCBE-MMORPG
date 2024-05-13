@@ -1,0 +1,123 @@
+{
+    "format_version": "1.17.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "mmorpg:evil_rabbit",
+            "spawn_category": "creature",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {},
+        "components": {
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 2,
+                "must_see": true,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "value": "player"
+                        },
+                        "max_dist": 48
+                    }
+                ]
+            },
+            "minecraft:behavior.melee_attack": {
+                "melee_fov": 90,
+                "priority": 3
+            },
+            "minecraft:attack": {
+                "damage": 10,
+                "effect_duration": 2,
+                "effect_name": "poison"
+            },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:type_family": {
+                "family": [
+                    "rabbit",
+                    "lightweight",
+                    "mob",
+                    "monster"
+                ]
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": 0
+            },
+            "minecraft:nameable": {},
+            "minecraft:health": {
+                "value": 75,
+                "max": 75
+            },
+            "minecraft:scale": {
+                "value": 1
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:collision_box": {
+                "width": 0.67,
+                "height": 0.67
+            },
+            "minecraft:movement": {
+                "value": 5
+            },
+            "minecraft:navigation.walk": {
+                "can_path_over_water": true,
+                "avoid_water": true
+            },
+            "minecraft:movement.skip": {
+                "max_turn": 360
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/frostfirecoreDrop.json"
+            },
+            "minecraft:jump.dynamic": {},
+            "minecraft:can_climb": {},
+            "minecraft:leashable": {
+                "soft_distance": 4.0,
+                "hard_distance": 6.0,
+                "max_distance": 10.0
+            },
+            "minecraft:balloonable": {
+                "mass": 0.4
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": {}
+            },
+            "minecraft:behavior.float": {
+                "priority": 0
+            },
+            "minecraft:behavior.random_stroll": {
+                "priority": 6,
+                "speed_multiplier": 0.6,
+                "xz_dist": 2,
+                "y_dist": 1
+            },
+            "minecraft:behavior.look_at_player": {
+                "priority": 11
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:block_climber": {}
+        },
+        "events": {}
+    }
+}

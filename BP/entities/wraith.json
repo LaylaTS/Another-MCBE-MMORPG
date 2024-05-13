@@ -18,15 +18,15 @@
 				"is_pushable_by_piston": true
 			},
 			"minecraft:attack": {
-				"damage": 16
+				"damage": 8
 			},
 			"minecraft:behavior.melee_attack": {
 				"melee_fov": 90,
 				"priority": 3
 			},
 			"minecraft:health": {
-				"max": 100,
-				"value": 100
+				"max": 150,
+				"value": 150
 			},
 			"minecraft:behavior.random_stroll": {
 				"priority": 8
@@ -42,7 +42,7 @@
 				]
 			},
 			"minecraft:movement": {
-				"value": 0.5
+				"value": 0.75
 			},
 			"minecraft:behavior.look_at_player": {
 				"priority": 9,

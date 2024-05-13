@@ -39,5 +39,9 @@ server.world.afterEvents.pressurePlatePush.subscribe(eventData => {
         }
     } else if (block.location.y == 60) {
         entity.applyKnockback(0, -10, 20, 2)
+        server.system.runTimeout(() => {
+
+            entity.addEffect("slow_falling", 200)
+        }, 30)
     }
 })

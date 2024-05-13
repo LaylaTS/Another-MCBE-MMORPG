@@ -16,7 +16,6 @@ export function mmorpgmenu(player: server.Player) {
                         .button('Plot')
                         .button('Dungeons')
                         .button('The Mines')
-                        .button('PVP Arena')
                     tp.show(player).then(result => {
                         player.triggerEvent("mmorpg:pvpoff")
                         if (result.selection == 0) {
@@ -38,14 +37,18 @@ export function mmorpgmenu(player: server.Player) {
             } else if (data.selection == 1) {
                 new ui.ActionFormData().title("Choose Arena")
                     .button("OVERWORLD PVP")
-                    .button("BOX PVP")
+                    .button("BOX PVP - NO BUILD")
+                    .button("BOX PVP - BUILD")
                     .show(player).then((data) => {
                         let randomspawn: server.Vector3[] = [{ x: -4934, y: 40, z: -5007 }, { x: -4953, y: 40, z: -5037 }, { x: -4988, y: 40, z: -5032 }, { x: -5010, y: 40, z: -4995 }, { x: -4973, y: 45, z: -4992 }]
                         server.system.run(() => {
                             if (data.selection == 0) {
                                 player.tryTeleport(randomspawn[Math.floor(Math.random() * randomspawn.length)])
-                            } else {
+                            } else if (data.selection == 1) {
                                 player.tryTeleport({ x: -5000 + Math.random() * 40 - 20, z: 5000 + Math.random() * 40 - 20, y: 100 })
+                            } else {
+                                player.tryTeleport({ x: 5000, y: 60, z: -4922 })
+
                             }
                         })
                         player.triggerEvent("mmorpg:pvpon")

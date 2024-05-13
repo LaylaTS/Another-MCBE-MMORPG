@@ -464,6 +464,39 @@
 			"sounds": [
 				"sounds/random/coreboss_beam"
 			]
+		},
+		"mob.blaze_boss.breathe": {
+			"category": "hostile",
+			"sounds": [
+				"sounds/mob/blaze_boss/breathe1",
+				"sounds/mob/blaze_boss/breathe2",
+				"sounds/mob/blaze_boss/breathe3",
+				"sounds/mob/blaze_boss/breathe4"
+			]
+		},
+		"mob.blaze_boss.death": {
+			"category": "hostile",
+			"sounds": [
+				"sounds/mob/blaze_boss/death"
+			]
+		},
+		"mob.blaze_boss.hit": {
+			"category": "hostile",
+			"sounds": [
+				"sounds/mob/blaze_boss/hit1",
+				"sounds/mob/blaze_boss/hit2",
+				"sounds/mob/blaze_boss/hit3",
+				"sounds/mob/blaze_boss/hit4"
+			]
+		},
+		"mob.blaze_boss.shoot": {
+			"sounds": [
+				{
+					"name": "sounds/mob/ghast/fireball4",
+					"volume": 3
+				}
+			],
+			"subtitle": "subtitles.entity.blaze.shoot"
 		}
 	}
 }

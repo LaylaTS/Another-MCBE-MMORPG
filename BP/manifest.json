@@ -2,11 +2,11 @@
 	"format_version": 2,
 	"metadata": {
 		"authors": [
-			"wojtekbb"
+			"laylabb"
 		],
 		"generated_with": {
 			"bridge": [
-				"2.7.10"
+				"2.7.17"
 			],
 			"dash": [
 				"github:bridge-core/dash-compiler#8fa35c73292f6382747d0f411fca26431a6d2c8e"
@@ -19,13 +19,13 @@
 		"min_engine_version": [
 			1,
 			20,
-			10
+			80
 		],
 		"uuid": "5489ce45-fb18-44cb-8acf-e46e31842a72",
 		"version": [
 			1,
 			0,
-			0
+			4
 		]
 	},
 	"modules": [
@@ -53,7 +53,7 @@
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "1.8.0-beta"
+			"version": "1.11.0-beta"
 		},
 		{
 			"module_name": "@minecraft/server-ui",

@@ -1,0 +1,48 @@
+{
+    "format_version": "1.19.70",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "mmorpg:frostfire_legs"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "key": {
+            "d": {
+                "item": "mmorpg:enchanted_diamond_block"
+            },
+            "r": {
+                "item": "mmorpg:enchanted_ruby_block"
+            },
+            "e": {
+                "item": "mmorpg:enchanted_emerald_block"
+            },
+            "q": {
+                "item": "mmorpg:enchanted_quartz_block"
+            },
+            "g": {
+                "item": "mmorpg:enchanted_gold_block"
+            },
+            "a": {
+                "item": "mmorpg:enchanted_aetherium_block"
+            },
+            "f": {
+                "item": "mmorpg:frostfire_core"
+            },
+            "x": {
+                "item": "mmorpg:frost_leggings"
+            },
+            "z": {
+                "item": "mmorpg:magma_leggings"
+            }
+        },
+        "pattern": [
+            "dre",
+            "xfz",
+            "qga"
+        ],
+        "result": {
+            "item": "mmorpg:frostfire_leggings"
+        }
+    }
+}

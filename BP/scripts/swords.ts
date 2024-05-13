@@ -387,7 +387,15 @@ world.afterEvents.itemUse.subscribe(eventData => {
                 let equipment = player.getComponent("equippable") as server.EntityEquippableComponent
                 let range: number
                 let bonusdamage
-                if (equipment.getEquipmentSlot(server.EquipmentSlot.Offhand).typeId == "mmorpg:guardiansnecklace") {
+
+                let id = "t"
+
+                const slot = equipment.getEquipmentSlot(server.EquipmentSlot.Offhand)
+                if (slot.hasItem()) {
+                    id = slot.typeId
+                }
+
+                if (id == "mmorpg:guardiansnecklace") {
                     range = 8
                     bonusdamage = 10
                 } else {
@@ -837,7 +845,8 @@ world.afterEvents.itemUse.subscribe(eventData => {
         case "mmorpg:lunar_blade":
             addlore(["§8Dash and deal damage to nearby mobs"])
             var cooldown = item.getComponent("cooldown") as server.ItemCooldownComponent
-            if (cooldown.cooldownTicks == 0 && manaamount > 29) {
+            console.warn(cooldown.cooldownTicks)
+            if (player.getItemCooldown("lunar_blade") == 0 && manaamount > 29) {
                 mana.addScore(player, -30)
                 cooldown.startCooldown(player)
                 let rot = player.getViewDirection()
@@ -882,6 +891,22 @@ world.afterEvents.itemUse.subscribe(eventData => {
             }
 
 
+
+            break;
+        case "mmorpg:jar":
+            addlore(["§8Using the power of Drab", "§8jump and deal AOE damage to nearby mobs"])
+            if (manaamount > 29) {
+                mana.addScore(player, -30)
+                dimension.spawnParticle("mmorpg:drabJar", player.location)
+                player.applyKnockback(0, 0, 0, 0.7)
+                dimension.getEntities({ location: player.location, maxDistance: 7, families: ["mob"], excludeNames: [player.name] }).forEach(entity => {
+                    entity.applyDamage(16 + magicalpower, {
+                        damagingEntity: player,
+                        cause: 'entityAttack' as server.EntityDamageCause
+                    });
+                    entity.applyKnockback(0, 0, 0, 0.1 + Math.random())
+                })
+            }
 
             break;
     }

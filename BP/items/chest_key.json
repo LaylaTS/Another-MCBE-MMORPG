@@ -1,0 +1,15 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "mmorpg:chest_key",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:foil": true,
+			"minecraft:icon": {
+				"texture": "mmorpg_chest_key"
+			}
+		}
+	}
+}

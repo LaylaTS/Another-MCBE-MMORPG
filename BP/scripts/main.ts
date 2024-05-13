@@ -1,4 +1,4 @@
-	import * as server from '@minecraft/server'
+import * as server from '@minecraft/server'
 import 'chat.js'
 import 'swords.js'
 import 'mobdeath.js'
@@ -142,13 +142,13 @@ server.system.runInterval(() => { // run every tick
     }
 })
 
-world.beforeEvents.pistonActivate.subscribe(data => {
-    data.cancel = true
-    server.system.run(() => {
-        world.getDimension("overworld").createExplosion(data.block.location, 1, { breaksBlocks: true })
-    })
+// world.beforeEvents.pistonActivate.subscribe(data => {
+//     data.cancel = true
+//     server.system.run(() => {
+//         world.getDimension("overworld").createExplosion(data.block.location, 1, { breaksBlocks: true })
+//     })
 
-})
+// })
 
 export function deepClone(obj, visited = new WeakMap()) {
     if (obj === null || typeof obj !== 'object') {

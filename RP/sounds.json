@@ -113,8 +113,8 @@
 			"mmorpg:skyborn_specter": {
 				"volume": 1,
 				"pitch": [
-					0.80,
-					1.20
+					0.8,
+					1.2
 				],
 				"events": {
 					"ambient": "mob.blaze.breathe",
@@ -131,23 +131,36 @@
 					"pant": "mob.wolf.panting",
 					"shake": {
 						"pitch": [
-							0.80,
-							1.20
+							0.8,
+							1.2
 						],
 						"sound": "mob.wolf.shake"
 					},
 					"step": {
-						"pitch": 1.0,
+						"pitch": 1,
 						"sound": "mob.wolf.step",
-						"volume": 0.650
+						"volume": 0.65
 					},
 					"whine": "mob.wolf.whine"
 				},
 				"pitch": [
-					0.80,
-					1.20
+					0.8,
+					1.2
 				],
-				"volume": 1.0
+				"volume": 1
+			},
+			"mmorpg:blaze_boss": {
+				"volume": 1,
+				"pitch": [
+					0.8,
+					1.2
+				],
+				"events": {
+					"ambient": "mob.blaze_boss.breathe",
+					"hurt": "mob.blaze_boss.hit",
+					"death": "mob.blaze_boss.death",
+					"shoot": "mob.blaze_boss.shoot"
+				}
 			}
 		}
 	}
